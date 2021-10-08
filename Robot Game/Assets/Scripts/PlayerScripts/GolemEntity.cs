@@ -51,9 +51,15 @@ public class GolemEntity : PlayerEntity
         }
     }
 
-    public void test()
+    public void StartMining()
     {
+        rigBod.velocity = Vector2.zero;
         mining = true;
+    }
+
+    public void GetDrop()
+    {
+        Debug.Log("drop something now");
     }
 
 }

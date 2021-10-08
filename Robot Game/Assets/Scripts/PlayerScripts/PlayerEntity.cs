@@ -13,6 +13,10 @@ public class PlayerEntity : Entity
     [SerializeField] private float movementSpeed, jumpForce;
     [SerializeField] public LayerMask whatIsGround;
 
+
+    [SerializeField] public bool activePlayer = false;
+    [SerializeField] public InventoryObject inventory;
+
     public override void Start()
     {
         base.Start();
@@ -23,12 +27,23 @@ public class PlayerEntity : Entity
     public override void Update()
     {
         base.Update();
-        PlayerInput();
+        if (activePlayer)
+        {
+            PlayerInput();
+        }
     }
 
     void FixedUpdate()
     {
-        Movement();
+        if (activePlayer)
+        {
+            Movement();
+        }
+    }
+
+    public void TakeControl()
+    {
+        activePlayer = true;
     }
 
     private void PlayerInput()
@@ -48,6 +63,30 @@ public class PlayerEntity : Entity
             canJump = false;
             rigBod.velocity = new Vector2(rigBod.velocity.x, jumpForce);
         }
+
+        if (Input.GetMouseButtonDown(0))
+        {
+            Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            Vector2 mousePos2D = new Vector2(mousePos.x, mousePos.y);
+            RaycastHit2D hit = Physics2D.Raycast(mousePos2D, Vector2.zero);
+            if (hit.collider != null)
+            {
+                Debug.Log(hit.collider.gameObject.name);
+                if (hit.collider.gameObject.GetComponent<PlayerEntity>())
+                {
+                    activePlayer = false;
+                    hit.collider.gameObject.GetComponent<PlayerEntity>().TakeControl();
+                    Camera.main.GetComponent<CameraFollow>().followTransform = hit.collider.gameObject.transform;
+                }
+                if (hit.collider.gameObject.GetComponent<Item>())
+                {
+                    inventory.AddItem(hit.collider.gameObject.GetComponent<Item>().item, 1);
+                    Destroy(hit.collider.gameObject);
+                }
+            }
+        }
+
+
     }
 
     private void Movement()
