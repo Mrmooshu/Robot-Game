@@ -15,13 +15,22 @@ public class PlayerEntity : Entity
 
 
     [SerializeField] public bool activePlayer = false;
-    [SerializeField] public InventoryObject inventory;
+
+    [SerializeField] public InventoryDisplay inventoryDisplay;
+
+    private List<Item> inventory;
 
     public override void Start()
     {
         base.Start();
         rigBod = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
+        if (activePlayer)
+        {
+            inventory = new List<Item>();
+            inventoryDisplay.SetInventory(inventory);
+            inventoryDisplay.gameObject.SetActive(false);
+        }
     }
 
     public override void Update()
@@ -44,6 +53,8 @@ public class PlayerEntity : Entity
     public void TakeControl()
     {
         activePlayer = true;
+        inventory = new List<Item>();
+        inventoryDisplay.SetInventory(inventory);
     }
 
     private void PlayerInput()
@@ -78,14 +89,13 @@ public class PlayerEntity : Entity
                     hit.collider.gameObject.GetComponent<PlayerEntity>().TakeControl();
                     Camera.main.GetComponent<CameraFollow>().followTransform = hit.collider.gameObject.transform;
                 }
-                if (hit.collider.gameObject.GetComponent<Item>())
-                {
-                    inventory.AddItem(hit.collider.gameObject.GetComponent<Item>().item, 1);
-                    Destroy(hit.collider.gameObject);
-                }
+                //if (hit.collider.gameObject.GetComponent<ItemEntity>())
+               // {
+               //     inventory.AddItem(hit.collider.gameObject.GetComponent<ItemEntity>().GetItem());
+               //     Destroy(hit.collider.gameObject);
+               // }
             }
         }
-
 
     }
 

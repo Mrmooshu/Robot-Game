@@ -6,7 +6,6 @@ using UnityEngine.UI;
 public class RockEntity : InteractableEntity
 {
     [SerializeField] private Button mineButton;
-    [SerializeField] private Button assignButton;
 
     private GolemEntity player;
 
@@ -14,7 +13,6 @@ public class RockEntity : InteractableEntity
     {
         base.Start();
         mineButton.gameObject.SetActive(false);
-        assignButton.gameObject.SetActive(false);
 
         
     }
@@ -27,7 +25,6 @@ public class RockEntity : InteractableEntity
             {
                 player = collision.GetComponent<GolemEntity>();
                 mineButton.gameObject.SetActive(true);
-                assignButton.gameObject.SetActive(true);
                 mineButton.onClick.AddListener(player.StartMining);
             }
             else
@@ -44,7 +41,6 @@ public class RockEntity : InteractableEntity
             if (collision.GetComponent<GolemEntity>() != null)
             {
                 mineButton.gameObject.SetActive(false);
-                assignButton.gameObject.SetActive(false);
                 mineButton.onClick.RemoveListener(player.StartMining);
             }
             else
