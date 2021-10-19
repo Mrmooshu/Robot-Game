@@ -89,11 +89,18 @@ public class PlayerEntity : Entity
                     hit.collider.gameObject.GetComponent<PlayerEntity>().TakeControl();
                     Camera.main.GetComponent<CameraFollow>().followTransform = hit.collider.gameObject.transform;
                 }
-                //if (hit.collider.gameObject.GetComponent<ItemEntity>())
-               // {
-               //     inventory.AddItem(hit.collider.gameObject.GetComponent<ItemEntity>().GetItem());
-               //     Destroy(hit.collider.gameObject);
-               // }
+                if (hit.collider.gameObject.GetComponent<ItemObject>())
+                {
+                    if (inventoryDisplay.AddToInventory(hit.collider.gameObject.GetComponent<ItemObject>().item))
+                    {
+                        inventory.Add(hit.collider.gameObject.GetComponent<ItemObject>().item);
+                        Destroy(hit.collider.gameObject);
+                    }
+                    else
+                    {
+                        Debug.Log("full inventory");
+                    }
+                }
             }
         }
 

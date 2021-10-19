@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a157a8b022396624aa6177a7be728a7b, type: 3}
   m_Name: joesweapon
   m_EditorClassIdentifier: 
+  itemID: 0
   itemName: joes weapon
   itemDescription: joes nutcrusher
-  Sprite: {fileID: 2800000, guid: 415bfb9dabbe77440af89dc7aee1f76a, type: 3}
+  sprite: {fileID: 21300000, guid: 415bfb9dabbe77440af89dc7aee1f76a, type: 3}
   weaponType: 0
