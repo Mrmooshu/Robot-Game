@@ -6,8 +6,9 @@ public class ItemObject : MonoBehaviour
 {
     public Item item;
 
-    private void Awake()
+    public void SetItem(Item item)
     {
+        this.item = item;
         GetComponent<SpriteRenderer>().sprite = item.sprite;
     }
 }

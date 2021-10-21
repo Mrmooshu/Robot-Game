@@ -18,17 +18,18 @@ public class PlayerEntity : Entity
 
     [SerializeField] public InventoryDisplay inventoryDisplay;
 
-    private List<Item> inventory;
+    public Inventory inventory;
+    public int inventorySize = 9;
 
     public override void Start()
     {
         base.Start();
         rigBod = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
+        inventory = new Inventory(inventorySize);
         if (activePlayer)
         {
-            inventory = new List<Item>();
-            inventoryDisplay.SetInventory(inventory);
+            inventoryDisplay.SetPlayer(gameObject);
             inventoryDisplay.gameObject.SetActive(false);
         }
     }
@@ -53,8 +54,7 @@ public class PlayerEntity : Entity
     public void TakeControl()
     {
         activePlayer = true;
-        inventory = new List<Item>();
-        inventoryDisplay.SetInventory(inventory);
+        inventoryDisplay.SetPlayer(gameObject);
     }
 
     private void PlayerInput()
@@ -81,9 +81,8 @@ public class PlayerEntity : Entity
             Vector2 mousePos2D = new Vector2(mousePos.x, mousePos.y);
             RaycastHit2D hit = Physics2D.Raycast(mousePos2D, Vector2.zero);
             if (hit.collider != null)
-            {
-                Debug.Log(hit.collider.gameObject.name);
-                if (hit.collider.gameObject.GetComponent<PlayerEntity>())
+            {           
+                if (hit.collider.gameObject.GetComponent<PlayerEntity>() && hit.collider.gameObject != gameObject)
                 {
                     activePlayer = false;
                     hit.collider.gameObject.GetComponent<PlayerEntity>().TakeControl();
@@ -91,9 +90,9 @@ public class PlayerEntity : Entity
                 }
                 if (hit.collider.gameObject.GetComponent<ItemObject>())
                 {
-                    if (inventoryDisplay.AddToInventory(hit.collider.gameObject.GetComponent<ItemObject>().item))
+                    if (inventory.Add(hit.collider.gameObject.GetComponent<ItemObject>().item))
                     {
-                        inventory.Add(hit.collider.gameObject.GetComponent<ItemObject>().item);
+                        inventoryDisplay.RefreshInventory();
                         Destroy(hit.collider.gameObject);
                     }
                     else

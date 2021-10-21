@@ -9,6 +9,7 @@ public class TrashSlot : MonoBehaviour, IDropHandler
     {
         if (eventData.pointerDrag != null)
         {
+            transform.parent.GetComponent<InventoryDisplay>().currentInventory.Remove(eventData.pointerDrag.transform.parent.GetComponent<InventorySlot>().inventoryIndex);
             Destroy(eventData.pointerDrag);
         }
     }
