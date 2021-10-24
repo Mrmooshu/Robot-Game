@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "Item/Default", fileName = "Default Item")]
 public class Item : ScriptableObject
 {
     [Header("Item Properties")]

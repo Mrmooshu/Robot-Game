@@ -35,8 +35,11 @@ public class Inventory
 
     public void Move(int index1, int index2)
     {
-        inventory[index2] = inventory[index1];
-        inventory[index1] = null;
+        if (index1 != index2)
+        {
+            inventory[index2] = inventory[index1];
+            inventory[index1] = null;
+        }
     }
 
     public Item GetItem(int index)

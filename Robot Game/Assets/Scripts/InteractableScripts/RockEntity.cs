@@ -6,6 +6,8 @@ using UnityEngine.UI;
 public class RockEntity : InteractableEntity
 {
     [SerializeField] private Button mineButton;
+    [SerializeField] public DropTable oreTable;
+    [SerializeField] public DropTable secondaryTable;
 
     private GolemEntity player;
 

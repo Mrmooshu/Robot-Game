@@ -32,7 +32,7 @@ public class InventoryDisplay : MonoBehaviour
 
         int x = 0;
         int y = 0;
-        float slotSize = 1f;
+        float slotSize = .6f;
         for(int i = 0; i < currentInventory.GetSize(); i++)
         {
             GameObject slotInstance = Instantiate(slotPreFab, itemArea.transform);
