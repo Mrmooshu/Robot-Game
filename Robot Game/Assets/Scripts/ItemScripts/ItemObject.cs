@@ -9,6 +9,6 @@ public class ItemObject : MonoBehaviour
     public void SetItem(Item item)
     {
         this.item = item;
-        GetComponent<SpriteRenderer>().sprite = item.sprite;
+        GetComponent<SpriteRenderer>().sprite = item.data.sprite;
     }
 }

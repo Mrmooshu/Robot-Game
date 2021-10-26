@@ -7,11 +7,12 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8998d08d57a46104382650b89f763d40, type: 3}
-  m_Name: TestTable
+  m_Name: rock1Table
   m_EditorClassIdentifier: 
   tableItems:
-  - {fileID: 11400000, guid: f20f0cc994a7bd3489ae567e13a8d1fc, type: 2}
-  dropRateDenominator: 01000000
+  - itemData: {fileID: 11400000, guid: 3b638e945d79bd549baf92ea5c85c179, type: 2}
+    itemQuanity: 1
+    weight: 1

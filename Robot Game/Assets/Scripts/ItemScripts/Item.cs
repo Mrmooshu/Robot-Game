@@ -2,11 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Item : ScriptableObject
+public class Item
 {
-    [Header("Item Properties")]
-    public int itemID;
-    public string itemName = "default name";
-    public string itemDescription = "default description";
-    public Sprite sprite;
+    public ItemData data;
+    public int quanity;
+
+    public Item(ItemData data, int quanity)
+    {
+        this.data = data;
+        this.quanity = quanity;
+    }
 }

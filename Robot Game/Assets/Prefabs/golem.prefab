@@ -166,8 +166,9 @@ MonoBehaviour:
     m_Bits: 64
   activePlayer: 0
   inventoryDisplay: {fileID: 0}
+  stackSizeLimit: 5
   inventorySize: 9
-  mining: 0
+  currentRock: {fileID: 0}
   miningPower: 0
   miningSpeed: 0
 --- !u!1 &2644715625916414981

@@ -13,7 +13,7 @@ public class DropSlot : MonoBehaviour, IDropHandler
             GameObject droppedItem = Instantiate(itemPrefab, transform.parent.GetComponent<InventoryDisplay>().currentPlayer.transform.position, Quaternion.identity);
             droppedItem.GetComponent<ItemObject>().SetItem(eventData.pointerDrag.GetComponent<InventoryItem>().item);
             transform.parent.GetComponent<InventoryDisplay>().currentInventory.Remove(eventData.pointerDrag.transform.parent.GetComponent<InventorySlot>().inventoryIndex);
-            Destroy(eventData.pointerDrag);
+            transform.parent.GetComponent<InventoryDisplay>().RefreshInventory();
         }
     }
 }

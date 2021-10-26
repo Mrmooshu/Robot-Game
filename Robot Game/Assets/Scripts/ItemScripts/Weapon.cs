@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(menuName = "Item/Weapon", fileName = "Weapon Item")]
-public class Weapon : Item
+public class Weapon : ItemData
 {
     public enum Type
     {

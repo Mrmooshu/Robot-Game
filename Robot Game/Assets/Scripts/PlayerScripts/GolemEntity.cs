@@ -4,12 +4,15 @@ using UnityEngine;
 
 public class GolemEntity : PlayerEntity
 {
-    public bool mining;
-    [SerializeField] public float miningPower;
-    [SerializeField] public float miningSpeed;
+    public RockEntity currentRock;
 
+    private bool mining;
     private float swingTimer;
     private float cooldown;
+
+    [Header("Golem Specific Stats")]
+    [SerializeField] public float miningPower;
+    [SerializeField] public float miningSpeed;
 
     public override void Start()
     {
@@ -47,7 +50,6 @@ public class GolemEntity : PlayerEntity
         {
             animator.SetTrigger("Swing");
             swingTimer = cooldown;
-            Debug.Log("lets goooo");
         }
     }
 
@@ -57,9 +59,9 @@ public class GolemEntity : PlayerEntity
         mining = true;
     }
 
-    public void GetDrop()
+    public void MineRock()
     {
-        Debug.Log("drop something now");
+        currentRock.RollDrop();
     }
 
 }

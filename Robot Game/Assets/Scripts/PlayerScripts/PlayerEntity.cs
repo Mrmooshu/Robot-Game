@@ -19,7 +19,10 @@ public class PlayerEntity : Entity
     [SerializeField] public InventoryDisplay inventoryDisplay;
 
     public Inventory inventory;
-    public int inventorySize = 9;
+
+    [Header("Player Specific Stats")]
+    [SerializeField] public int stackSizeLimit = 5;
+    [SerializeField] public int inventorySize = 9;
 
     public override void Start()
     {
@@ -27,6 +30,7 @@ public class PlayerEntity : Entity
         rigBod = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         inventory = new Inventory(inventorySize);
+        inventory.player = this;
         if (activePlayer)
         {
             inventoryDisplay.SetPlayer(gameObject);

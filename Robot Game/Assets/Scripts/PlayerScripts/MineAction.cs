@@ -20,7 +20,7 @@ public class MineAction : StateMachineBehaviour
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         GolemEntity player = animator.gameObject.GetComponent<GolemEntity>();
-        player.SendMessage("GetDrop");
+        player.SendMessage("MineRock");
     }
 
     // OnStateMove is called right after Animator.OnAnimatorMove()
