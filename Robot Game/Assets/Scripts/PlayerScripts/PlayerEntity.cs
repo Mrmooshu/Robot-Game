@@ -118,4 +118,16 @@ public class PlayerEntity : Entity
 
         rigBod.velocity = new Vector2(movementSpeed * movementInputDirection, rigBod.velocity.y);
     }
+
+    public void SavePlayerData()
+    {
+        SaveSystem.SavePlayer(this);
+    }
+
+    public void LoadPlayerData()
+    {
+        PlayerData data = SaveSystem.LoadPlayer();
+
+        transform.position = new Vector3(data.position[0], data.position[1], data.position[2]);
+    }
 }
