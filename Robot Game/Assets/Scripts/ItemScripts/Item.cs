@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class Item
 {
-    public ItemData data;
+    public int itemID;
     public int quanity;
 
-    public Item(ItemData data, int quanity)
+    public Item(int itemID, int quanity)
     {
-        this.data = data;
+        this.itemID = itemID;
         this.quanity = quanity;
     }
 }

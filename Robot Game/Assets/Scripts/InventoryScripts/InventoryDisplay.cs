@@ -49,7 +49,7 @@ public class InventoryDisplay : MonoBehaviour
                 InventoryItem invenItem = itemInstance.GetComponent<InventoryItem>();
                 invenItem.item = currentInventory.GetItem(i);
                 invenItem.cam = uiCamera;
-                invenItem.transform.GetChild(0).GetComponent<Image>().sprite = currentInventory.GetItem(i).data.sprite;
+                invenItem.transform.GetChild(0).GetComponent<Image>().sprite = Database.GetItem(currentInventory.GetItem(i).itemID).sprite;
                 invenItem.transform.GetChild(1).GetComponent<TMPro.TextMeshProUGUI>().text = currentInventory.GetItem(i).quanity.ToString();
             }
 

@@ -23,7 +23,7 @@ public class Inventory
         {
             if (inventory[i] != null)
             {
-                if (inventory[i].data.itemName == item.data.itemName && inventory[i].quanity < player.stackSizeLimit)
+                if (inventory[i].itemID == item.itemID && inventory[i].quanity < player.stackSizeLimit)
                 {
                     inventory[i].quanity += item.quanity;
                     if (inventory[i].quanity > player.stackSizeLimit)

@@ -28,7 +28,7 @@ public class DropTable : ScriptableObject
     {
         if (tableItems.Length == 1)
         {
-            return new Item(tableItems[0].itemData, tableItems[0].itemQuanity);
+            return new Item(tableItems[0].itemData.itemID, tableItems[0].itemQuanity);
         }
 
         int randomNum = Random.Range(0, totalDropRange);
@@ -37,7 +37,7 @@ public class DropTable : ScriptableObject
         {
             if (randomNum <= wItem.weight)
             {
-                return new Item(wItem.itemData, wItem.itemQuanity);
+                return new Item(wItem.itemData.itemID, wItem.itemQuanity);
             }
             else
             {

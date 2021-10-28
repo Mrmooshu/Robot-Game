@@ -15,4 +15,10 @@ MonoBehaviour:
   tableItems:
   - itemData: {fileID: 11400000, guid: 6017caa0559892846814f590a7ffae6c, type: 2}
     itemQuanity: 1
+    weight: 6
+  - itemData: {fileID: 11400000, guid: 11c3fa23d9370cf4daf3cdd832921b16, type: 2}
+    itemQuanity: 1
+    weight: 3
+  - itemData: {fileID: 11400000, guid: 3e32218fe3a45ce4db2f467f88de6afb, type: 2}
+    itemQuanity: 1
     weight: 1

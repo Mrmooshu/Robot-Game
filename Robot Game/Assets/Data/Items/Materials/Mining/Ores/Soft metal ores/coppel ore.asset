@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 44441154caaf6f646a1af9709488568c, type: 3}
-  m_Name: ore1
+  m_Name: coppel ore
   m_EditorClassIdentifier: 
   itemID: 0
-  itemName: ore1
-  itemDescription: ore for noobs
-  sprite: {fileID: -1573161130, guid: 5652b0ad6aa96f846b000545ad5e52ba, type: 3}
+  itemName: coppel ore
+  itemDescription: default description
+  sprite: {fileID: -2142326337, guid: 5652b0ad6aa96f846b000545ad5e52ba, type: 3}
