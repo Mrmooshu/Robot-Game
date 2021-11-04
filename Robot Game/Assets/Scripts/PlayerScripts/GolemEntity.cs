@@ -49,6 +49,7 @@ public class GolemEntity : PlayerEntity
         else
         {
             animator.SetTrigger("Swing");
+            transform.GetChild(0).GetComponent<Animator>().SetTrigger("Swing");
             swingTimer = cooldown;
         }
     }

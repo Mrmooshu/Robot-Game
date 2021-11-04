@@ -104,7 +104,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Golem_Run-Sheet_0
+      name: SandGRun_0
       rect:
         serializedVersion: 2
         x: 0
@@ -118,14 +118,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: cfd161662a137f74a83fe4cdb131e459
-      internalID: 611381623
+      spriteID: 027f6aa6c994a3a40851e47c61eed84a
+      internalID: -1771596278
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Golem_Run-Sheet_1
+      name: SandGRun_1
       rect:
         serializedVersion: 2
         x: 64
@@ -139,14 +139,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: bf4d2f959b058c646ae0d1921b6da86f
-      internalID: -487610887
+      spriteID: 5ffc6597dd2fc804ab6d0a0ab08728ee
+      internalID: 1934521797
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Golem_Run-Sheet_2
+      name: SandGRun_2
       rect:
         serializedVersion: 2
         x: 128
@@ -160,14 +160,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 98f9213755e981e488b8d47c059b374e
-      internalID: -280277416
+      spriteID: d3a0f5f3e65bd8a41b32e078f0c008e8
+      internalID: -1390314627
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Golem_Run-Sheet_3
+      name: SandGRun_3
       rect:
         serializedVersion: 2
         x: 192
@@ -181,14 +181,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9468a3025d8270a45a3bc87720f20dfe
-      internalID: 1340853635
+      spriteID: 4dbd035547a890e4b953289e9c4c1eed
+      internalID: -113236698
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Golem_Run-Sheet_4
+      name: SandGRun_4
       rect:
         serializedVersion: 2
         x: 256
@@ -202,14 +202,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f0abf443546d5504789d68ee60b0f3f9
-      internalID: 46494643
+      spriteID: cf9c40be285126a40b2c356d9f73161e
+      internalID: -1594278025
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Golem_Run-Sheet_5
+      name: SandGRun_5
       rect:
         serializedVersion: 2
         x: 320
@@ -223,8 +223,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b7e4034aa5e5a3a42ab43cc1fc6a2e5f
-      internalID: -1860950040
+      spriteID: c536023dd43e11a45bcc82f0b4057a48
+      internalID: 1061484083
       vertices: []
       indices: 
       edges: []
@@ -240,12 +240,12 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Golem_Run-Sheet_1: -487610887
-      Golem_Run-Sheet_3: 1340853635
-      Golem_Run-Sheet_5: -1860950040
-      Golem_Run-Sheet_4: 46494643
-      Golem_Run-Sheet_2: -280277416
-      Golem_Run-Sheet_0: 611381623
+      SandGRun_2: -1390314627
+      SandGRun_0: -1771596278
+      SandGRun_3: -113236698
+      SandGRun_5: 1061484083
+      SandGRun_1: 1934521797
+      SandGRun_4: -1594278025
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

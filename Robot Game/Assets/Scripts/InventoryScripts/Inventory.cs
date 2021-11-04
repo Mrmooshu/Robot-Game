@@ -21,7 +21,7 @@ public class Inventory
         int firstNullIndex = inventory.Length;
         for (int i = 0; i < inventory.Length; i++)
         {
-            if (inventory[i] != null)
+            if (inventory[i] != null && Database.GetItem(item.itemID).stackable)
             {
                 if (inventory[i].itemID == item.itemID && inventory[i].quanity < player.stackSizeLimit)
                 {
@@ -35,8 +35,12 @@ public class Inventory
                     return true;
                 }
             }
-            else if (i < firstNullIndex)
+            else if (inventory[i] == null && i < firstNullIndex)
             {
+                if (!Database.GetItem(item.itemID).stackable)
+                {
+                    inventory[i] = item;
+                }
                 firstNullIndex = i;
             }
         }

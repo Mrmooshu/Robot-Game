@@ -23,6 +23,7 @@ public class PlayerEntity : Entity
     [Header("Player Specific Stats")]
     [SerializeField] public int stackSizeLimit = 5;
     [SerializeField] public int inventorySize = 9;
+    [SerializeField] public Weapon weaponSlot;
 
     public override void Start()
     {
@@ -72,6 +73,7 @@ public class PlayerEntity : Entity
         }
 
         animator.SetInteger("Run", movementInputDirection);
+        transform.GetChild(0).GetComponent<Animator>().SetInteger("Run", movementInputDirection);
 
         if (Input.GetButtonDown("Jump") && canJump)
         {

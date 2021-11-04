@@ -7,8 +7,9 @@ public class Weapon : ItemData
 {
     public enum Type
     {
-        sword, staff, bow
+        pickaxe, hatchet, fishingpole
     }
     [Header("Weapon Properties")]
     public Type weaponType;
+    public AnimationClip actionAnim;
 }

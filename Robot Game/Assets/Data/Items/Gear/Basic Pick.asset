@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a157a8b022396624aa6177a7be728a7b, type: 3}
-  m_Name: joesweapon
+  m_Name: Basic Pick
   m_EditorClassIdentifier: 
-  itemID: 30
-  itemName: joes weapon
-  itemDescription: joes nutcrusher
+  itemID: 0
+  itemName: Novium Pickaxe
+  itemDescription: picked by newbs
   stackable: 0
-  sprite: {fileID: 21300000, guid: 415bfb9dabbe77440af89dc7aee1f76a, type: 3}
+  sprite: {fileID: 0}
   weaponType: 0
-  actionAnim: {fileID: 0}
+  actionAnim: {fileID: 7400000, guid: 14a54b1366a0dc14eb5d4a3c15d3ae91, type: 2}

@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 3a6027498253b03458fb128fe4e57ec3
+guid: 55d933d4390453a4ea165e7e14215d81
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -104,7 +104,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Golem_Mining-Sheet_0
+      name: SnowGIdle_0
       rect:
         serializedVersion: 2
         x: 0
@@ -118,14 +118,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d06c057abeecc8d46a062fac427f84c6
-      internalID: -944201880
+      spriteID: 8120c74a63c8a1549905da4c97aead38
+      internalID: 353173146
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Golem_Mining-Sheet_1
+      name: SnowGIdle_1
       rect:
         serializedVersion: 2
         x: 64
@@ -139,14 +139,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 96d7ab2b690b6004eb4fb0d6bc4001e2
-      internalID: 2125684942
+      spriteID: 33ec0a01db0174c458f0a680b69ae0c8
+      internalID: 13798928
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Golem_Mining-Sheet_2
+      name: SnowGIdle_2
       rect:
         serializedVersion: 2
         x: 128
@@ -160,14 +160,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6e68ba203424a894494eeebca4924bd2
-      internalID: -1251196237
+      spriteID: 6910c1e3158f0a744b1bdf4514d14800
+      internalID: -1915869302
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Golem_Mining-Sheet_3
+      name: SnowGIdle_3
       rect:
         serializedVersion: 2
         x: 192
@@ -181,14 +181,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: dca1606a8459e66499224b2a4518e3eb
-      internalID: 655074544
+      spriteID: 891ac0cd8ca7d1e42a4a173b6a9e20c8
+      internalID: -379802804
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Golem_Mining-Sheet_4
+      name: SnowGIdle_4
       rect:
         serializedVersion: 2
         x: 256
@@ -202,14 +202,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 102c160191d347b43bcdae67fb9a69be
-      internalID: -214404620
+      spriteID: 24e0a1c3f3a56e9478ef1e8d6795e8ba
+      internalID: -617830504
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Golem_Mining-Sheet_5
+      name: SnowGIdle_5
       rect:
         serializedVersion: 2
         x: 320
@@ -223,29 +223,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0ffdd82c49003b14cbf5cdcabd969b66
-      internalID: -1834836973
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Golem_Mining-Sheet_6
-      rect:
-        serializedVersion: 2
-        x: 384
-        y: 0
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: c3c47838f57d14c40a1699b34fcfb427
-      internalID: 1320997471
+      spriteID: fe876a8c9aaf8c249a539b206a6c1244
+      internalID: 1983676937
       vertices: []
       indices: 
       edges: []
@@ -261,13 +240,12 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Golem_Mining-Sheet_6: 1320997471
-      Golem_Mining-Sheet_1: 2125684942
-      Golem_Mining-Sheet_3: 655074544
-      Golem_Mining-Sheet_0: -944201880
-      Golem_Mining-Sheet_2: -1251196237
-      Golem_Mining-Sheet_4: -214404620
-      Golem_Mining-Sheet_5: -1834836973
+      SnowGIdle_0: 353173146
+      SnowGIdle_3: -379802804
+      SnowGIdle_5: 1983676937
+      SnowGIdle_1: 13798928
+      SnowGIdle_4: -617830504
+      SnowGIdle_2: -1915869302
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

@@ -1924,6 +1924,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemDatabase: {fileID: 11400000, guid: 4587ff6b6d5488d4cacb953a69ee68be, type: 2}
+  variantDatabase: {fileID: 0}
 --- !u!4 &958754988
 Transform:
   m_ObjectHideFlags: 0
