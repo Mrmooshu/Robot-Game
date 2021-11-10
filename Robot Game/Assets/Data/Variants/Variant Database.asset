@@ -12,4 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 77780199bd3278a409893a25e977d1bf, type: 3}
   m_Name: Variant Database
   m_EditorClassIdentifier: 
-  variantList: []
+  variantList:
+  - {fileID: 11400000, guid: 6842b2dd75b040844bd03e4d1fe34df6, type: 2}
+  - {fileID: 11400000, guid: 3511b1f5805bd5d4a81fa5371580fe1c, type: 2}

@@ -10,7 +10,7 @@ public class PlayerEntity : Entity
     protected Rigidbody2D rigBod;
     protected Animator animator;
     [SerializeField] public Transform groundCheck;
-    [SerializeField] private float movementSpeed, jumpForce;
+    [SerializeField] public float movementSpeed, jumpForce;
     [SerializeField] public LayerMask whatIsGround;
 
 

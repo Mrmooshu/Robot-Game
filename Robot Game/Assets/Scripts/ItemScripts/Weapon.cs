@@ -11,5 +11,5 @@ public class Weapon : ItemData
     }
     [Header("Weapon Properties")]
     public Type weaponType;
-    public AnimationClip actionAnim;
+    public RuntimeAnimatorController animController;
 }

@@ -56,8 +56,14 @@ public class GolemEntity : PlayerEntity
 
     public void StartMining()
     {
-        rigBod.velocity = Vector2.zero;
-        mining = true;
+        if (weaponSlot != null && weaponSlot.weaponType == Weapon.Type.pickaxe)
+        {
+            transform.GetChild(0).GetComponent<Animator>().runtimeAnimatorController = weaponSlot.animController;
+            rigBod.velocity = Vector2.zero;
+            mining = true;
+            return;
+        }
+        Debug.Log("need to equip a pick to mine");
     }
 
     public void MineRock()
