@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a157a8b022396624aa6177a7be728a7b, type: 3}
+  m_Name: Pickaxe 8
+  m_EditorClassIdentifier: 
+  itemID: 0
+  itemName: Lectonium Pickaxe
+  itemDescription: gaurenteed to make tremors, no refunds
+  stackable: 1
+  sprite: {fileID: 911630508, guid: e9f58172755238646bbf7ece85de3480, type: 3}
+  weaponType: 0
+  animController: {fileID: 22100000, guid: ce51cc6242764ca4a92257b8264ce823, type: 2}

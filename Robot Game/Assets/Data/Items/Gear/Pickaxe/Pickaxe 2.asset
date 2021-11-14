@@ -16,6 +16,6 @@ MonoBehaviour:
   itemName: Iromite Pickaxe
   itemDescription: not the worst, but not by much
   stackable: 0
-  sprite: {fileID: 0}
+  sprite: {fileID: 1735316995, guid: e9f58172755238646bbf7ece85de3480, type: 3}
   weaponType: 0
   animController: {fileID: 22100000, guid: a74002516f18b89419d1fca50382f71e, type: 2}

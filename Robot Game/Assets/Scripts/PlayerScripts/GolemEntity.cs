@@ -25,10 +25,6 @@ public class GolemEntity : PlayerEntity
     public override void Update()
     {
         base.Update();
-        if (rigBod.velocity.magnitude > 0)
-        {
-            mining = false;
-        }
         if (mining)
         {
             animator.SetBool("Mining", true);
@@ -36,6 +32,7 @@ public class GolemEntity : PlayerEntity
         }
         else
         {
+            cantMove = false;
             animator.SetBool("Mining", false);
         }
     }
@@ -54,16 +51,26 @@ public class GolemEntity : PlayerEntity
         }
     }
 
-    public void StartMining()
+    public void ToggleMining()
     {
-        if (weaponSlot != null && weaponSlot.weaponType == Weapon.Type.pickaxe)
+        if (!mining)
         {
-            transform.GetChild(0).GetComponent<Animator>().runtimeAnimatorController = weaponSlot.animController;
-            rigBod.velocity = Vector2.zero;
-            mining = true;
-            return;
+            if (weaponSlot != null && weaponSlot.weaponType == Weapon.Type.pickaxe)
+            {
+                transform.GetChild(0).GetComponent<Animator>().runtimeAnimatorController = weaponSlot.animController;
+                rigBod.velocity = Vector2.zero;
+                mining = true;
+                cantMove = true;
+                return;
+            }
+            Debug.Log("need to equip a pick to mine");
         }
-        Debug.Log("need to equip a pick to mine");
+        else if (mining)
+        {
+            mining = false;
+            cantMove = false;
+        }
+
     }
 
     public void MineRock()

@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: Pickaxe 3
   m_EditorClassIdentifier: 
   itemID: 0
-  itemName: Slythril
+  itemName: Slythril Pickaxe
   itemDescription: the real deal
   stackable: 0
-  sprite: {fileID: 0}
+  sprite: {fileID: -1497176294, guid: e9f58172755238646bbf7ece85de3480, type: 3}
   weaponType: 0
-  animController: {fileID: 0}
+  animController: {fileID: 22100000, guid: a649ad5fe8bab2848a9fc5d2e0b02541, type: 2}

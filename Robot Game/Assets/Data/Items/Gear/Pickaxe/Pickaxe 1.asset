@@ -16,6 +16,6 @@ MonoBehaviour:
   itemName: Novium Pickaxe
   itemDescription: picked by newbs
   stackable: 0
-  sprite: {fileID: 0}
+  sprite: {fileID: -1418184763, guid: e9f58172755238646bbf7ece85de3480, type: 3}
   weaponType: 0
   animController: {fileID: 22100000, guid: 6f198ff5b4aba2148b8439a257d43402, type: 2}

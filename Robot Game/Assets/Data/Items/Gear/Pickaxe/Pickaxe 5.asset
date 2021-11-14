@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a157a8b022396624aa6177a7be728a7b, type: 3}
+  m_Name: Pickaxe 5
+  m_EditorClassIdentifier: 
+  itemID: 0
+  itemName: Adzium Pickaxe
+  itemDescription: formidable and effective as heck
+  stackable: 1
+  sprite: {fileID: -1383560286, guid: e9f58172755238646bbf7ece85de3480, type: 3}
+  weaponType: 0
+  animController: {fileID: 22100000, guid: f4b1ab440aa4fdf4b879add2c75224cd, type: 2}

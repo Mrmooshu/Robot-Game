@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: Pickaxe 4
   m_EditorClassIdentifier: 
   itemID: 0
-  itemName: default name
-  itemDescription: default description
-  stackable: 1
-  sprite: {fileID: 0}
+  itemName: Myphrite Pickaxe
+  itemDescription: heavy and for good reason
+  stackable: 0
+  sprite: {fileID: 1104547645, guid: e9f58172755238646bbf7ece85de3480, type: 3}
   weaponType: 0
-  animController: {fileID: 0}
+  animController: {fileID: 22100000, guid: 60342b85b92c58a4b9f4b5c7b40242fe, type: 2}

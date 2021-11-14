@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PlayerEntity : Entity
 {
+    protected bool cantMove = false;
     private int movementInputDirection;
     private bool grounded, canJump;
     private float groundedRadius = .1f;
@@ -65,21 +66,31 @@ public class PlayerEntity : Entity
     private void PlayerInput()
     {
         grounded = Physics2D.OverlapCircle(groundCheck.position, groundedRadius, whatIsGround);
-        movementInputDirection = (int)Input.GetAxisRaw("Horizontal");
-
+        
         if (grounded && rigBod.velocity.y <= 0)
         {
             canJump = true;
         }
 
+        if (!cantMove)
+        {
+            movementInputDirection = (int)Input.GetAxisRaw("Horizontal");
+
+            if (Input.GetButtonDown("Jump") && canJump)
+            {
+                canJump = false;
+                rigBod.velocity = new Vector2(rigBod.velocity.x, jumpForce);
+            }
+        }
+        else
+        {
+            movementInputDirection = 0;
+        }
+
         animator.SetInteger("Run", movementInputDirection);
         transform.GetChild(0).GetComponent<Animator>().SetInteger("Run", movementInputDirection);
 
-        if (Input.GetButtonDown("Jump") && canJump)
-        {
-            canJump = false;
-            rigBod.velocity = new Vector2(rigBod.velocity.x, jumpForce);
-        }
+
 
         if (Input.GetMouseButtonDown(0))
         {

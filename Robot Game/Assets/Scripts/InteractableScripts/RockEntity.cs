@@ -35,7 +35,7 @@ public class RockEntity : InteractableEntity
             {
                 player = collision.GetComponent<GolemEntity>();
                 mineButton.gameObject.SetActive(true);
-                mineButton.onClick.AddListener(player.StartMining);
+                mineButton.onClick.AddListener(player.ToggleMining);
                 player.currentRock = this;
             }
             else
@@ -52,7 +52,7 @@ public class RockEntity : InteractableEntity
             if (collision.GetComponent<GolemEntity>() != null)
             {
                 mineButton.gameObject.SetActive(false);
-                mineButton.onClick.RemoveListener(player.StartMining);
+                mineButton.onClick.RemoveListener(player.ToggleMining);
                 player.currentRock = null;
             }
             else
