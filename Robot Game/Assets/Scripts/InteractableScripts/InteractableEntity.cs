@@ -11,6 +11,10 @@ public abstract class InteractableEntity : Entity
         GetComponent<BoxCollider2D>().isTrigger = true;
     }
 
+    public abstract void PlayerInRange(PlayerEntity collision);
+
+    public abstract void PlayerOutOfRange(PlayerEntity collision);
+
     public abstract void OnTriggerEnter2D(Collider2D collision);
 
     public abstract void OnTriggerExit2D(Collider2D collision);

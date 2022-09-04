@@ -5,12 +5,16 @@ using UnityEngine;
 public class PlayerCore
 {
     public PlayerBody currentBody;
-    public bool activeCore;
-
-    public PlayerCore(PlayerBody currentBody, bool activeCore)
+    public Inventory inventory;
+    public int inventorySize;
+    public int stackLimit;
+    public GameObject bodyObject;
+    public PlayerCore(PlayerBody currentBody, int inventorySize, int stackLimit)
     {
         this.currentBody = currentBody;
-        this.activeCore = activeCore;
+        this.inventorySize = inventorySize;
+        this.stackLimit = stackLimit;
+        inventory = new Inventory(inventorySize, stackLimit);
     }
 
 }

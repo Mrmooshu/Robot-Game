@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class PlayerEntity : Entity
 {
+    public PlayerCore core;
+    public InteractableEntity currentInteractable;
+
     protected bool cantMove = false;
     private int movementInputDirection;
     private bool grounded, canJump;
@@ -14,53 +17,38 @@ public class PlayerEntity : Entity
     [SerializeField] public float movementSpeed, jumpForce;
     [SerializeField] public LayerMask whatIsGround;
 
-
-    [SerializeField] public bool activePlayer = false;
-
-    [SerializeField] public InventoryDisplay inventoryDisplay;
-
-    public Inventory inventory;
-
     [Header("Player Specific Stats")]
-    [SerializeField] public int stackSizeLimit = 5;
-    [SerializeField] public int inventorySize = 9;
     [SerializeField] public Weapon weaponSlot;
+
+    public void Initialize(PlayerCore core, float movementSpeed, float jumpForce)
+    {
+        this.core = core;
+        this.movementSpeed = movementSpeed;
+        this.jumpForce = jumpForce;
+    }
 
     public override void Start()
     {
         base.Start();
         rigBod = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
-        inventory = new Inventory(inventorySize);
-        inventory.player = this;
-        if (activePlayer)
-        {
-            inventoryDisplay.SetPlayer(gameObject);
-            inventoryDisplay.gameObject.SetActive(false);
-        }
     }
 
     public override void Update()
     {
         base.Update();
-        if (activePlayer)
-        {
-            PlayerInput();
-        }
+        PlayerInput();
     }
 
     void FixedUpdate()
     {
-        if (activePlayer)
-        {
-            Movement();
-        }
+        Movement();
     }
 
     public void TakeControl()
     {
-        activePlayer = true;
-        inventoryDisplay.SetPlayer(gameObject);
+        PlayerManager.instance.activeCore = core;
+        PlayerManager.instance.mainCam.GetComponent<CameraFollow>().followTransform = transform;
     }
 
     private void PlayerInput()
@@ -72,63 +60,67 @@ public class PlayerEntity : Entity
             canJump = true;
         }
 
-        if (!cantMove)
+        // only when this player is in control
+        if (PlayerManager.instance.activeCore == core)
         {
-            movementInputDirection = (int)Input.GetAxisRaw("Horizontal");
-
-            if (Input.GetButtonDown("Jump") && canJump)
+            if (!cantMove)
             {
-                canJump = false;
-                rigBod.velocity = new Vector2(rigBod.velocity.x, jumpForce);
-            }
-        }
-        else
-        {
-            movementInputDirection = 0;
-        }
+                movementInputDirection = (int)Input.GetAxisRaw("Horizontal");
 
-        animator.SetInteger("Run", movementInputDirection);
-        transform.GetChild(0).GetComponent<Animator>().SetInteger("Run", movementInputDirection);
-
-
-
-        if (Input.GetMouseButtonDown(0))
-        {
-            Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            Vector2 mousePos2D = new Vector2(mousePos.x, mousePos.y);
-            RaycastHit2D hit = Physics2D.Raycast(mousePos2D, Vector2.zero);
-            if (hit.collider != null)
-            {           
-                if (hit.collider.gameObject.GetComponent<PlayerEntity>() && hit.collider.gameObject != gameObject)
+                if (Input.GetButtonDown("Jump") && canJump)
                 {
-                    activePlayer = false;
-                    hit.collider.gameObject.GetComponent<PlayerEntity>().TakeControl();
-                    Camera.main.GetComponent<CameraFollow>().followTransform = hit.collider.gameObject.transform;
-                }
-                if (hit.collider.gameObject.GetComponent<ItemObject>())
-                {
-                    if (inventory.Add(hit.collider.gameObject.GetComponent<ItemObject>().item))
-                    {
-                        inventoryDisplay.RefreshInventory();
-                        Destroy(hit.collider.gameObject);
-                    }
-                    else
-                    {
-                        Debug.Log("full inventory");
-                    }
+                    canJump = false;
+                    rigBod.velocity = new Vector2(rigBod.velocity.x, jumpForce);
                 }
             }
-        }
+            else
+            {
+                movementInputDirection = 0;
+            }
+            // player running anim
+            animator.SetInteger("Run", movementInputDirection);
+            // weapon running anim
+            transform.GetChild(0).GetComponent<Animator>().SetInteger("Run", movementInputDirection);
 
+            // left click is down
+            if (Input.GetMouseButton(0))
+            {
+                Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+                Vector2 mousePos2D = new Vector2(mousePos.x, mousePos.y);
+                RaycastHit2D hit = Physics2D.Raycast(mousePos2D, Vector2.zero);
+                if (hit.collider != null)
+                {
+                    // Player Control Change
+                    if (hit.collider.gameObject.GetComponent<PlayerEntity>() && hit.collider.gameObject != gameObject && Input.GetMouseButtonDown(0))
+                    {
+                        PlayerManager.instance.ControlThisPlayer(hit.collider.gameObject.GetComponent<PlayerEntity>());
+                    }
+                    // Item Pick Up
+                    if (hit.collider.gameObject.GetComponent<ItemObject>())
+                    {
+                        if (core.inventory.Add(hit.collider.gameObject.GetComponent<ItemObject>().item))
+                        {
+                            Destroy(hit.collider.gameObject);
+                        }
+                        else
+                        {
+                            Debug.Log("full inventory");
+                        }
+                    }
+                }
+            }
+        }
     }
 
     private void Movement()
     {
-        if ((facingDirection > 0 && movementInputDirection < 0) || (facingDirection < 0 && movementInputDirection > 0))
+        if (PlayerManager.instance.activeCore == core)
         {
-            Flip();
+            if ((facingDirection > 0 && movementInputDirection < 0) || (facingDirection < 0 && movementInputDirection > 0))
+            {
+                Flip();
+            }
         }
-
         rigBod.velocity = new Vector2(movementSpeed * movementInputDirection, rigBod.velocity.y);
     }
 

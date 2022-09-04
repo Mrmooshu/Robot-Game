@@ -1,0 +1,7 @@
+ManifestFileVersion: 0
+CRC: 897204927
+AssetBundleManifest:
+  AssetBundleInfos:
+    Info_0:
+      Name: ui prefabs
+      Dependencies: {}

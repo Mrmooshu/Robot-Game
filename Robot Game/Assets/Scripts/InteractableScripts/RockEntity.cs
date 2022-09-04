@@ -3,28 +3,28 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+[RequireComponent(typeof(DropTableRoller))]
+
 public class RockEntity : InteractableEntity
 {
-    [SerializeField] public GameObject itemObject;
-    [SerializeField] public DropTable oreDropTable;
-    [SerializeField] public int oreTableChance;
-    [SerializeField] public DropTable rockDropTable;
-    [SerializeField] public int rockTableChance;
-    [SerializeField] public DropTable gemDropTable;
-    [SerializeField] public int gemTableChance;
-    [SerializeField] public DropTable luckDropTable;
-    [SerializeField] public int luckTableChance;
-    
-    private Button mineButton;
     private GolemEntity player;
 
-    public override void Start()
+    public override void PlayerInRange(PlayerEntity player)
     {
-        base.Start();
-        mineButton = transform.GetChild(0).GetChild(0).GetComponent<Button>();
-        mineButton.gameObject.SetActive(false);
+        if (player == PlayerManager.instance.activeCore.bodyObject.GetComponent<PlayerEntity>())
+        {
+            UIManager.instance.actionButton.SetCurrentButton(ActionButton.buttons.mine);
+            player.currentInteractable = this;
+        }
+    }
 
-        
+    public override void PlayerOutOfRange(PlayerEntity player)
+    {
+        if (player == PlayerManager.instance.activeCore.bodyObject.GetComponent<PlayerEntity>())
+        {
+            UIManager.instance.actionButton.SetCurrentButton(ActionButton.buttons.none);
+            player.currentInteractable = null;
+        }
     }
 
     public override void OnTriggerEnter2D(Collider2D collision)
@@ -33,10 +33,7 @@ public class RockEntity : InteractableEntity
         {
             if (collision.GetComponent<GolemEntity>() != null)
             {
-                player = collision.GetComponent<GolemEntity>();
-                mineButton.gameObject.SetActive(true);
-                mineButton.onClick.AddListener(player.ToggleMining);
-                player.currentRock = this;
+                PlayerInRange(collision.GetComponent<GolemEntity>());
             }
             else
             {
@@ -51,9 +48,7 @@ public class RockEntity : InteractableEntity
         {
             if (collision.GetComponent<GolemEntity>() != null)
             {
-                mineButton.gameObject.SetActive(false);
-                mineButton.onClick.RemoveListener(player.ToggleMining);
-                player.currentRock = null;
+                PlayerOutOfRange(collision.GetComponent<GolemEntity>());
             }
             else
             {
@@ -64,30 +59,6 @@ public class RockEntity : InteractableEntity
 
     public void RollDrop()
     {
-        int randomNum = Random.Range(0, oreTableChance);
-        if (randomNum <= 1)//+mining
-        {
-            GameObject newItem = Instantiate(itemObject, transform);
-            newItem.GetComponent<ItemObject>().SetItem(oreDropTable.RollTable());
-        }
-        randomNum = Random.Range(0, rockTableChance);
-        if (randomNum <= 1)//+mining
-        {
-            GameObject newItem = Instantiate(itemObject, transform);
-            newItem.GetComponent<ItemObject>().SetItem(rockDropTable.RollTable());
-        }
-        randomNum = Random.Range(0, gemTableChance);
-        if (randomNum <= 1)//+gem chance
-        {
-            GameObject newItem = Instantiate(itemObject, transform);
-            newItem.GetComponent<ItemObject>().SetItem(gemDropTable.RollTable());
-        }
-        randomNum = Random.Range(0, luckTableChance);
-        if (randomNum <= 1)//+luck
-        {
-            GameObject newItem = Instantiate(itemObject, transform);
-            newItem.GetComponent<ItemObject>().SetItem(luckDropTable.RollTable());
-        }
-
+        GetComponent<DropTableRoller>().RollDrop(100,150);
     }
 }

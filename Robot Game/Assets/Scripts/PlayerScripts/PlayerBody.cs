@@ -6,7 +6,7 @@ public class PlayerBody
 {
     public string variantName;
     public int level = 0;
-    public int weaponId;
+    public Weapon weapon;
 
     public PlayerBody(string variantName)
     {

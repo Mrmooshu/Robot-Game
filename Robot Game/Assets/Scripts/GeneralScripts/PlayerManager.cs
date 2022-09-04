@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerManager : MonoBehaviour
 {
-    private static PlayerManager instance;
+    public static PlayerManager instance;
 
     public int coreSlots = 1;
     public PlayerCore[] cores;
@@ -15,10 +15,11 @@ public class PlayerManager : MonoBehaviour
     public GameObject golemBlueprint;
     public GameObject sentinelBlueprint;
     public GameObject automatonBlueprint;
-    public GameObject UI;
-    public InventoryDisplay inventoryDisplay;
     public Camera mainCam;
     public Camera uiCam;
+
+
+    public PlayerCore activeCore;
 
     private void Awake()
     {
@@ -31,25 +32,25 @@ public class PlayerManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
-
-        cores = new PlayerCore[coreSlots];
-        bodies = new PlayerBody[bodySlots];
     }
 
-    public void Start()
+    public void Initialize()
     {
-        GameObject userInterface = Instantiate(UI);
-        userInterface.transform.GetChild(0).GetComponent<Canvas>().worldCamera = uiCam;
-        inventoryDisplay = userInterface.transform.GetChild(0).GetChild(0).GetComponent<InventoryDisplay>();
-        inventoryDisplay.uiCamera = uiCam;
+        cores = new PlayerCore[coreSlots];
+        bodies = new PlayerBody[bodySlots];
 
         bodies[0] = new PlayerBody("Clay Golem");
-        cores[0] = new PlayerCore(bodies[0], true);
+        bodies[1] = new PlayerBody("Snow Golem");
+        cores[0] = new PlayerCore(bodies[0], 36, 10);
+        cores[1] = new PlayerCore(bodies[1], 10, 10);
         foreach (PlayerCore core in cores)
         {
-            Spawn(core);
+            if (core != null)
+            {
+                Spawn(core);
+            }
         }
-
+        SetActiveCore(cores[0]);
     }
 
     public void Spawn(PlayerCore core)
@@ -71,19 +72,30 @@ public class PlayerManager : MonoBehaviour
                 Debug.Log("failed to spawn");
                 return;
         }
-        newPlayer.GetComponent<PlayerEntity>().inventoryDisplay = inventoryDisplay;
-        newPlayer.GetComponent<PlayerEntity>().activePlayer = core.activeCore;
-        newPlayer.GetComponent<PlayerEntity>().movementSpeed = variant.moveSpeed;
-        newPlayer.GetComponent<PlayerEntity>().jumpForce = variant.jumpForce;
+        PlayerEntity playerEntity = newPlayer.GetComponent<PlayerEntity>();
+        playerEntity.Initialize(core, variant.moveSpeed, variant.jumpForce);
         newPlayer.GetComponent<Animator>().runtimeAnimatorController = variant.animController;
-        if (core.activeCore)
-        {
-            mainCam.GetComponent<CameraFollow>().followTransform = newPlayer.transform;
-        }
-
-
-
+        core.bodyObject = newPlayer;
     }
 
+    public void SetActiveCore(PlayerCore core)
+    {
+        activeCore = core;
+        ControlThisPlayer(core.bodyObject.GetComponent<PlayerEntity>());
+    }
+
+    public void ControlThisPlayer(PlayerEntity player)
+    {
+        player.TakeControl();
+        if (player.currentInteractable != null)
+        {
+            player.currentInteractable.PlayerInRange(player);
+        }
+        else
+        {
+            UIManager.instance.actionButton.SetCurrentButton(ActionButton.buttons.none);
+        }
+
+    }
 
 }

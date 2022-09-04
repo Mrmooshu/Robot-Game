@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class GolemEntity : PlayerEntity
 {
-    public RockEntity currentRock;
-
     private bool mining;
     private float swingTimer;
     private float cooldown;
@@ -28,12 +26,14 @@ public class GolemEntity : PlayerEntity
         if (mining)
         {
             animator.SetBool("Mining", true);
+            transform.GetChild(0).GetComponent<Animator>().SetBool("Mining", true);
             MiningLogic();
         }
         else
         {
             cantMove = false;
             animator.SetBool("Mining", false);
+            transform.GetChild(0).GetComponent<Animator>().SetBool("Mining", false);
         }
     }
 
@@ -75,7 +75,9 @@ public class GolemEntity : PlayerEntity
 
     public void MineRock()
     {
-        currentRock.RollDrop();
+        if (currentInteractable is RockEntity)
+        {
+           ((RockEntity) currentInteractable).RollDrop();
+        }
     }
-
 }

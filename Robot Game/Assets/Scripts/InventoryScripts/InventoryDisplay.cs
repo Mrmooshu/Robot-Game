@@ -5,7 +5,6 @@ using UnityEngine.UI;
 
 public class InventoryDisplay : MonoBehaviour
 {
-    public GameObject currentPlayer;
     public Camera uiCamera;
     public Inventory currentInventory;
     public GameObject slotPreFab;
@@ -13,15 +12,15 @@ public class InventoryDisplay : MonoBehaviour
     public GameObject itemArea;
     public int columns = 7;
 
-    public void SetPlayer(GameObject player)
+    public void Start()
     {
-        currentPlayer = player;
-        currentInventory = currentPlayer.GetComponent<PlayerEntity>().inventory;
+        uiCamera = GameObject.Find("UI Camera").GetComponent<Camera>();
         RefreshInventory();
     }
 
     public void RefreshInventory()
     {
+        currentInventory = PlayerManager.instance.activeCore.inventory;
         foreach (Transform child in itemArea.transform)
         {
             if (child.GetComponent<InventorySlot>() != null)
@@ -32,11 +31,11 @@ public class InventoryDisplay : MonoBehaviour
 
         int x = 0;
         int y = 0;
-        float slotSize = 1.2f;
+        float slotSize = 34f;
         for(int i = 0; i < currentInventory.GetSize(); i++)
         {
             GameObject slotInstance = Instantiate(slotPreFab, itemArea.transform);
-            slotInstance.transform.position = new Vector2(itemArea.transform.position.x + (x * slotSize), itemArea.transform.position.y + (-y * slotSize));
+            slotInstance.transform.localPosition = new Vector2((x * slotSize), (-y * slotSize));
             slotInstance.GetComponent<InventorySlot>().inventoryDisplay = this;
             slotInstance.GetComponent<InventorySlot>().inventory = currentInventory;
             slotInstance.GetComponent<InventorySlot>().inventoryIndex = i;
@@ -50,7 +49,14 @@ public class InventoryDisplay : MonoBehaviour
                 invenItem.item = currentInventory.GetItem(i);
                 invenItem.cam = uiCamera;
                 invenItem.transform.GetChild(0).GetComponent<Image>().sprite = Database.GetItem(currentInventory.GetItem(i).itemID).sprite;
-                invenItem.transform.GetChild(1).GetComponent<TMPro.TextMeshProUGUI>().text = currentInventory.GetItem(i).quanity.ToString();
+                if (!Database.GetItem(invenItem.item.itemID).stackable)
+                {
+                    invenItem.transform.GetChild(1).gameObject.SetActive(false);
+                }
+                else
+                {
+                    invenItem.transform.GetChild(1).GetComponent<TMPro.TextMeshProUGUI>().text = currentInventory.GetItem(i).quanity.ToString();
+                }
             }
 
             if (x >= columns)

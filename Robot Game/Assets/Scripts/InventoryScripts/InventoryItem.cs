@@ -16,9 +16,7 @@ public class InventoryItem : MonoBehaviour, IDragHandler, IEndDragHandler
 
     public void OnDrag(PointerEventData eventData)
     {
-        Vector3 screenPoint = cam.ScreenToWorldPoint(Input.mousePosition);
-        screenPoint.z = cam.nearClipPlane;
-        transform.position = screenPoint;
+        transform.position = eventData.position;
         canvasGroup.alpha = .5f;
         canvasGroup.blocksRaycasts = false;
         transform.parent.SetAsLastSibling();

@@ -10,10 +10,11 @@ public class DropSlot : MonoBehaviour, IDropHandler
     {
         if (eventData.pointerDrag != null)
         {
-            GameObject droppedItem = Instantiate(itemPrefab, transform.parent.GetComponent<InventoryDisplay>().currentPlayer.transform.position, Quaternion.identity);
+            GameObject droppedItem = Instantiate(itemPrefab, PlayerManager.instance.activeCore.bodyObject.transform.position, Quaternion.identity);
             droppedItem.GetComponent<ItemObject>().SetItem(eventData.pointerDrag.GetComponent<InventoryItem>().item);
-            transform.parent.GetComponent<InventoryDisplay>().currentInventory.Remove(eventData.pointerDrag.transform.parent.GetComponent<InventorySlot>().inventoryIndex);
-            transform.parent.GetComponent<InventoryDisplay>().RefreshInventory();
+            droppedItem.GetComponent<Rigidbody2D>().AddForce(new Vector2(Random.Range(-50, 50), 80));
+            PlayerManager.instance.activeCore.inventory.Remove(eventData.pointerDrag.transform.parent.GetComponent<InventorySlot>().inventoryIndex);
+            UIManager.instance.currentMenu.GetComponentInChildren<InventoryDisplay>().RefreshInventory();
         }
     }
 }

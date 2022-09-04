@@ -1,19 +1,32 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class Inventory
 {
-    public PlayerEntity player;
     public Item[] inventory;
+    public int inventorySize;
+    public int stackLimit;
 
-    public Inventory(int size)
+    public Inventory(int inventorySize , int stackLimit)
     {
-        inventory = new Item[size];
-        for (int i = 0; i < size; i++)
+        this.inventorySize = inventorySize;
+        this.stackLimit = stackLimit;
+
+        inventory = new Item[inventorySize];
+        for (int i = 0; i < inventorySize; i++)
         {
             inventory[i] = null;
         }
+    }
+
+    public void Reinitialize(int inventorySize, int stackLimit)
+    {
+        this.inventorySize = inventorySize;
+        this.stackLimit = stackLimit;
+
+        Array.Resize<Item>(ref inventory, inventorySize);
     }
 
     public bool Add(Item item)
@@ -23,13 +36,13 @@ public class Inventory
         {
             if (inventory[i] != null && Database.GetItem(item.itemID).stackable)
             {
-                if (inventory[i].itemID == item.itemID && inventory[i].quanity < player.stackSizeLimit)
+                if (inventory[i].itemID == item.itemID && inventory[i].quanity < stackLimit)
                 {
                     inventory[i].quanity += item.quanity;
-                    if (inventory[i].quanity > player.stackSizeLimit)
+                    if (inventory[i].quanity > stackLimit)
                     {
-                        item.quanity = inventory[i].quanity - player.stackSizeLimit;
-                        inventory[i].quanity = player.stackSizeLimit;
+                        item.quanity = inventory[i].quanity - stackLimit;
+                        inventory[i].quanity = stackLimit;
                         Add(item);
                     }
                     return true;
