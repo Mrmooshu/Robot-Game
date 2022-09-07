@@ -1,12 +1,12 @@
 ManifestFileVersion: 0
-CRC: 546023830
+CRC: 1845601765
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: e9cbf8e1cba2d55b59f4dd9b77a16619
+    Hash: 4ea3f7d3d1f8f851f6aaa9149ef8fe53
   TypeTreeHash:
     serializedVersion: 2
-    Hash: 96d0ac2bf53300c5f6c92554591ccb09
+    Hash: 3417aaac62dd4d4a8296e4e55c65331c
 HashAppended: 0
 ClassTypes:
 - Class: 1
@@ -30,6 +30,8 @@ ClassTypes:
 - Class: 114
   Script: {fileID: 11500000, guid: e4bd21098a9c1ab4f948e02ffa13564f, type: 3}
 - Class: 114
+  Script: {fileID: 11500000, guid: 16f49da84a8ffdb4fa59053ca4ffd57d, type: 3}
+- Class: 114
   Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
 - Class: 114
   Script: {fileID: 11500000, guid: f42148e198242cd4e81c1c50c7959e81, type: 3}
@@ -47,6 +49,8 @@ ClassTypes:
   Script: {fileID: 11500000, guid: 9d08dbd05b2e8174b8285a630c9540fa, type: 3}
 - Class: 114
   Script: {fileID: 11500000, guid: 58ceb496db8e12046b90e101a1cd9fd2, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 768c30809a4048645a895fe84ef9a559, type: 3}
 - Class: 115
   Script: {instanceID: 0}
 - Class: 212
@@ -102,6 +106,7 @@ SerializeReferenceClassIdentifiers:
   ClassName: UnityEngine.UI.SpriteState
 Assets:
 - Assets/Prefabs/UI/InventoryMenu.prefab
+- Assets/Prefabs/UI/SafePointMenu.prefab
 - Assets/Prefabs/UI/InventoryItem.prefab
 - Assets/Prefabs/UI/UI.prefab
 - Assets/Prefabs/UI/ItemSlot.prefab

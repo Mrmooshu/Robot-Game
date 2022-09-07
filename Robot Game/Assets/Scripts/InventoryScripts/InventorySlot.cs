@@ -12,8 +12,9 @@ public class InventorySlot : MonoBehaviour, IDropHandler
     {
         if (eventData.pointerDrag != null)
         {
-            inventory.Move(eventData.pointerDrag.transform.parent.GetComponent<InventorySlot>().inventoryIndex, inventoryIndex);
-            inventoryDisplay.RefreshInventory();
+            Inventory.Move(eventData.pointerDrag.transform.parent.parent.parent.GetComponentInParent<InventoryDisplay>().currentInventory, transform.parent.parent.parent.GetComponentInParent<InventoryDisplay>().currentInventory, eventData.pointerDrag.transform.parent.GetComponent<InventorySlot>().inventoryIndex, inventoryIndex);
+            eventData.pointerDrag.transform.parent.parent.parent.GetComponentInParent<InventoryDisplay>().RefreshInventory();
+            transform.parent.parent.parent.GetComponentInParent<InventoryDisplay>().RefreshInventory();
         }
     }
 }

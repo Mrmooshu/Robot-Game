@@ -9,6 +9,7 @@ public class Database : MonoBehaviour
 
     public ItemDatabase itemDatabase;
     public VariantDatabase variantDatabase;
+    public SafePointDatabase safePointDatabase;
 
 
     private void Awake()
@@ -38,5 +39,10 @@ public class Database : MonoBehaviour
     public static VariantData GetVariant(string name)
     {
         return instance.variantDatabase.variantList.FirstOrDefault(i => i.variantName == name);
+    }
+
+    public static SafePointData GetSafePoint(string name)
+    {
+        return instance.safePointDatabase.safePointList.FirstOrDefault(i => i.locationName == name);
     }
 }

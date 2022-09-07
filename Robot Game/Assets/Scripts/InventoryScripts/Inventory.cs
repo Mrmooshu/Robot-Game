@@ -7,8 +7,8 @@ public class Inventory
 {
     public Item[] inventory;
     public int inventorySize;
-    public int stackLimit;
-
+    public int stackLimit = 0;
+    public int currentPage = 1;
     public Inventory(int inventorySize , int stackLimit)
     {
         this.inventorySize = inventorySize;
@@ -21,11 +21,27 @@ public class Inventory
         }
     }
 
+    public Inventory(int inventorySize)
+    {
+        this.inventorySize = inventorySize;
+
+        inventory = new Item[inventorySize];
+        for (int i = 0; i < inventorySize; i++)
+        {
+            inventory[i] = null;
+        }
+    }
+
     public void Reinitialize(int inventorySize, int stackLimit)
     {
         this.inventorySize = inventorySize;
         this.stackLimit = stackLimit;
+        Array.Resize<Item>(ref inventory, inventorySize);
+    }
 
+    public void Reinitialize(int inventorySize)
+    {
+        this.inventorySize = inventorySize;
         Array.Resize<Item>(ref inventory, inventorySize);
     }
 
@@ -36,10 +52,10 @@ public class Inventory
         {
             if (inventory[i] != null && Database.GetItem(item.itemID).stackable)
             {
-                if (inventory[i].itemID == item.itemID && inventory[i].quanity < stackLimit)
+                if (inventory[i].itemID == item.itemID && (inventory[i].quanity < stackLimit || stackLimit == 0))
                 {
                     inventory[i].quanity += item.quanity;
-                    if (inventory[i].quanity > stackLimit)
+                    if (inventory[i].quanity > stackLimit && stackLimit != 0)
                     {
                         item.quanity = inventory[i].quanity - stackLimit;
                         inventory[i].quanity = stackLimit;
@@ -70,14 +86,15 @@ public class Inventory
         inventory[index] = null;
     }
 
-    public void Move(int index1, int index2)
+    public static void Move(Inventory inventoryFrom, Inventory inventoryTo, int index1, int index2)
     {
-        if (index1 != index2)
+        if (inventoryFrom == inventoryTo && index1 == index2)
         {
-            Item temp = inventory[index2];
-            inventory[index2] = inventory[index1];
-            inventory[index1] = temp;
+            return;
         }
+        Item temp = inventoryTo.inventory[index2];
+        inventoryTo.inventory[index2] = inventoryFrom.inventory[index1];
+        inventoryFrom.inventory[index1] = temp;
     }
 
     public Item GetItem(int index)

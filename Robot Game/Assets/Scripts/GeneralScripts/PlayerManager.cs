@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Numerics;
 
 public class PlayerManager : MonoBehaviour
 {
@@ -18,6 +19,8 @@ public class PlayerManager : MonoBehaviour
     public Camera mainCam;
     public Camera uiCam;
 
+    public int bankSize = 64;
+    public Inventory bankInventory;
 
     public PlayerCore activeCore;
 
@@ -26,23 +29,20 @@ public class PlayerManager : MonoBehaviour
         if (instance == null)
         {
             instance = this;
-            DontDestroyOnLoad(gameObject);
-        }
-        else
-        {
-            Destroy(gameObject);
         }
     }
 
     public void Initialize()
     {
+        bankInventory = new Inventory(bankSize);
+
         cores = new PlayerCore[coreSlots];
         bodies = new PlayerBody[bodySlots];
 
         bodies[0] = new PlayerBody("Clay Golem");
         bodies[1] = new PlayerBody("Snow Golem");
-        cores[0] = new PlayerCore(bodies[0], 36, 10);
-        cores[1] = new PlayerCore(bodies[1], 10, 10);
+        cores[0] = new PlayerCore(bodies[0], 40, 10);
+        cores[1] = new PlayerCore(bodies[1], 88, 10);
         foreach (PlayerCore core in cores)
         {
             if (core != null)
@@ -96,6 +96,10 @@ public class PlayerManager : MonoBehaviour
             UIManager.instance.actionButton.SetCurrentButton(ActionButton.buttons.none);
         }
 
+    }
+    public static void TeleportHere(string safePointName)
+    {
+        instance.activeCore.bodyObject.transform.position = Database.GetSafePoint(safePointName).cord;
     }
 
 }

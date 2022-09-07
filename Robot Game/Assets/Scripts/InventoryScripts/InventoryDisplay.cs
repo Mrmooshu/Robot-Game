@@ -1,26 +1,36 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class InventoryDisplay : MonoBehaviour
 {
-    public Camera uiCamera;
+    private Camera uiCamera;
     public Inventory currentInventory;
-    public GameObject slotPreFab;
-    public GameObject itemPreFab;
+    private GameObject slotPreFab;
+    private GameObject itemPreFab;
     public GameObject itemArea;
+    public GameObject pageNumber;
     public int columns = 7;
+    public int slotsPerPage = 36;
 
     public void Start()
     {
         uiCamera = GameObject.Find("UI Camera").GetComponent<Camera>();
+        slotPreFab = UIManager.instance.uiPrefabs.LoadAsset<GameObject>("ItemSlot");
+        itemPreFab = UIManager.instance.uiPrefabs.LoadAsset<GameObject>("InventoryItem");
         RefreshInventory();
     }
 
-    public void RefreshInventory()
+    public virtual void RefreshInventory()
     {
         currentInventory = PlayerManager.instance.activeCore.inventory;
+        CreateInventory();
+    }
+
+    protected void CreateInventory()
+    {
         foreach (Transform child in itemArea.transform)
         {
             if (child.GetComponent<InventorySlot>() != null)
@@ -32,7 +42,7 @@ public class InventoryDisplay : MonoBehaviour
         int x = 0;
         int y = 0;
         float slotSize = 34f;
-        for(int i = 0; i < currentInventory.GetSize(); i++)
+        for (int i = slotsPerPage * currentInventory.currentPage - slotsPerPage; i < currentInventory.GetSize() && i < slotsPerPage * currentInventory.currentPage; i++)
         {
             GameObject slotInstance = Instantiate(slotPreFab, itemArea.transform);
             slotInstance.transform.localPosition = new Vector2((x * slotSize), (-y * slotSize));
@@ -55,7 +65,7 @@ public class InventoryDisplay : MonoBehaviour
                 }
                 else
                 {
-                    invenItem.transform.GetChild(1).GetComponent<TMPro.TextMeshProUGUI>().text = currentInventory.GetItem(i).quanity.ToString();
+                    invenItem.transform.GetChild(1).GetComponent<TextMeshProUGUI>().text = currentInventory.GetItem(i).quanity.ToString();
                 }
             }
 
@@ -64,6 +74,42 @@ public class InventoryDisplay : MonoBehaviour
                 x = 0;
                 y++;
             }
+            pageNumber.GetComponent<TextMeshProUGUI>().text = "" + currentInventory.currentPage;
         }
     }
+
+    // used by page select arrows
+    public void IncrementPage()
+    {
+        if (currentInventory.currentPage * slotsPerPage < currentInventory.inventorySize)
+        {
+            currentInventory.currentPage++;
+        }
+
+        else
+        {
+            currentInventory.currentPage = 1;
+        }
+        RefreshInventory();
+    }
+
+    // used by page select arrows
+    public void DecrementPage()
+    {
+        if (currentInventory.currentPage <= 1)
+        {
+            int lastPage = currentInventory.inventorySize / slotsPerPage;
+            if (currentInventory.inventorySize % slotsPerPage != 0)
+            {
+                lastPage++;
+            }
+            currentInventory.currentPage = lastPage;
+        }
+        else
+        {
+            currentInventory.currentPage--;
+        }
+        RefreshInventory();
+    }
+
 }

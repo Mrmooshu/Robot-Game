@@ -20,6 +20,7 @@ public class InventoryItem : MonoBehaviour, IDragHandler, IEndDragHandler
         canvasGroup.alpha = .5f;
         canvasGroup.blocksRaycasts = false;
         transform.parent.SetAsLastSibling();
+        transform.parent.parent.parent.parent.SetAsLastSibling();
     }
 
     public void OnEndDrag(PointerEventData eventData)

@@ -6,7 +6,7 @@ using UnityEngine;
 public class ActionButton : Button
 {
     public enum buttons {
-        none, mine, chop, fish
+        none, safe, mine, chop, fish
     }
 
     protected override void Start()
@@ -35,6 +35,13 @@ public class ActionButton : Button
                 state.highlightedSprite = UIManager.instance.uiSprites.GetSprite("Action Buttons_3");
                 state.pressedSprite = UIManager.instance.uiSprites.GetSprite("Action Buttons_5");
                 break;
+
+            case buttons.safe:
+                onClick.AddListener(SafeAction);
+                GetComponent<Image>().sprite = UIManager.instance.uiSprites.GetSprite("Action Buttons_7");
+                state.highlightedSprite = UIManager.instance.uiSprites.GetSprite("Action Buttons_6");
+                state.pressedSprite = UIManager.instance.uiSprites.GetSprite("Action Buttons_8");
+                break;
         }
         spriteState = state;
     }
@@ -42,5 +49,11 @@ public class ActionButton : Button
     private void MineAction()
     {
         PlayerManager.instance.activeCore.bodyObject.GetComponent<GolemEntity>().ToggleMining();
+    }
+
+    private void SafeAction()
+    {
+        GameObject menu = UIManager.instance.uiPrefabs.LoadAsset<GameObject>("SafePointMenu");
+        UIManager.ChangeMenu(menu);
     }
 }

@@ -6,16 +6,43 @@ using UnityEngine;
 
 public abstract class InteractableEntity : Entity
 {
+    protected PlayerEntity player;
+
     private void Reset()
     {
         GetComponent<BoxCollider2D>().isTrigger = true;
     }
 
-    public abstract void PlayerInRange(PlayerEntity collision);
+    public abstract void PlayerInRange(PlayerEntity player);
 
-    public abstract void PlayerOutOfRange(PlayerEntity collision);
+    public virtual void PlayerOutOfRange(PlayerEntity player)
+    {
+        if (player.core == PlayerManager.instance.activeCore)
+        {
+            UIManager.instance.actionButton.SetCurrentButton(ActionButton.buttons.none);
+            player.currentInteractable = null;
+        }
+    }
 
-    public abstract void OnTriggerEnter2D(Collider2D collision);
+    public virtual void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Player"))
+        {
+            if (collision.GetComponent<PlayerEntity>() != null)
+            {
+                PlayerInRange(collision.GetComponent<PlayerEntity>());
+            }
+        }
+    }
 
-    public abstract void OnTriggerExit2D(Collider2D collision);
+    public virtual void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Player"))
+        {
+            if (collision.GetComponent<PlayerEntity>() != null)
+            {
+                PlayerOutOfRange(collision.GetComponent<PlayerEntity>());
+            }
+        }
+    }
 }

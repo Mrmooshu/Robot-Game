@@ -101,6 +101,13 @@ public class PlayerEntity : Entity
                         if (core.inventory.Add(hit.collider.gameObject.GetComponent<ItemObject>().item))
                         {
                             Destroy(hit.collider.gameObject);
+                            if (UIManager.instance.currentMenu != null)
+                            {
+                                if (UIManager.instance.currentMenu.GetComponentInChildren<InventoryDisplay>() != null)
+                                {
+                                    UIManager.instance.currentMenu.GetComponentInChildren<InventoryDisplay>().RefreshInventory();
+                                }
+                            }
                         }
                         else
                         {
