@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0db221ee58f623d43aaeda74ae4c0fb9, type: 3}
+  m_Name: Quest
+  m_EditorClassIdentifier: 
+  info:
+    questName: The Test Quest
+    questInfo: the quest to test the quest and to test the quest display info for
+      the quest which is this quest
+  rewards:
+  - reward: {fileID: 11400000, guid: 5de60fc4d12d83b4696347d4bfbf23d0, type: 2}
+    quanity: 1
+  steps:
+  - {fileID: 11400000, guid: 0319f9000fc7def41b8d330ed9e42b21, type: 2}
+  currentStep: 1
+  questState: 0

@@ -5,11 +5,12 @@ using System.Linq;
 
 public class Database : MonoBehaviour
 {
-    private static Database instance;
+    public static Database instance;
 
     public ItemDatabase itemDatabase;
     public VariantDatabase variantDatabase;
     public SafePointDatabase safePointDatabase;
+    public QuestDatabase questDatabase;
 
 
     private void Awake()
@@ -44,5 +45,10 @@ public class Database : MonoBehaviour
     public static SafePointData GetSafePoint(string name)
     {
         return instance.safePointDatabase.safePointList.FirstOrDefault(i => i.locationName == name);
+    }
+
+    public static Quest GetQuest(string name)
+    {
+        return instance.questDatabase.questList.FirstOrDefault(i => i.info.questName == name);
     }
 }

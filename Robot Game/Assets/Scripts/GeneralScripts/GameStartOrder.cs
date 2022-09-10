@@ -8,7 +8,9 @@ public class GameStartOrder : MonoBehaviour
     {
         DontDestroyOnLoad(gameObject);
 
+        GeneralManager.instance.Initialize();
         UIManager.instance.Initialize();
         PlayerManager.instance.Initialize();
+        QuestManager.instance.Initialize();
     }
 }

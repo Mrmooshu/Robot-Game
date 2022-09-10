@@ -1,0 +1,40 @@
+ManifestFileVersion: 0
+CRC: 4244868635
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 800895dde856df867c230253e82dec10
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 0321e6a39d470ea52f57988d4c4362cd
+HashAppended: 0
+ClassTypes:
+- Class: 1
+  Script: {instanceID: 0}
+- Class: 4
+  Script: {instanceID: 0}
+- Class: 21
+  Script: {instanceID: 0}
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 48
+  Script: {instanceID: 0}
+- Class: 50
+  Script: {instanceID: 0}
+- Class: 61
+  Script: {instanceID: 0}
+- Class: 114
+  Script: {fileID: 11500000, guid: 7b90462909053c54e8eceb5c3756488c, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 58ceb496db8e12046b90e101a1cd9fd2, type: 3}
+- Class: 115
+  Script: {instanceID: 0}
+- Class: 212
+  Script: {instanceID: 0}
+- Class: 213
+  Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers: []
+Assets:
+- Assets/Prefabs/General/ItemObject.prefab
+- Assets/Prefabs/General/GoHereQuestGoal.prefab
+Dependencies: []

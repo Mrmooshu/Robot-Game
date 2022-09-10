@@ -1,17 +1,15 @@
 ManifestFileVersion: 0
-CRC: 1845601765
+CRC: 442853648
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 4ea3f7d3d1f8f851f6aaa9149ef8fe53
+    Hash: 05cba5e0a9ef46ddaa7d68b3d3bacaee
   TypeTreeHash:
     serializedVersion: 2
-    Hash: 3417aaac62dd4d4a8296e4e55c65331c
+    Hash: bba7f587af53580ce5392337a5538458
 HashAppended: 0
 ClassTypes:
 - Class: 1
-  Script: {instanceID: 0}
-- Class: 4
   Script: {instanceID: 0}
 - Class: 21
   Script: {instanceID: 0}
@@ -19,12 +17,10 @@ ClassTypes:
   Script: {instanceID: 0}
 - Class: 48
   Script: {instanceID: 0}
-- Class: 50
-  Script: {instanceID: 0}
-- Class: 61
-  Script: {instanceID: 0}
 - Class: 114
   Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: dc42784cf147c0c48a680349fa168899, type: 3}
 - Class: 114
   Script: {fileID: 11500000, guid: 89fc4abac15c5714b91540fc0b57c02e, type: 3}
 - Class: 114
@@ -34,9 +30,17 @@ ClassTypes:
 - Class: 114
   Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
 - Class: 114
+  Script: {fileID: 11500000, guid: 3245ec927659c4140ac4f8d17403cc18, type: 3}
+- Class: 114
   Script: {fileID: 11500000, guid: f42148e198242cd4e81c1c50c7959e81, type: 3}
 - Class: 114
+  Script: {fileID: 11500000, guid: 768c30809a4048645a895fe84ef9a559, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 31a19414c41e5ae4aae2af33fee712f6, type: 3}
+- Class: 114
   Script: {fileID: 11500000, guid: b23e449546cc74d4ab87ae34faad11d1, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 9085046f02f69544eb97fd06b6048fe2, type: 3}
 - Class: 114
   Script: {fileID: 11500000, guid: f3bb006b37382a54d8375fac98e54c07, type: 3}
 - Class: 114
@@ -48,16 +52,20 @@ ClassTypes:
 - Class: 114
   Script: {fileID: 11500000, guid: 9d08dbd05b2e8174b8285a630c9540fa, type: 3}
 - Class: 114
-  Script: {fileID: 11500000, guid: 58ceb496db8e12046b90e101a1cd9fd2, type: 3}
+  Script: {fileID: 11500000, guid: 59f8146938fff824cb5fd77236b75775, type: 3}
 - Class: 114
-  Script: {fileID: 11500000, guid: 768c30809a4048645a895fe84ef9a559, type: 3}
+  Script: {fileID: 11500000, guid: 1aa08ab6e0800fa44ae55d278d1423e3, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: b1a2973ad22f3d34e89dabcb3c35751f, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 579cd1f0fc9d7b346a9a09cff771143f, type: 3}
 - Class: 115
-  Script: {instanceID: 0}
-- Class: 212
   Script: {instanceID: 0}
 - Class: 213
   Script: {instanceID: 0}
 - Class: 222
+  Script: {instanceID: 0}
+- Class: 223
   Script: {instanceID: 0}
 - Class: 224
   Script: {instanceID: 0}
@@ -84,6 +92,8 @@ SerializeReferenceClassIdentifiers:
   ClassName: UnityEngine.Events.PersistentCallGroup
 - AssemblyName: UnityEngine.CoreModule
   ClassName: UnityEngine.Events.PersistentListenerMode
+- AssemblyName: UnityEngine.CoreModule
+  ClassName: UnityEngine.RectOffset
 - AssemblyName: UnityEngine.TextCoreFontEngineModule
   ClassName: UnityEngine.TextCore.FaceInfo
 - AssemblyName: UnityEngine.TextCoreFontEngineModule
@@ -103,11 +113,19 @@ SerializeReferenceClassIdentifiers:
 - AssemblyName: UnityEngine.UI
   ClassName: UnityEngine.UI.Navigation
 - AssemblyName: UnityEngine.UI
+  ClassName: UnityEngine.UI.ScrollRect/ScrollRectEvent
+- AssemblyName: UnityEngine.UI
   ClassName: UnityEngine.UI.SpriteState
+- AssemblyName: UnityEngine.UI
+  ClassName: UnityEngine.UI.Toggle/ToggleEvent
 Assets:
-- Assets/Prefabs/UI/InventoryMenu.prefab
+- Assets/Prefabs/UI/QuestUI/QuestListOption.prefab
+- Assets/Prefabs/UI/QuestUI/QuestMenu.prefab
+- Assets/Prefabs/UI/InventoryUI/InventoryMenu.prefab
 - Assets/Prefabs/UI/SafePointMenu.prefab
-- Assets/Prefabs/UI/InventoryItem.prefab
+- Assets/Prefabs/UI/InventoryUI/InventoryItem.prefab
 - Assets/Prefabs/UI/UI.prefab
-- Assets/Prefabs/UI/ItemSlot.prefab
-Dependencies: []
+- Assets/Prefabs/UI/InventoryUI/ItemSlot.prefab
+Dependencies:
+- C:/Users/mrmoo/Desktop/MyGame/Game/Robot-Game/Robot Game/Assets/StreamingAssets/general
+  prefabs

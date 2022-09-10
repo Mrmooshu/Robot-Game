@@ -16,6 +16,8 @@ public class UIManager : MonoBehaviour
     public GameObject mainInterface;
     public ActionButton actionButton;
 
+    public bool menuPreventingMovement = false;
+
     private void Awake()
     {
         if (instance == null)
@@ -35,7 +37,7 @@ public class UIManager : MonoBehaviour
         actionButton = mainInterface.GetComponentInChildren<ActionButton>();
     }
 
-    public static void ChangeMenu(GameObject menu)
+    public static void ChangeMenu(GameObject menu, bool preventMovement = false)
     {
         if (instance.currentMenu != null)
         {
@@ -43,6 +45,10 @@ public class UIManager : MonoBehaviour
         }
         instance.currentMenu = Instantiate(menu, instance.canvasUI);
 
+        if (preventMovement)
+        {
+            instance.menuPreventingMovement = true;
+        }
     }
 
     public static void CloseMenu()
@@ -50,6 +56,10 @@ public class UIManager : MonoBehaviour
         if (instance.currentMenu != null)
         {
             Destroy(instance.currentMenu);
+        }
+        if (instance.menuPreventingMovement == true)
+        {
+            instance.menuPreventingMovement = false;
         }
     }
 }

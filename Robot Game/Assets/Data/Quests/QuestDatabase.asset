@@ -9,7 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 400e7f51324b59f40b5ef764108ce856, type: 3}
+  m_Script: {fileID: 11500000, guid: e19323a26e82555499b83f3dd827fe8a, type: 3}
   m_Name: QuestDatabase
   m_EditorClassIdentifier: 
-  questList: []
+  questList:
+  - {fileID: 11400000, guid: f750f4ed8a817a040a49de1e756f6912, type: 2}

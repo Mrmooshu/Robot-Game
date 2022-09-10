@@ -8,18 +8,18 @@ public class InventoryDisplay : MonoBehaviour
 {
     private Camera uiCamera;
     public Inventory currentInventory;
-    private GameObject slotPreFab;
-    private GameObject itemPreFab;
+    private GameObject slotPrefab;
+    private GameObject itemPrefab;
     public GameObject itemArea;
     public GameObject pageNumber;
-    public int columns = 7;
-    public int slotsPerPage = 36;
+    public int columns = 5;
+    public int slotsPerPage = 25;
 
     public void Start()
     {
         uiCamera = GameObject.Find("UI Camera").GetComponent<Camera>();
-        slotPreFab = UIManager.instance.uiPrefabs.LoadAsset<GameObject>("ItemSlot");
-        itemPreFab = UIManager.instance.uiPrefabs.LoadAsset<GameObject>("InventoryItem");
+        slotPrefab = UIManager.instance.uiPrefabs.LoadAsset<GameObject>("ItemSlot");
+        itemPrefab = UIManager.instance.uiPrefabs.LoadAsset<GameObject>("InventoryItem");
         RefreshInventory();
     }
 
@@ -44,7 +44,7 @@ public class InventoryDisplay : MonoBehaviour
         float slotSize = 34f;
         for (int i = slotsPerPage * currentInventory.currentPage - slotsPerPage; i < currentInventory.GetSize() && i < slotsPerPage * currentInventory.currentPage; i++)
         {
-            GameObject slotInstance = Instantiate(slotPreFab, itemArea.transform);
+            GameObject slotInstance = Instantiate(slotPrefab, itemArea.transform);
             slotInstance.transform.localPosition = new Vector2((x * slotSize), (-y * slotSize));
             slotInstance.GetComponent<InventorySlot>().inventoryDisplay = this;
             slotInstance.GetComponent<InventorySlot>().inventory = currentInventory;
@@ -54,7 +54,7 @@ public class InventoryDisplay : MonoBehaviour
 
             if (currentInventory.GetItem(i) != null)
             {
-                GameObject itemInstance = Instantiate(itemPreFab, slotInstance.transform);
+                GameObject itemInstance = Instantiate(itemPrefab, slotInstance.transform);
                 InventoryItem invenItem = itemInstance.GetComponent<InventoryItem>();
                 invenItem.item = currentInventory.GetItem(i);
                 invenItem.cam = uiCamera;

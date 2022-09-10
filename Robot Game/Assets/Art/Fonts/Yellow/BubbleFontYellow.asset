@@ -1,13 +1,13 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!21 &-629999197982943734
+--- !u!21 &-2975592638403885386
 Material:
   serializedVersion: 8
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: BubbleFontColor Material
+  m_Name: BubbleFontYellow Material
   m_Shader: {fileID: 4800000, guid: 48bb5f55d8670e349b6e614913f9d910, type: 3}
   m_ValidKeywords: []
   m_InvalidKeywords: []
@@ -25,7 +25,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: 1a4a7d72ea8f58e45a6ec82d8fec7727, type: 3}
+        m_Texture: {fileID: 2800000, guid: 71212df9d24a35c4a940f34666b7ac2c, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Ints: []
@@ -56,11 +56,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 71c1514a6bd24e1e882cebbe1904ce04, type: 3}
-  m_Name: BubbleFontColor
+  m_Name: BubbleFontYellow
   m_EditorClassIdentifier: 
-  hashCode: -1937319184
-  material: {fileID: -629999197982943734}
-  materialHashCode: -551666864
+  hashCode: 592307433
+  material: {fileID: -2975592638403885386}
+  materialHashCode: 376758441
   m_Version: 1.1.0
   m_SourceFontFileGUID: c4449bb1826456c49828d5135fab167d
   m_SourceFontFile_EditorRef: {fileID: 12800000, guid: c4449bb1826456c49828d5135fab167d, type: 3}
@@ -1512,7 +1512,7 @@ MonoBehaviour:
     m_GlyphIndex: 80
     m_Scale: 1
   m_AtlasTextures:
-  - {fileID: 2933362438393900376}
+  - {fileID: 3273303733204719840}
   m_AtlasTextureIndex: 0
   m_IsMultiAtlasTexturesEnabled: 0
   m_ClearDynamicDataOnBuild: 0
@@ -2077,8 +2077,8 @@ MonoBehaviour:
     packingMode: 4
     atlasWidth: 256
     atlasHeight: 256
-    characterSetSelectionMode: 0
-    characterSequence: 32 - 126, 160, 8203, 8230, 9633
+    characterSetSelectionMode: 6
+    characterSequence: 20-21,23,25,28-29,2B-3A,3C-3F,41-5A,5C,61-7A
     referencedFontAssetGUID: 
     referencedTextAssetGUID: 
     fontStyle: 0
@@ -2113,13 +2113,13 @@ MonoBehaviour:
   boldSpacing: 7
   italicStyle: 35
   tabSize: 10
---- !u!28 &2933362438393900376
+--- !u!28 &3273303733204719840
 Texture2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: BubbleFontColor Atlas
+  m_Name: BubbleFontYellow Atlas
   m_ImageContentsHash:
     serializedVersion: 2
     Hash: 00000000000000000000000000000000

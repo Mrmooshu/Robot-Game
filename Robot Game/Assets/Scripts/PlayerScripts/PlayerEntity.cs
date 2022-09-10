@@ -63,7 +63,7 @@ public class PlayerEntity : Entity
         // only when this player is in control
         if (PlayerManager.instance.activeCore == core)
         {
-            if (!cantMove)
+            if (!(cantMove || UIManager.instance.menuPreventingMovement))
             {
                 movementInputDirection = (int)Input.GetAxisRaw("Horizontal");
 

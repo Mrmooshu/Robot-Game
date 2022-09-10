@@ -54,6 +54,6 @@ public class ActionButton : Button
     private void SafeAction()
     {
         GameObject menu = UIManager.instance.uiPrefabs.LoadAsset<GameObject>("SafePointMenu");
-        UIManager.ChangeMenu(menu);
+        UIManager.ChangeMenu(menu,true);
     }
 }

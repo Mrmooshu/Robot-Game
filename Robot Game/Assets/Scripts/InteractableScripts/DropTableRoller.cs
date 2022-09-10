@@ -14,8 +14,7 @@ public class DropTableRoller : MonoBehaviour
             int randomNum = Random.Range(0, Tables[i].chance);
             if (randomNum == 1)
             {
-                GameObject newItem = Instantiate(itemObject, transform);
-                newItem.GetComponent<ItemObject>().SetItem(Tables[i].table.RollTable());
+                GameObject newItem = GeneralManager.SpawnItem(transform, Tables[i].table.RollTable());
                 newItem.GetComponent<Rigidbody2D>().AddForce(new Vector2(Random.Range(-xSpawnBump, xSpawnBump), ySpawnBump));
             }
         }
