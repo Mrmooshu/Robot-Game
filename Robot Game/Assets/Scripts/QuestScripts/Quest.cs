@@ -79,7 +79,7 @@ public class Quest : ScriptableObject
     public abstract class QuestStep : ScriptableObject
     {
         protected Quest quest;
-        protected string description;
+        public string dialogue;
         public bool completed { get; protected set; }
 
         public virtual void Initialize(Quest quest)

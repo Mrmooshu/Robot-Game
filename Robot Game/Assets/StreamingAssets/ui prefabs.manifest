@@ -1,12 +1,12 @@
 ManifestFileVersion: 0
-CRC: 442853648
+CRC: 365320975
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 05cba5e0a9ef46ddaa7d68b3d3bacaee
+    Hash: e3af847da4b9ff4ca5e72e684a81dc70
   TypeTreeHash:
     serializedVersion: 2
-    Hash: bba7f587af53580ce5392337a5538458
+    Hash: 931f09a564ca5c139a9d4b13bd515dbb
 HashAppended: 0
 ClassTypes:
 - Class: 1
@@ -22,7 +22,13 @@ ClassTypes:
 - Class: 114
   Script: {fileID: 11500000, guid: dc42784cf147c0c48a680349fa168899, type: 3}
 - Class: 114
+  Script: {fileID: 11500000, guid: 9085046f02f69544eb97fd06b6048fe2, type: 3}
+- Class: 114
   Script: {fileID: 11500000, guid: 89fc4abac15c5714b91540fc0b57c02e, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 579cd1f0fc9d7b346a9a09cff771143f, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: b1a2973ad22f3d34e89dabcb3c35751f, type: 3}
 - Class: 114
   Script: {fileID: 11500000, guid: e4bd21098a9c1ab4f948e02ffa13564f, type: 3}
 - Class: 114
@@ -40,13 +46,13 @@ ClassTypes:
 - Class: 114
   Script: {fileID: 11500000, guid: b23e449546cc74d4ab87ae34faad11d1, type: 3}
 - Class: 114
-  Script: {fileID: 11500000, guid: 9085046f02f69544eb97fd06b6048fe2, type: 3}
-- Class: 114
   Script: {fileID: 11500000, guid: f3bb006b37382a54d8375fac98e54c07, type: 3}
 - Class: 114
   Script: {fileID: 11500000, guid: 71c1514a6bd24e1e882cebbe1904ce04, type: 3}
 - Class: 114
   Script: {fileID: 11500000, guid: d05fb9aa7e0bc5f4d964c4b24c952caf, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
 - Class: 114
   Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
 - Class: 114
@@ -55,10 +61,6 @@ ClassTypes:
   Script: {fileID: 11500000, guid: 59f8146938fff824cb5fd77236b75775, type: 3}
 - Class: 114
   Script: {fileID: 11500000, guid: 1aa08ab6e0800fa44ae55d278d1423e3, type: 3}
-- Class: 114
-  Script: {fileID: 11500000, guid: b1a2973ad22f3d34e89dabcb3c35751f, type: 3}
-- Class: 114
-  Script: {fileID: 11500000, guid: 579cd1f0fc9d7b346a9a09cff771143f, type: 3}
 - Class: 115
   Script: {instanceID: 0}
 - Class: 213
@@ -122,7 +124,8 @@ Assets:
 - Assets/Prefabs/UI/QuestUI/QuestListOption.prefab
 - Assets/Prefabs/UI/QuestUI/QuestMenu.prefab
 - Assets/Prefabs/UI/InventoryUI/InventoryMenu.prefab
-- Assets/Prefabs/UI/SafePointMenu.prefab
+- Assets/Prefabs/UI/Dialogue Box.prefab
+- Assets/Prefabs/UI/SafePointUI/SafePointMenu.prefab
 - Assets/Prefabs/UI/InventoryUI/InventoryItem.prefab
 - Assets/Prefabs/UI/UI.prefab
 - Assets/Prefabs/UI/InventoryUI/ItemSlot.prefab

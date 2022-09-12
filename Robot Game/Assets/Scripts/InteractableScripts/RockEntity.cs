@@ -11,9 +11,14 @@ public class RockEntity : InteractableEntity
     {
         if (playerEntitiy.core == PlayerManager.instance.activeCore && playerEntitiy is GolemEntity)
         {
-            UIManager.instance.actionButton.SetCurrentButton(ActionButton.buttons.mine);
+            UIManager.instance.actionButton.SetCurrentButton(MineAction, UIManager.instance.uiSprites.GetSprite("Action Buttons_4"),
+                UIManager.instance.uiSprites.GetSprite("Action Buttons_3"), UIManager.instance.uiSprites.GetSprite("Action Buttons_5"));
             playerEntitiy.currentInteractable = this;
         }
+    }
+    private void MineAction()
+    {
+        PlayerManager.instance.activeCore.bodyObject.GetComponent<GolemEntity>().ToggleMining();
     }
 
     public void RollDrop()

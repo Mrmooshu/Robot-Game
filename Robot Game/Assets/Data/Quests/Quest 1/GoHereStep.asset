@@ -9,9 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e19323a26e82555499b83f3dd827fe8a, type: 3}
-  m_Name: QuestDatabase
+  m_Script: {fileID: 11500000, guid: f6a847c37c17bfb4384dfa882dd3404b, type: 3}
+  m_Name: GoHereStep
   m_EditorClassIdentifier: 
-  questList:
-  - {fileID: 11400000, guid: f750f4ed8a817a040a49de1e756f6912, type: 2}
-  - {fileID: 11400000, guid: 3f032d67e98855d48a5766900082be1e, type: 2}
+  dialogue: Dont panic this is just a test. Go to the left.
+  goalCord: {x: -10, y: 0.5}
+  boxDimensions: {x: 1, y: 1}

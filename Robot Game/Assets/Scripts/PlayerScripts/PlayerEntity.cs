@@ -60,59 +60,55 @@ public class PlayerEntity : Entity
             canJump = true;
         }
 
-        // only when this player is in control
-        if (PlayerManager.instance.activeCore == core)
+        if (!(cantMove || UIManager.instance.menuPreventingMovement) && PlayerManager.instance.activeCore == core)
         {
-            if (!(cantMove || UIManager.instance.menuPreventingMovement))
-            {
-                movementInputDirection = (int)Input.GetAxisRaw("Horizontal");
+            movementInputDirection = (int)Input.GetAxisRaw("Horizontal");
 
-                if (Input.GetButtonDown("Jump") && canJump)
+            if (Input.GetButtonDown("Jump") && canJump)
+            {
+                canJump = false;
+                rigBod.velocity = new Vector2(rigBod.velocity.x, jumpForce);
+            }
+        }
+        else
+        {
+            movementInputDirection = 0;
+        }
+        // player running anim
+        animator.SetInteger("Run", movementInputDirection);
+        // weapon running anim
+        transform.GetChild(0).GetComponent<Animator>().SetInteger("Run", movementInputDirection);
+
+        // left click is down
+        if (Input.GetMouseButton(0) && PlayerManager.instance.activeCore == core)
+        {
+            Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            Vector2 mousePos2D = new Vector2(mousePos.x, mousePos.y);
+            RaycastHit2D hit = Physics2D.Raycast(mousePos2D, Vector2.zero);
+            if (hit.collider != null)
+            {
+                // Player Control Change
+                if (hit.collider.gameObject.GetComponent<PlayerEntity>() && hit.collider.gameObject != gameObject && Input.GetMouseButtonDown(0))
                 {
-                    canJump = false;
-                    rigBod.velocity = new Vector2(rigBod.velocity.x, jumpForce);
+                    PlayerManager.instance.ControlThisPlayer(hit.collider.gameObject.GetComponent<PlayerEntity>());
                 }
-            }
-            else
-            {
-                movementInputDirection = 0;
-            }
-            // player running anim
-            animator.SetInteger("Run", movementInputDirection);
-            // weapon running anim
-            transform.GetChild(0).GetComponent<Animator>().SetInteger("Run", movementInputDirection);
-
-            // left click is down
-            if (Input.GetMouseButton(0))
-            {
-                Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-                Vector2 mousePos2D = new Vector2(mousePos.x, mousePos.y);
-                RaycastHit2D hit = Physics2D.Raycast(mousePos2D, Vector2.zero);
-                if (hit.collider != null)
+                // Item Pick Up
+                if (hit.collider.gameObject.GetComponent<ItemObject>())
                 {
-                    // Player Control Change
-                    if (hit.collider.gameObject.GetComponent<PlayerEntity>() && hit.collider.gameObject != gameObject && Input.GetMouseButtonDown(0))
+                    if (core.inventory.Add(hit.collider.gameObject.GetComponent<ItemObject>().item))
                     {
-                        PlayerManager.instance.ControlThisPlayer(hit.collider.gameObject.GetComponent<PlayerEntity>());
-                    }
-                    // Item Pick Up
-                    if (hit.collider.gameObject.GetComponent<ItemObject>())
-                    {
-                        if (core.inventory.Add(hit.collider.gameObject.GetComponent<ItemObject>().item))
+                        Destroy(hit.collider.gameObject);
+                        if (UIManager.instance.currentMenu != null)
                         {
-                            Destroy(hit.collider.gameObject);
-                            if (UIManager.instance.currentMenu != null)
+                            if (UIManager.instance.currentMenu.GetComponentInChildren<InventoryDisplay>() != null)
                             {
-                                if (UIManager.instance.currentMenu.GetComponentInChildren<InventoryDisplay>() != null)
-                                {
-                                    UIManager.instance.currentMenu.GetComponentInChildren<InventoryDisplay>().RefreshInventory();
-                                }
+                                UIManager.instance.currentMenu.GetComponentInChildren<InventoryDisplay>().RefreshInventory();
                             }
                         }
-                        else
-                        {
-                            Debug.Log("full inventory");
-                        }
+                    }
+                    else
+                    {
+                        Debug.Log("full inventory");
                     }
                 }
             }

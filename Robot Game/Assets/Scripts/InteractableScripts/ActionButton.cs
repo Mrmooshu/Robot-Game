@@ -2,58 +2,40 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.UI;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class ActionButton : Button
 {
-    public enum buttons {
-        none, safe, mine, chop, fish
-    }
-
     protected override void Start()
     {
         base.Start();
-        SetCurrentButton(buttons.none);
+        SetDefaultButton();
     }
 
-    public void SetCurrentButton(buttons buttonType)
+    public void SetDefaultButton()
     {
         // clear any listners on this button
         onClick.RemoveAllListeners();
 
+        // set sprites and action for button
         SpriteState state = new SpriteState();
-        switch (buttonType){
-
-            case buttons.none:
-                GetComponent<Image>().sprite = UIManager.instance.uiSprites.GetSprite("Action Buttons_1");
-                state.highlightedSprite = UIManager.instance.uiSprites.GetSprite("Action Buttons_0");
-                state.pressedSprite = UIManager.instance.uiSprites.GetSprite("Action Buttons_2");
-                break;
-
-            case buttons.mine:
-                onClick.AddListener(MineAction);
-                GetComponent<Image>().sprite = UIManager.instance.uiSprites.GetSprite("Action Buttons_4");
-                state.highlightedSprite = UIManager.instance.uiSprites.GetSprite("Action Buttons_3");
-                state.pressedSprite = UIManager.instance.uiSprites.GetSprite("Action Buttons_5");
-                break;
-
-            case buttons.safe:
-                onClick.AddListener(SafeAction);
-                GetComponent<Image>().sprite = UIManager.instance.uiSprites.GetSprite("Action Buttons_7");
-                state.highlightedSprite = UIManager.instance.uiSprites.GetSprite("Action Buttons_6");
-                state.pressedSprite = UIManager.instance.uiSprites.GetSprite("Action Buttons_8");
-                break;
-        }
+        GetComponent<Image>().sprite = UIManager.instance.uiSprites.GetSprite("Action Buttons_1");
+        state.highlightedSprite = UIManager.instance.uiSprites.GetSprite("Action Buttons_0");
+        state.pressedSprite = UIManager.instance.uiSprites.GetSprite("Action Buttons_2");
         spriteState = state;
     }
 
-    private void MineAction()
+    public void SetCurrentButton(UnityAction action, Sprite button, Sprite highlighted, Sprite pressed)
     {
-        PlayerManager.instance.activeCore.bodyObject.GetComponent<GolemEntity>().ToggleMining();
-    }
+        // clear any listners on this button
+        onClick.RemoveAllListeners();
 
-    private void SafeAction()
-    {
-        GameObject menu = UIManager.instance.uiPrefabs.LoadAsset<GameObject>("SafePointMenu");
-        UIManager.ChangeMenu(menu,true);
+        // set sprites and action for button
+        SpriteState state = new SpriteState();
+        onClick.AddListener(action);
+        GetComponent<Image>().sprite = button;
+        state.highlightedSprite = highlighted;
+        state.pressedSprite = pressed;
+        spriteState = state;
     }
 }

@@ -80,16 +80,25 @@ public class QuestListDisplay : MonoBehaviour
     public void SetInactiveToggle(bool value)
     {
         showInactiveToggle = value;
-        RefreshList();
+        if (instance != null)
+        {
+            RefreshList();
+        }
     }
     public void SetActiveToggle(bool value)
     {
         showActiveToggle = value;
-        RefreshList();
+        if (instance != null)
+        {
+            RefreshList();
+        }
     }
     public void SetCompleteToggle(bool value)
     {
         showCompleteToggle = value;
-        RefreshList();
+        if (instance != null)
+        {
+            RefreshList();
+        }
     }
 }

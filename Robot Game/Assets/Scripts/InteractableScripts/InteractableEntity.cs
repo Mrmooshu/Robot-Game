@@ -6,21 +6,19 @@ using UnityEngine;
 
 public abstract class InteractableEntity : Entity
 {
-    protected PlayerEntity player;
-
     private void Reset()
     {
         GetComponent<BoxCollider2D>().isTrigger = true;
     }
 
-    public abstract void PlayerInRange(PlayerEntity player);
+    public abstract void PlayerInRange(PlayerEntity playerEntitiy);
 
-    public virtual void PlayerOutOfRange(PlayerEntity player)
+    public virtual void PlayerOutOfRange(PlayerEntity playerEntitiy)
     {
-        if (player.core == PlayerManager.instance.activeCore)
+        if (playerEntitiy.core == PlayerManager.instance.activeCore)
         {
-            UIManager.instance.actionButton.SetCurrentButton(ActionButton.buttons.none);
-            player.currentInteractable = null;
+            UIManager.instance.actionButton.SetDefaultButton();
+            playerEntitiy.currentInteractable = null;
         }
     }
 

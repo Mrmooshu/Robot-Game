@@ -4,11 +4,15 @@ using UnityEngine;
 
 public class BankInventoryDisplay : InventoryDisplay
 {
-
     public override void RefreshInventory()
     {
-        currentInventory = PlayerManager.instance.bankInventory;
+        UpdateCurrentInventory();
         CreateInventory();
     }
+    public override void UpdateCurrentInventory()
+    {
+        currentInventory = PlayerManager.instance.bankInventory;
+    }
+
 
 }

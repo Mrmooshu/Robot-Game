@@ -9,8 +9,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f6a847c37c17bfb4384dfa882dd3404b, type: 3}
-  m_Name: GoHereStep
+  m_Script: {fileID: 11500000, guid: 0db221ee58f623d43aaeda74ae4c0fb9, type: 3}
+  m_Name: Quest 2
   m_EditorClassIdentifier: 
-  goalCord: {x: -10, y: 0.5}
-  boxDimensions: {x: 1, y: 1}
+  info:
+    questName: The Have This Test Quest
+    questInfo: you need an item in your inventory to complete this quest
+  rewards: []
+  steps: []
+  currentStep: 0
+  questState: 0

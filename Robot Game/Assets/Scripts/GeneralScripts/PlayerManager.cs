@@ -93,8 +93,16 @@ public class PlayerManager : MonoBehaviour
         }
         else
         {
-            UIManager.instance.actionButton.SetCurrentButton(ActionButton.buttons.none);
+            UIManager.instance.actionButton.SetDefaultButton();
         }
+        if (UIManager.instance.currentMenu != null)
+        {
+            if (UIManager.instance.currentMenu.transform.Find("PlayerInventoryUI") != null)
+            {
+                UIManager.instance.currentMenu.transform.Find("PlayerInventoryUI").GetComponent<InventoryDisplay>().RefreshInventory();
+            }
+        }
+
 
     }
     public static void TeleportHere(string safePointName)

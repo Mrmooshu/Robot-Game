@@ -6,7 +6,6 @@ using UnityEngine.UI;
 
 public class InventoryDisplay : MonoBehaviour
 {
-    private Camera uiCamera;
     public Inventory currentInventory;
     private GameObject slotPrefab;
     private GameObject itemPrefab;
@@ -17,7 +16,6 @@ public class InventoryDisplay : MonoBehaviour
 
     public void Start()
     {
-        uiCamera = GameObject.Find("UI Camera").GetComponent<Camera>();
         slotPrefab = UIManager.instance.uiPrefabs.LoadAsset<GameObject>("ItemSlot");
         itemPrefab = UIManager.instance.uiPrefabs.LoadAsset<GameObject>("InventoryItem");
         RefreshInventory();
@@ -25,7 +23,7 @@ public class InventoryDisplay : MonoBehaviour
 
     public virtual void RefreshInventory()
     {
-        currentInventory = PlayerManager.instance.activeCore.inventory;
+        UpdateCurrentInventory();
         CreateInventory();
     }
 
@@ -57,7 +55,6 @@ public class InventoryDisplay : MonoBehaviour
                 GameObject itemInstance = Instantiate(itemPrefab, slotInstance.transform);
                 InventoryItem invenItem = itemInstance.GetComponent<InventoryItem>();
                 invenItem.item = currentInventory.GetItem(i);
-                invenItem.cam = uiCamera;
                 invenItem.transform.GetChild(0).GetComponent<Image>().sprite = Database.GetItem(currentInventory.GetItem(i).itemID).sprite;
                 if (!Database.GetItem(invenItem.item.itemID).stackable)
                 {
@@ -81,6 +78,7 @@ public class InventoryDisplay : MonoBehaviour
     // used by page select arrows
     public void IncrementPage()
     {
+        UpdateCurrentInventory();
         if (currentInventory.currentPage * slotsPerPage < currentInventory.inventorySize)
         {
             currentInventory.currentPage++;
@@ -96,6 +94,7 @@ public class InventoryDisplay : MonoBehaviour
     // used by page select arrows
     public void DecrementPage()
     {
+        UpdateCurrentInventory();
         if (currentInventory.currentPage <= 1)
         {
             int lastPage = currentInventory.inventorySize / slotsPerPage;
@@ -110,6 +109,11 @@ public class InventoryDisplay : MonoBehaviour
             currentInventory.currentPage--;
         }
         RefreshInventory();
+    }
+
+    public virtual void UpdateCurrentInventory()
+    {
+        currentInventory = PlayerManager.instance.activeCore.inventory;
     }
 
 }

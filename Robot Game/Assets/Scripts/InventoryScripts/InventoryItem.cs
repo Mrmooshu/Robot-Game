@@ -5,7 +5,6 @@ using UnityEngine.EventSystems;
 
 public class InventoryItem : MonoBehaviour, IDragHandler, IEndDragHandler
 {
-    public Camera cam;
     private CanvasGroup canvasGroup;
     public Item item;
 

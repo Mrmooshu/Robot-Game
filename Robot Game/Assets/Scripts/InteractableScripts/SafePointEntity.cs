@@ -8,8 +8,14 @@ public class SafePointEntity : InteractableEntity
     {
         if (playerEntitiy.core == PlayerManager.instance.activeCore)
         {
-            UIManager.instance.actionButton.SetCurrentButton(ActionButton.buttons.safe);
+            UIManager.instance.actionButton.SetCurrentButton(SafeAction, UIManager.instance.uiSprites.GetSprite("Action Buttons_7"),
+                UIManager.instance.uiSprites.GetSprite("Action Buttons_8"), UIManager.instance.uiSprites.GetSprite("Action Buttons_6"));
             playerEntitiy.currentInteractable = this;
         }
+    }
+    private void SafeAction()
+    {
+        GameObject menu = UIManager.instance.uiPrefabs.LoadAsset<GameObject>("SafePointMenu");
+        UIManager.ChangeMenu(menu, true);
     }
 }
