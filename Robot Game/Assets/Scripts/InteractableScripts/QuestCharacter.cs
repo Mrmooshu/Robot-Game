@@ -10,8 +10,12 @@ public class QuestCharacter : InteractableCharacterEntity
         if (quest.questState == Quest.QuestState.inactive)
         {
             quest.BeginQuest();
-            chatText = quest.steps[quest.currentStep].dialogue;
+            chatText = quest.GetCurrentStep().dialogue;
             Speak();
+        }
+        else if (quest.questState == Quest.QuestState.active)
+        {
+            quest.GetCurrentStep().CheckProgress();
         }
     }
 }

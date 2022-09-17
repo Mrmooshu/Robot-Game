@@ -16,6 +16,7 @@ MonoBehaviour:
     questName: The Have This Test Quest
     questInfo: you need an item in your inventory to complete this quest
   rewards: []
-  steps: []
+  steps:
+  - {fileID: 11400000, guid: 9db8052b8593a134899c3e7089bd7157, type: 2}
   currentStep: 0
-  questState: 0
+  questState: 1

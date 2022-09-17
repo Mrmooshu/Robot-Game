@@ -9,6 +9,9 @@ public class Inventory
     public int inventorySize;
     public int stackLimit = 0;
     public int currentPage = 1;
+
+    public static event Action inventoryUpdated;
+
     public Inventory(int inventorySize , int stackLimit)
     {
         this.inventorySize = inventorySize;
@@ -61,6 +64,7 @@ public class Inventory
                         inventory[i].quanity = stackLimit;
                         Add(item);
                     }
+                    inventoryUpdated?.Invoke();
                     return true;
                 }
             }
@@ -76,6 +80,7 @@ public class Inventory
         if (firstNullIndex != inventory.Length)
         {
             inventory[firstNullIndex] = item;
+            inventoryUpdated?.Invoke();
             return true;
         }
         return false;
@@ -84,6 +89,7 @@ public class Inventory
     public void Remove(int index)
     {
         inventory[index] = null;
+        inventoryUpdated?.Invoke();
     }
 
     public static void Move(Inventory inventoryFrom, Inventory inventoryTo, int index1, int index2)
@@ -95,6 +101,7 @@ public class Inventory
         Item temp = inventoryTo.inventory[index2];
         inventoryTo.inventory[index2] = inventoryFrom.inventory[index1];
         inventoryFrom.inventory[index1] = temp;
+        inventoryUpdated?.Invoke();
     }
 
     public Item GetItem(int index)

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Numerics;
+using System;
 
 public class PlayerManager : MonoBehaviour
 {
@@ -110,4 +111,37 @@ public class PlayerManager : MonoBehaviour
         instance.activeCore.bodyObject.transform.position = Database.GetSafePoint(safePointName).cord;
     }
 
+    /// <summary>
+    /// Use this to find if an item is in an inventory.
+    /// </summary>
+    /// /// <param name ="itemID">The ID of the item being checked for. </param>
+    /// <returns>The quanity of the item if found or 0 if not. </returns>
+    public static BigInteger CheckCurrentInventoryForItem(int itemID)
+    {
+        foreach(Item item in instance.activeCore.inventory.inventory)
+        {
+            if(item.itemID == itemID)
+            {
+                return item.quanity;
+            }
+        }
+        return 0;
+    }
+
+    /// <summary>
+    /// Use this to find if an item is in the bank inventory.
+    /// </summary>
+    /// /// <param name ="itemID">The ID of the item being checked for. </param>
+    /// <returns>The quanity of the item if found or 0 if not. </returns>
+    public static BigInteger CheckBankInventoryForItem(int itemID)
+    {
+        foreach (Item item in instance.bankInventory.inventory)
+        {
+            if (item.itemID == itemID)
+            {
+                return item.quanity;
+            }
+        }
+        return 0;
+    }
 }

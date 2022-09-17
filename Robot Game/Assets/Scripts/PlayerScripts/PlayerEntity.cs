@@ -7,15 +7,16 @@ public class PlayerEntity : Entity
     public PlayerCore core;
     public InteractableEntity currentInteractable;
 
-    protected bool cantMove = false;
-    private int movementInputDirection;
-    private bool grounded, canJump;
-    private float groundedRadius = .1f;
     protected Rigidbody2D rigBod;
     protected Animator animator;
-    [SerializeField] public Transform groundCheck;
-    [SerializeField] public float movementSpeed, jumpForce;
-    [SerializeField] public LayerMask whatIsGround;
+    public Transform groundCheck;
+    public float movementSpeed, jumpForce;
+    public LayerMask whatIsGround;
+    protected float groundedRadius = .1f;
+
+    protected bool cantMove = false;
+    private int movementInputDirection;
+    public bool grounded, canJump;
 
     [Header("Player Specific Stats")]
     [SerializeField] public Weapon weaponSlot;
@@ -36,11 +37,10 @@ public class PlayerEntity : Entity
 
     public override void Update()
     {
-        base.Update();
         PlayerInput();
     }
 
-    void FixedUpdate()
+    public override void  FixedUpdate()
     {
         Movement();
     }
@@ -74,10 +74,7 @@ public class PlayerEntity : Entity
         {
             movementInputDirection = 0;
         }
-        // player running anim
-        animator.SetInteger("Run", movementInputDirection);
-        // weapon running anim
-        transform.GetChild(0).GetComponent<Animator>().SetInteger("Run", movementInputDirection);
+
 
         // left click is down
         if (Input.GetMouseButton(0) && PlayerManager.instance.activeCore == core)
@@ -115,7 +112,7 @@ public class PlayerEntity : Entity
         }
     }
 
-    private void Movement()
+    protected  void Movement()
     {
         if (PlayerManager.instance.activeCore == core)
         {
@@ -125,6 +122,11 @@ public class PlayerEntity : Entity
             }
         }
         rigBod.velocity = new Vector2(movementSpeed * movementInputDirection, rigBod.velocity.y);
+
+        // player running anim
+        animator.SetInteger("Run", movementInputDirection);
+        // weapon running anim
+        transform.GetChild(0).GetComponent<Animator>().SetInteger("Run", movementInputDirection);
     }
 
     public void SavePlayerData()

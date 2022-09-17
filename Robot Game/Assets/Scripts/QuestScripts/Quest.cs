@@ -65,6 +65,11 @@ public class Quest : ScriptableObject
         }
     }
 
+    public QuestStep GetCurrentStep()
+    {
+        return steps[currentStep];
+    }
+
     protected virtual void CompleteQuest()
     {
         foreach (QuestReward reward in rewards)
@@ -88,6 +93,11 @@ public class Quest : ScriptableObject
             this.quest = quest;
         }
 
+        public virtual void CheckProgress()
+        {
+
+        }
+
         public virtual void Evaluate()
         {
             Complete();
@@ -96,7 +106,12 @@ public class Quest : ScriptableObject
         private void Complete()
         {
             completed = true;
+            CleanUp();
             quest.CheckSteps();
+        }
+
+        protected virtual void CleanUp()
+        {
         }
     }
 }
