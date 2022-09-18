@@ -26,7 +26,7 @@ public class Quest : ScriptableObject
     public QuestInfo info;
     public QuestReward[] rewards;
     public List<QuestStep> steps;
-    public int currentStep;
+    private int currentStep;
     public QuestState questState = QuestState.inactive;
 
     public virtual void BeginQuest(int currentStep = 0)

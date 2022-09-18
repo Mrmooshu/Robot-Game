@@ -1,12 +1,12 @@
 ManifestFileVersion: 0
-CRC: 698601684
+CRC: 1427281610
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 3ecc9a5849ccd7354f0688daa16eae39
+    Hash: 298c020ef72b5133509bb209b91e1eb3
   TypeTreeHash:
     serializedVersion: 2
-    Hash: c78d9967ab07ac72689f240c4bab0992
+    Hash: b803de1ff136c0307c32d2b9d1c08e39
 HashAppended: 0
 ClassTypes:
 - Class: 1
@@ -59,6 +59,8 @@ ClassTypes:
   Script: {fileID: 11500000, guid: 59f8146938fff824cb5fd77236b75775, type: 3}
 - Class: 114
   Script: {fileID: 11500000, guid: 1aa08ab6e0800fa44ae55d278d1423e3, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 0e1347e0c1aca7b438b8cc5f2a09b48b, type: 3}
 - Class: 115
   Script: {instanceID: 0}
 - Class: 213
@@ -120,11 +122,11 @@ SerializeReferenceClassIdentifiers:
   ClassName: UnityEngine.UI.Toggle/ToggleEvent
 Assets:
 - Assets/Prefabs/UI/QuestUI/QuestListOption.prefab
-- Assets/Prefabs/UI/QuestUI/QuestMenu.prefab
-- Assets/Prefabs/UI/InventoryUI/MainPlayerMenu.prefab
+- Assets/Prefabs/UI/MainPlayerMenu.prefab
 - Assets/Prefabs/UI/Dialogue Box.prefab
 - Assets/Prefabs/UI/SafePointUI/SafePointMenu.prefab
 - Assets/Prefabs/UI/InventoryUI/InventoryItem.prefab
+- Assets/Prefabs/UI/ItemRequirementDisplay.prefab
 - Assets/Prefabs/UI/UI.prefab
 - Assets/Prefabs/UI/InventoryUI/ItemSlot.prefab
 Dependencies:

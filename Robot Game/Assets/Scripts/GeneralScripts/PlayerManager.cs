@@ -25,6 +25,8 @@ public class PlayerManager : MonoBehaviour
 
     public PlayerCore activeCore;
 
+    public event Action playerChanged;
+
     private void Awake()
     {
         if (instance == null)
@@ -83,9 +85,10 @@ public class PlayerManager : MonoBehaviour
     {
         activeCore = core;
         ControlThisPlayer(core.bodyObject.GetComponent<PlayerEntity>());
+        playerChanged?.Invoke();
     }
 
-    public void ControlThisPlayer(PlayerEntity player)
+    private void ControlThisPlayer(PlayerEntity player)
     {
         player.TakeControl();
         if (player.currentInteractable != null)
@@ -96,15 +99,6 @@ public class PlayerManager : MonoBehaviour
         {
             UIManager.instance.actionButton.SetDefaultButton();
         }
-        if (UIManager.instance.currentMenu != null)
-        {
-            if (UIManager.instance.currentMenu.transform.Find("PlayerInventoryUI") != null)
-            {
-                UIManager.instance.currentMenu.transform.Find("PlayerInventoryUI").GetComponent<InventoryDisplay>().RefreshInventory();
-            }
-        }
-
-
     }
     public static void TeleportHere(string safePointName)
     {
@@ -120,9 +114,12 @@ public class PlayerManager : MonoBehaviour
     {
         foreach(Item item in instance.activeCore.inventory.inventory)
         {
-            if(item.itemID == itemID)
+            if (item != null)
             {
-                return item.quanity;
+                if (item.itemID == itemID)
+                {
+                    return item.quanity;
+                }
             }
         }
         return 0;

@@ -19,6 +19,14 @@ public class InventoryDisplay : MonoBehaviour
         slotPrefab = UIManager.instance.uiPrefabs.LoadAsset<GameObject>("ItemSlot");
         itemPrefab = UIManager.instance.uiPrefabs.LoadAsset<GameObject>("InventoryItem");
         RefreshInventory();
+        PlayerManager.instance.playerChanged += RefreshInventory;
+        Inventory.inventoryUpdated += RefreshInventory;
+    }
+
+    private void OnDestroy()
+    {
+        PlayerManager.instance.playerChanged -= RefreshInventory;
+        Inventory.inventoryUpdated -= RefreshInventory;
     }
 
     public virtual void RefreshInventory()

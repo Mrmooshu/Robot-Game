@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -13,6 +14,7 @@ public class QuestListDisplay : MonoBehaviour
     public static bool showActiveToggle = true;
     public static bool showCompleteToggle = true;
     public static Quest selectedQuest;
+
     public void Start()
     {
         if (instance == null)
@@ -21,9 +23,9 @@ public class QuestListDisplay : MonoBehaviour
         }
 
         questPrefab = UIManager.instance.uiPrefabs.LoadAsset<GameObject>("QuestListOption");
-        transform.parent.parent.parent.Find("QuestInfoPanel").Find("Inactive Toggle").GetComponent<Toggle>().isOn = showInactiveToggle;
-        transform.parent.parent.parent.Find("QuestInfoPanel").Find("Active Toggle").GetComponent<Toggle>().isOn = showActiveToggle;
-        transform.parent.parent.parent.Find("QuestInfoPanel").Find("Complete Toggle").GetComponent<Toggle>().isOn = showCompleteToggle;
+        transform.parent.parent.Find("Inactive Toggle").GetComponent<Toggle>().isOn = showInactiveToggle;
+        transform.parent.parent.Find("Active Toggle").GetComponent<Toggle>().isOn = showActiveToggle;
+        transform.parent.parent.Find("Complete Toggle").GetComponent<Toggle>().isOn = showCompleteToggle;
 
         if (selectedQuest != null)
         {

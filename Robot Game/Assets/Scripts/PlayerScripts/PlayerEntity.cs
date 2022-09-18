@@ -87,7 +87,7 @@ public class PlayerEntity : Entity
                 // Player Control Change
                 if (hit.collider.gameObject.GetComponent<PlayerEntity>() && hit.collider.gameObject != gameObject && Input.GetMouseButtonDown(0))
                 {
-                    PlayerManager.instance.ControlThisPlayer(hit.collider.gameObject.GetComponent<PlayerEntity>());
+                    PlayerManager.instance.SetActiveCore(hit.collider.gameObject.GetComponent<PlayerEntity>().core);
                 }
                 // Item Pick Up
                 if (hit.collider.gameObject.GetComponent<ItemObject>())
@@ -95,13 +95,6 @@ public class PlayerEntity : Entity
                     if (core.inventory.Add(hit.collider.gameObject.GetComponent<ItemObject>().item))
                     {
                         Destroy(hit.collider.gameObject);
-                        if (UIManager.instance.currentMenu != null)
-                        {
-                            if (UIManager.instance.currentMenu.GetComponentInChildren<InventoryDisplay>() != null)
-                            {
-                                UIManager.instance.currentMenu.GetComponentInChildren<InventoryDisplay>().RefreshInventory();
-                            }
-                        }
                     }
                     else
                     {

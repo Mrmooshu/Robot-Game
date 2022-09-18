@@ -16,5 +16,10 @@ public class OpenMenu : MonoBehaviour
             GameObject menu = UIManager.instance.uiPrefabs.LoadAsset<GameObject>(menuName);
             UIManager.ChangeMenu(menu);
         }
-    } 
+    }
+
+    public void ToggleMenu(GameObject menu)
+    {
+        menu.SetActive(!menu.activeInHierarchy);
+    }
 }

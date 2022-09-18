@@ -15,4 +15,6 @@ MonoBehaviour:
   dialogue: Get me a rock, hurry up the clock goes tick toc.
   requiredItems:
   - requiredItem: {fileID: 11400000, guid: 3b638e945d79bd549baf92ea5c85c179, type: 2}
+    requiredItemQuanity: 5
+  - requiredItem: {fileID: 11400000, guid: 6017caa0559892846814f590a7ffae6c, type: 2}
     requiredItemQuanity: 1
