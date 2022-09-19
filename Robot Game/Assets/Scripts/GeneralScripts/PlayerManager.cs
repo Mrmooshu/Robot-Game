@@ -18,7 +18,6 @@ public class PlayerManager : MonoBehaviour
     public GameObject sentinelBlueprint;
     public GameObject automatonBlueprint;
     public Camera mainCam;
-    public Camera uiCam;
 
     public int bankSize = 64;
     public Inventory bankInventory;

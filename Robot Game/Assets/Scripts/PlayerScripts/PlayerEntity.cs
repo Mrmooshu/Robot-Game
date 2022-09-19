@@ -48,7 +48,7 @@ public class PlayerEntity : Entity
     public void TakeControl()
     {
         PlayerManager.instance.activeCore = core;
-        PlayerManager.instance.mainCam.GetComponent<CameraFollow>().followTransform = transform;
+        PlayerManager.instance.mainCam.GetComponent<TargetFollow>().followTransform = transform;
     }
 
     private void PlayerInput()

@@ -14,11 +14,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   info:
     questName: The Go Here Test Quest
-    questInfo: You need to go to the location to complete this quest
+    questStartInfo: Go to the guy to start this quest.
+    questPostInfo: You did it congratz
+    postQuestDialogue: joe moment
   rewards:
   - reward: {fileID: 11400000, guid: 5de60fc4d12d83b4696347d4bfbf23d0, type: 2}
     quanity: 1
   steps:
   - {fileID: 11400000, guid: 0319f9000fc7def41b8d330ed9e42b21, type: 2}
-  currentStep: 0
-  questState: 0
+  - {fileID: 11400000, guid: 82bce17259cd62440a95816d1e4ec07b, type: 2}
+  currentStep: 1
+  questState: 1

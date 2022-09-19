@@ -145,6 +145,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3298889986784152299}
   - component: {fileID: 4081358092386314182}
+  - component: {fileID: 7357429156865664544}
   m_Layer: 5
   m_Name: Dialogue Box
   m_TagString: Untagged
@@ -194,6 +195,20 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 11
   m_TargetDisplay: 0
+--- !u!114 &7357429156865664544
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3298889986784152303}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 397962b06f2f5484594473b5253a6268, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  followTransform: {fileID: 0}
+  height: 1
 --- !u!1 &6590170514860554535
 GameObject:
   m_ObjectHideFlags: 0

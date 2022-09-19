@@ -5,7 +5,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class QuestListDisplay : MonoBehaviour
+public class QuestListDisplay : ToggleGroup
 {
     public static QuestListDisplay instance;
 
@@ -14,9 +14,11 @@ public class QuestListDisplay : MonoBehaviour
     public static bool showActiveToggle = true;
     public static bool showCompleteToggle = true;
     public static Quest selectedQuest;
+    public GameObject questInfoGo;
 
-    public void Start()
+    protected override void Start()
     {
+        base.Start();
         if (instance == null)
         {
             instance = this;
@@ -26,11 +28,6 @@ public class QuestListDisplay : MonoBehaviour
         transform.parent.parent.Find("Inactive Toggle").GetComponent<Toggle>().isOn = showInactiveToggle;
         transform.parent.parent.Find("Active Toggle").GetComponent<Toggle>().isOn = showActiveToggle;
         transform.parent.parent.Find("Complete Toggle").GetComponent<Toggle>().isOn = showCompleteToggle;
-
-        if (selectedQuest != null)
-        {
-            transform.parent.parent.parent.Find("QuestInfoPanel").Find("Info Text").GetComponent<TextMeshProUGUI>().text = selectedQuest.info.questInfo;
-        }
 
         RefreshList();
     }
@@ -55,6 +52,7 @@ public class QuestListDisplay : MonoBehaviour
                 questOption.GetComponent<TextMeshProUGUI>().color = new Color(255,0,0);
                 questOption.GetComponent<TextMeshProUGUI>().text = quest.info.questName;
                 questOption.GetComponent<QuestListOption>().quest = quest;
+                questOption.GetComponent<Toggle>().group = this;
             }
         }
         if (showActiveToggle)
@@ -65,6 +63,7 @@ public class QuestListDisplay : MonoBehaviour
                 questOption.GetComponent<TextMeshProUGUI>().color = new Color(255, 255, 0);
                 questOption.GetComponent<TextMeshProUGUI>().text = quest.info.questName;
                 questOption.GetComponent<QuestListOption>().quest = quest;
+                questOption.GetComponent<Toggle>().group = this;
             }
         }
         if (showCompleteToggle)
@@ -75,6 +74,7 @@ public class QuestListDisplay : MonoBehaviour
                 questOption.GetComponent<TextMeshProUGUI>().color = new Color(0, 255, 0);
                 questOption.GetComponent<TextMeshProUGUI>().text = quest.info.questName;
                 questOption.GetComponent<QuestListOption>().quest = quest;
+                questOption.GetComponent<Toggle>().group = this;
             }
         }
     }

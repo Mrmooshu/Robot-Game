@@ -15,7 +15,18 @@ public class QuestCharacter : InteractableCharacterEntity
         }
         else if (quest.questState == Quest.QuestState.active)
         {
+            chatText = quest.GetCurrentStep().dialogue;
+            Speak();
             quest.GetCurrentStep().CheckProgress();
+        }
+        else if (quest.questState == Quest.QuestState.completed)
+        {
+            chatText = quest.info.postQuestDialogue;
+            Speak();
+            if (quest.GetCurrentStep() != null)
+            {
+                quest.GetCurrentStep().CheckProgress();
+            }
         }
     }
 }

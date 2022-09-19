@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: HaveItemStep
   m_EditorClassIdentifier: 
   dialogue: Get me a rock, hurry up the clock goes tick toc.
+  info: Get a rock and a gem plox.
   requiredItems:
   - requiredItem: {fileID: 11400000, guid: 3b638e945d79bd549baf92ea5c85c179, type: 2}
     requiredItemQuanity: 5

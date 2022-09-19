@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -13,7 +14,9 @@ public class Quest : ScriptableObject
     public struct QuestInfo
     {
         public string questName;
-        public string questInfo;
+        public string questStartInfo;
+        public string questPostInfo;
+        public string postQuestDialogue;
     }
 
     [System.Serializable]
@@ -26,8 +29,10 @@ public class Quest : ScriptableObject
     public QuestInfo info;
     public QuestReward[] rewards;
     public List<QuestStep> steps;
-    private int currentStep;
+    public int currentStep = 0;
     public QuestState questState = QuestState.inactive;
+
+    public static event Action questStepUpdated;
 
     public virtual void BeginQuest(int currentStep = 0)
     {
@@ -46,45 +51,49 @@ public class Quest : ScriptableObject
 
     private void SetCurrentStep(int stepIndex)
     {
-        steps[stepIndex].Initialize(this);
+        questStepUpdated?.Invoke();
+        if (questState != QuestState.inactive)
+        {
+
+            steps[stepIndex].Initialize(this);
+        }
     }
 
     private void CheckSteps()
     {
-        if (steps[currentStep].completed)
+        if (steps[currentStep].completed && questState == QuestState.active)
         {
             currentStep++;
-            if (currentStep >= steps.Count)
-            {
-                CompleteQuest();
-            }
-            else
-            {
-                SetCurrentStep(currentStep);
-            }
+            SetCurrentStep(currentStep);
         }
     }
 
     public QuestStep GetCurrentStep()
     {
+        if (questState != QuestState.active)
+        {
+            return null;
+        }
         return steps[currentStep];
     }
 
-    protected virtual void CompleteQuest()
+    public virtual void CompleteQuest()
     {
         foreach (QuestReward reward in rewards)
         {
             GameObject item = GeneralManager.SpawnItem(PlayerManager.instance.activeCore.bodyObject.transform, new Item(reward.reward.itemID, reward.quanity));
-            item.GetComponent<Rigidbody2D>().AddForce(new Vector2(Random.Range(-80, 80), 120));
+            item.GetComponent<Rigidbody2D>().AddForce(new Vector2(UnityEngine.Random.Range(-80, 80), 120));
         }
         QuestManager.ProgressQuestState(this);
-        Debug.Log(info.questName + " completed");
+        questState = QuestState.completed;
+        questStepUpdated?.Invoke();
     }
 
     public abstract class QuestStep : ScriptableObject
     {
         protected Quest quest;
         public string dialogue;
+        public string info;
         public bool completed { get; protected set; }
 
         public virtual void Initialize(Quest quest)

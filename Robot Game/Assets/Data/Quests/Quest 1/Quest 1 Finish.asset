@@ -9,10 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f6a847c37c17bfb4384dfa882dd3404b, type: 3}
-  m_Name: GoHereStep
+  m_Script: {fileID: 11500000, guid: 571a32750a789164dbab22064f37efcb, type: 3}
+  m_Name: Quest 1 Finish
   m_EditorClassIdentifier: 
-  dialogue: Dont panic this is just a test. Go to the left.
-  info: Go left of spawn and go get some joe.
-  goalCord: {x: -10, y: 0.5}
-  boxDimensions: {x: 1, y: 1}
+  dialogue: Wow you did it impresive
+  info: Time to turn in

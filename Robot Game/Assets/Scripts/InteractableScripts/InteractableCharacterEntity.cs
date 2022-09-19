@@ -8,12 +8,23 @@ public class InteractableCharacterEntity : InteractableEntity
     public Vector2 chatBoxSize = new Vector2(100,100);
     public int chatBoxDistanceAbove = 60;
     public string chatText = "I need something better to say.";
+    public DialogueBox currentDialogueBox;
 
     public override void PlayerInRange(PlayerEntity playerEntitiy)
     {
         UIManager.instance.actionButton.SetCurrentButton(Interact, UIManager.instance.uiSprites.GetSprite("Action Buttons_7"),
             UIManager.instance.uiSprites.GetSprite("Action Buttons_8"), UIManager.instance.uiSprites.GetSprite("Action Buttons_6"));
         playerEntitiy.currentInteractable = this;
+    }
+
+    public override void PlayerOutOfRange(PlayerEntity playerEntitiy)
+    {
+        base.PlayerOutOfRange(playerEntitiy);
+        if (playerEntitiy.core == PlayerManager.instance.activeCore && currentDialogueBox != null)
+        {
+            Destroy(currentDialogueBox.gameObject);
+            currentDialogueBox = null;
+        }
     }
 
     protected virtual void Interact()
@@ -23,7 +34,14 @@ public class InteractableCharacterEntity : InteractableEntity
 
     protected virtual void Speak()
     {
-        Transform dialogueBox = Instantiate(UIManager.instance.uiPrefabs.LoadAsset<GameObject>("Dialogue Box"), transform).transform.GetChild(0);
+        if (currentDialogueBox != null)
+        {
+            Destroy(currentDialogueBox.gameObject);
+        }
+        currentDialogueBox = null;
+        Transform dialogueBox = Instantiate(UIManager.instance.uiPrefabs.LoadAsset<GameObject>("Dialogue Box")).transform.GetChild(0);
+        currentDialogueBox = dialogueBox.parent.GetComponent<DialogueBox>();
+        currentDialogueBox.followTransform = transform;
         dialogueBox.GetComponent<RectTransform>().sizeDelta = chatBoxSize;
         dialogueBox.localPosition = new Vector2(dialogueBox.localPosition.x, chatBoxDistanceAbove);
         dialogueBox.GetChild(0).GetComponent<RectTransform>().sizeDelta = new Vector2(chatBoxSize.x - 10, chatBoxSize.y - 10);
