@@ -19,7 +19,7 @@ public class HaveItemsStep : Quest.QuestStep
     public override void Initialize(Quest quest)
     {
         base.Initialize(quest);
-        Inventory.inventoryUpdated += UpdateItemTracking;
+        ItemInventory.inventoryUpdated += UpdateItemTracking;
     }
 
     private void UpdateItemTracking()
@@ -50,6 +50,6 @@ public class HaveItemsStep : Quest.QuestStep
     protected override void CleanUp()
     {
         base.CleanUp();
-        Inventory.inventoryUpdated -= UpdateItemTracking;
+        ItemInventory.inventoryUpdated -= UpdateItemTracking;
     }
 }

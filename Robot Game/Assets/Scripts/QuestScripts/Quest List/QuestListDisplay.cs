@@ -32,6 +32,11 @@ public class QuestListDisplay : ToggleGroup
         RefreshList();
     }
 
+    protected override void OnDisable()
+    {
+        SetAllTogglesOff();
+    }
+
     public virtual void RefreshList()
     {
         CreateList();

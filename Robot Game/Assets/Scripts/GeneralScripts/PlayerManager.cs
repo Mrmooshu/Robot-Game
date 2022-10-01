@@ -4,7 +4,7 @@ using UnityEngine;
 using System.Numerics;
 using System;
 
-public class PlayerManager : MonoBehaviour
+public class PlayerManager : MonoBehaviour, IDataSave
 {
     public static PlayerManager instance;
 
@@ -14,13 +14,15 @@ public class PlayerManager : MonoBehaviour
     public int bodySlots = 10;
     public PlayerBody[] bodies;
 
+    public List<PlayerEntity> players;
+
     public GameObject golemBlueprint;
     public GameObject sentinelBlueprint;
     public GameObject automatonBlueprint;
     public Camera mainCam;
 
-    public int bankSize = 64;
-    public Inventory bankInventory;
+    public int bankSize;
+    public ItemInventory bankInventory;
 
     public PlayerCore activeCore;
 
@@ -36,15 +38,7 @@ public class PlayerManager : MonoBehaviour
 
     public void Initialize()
     {
-        bankInventory = new Inventory(bankSize);
-
-        cores = new PlayerCore[coreSlots];
-        bodies = new PlayerBody[bodySlots];
-
-        bodies[0] = new PlayerBody("Clay Golem");
-        bodies[1] = new PlayerBody("Snow Golem");
-        cores[0] = new PlayerCore(bodies[0], 40, 10);
-        cores[1] = new PlayerCore(bodies[1], 88, 10);
+        players = new List<PlayerEntity>();
         foreach (PlayerCore core in cores)
         {
             if (core != null)
@@ -77,13 +71,13 @@ public class PlayerManager : MonoBehaviour
         PlayerEntity playerEntity = newPlayer.GetComponent<PlayerEntity>();
         playerEntity.Initialize(core, variant.moveSpeed, variant.jumpForce);
         newPlayer.GetComponent<Animator>().runtimeAnimatorController = variant.animController;
-        core.bodyObject = newPlayer;
+        players.Add(playerEntity);
     }
 
     public void SetActiveCore(PlayerCore core)
     {
         activeCore = core;
-        ControlThisPlayer(core.bodyObject.GetComponent<PlayerEntity>());
+        ControlThisPlayer(core.GetPlayer());
         playerChanged?.Invoke();
     }
 
@@ -101,7 +95,7 @@ public class PlayerManager : MonoBehaviour
     }
     public static void TeleportHere(string safePointName)
     {
-        instance.activeCore.bodyObject.transform.position = Database.GetSafePoint(safePointName).cord;
+        instance.activeCore.GetPlayer().transform.position = Database.GetSafePoint(safePointName).cord;
     }
 
     /// <summary>
@@ -139,5 +133,19 @@ public class PlayerManager : MonoBehaviour
             }
         }
         return 0;
+    }
+
+    public void LoadData(GameData data)
+    {
+        cores = data.cores;
+        bodies = data.bodies;
+        bankInventory = data.bankInventory;
+    }
+
+    public void SaveData(ref GameData data)
+    {
+        data.cores = cores;
+        data.bodies = bodies;
+        data.bankInventory = bankInventory;
     }
 }

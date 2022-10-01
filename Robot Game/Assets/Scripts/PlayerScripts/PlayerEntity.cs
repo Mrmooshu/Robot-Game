@@ -18,9 +18,6 @@ public class PlayerEntity : Entity
     private int movementInputDirection;
     public bool grounded, canJump;
 
-    [Header("Player Specific Stats")]
-    [SerializeField] public Weapon weaponSlot;
-
     public void Initialize(PlayerCore core, float movementSpeed, float jumpForce)
     {
         this.core = core;
@@ -120,17 +117,5 @@ public class PlayerEntity : Entity
         animator.SetInteger("Run", movementInputDirection);
         // weapon running anim
         transform.GetChild(0).GetComponent<Animator>().SetInteger("Run", movementInputDirection);
-    }
-
-    public void SavePlayerData()
-    {
-        SaveSystem.SavePlayer(this);
-    }
-
-    public void LoadPlayerData()
-    {
-        PlayerData data = SaveSystem.LoadPlayer();
-
-        transform.position = new Vector3(data.position[0], data.position[1], data.position[2]);
     }
 }

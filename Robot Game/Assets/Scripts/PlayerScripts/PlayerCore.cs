@@ -2,19 +2,27 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[System.Serializable]
 public class PlayerCore
 {
     public PlayerBody currentBody;
-    public Inventory inventory;
-    public int inventorySize;
-    public int stackLimit;
-    public GameObject bodyObject;
+    public ItemInventory inventory;
+
     public PlayerCore(PlayerBody currentBody, int inventorySize, int stackLimit)
     {
         this.currentBody = currentBody;
-        this.inventorySize = inventorySize;
-        this.stackLimit = stackLimit;
-        inventory = new Inventory(inventorySize, stackLimit);
+        inventory = new ItemInventory(inventorySize, stackLimit);
     }
 
+    public PlayerEntity GetPlayer()
+    {
+        foreach(PlayerEntity player in PlayerManager.instance.players)
+        {
+            if (player.core == this)
+            {
+                return player;
+            }
+        }
+        return null;
+    }
 }

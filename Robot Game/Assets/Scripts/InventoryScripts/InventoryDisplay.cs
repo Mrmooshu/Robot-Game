@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class InventoryDisplay : MonoBehaviour
 {
-    public Inventory currentInventory;
+    public ItemInventory currentInventory;
     private GameObject slotPrefab;
     private GameObject itemPrefab;
     public GameObject itemArea;
@@ -20,13 +20,13 @@ public class InventoryDisplay : MonoBehaviour
         itemPrefab = UIManager.instance.uiPrefabs.LoadAsset<GameObject>("InventoryItem");
         RefreshInventory();
         PlayerManager.instance.playerChanged += RefreshInventory;
-        Inventory.inventoryUpdated += RefreshInventory;
+        ItemInventory.inventoryUpdated += RefreshInventory;
     }
 
     private void OnDestroy()
     {
         PlayerManager.instance.playerChanged -= RefreshInventory;
-        Inventory.inventoryUpdated -= RefreshInventory;
+        ItemInventory.inventoryUpdated -= RefreshInventory;
     }
 
     public virtual void RefreshInventory()

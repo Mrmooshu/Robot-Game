@@ -18,7 +18,7 @@ public class RockEntity : InteractableEntity
     }
     private void MineAction()
     {
-        PlayerManager.instance.activeCore.bodyObject.GetComponent<GolemEntity>().ToggleMining();
+        ((GolemEntity)PlayerManager.instance.activeCore.GetPlayer()).ToggleMining();
     }
 
     public void RollDrop()

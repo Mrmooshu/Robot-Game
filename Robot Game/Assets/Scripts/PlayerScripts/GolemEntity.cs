@@ -55,15 +55,30 @@ public class GolemEntity : PlayerEntity
     {
         if (!mining)
         {
-            if (weaponSlot != null && weaponSlot.weaponType == Weapon.Type.pickaxe)
+            if (core.currentBody.weapon != null)
             {
-                transform.GetChild(0).GetComponent<Animator>().runtimeAnimatorController = weaponSlot.animController;
-                rigBod.velocity = Vector2.zero;
-                mining = true;
-                cantMove = true;
-                return;
+                if (Database.GetItem(core.currentBody.weapon.itemID) is Weapon)
+                {
+                    Weapon weapon = (Weapon)Database.GetItem(core.currentBody.weapon.itemID);
+                    if (core.currentBody.weapon != null && weapon.weaponType == Weapon.Type.pickaxe)
+                    {
+                        transform.GetChild(0).GetComponent<Animator>().runtimeAnimatorController = weapon.animController;
+                        rigBod.velocity = Vector2.zero;
+                        mining = true;
+                        cantMove = true;
+                        return;
+                    }
+                    Debug.Log("need to equip a pick to mine");
+                }
+                else
+                {
+                    Debug.Log("weapon is not a weapon");
+                }
             }
-            Debug.Log("need to equip a pick to mine");
+            else
+            {
+                Debug.Log("no weapon equiped");
+            }
         }
         else if (mining)
         {

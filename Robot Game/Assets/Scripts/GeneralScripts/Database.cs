@@ -12,23 +12,20 @@ public class Database : MonoBehaviour
     public SafePointDatabase safePointDatabase;
     public QuestDatabase questDatabase;
 
-
     private void Awake()
     {
         if (instance == null)
         {
             instance = this;
-            DontDestroyOnLoad(gameObject);
-
-            for (int i = 0; i < itemDatabase.itemsList.Count; i++)
-            {
-                itemDatabase.itemsList[i].itemID = i;
-            }
-
         }
-        else
+    }
+
+    public void Initialize()
+    {
+        //assign item id's
+        for (int i = 0; i < itemDatabase.itemsList.Count; i++)
         {
-            Destroy(gameObject);
+            itemDatabase.itemsList[i].itemID = i + 1;
         }
     }
 

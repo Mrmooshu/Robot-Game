@@ -8,6 +8,8 @@ public class GameStartOrder : MonoBehaviour
     {
         DontDestroyOnLoad(gameObject);
 
+        Database.instance.Initialize();
+        SaveSystem.instance.Initialize();
         GeneralManager.instance.Initialize();
         UIManager.instance.Initialize();
         PlayerManager.instance.Initialize();

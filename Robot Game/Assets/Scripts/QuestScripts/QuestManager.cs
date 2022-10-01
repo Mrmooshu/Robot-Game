@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class QuestManager : MonoBehaviour
+public class QuestManager : MonoBehaviour, IDataSave
 {
     public static QuestManager instance;
 
@@ -20,12 +20,6 @@ public class QuestManager : MonoBehaviour
 
     public void Initialize()
     {
-        // set inactive for now, change when saving quest state
-        foreach (Quest quest in Database.instance.questDatabase.questList)
-        {
-            quest.questState = Quest.QuestState.inactive;
-        }
-
         // organize quests based on state
         foreach (Quest quest in Database.instance.questDatabase.questList)
         {
@@ -68,4 +62,21 @@ public class QuestManager : MonoBehaviour
         }
     }
 
+    public void LoadData(GameData data)
+    {
+        foreach (GameData.QuestData quest in data.quests)
+        {
+            Database.GetQuest(quest.name).questState = (Quest.QuestState)quest.questState;
+            Database.GetQuest(quest.name).currentStep = quest.currentStep;
+        }
+    }
+
+    public void SaveData(ref GameData data)
+    {
+        data.quests.Clear();
+        foreach (Quest quest in Database.instance.questDatabase.questList)
+        {
+            data.quests.Add(new GameData.QuestData { name = quest.info.questName, currentStep = quest.currentStep, questState = (int)quest.questState});
+        }
+    }
 }

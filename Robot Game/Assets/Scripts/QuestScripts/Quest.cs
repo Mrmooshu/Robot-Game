@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(menuName = "Quest/Quest", fileName = "Quest")]
+[System.Serializable]
 public class Quest : ScriptableObject
 {
     public enum QuestState{
@@ -81,7 +82,7 @@ public class Quest : ScriptableObject
     {
         foreach (QuestReward reward in rewards)
         {
-            GameObject item = GeneralManager.SpawnItem(PlayerManager.instance.activeCore.bodyObject.transform, new Item(reward.reward.itemID, reward.quanity));
+            GameObject item = GeneralManager.SpawnItem(PlayerManager.instance.activeCore.GetPlayer().transform, new Item(reward.reward.itemID, reward.quanity));
             item.GetComponent<Rigidbody2D>().AddForce(new Vector2(UnityEngine.Random.Range(-80, 80), 120));
         }
         QuestManager.ProgressQuestState(this);
