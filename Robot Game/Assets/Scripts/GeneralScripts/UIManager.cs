@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
 using UnityEngine.U2D;
+using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
@@ -23,18 +24,14 @@ public class UIManager : MonoBehaviour
         if (instance == null)
         {
             instance = this;
+            uiPrefabs = AssetBundle.LoadFromFile(Path.Combine(Application.streamingAssetsPath, "ui prefabs"));
+            GameObject mainUI = uiPrefabs.LoadAsset<GameObject>("UI");
+
+            canvasUI = GameObject.Find("UI Canvas").transform;
+            mainInterface = Instantiate(mainUI, canvasUI);
+
+            actionButton = mainInterface.GetComponentInChildren<ActionButton>();
         }
-    }
-
-    public void Initialize()
-    {
-        uiPrefabs = AssetBundle.LoadFromFile(Path.Combine(Application.streamingAssetsPath, "ui prefabs"));
-        GameObject mainUI = uiPrefabs.LoadAsset<GameObject>("UI");
-
-        canvasUI = GameObject.Find("UI Canvas").transform;
-        mainInterface = Instantiate(mainUI, canvasUI);
-
-        actionButton = mainInterface.GetComponentInChildren<ActionButton>();
     }
 
     public static void ChangeMenu(GameObject menu, bool preventMovement = false)
@@ -61,5 +58,13 @@ public class UIManager : MonoBehaviour
         {
             instance.menuPreventingMovement = false;
         }
+    }
+
+    public static void CloseMainUi()
+    {
+        GameObject.Find("UI Canvas/UI(Clone)/SafePointMenu").SetActive(false);
+        GameObject.Find("UI Canvas/UI(Clone)/MainPlayerMenu").SetActive(false);
+        GameObject.Find("UI Canvas/UI(Clone)/SwapPlayerMenu").SetActive(false);
+        GameObject.Find("UI Canvas/UI(Clone)").GetComponent<ToggleGroup>().SetAllTogglesOff();
     }
 }

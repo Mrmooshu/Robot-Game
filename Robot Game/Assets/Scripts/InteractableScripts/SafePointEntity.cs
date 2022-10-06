@@ -15,7 +15,15 @@ public class SafePointEntity : InteractableEntity
     }
     private void SafeAction()
     {
-        GameObject menu = UIManager.instance.uiPrefabs.LoadAsset<GameObject>("SafePointMenu");
-        UIManager.ChangeMenu(menu, true);
+        if (GameObject.Find("UI Canvas/UI(Clone)/SafePointMenu").activeInHierarchy == true)
+        {
+            UIManager.CloseMainUi();
+        }
+        else
+        {
+            GameObject.Find("UI Canvas/UI(Clone)/SafePointMenu").SetActive(true);
+            GameObject.Find("UI Canvas/UI(Clone)/MainPlayerMenu").SetActive(false);
+            GameObject.Find("UI Canvas/UI(Clone)/SwapPlayerMenu").SetActive(false);
+        }
     }
 }

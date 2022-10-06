@@ -13,6 +13,4 @@ public class BankInventoryDisplay : InventoryDisplay
     {
         currentInventory = PlayerManager.instance.bankInventory;
     }
-
-
 }

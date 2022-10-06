@@ -15,12 +15,8 @@ public class GeneralManager : MonoBehaviour
         if (instance == null)
         {
             instance = this;
+            generalPrefabs = AssetBundle.LoadFromFile(Path.Combine(Application.streamingAssetsPath, "general prefabs"));
         }
-    }
-
-    public void Initialize()
-    {
-        generalPrefabs = AssetBundle.LoadFromFile(Path.Combine(Application.streamingAssetsPath, "general prefabs"));
     }
 
     public static GameObject SpawnItem(Transform transform, Item item)

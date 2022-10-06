@@ -1,21 +1,25 @@
 ManifestFileVersion: 0
-CRC: 1354303773
+CRC: 3043320197
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 30ea96a84a68da5163f09c1bd2d5fc6c
+    Hash: ac48ad619551a72002c8b62ce32d5fbd
   TypeTreeHash:
     serializedVersion: 2
-    Hash: ad4b18676cce0acac8426c29a29b2be3
+    Hash: c2e5aa888330eb7605f9493f983d70f7
 HashAppended: 0
 ClassTypes:
 - Class: 1
+  Script: {instanceID: 0}
+- Class: 4
   Script: {instanceID: 0}
 - Class: 21
   Script: {instanceID: 0}
 - Class: 28
   Script: {instanceID: 0}
 - Class: 48
+  Script: {instanceID: 0}
+- Class: 84
   Script: {instanceID: 0}
 - Class: 114
   Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
@@ -28,15 +32,17 @@ ClassTypes:
 - Class: 114
   Script: {fileID: 11500000, guid: 0e1347e0c1aca7b438b8cc5f2a09b48b, type: 3}
 - Class: 114
+  Script: {fileID: 11500000, guid: 1344c3c82d62a2a41a3576d8abb8e3ea, type: 3}
+- Class: 114
   Script: {fileID: 11500000, guid: 579cd1f0fc9d7b346a9a09cff771143f, type: 3}
 - Class: 114
   Script: {fileID: 11500000, guid: b1a2973ad22f3d34e89dabcb3c35751f, type: 3}
 - Class: 114
   Script: {fileID: 11500000, guid: dc42784cf147c0c48a680349fa168899, type: 3}
 - Class: 114
-  Script: {fileID: 11500000, guid: e4bd21098a9c1ab4f948e02ffa13564f, type: 3}
-- Class: 114
   Script: {fileID: 11500000, guid: 16f49da84a8ffdb4fa59053ca4ffd57d, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 2fafe2cfe61f6974895a912c3755e8f1, type: 3}
 - Class: 114
   Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
 - Class: 114
@@ -44,13 +50,19 @@ ClassTypes:
 - Class: 114
   Script: {fileID: 11500000, guid: f42148e198242cd4e81c1c50c7959e81, type: 3}
 - Class: 114
+  Script: {fileID: 11500000, guid: 7b3e165666efcca41b141805a690b834, type: 3}
+- Class: 114
   Script: {fileID: 11500000, guid: 768c30809a4048645a895fe84ef9a559, type: 3}
 - Class: 114
   Script: {fileID: 11500000, guid: 31a19414c41e5ae4aae2af33fee712f6, type: 3}
 - Class: 114
-  Script: {fileID: 11500000, guid: b23e449546cc74d4ab87ae34faad11d1, type: 3}
+  Script: {fileID: 11500000, guid: 099bd599b85a8c346a31a4cc820c63cf, type: 3}
 - Class: 114
   Script: {fileID: 11500000, guid: f3bb006b37382a54d8375fac98e54c07, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 30649d3a9faa99c48a7b1166b86bf2a0, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: d2ac78b33d801d9448b1551c1438067b, type: 3}
 - Class: 114
   Script: {fileID: 11500000, guid: 71c1514a6bd24e1e882cebbe1904ce04, type: 3}
 - Class: 114
@@ -63,6 +75,8 @@ ClassTypes:
   Script: {fileID: 11500000, guid: 59f8146938fff824cb5fd77236b75775, type: 3}
 - Class: 114
   Script: {fileID: 11500000, guid: 1aa08ab6e0800fa44ae55d278d1423e3, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 89ff4bdac19dcdd418ec8f09f6910b6e, type: 3}
 - Class: 115
   Script: {instanceID: 0}
 - Class: 213
@@ -76,6 +90,14 @@ ClassTypes:
 - Class: 225
   Script: {instanceID: 0}
 SerializeReferenceClassIdentifiers:
+- AssemblyName: Assembly-CSharp
+  ClassName: Item
+- AssemblyName: Assembly-CSharp
+  ClassName: ItemInventory
+- AssemblyName: Assembly-CSharp
+  ClassName: PlayerBody
+- AssemblyName: Assembly-CSharp
+  ClassName: PlayerCore
 - AssemblyName: Unity.TextMeshPro
   ClassName: TMPro.FaceInfo_Legacy
 - AssemblyName: Unity.TextMeshPro
@@ -124,6 +146,7 @@ SerializeReferenceClassIdentifiers:
   ClassName: UnityEngine.UI.Toggle/ToggleEvent
 Assets:
 - Assets/Prefabs/UI/QuestUI/QuestListOption.prefab
+- Assets/Prefabs/UI/CoreUI/CoreSelectOption.prefab
 - Assets/Prefabs/UI/MainPlayerMenu.prefab
 - Assets/Prefabs/UI/Dialogue Box.prefab
 - Assets/Prefabs/UI/SafePointUI/SafePointMenu.prefab

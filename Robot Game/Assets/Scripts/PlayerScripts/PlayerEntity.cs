@@ -81,11 +81,13 @@ public class PlayerEntity : Entity
             RaycastHit2D hit = Physics2D.Raycast(mousePos2D, Vector2.zero);
             if (hit.collider != null)
             {
-                // Player Control Change
+                // Player Control Change (disabled and replaced with core select menu)
+                /*
                 if (hit.collider.gameObject.GetComponent<PlayerEntity>() && hit.collider.gameObject != gameObject && Input.GetMouseButtonDown(0))
                 {
                     PlayerManager.instance.SetActiveCore(hit.collider.gameObject.GetComponent<PlayerEntity>().core);
                 }
+                */
                 // Item Pick Up
                 if (hit.collider.gameObject.GetComponent<ItemObject>())
                 {

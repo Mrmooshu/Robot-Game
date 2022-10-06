@@ -9,6 +9,6 @@ public class TeleportAction : MonoBehaviour
     public void Teleport()
     {
         PlayerManager.TeleportHere(safePointName);
-        UIManager.CloseMenu();
+        UIManager.CloseMainUi();
     }
 }

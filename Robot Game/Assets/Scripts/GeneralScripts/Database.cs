@@ -17,21 +17,28 @@ public class Database : MonoBehaviour
         if (instance == null)
         {
             instance = this;
+            itemDatabase.Initialize();
+
+            //assign item id's
+            for (int i = 0; i < itemDatabase.itemsList.Count; i++)
+            {
+                itemDatabase.itemsList[i].itemID = i + 1;
+            }
         }
     }
 
     public void Initialize()
     {
-        //assign item id's
-        for (int i = 0; i < itemDatabase.itemsList.Count; i++)
-        {
-            itemDatabase.itemsList[i].itemID = i + 1;
-        }
+
     }
 
     public static ItemData GetItem(int id)
     {
         return instance.itemDatabase.itemsList.FirstOrDefault(i => i.itemID == id);
+    }
+    public static int GetItemID(string name)
+    {
+        return instance.itemDatabase.itemsList.FirstOrDefault(i => i.itemName.ToLower() == name.ToLower()).itemID;
     }
 
     public static VariantData GetVariant(string name)

@@ -1,12 +1,14 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 [System.Serializable]
-public class PlayerCore
+public class PlayerCore : ISerializationCallbackReceiver
 {
     public PlayerBody currentBody;
     public ItemInventory inventory;
+    public Vector3 position;
 
     public PlayerCore(PlayerBody currentBody, int inventorySize, int stackLimit)
     {
@@ -24,5 +26,21 @@ public class PlayerCore
             }
         }
         return null;
+    }
+
+    public void OnAfterDeserialize()
+    {
+    }
+
+    public void OnBeforeSerialize()
+    {
+        try
+        {
+            position = GetPlayer().transform.position;
+        }
+        catch (Exception)
+        {
+
+        }
     }
 }

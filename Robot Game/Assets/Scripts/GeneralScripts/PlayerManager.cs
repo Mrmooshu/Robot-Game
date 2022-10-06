@@ -33,20 +33,16 @@ public class PlayerManager : MonoBehaviour, IDataSave
         if (instance == null)
         {
             instance = this;
-        }
-    }
-
-    public void Initialize()
-    {
-        players = new List<PlayerEntity>();
-        foreach (PlayerCore core in cores)
-        {
-            if (core != null)
+            players = new List<PlayerEntity>();
+            foreach (PlayerCore core in cores)
             {
-                Spawn(core);
+                if (core != null)
+                {
+                    Spawn(core);
+                }
             }
+            SetActiveCore(cores[0]);
         }
-        SetActiveCore(cores[0]);
     }
 
     public void Spawn(PlayerCore core)
@@ -71,6 +67,7 @@ public class PlayerManager : MonoBehaviour, IDataSave
         PlayerEntity playerEntity = newPlayer.GetComponent<PlayerEntity>();
         playerEntity.Initialize(core, variant.moveSpeed, variant.jumpForce);
         newPlayer.GetComponent<Animator>().runtimeAnimatorController = variant.animController;
+        newPlayer.transform.position = playerEntity.core.position;
         players.Add(playerEntity);
     }
 
@@ -105,17 +102,7 @@ public class PlayerManager : MonoBehaviour, IDataSave
     /// <returns>The quanity of the item if found or 0 if not. </returns>
     public static BigInteger CheckCurrentInventoryForItem(int itemID)
     {
-        foreach(Item item in instance.activeCore.inventory.inventory)
-        {
-            if (item != null)
-            {
-                if (item.itemID == itemID)
-                {
-                    return item.quanity;
-                }
-            }
-        }
-        return 0;
+        return CheckInventoryForItem(itemID, instance.activeCore.inventory);
     }
 
     /// <summary>
@@ -125,27 +112,36 @@ public class PlayerManager : MonoBehaviour, IDataSave
     /// <returns>The quanity of the item if found or 0 if not. </returns>
     public static BigInteger CheckBankInventoryForItem(int itemID)
     {
-        foreach (Item item in instance.bankInventory.inventory)
+        return CheckInventoryForItem(itemID, instance.bankInventory);
+    }
+
+    public static BigInteger CheckInventoryForItem(int itemID, ItemInventory inventory)
+    {
+        BigInteger total = 0;
+        foreach (Item item in inventory.inventory)
         {
-            if (item.itemID == itemID)
+            if (item != null)
             {
-                return item.quanity;
+                if (item.itemID == itemID)
+                {
+                    total += item.quanity;
+                }
             }
         }
-        return 0;
+        return total;
     }
 
     public void LoadData(GameData data)
     {
         cores = data.cores;
-        bodies = data.bodies;
+        bodies = data.bodyInventory;
         bankInventory = data.bankInventory;
     }
 
     public void SaveData(ref GameData data)
     {
         data.cores = cores;
-        data.bodies = bodies;
+        data.bodyInventory = bodies;
         data.bankInventory = bankInventory;
     }
 }

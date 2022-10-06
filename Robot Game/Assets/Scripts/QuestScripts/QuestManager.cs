@@ -15,25 +15,21 @@ public class QuestManager : MonoBehaviour, IDataSave
         if (instance == null)
         {
             instance = this;
-        }
-    }
-
-    public void Initialize()
-    {
-        // organize quests based on state
-        foreach (Quest quest in Database.instance.questDatabase.questList)
-        {
-            switch (quest.questState)
+            // organize quests based on state
+            foreach (Quest quest in Database.instance.questDatabase.questList)
             {
-                case Quest.QuestState.inactive:
-                    inactiveQuests.Add(quest);
-                    break;
-                case Quest.QuestState.active:
-                    activeQuests.Add(quest);
-                    break;
-                case Quest.QuestState.completed:
-                    completeQuests.Add(quest);
-                    break;
+                switch (quest.questState)
+                {
+                    case Quest.QuestState.inactive:
+                        inactiveQuests.Add(quest);
+                        break;
+                    case Quest.QuestState.active:
+                        activeQuests.Add(quest);
+                        break;
+                    case Quest.QuestState.completed:
+                        completeQuests.Add(quest);
+                        break;
+                }
             }
         }
     }

@@ -21,19 +21,10 @@ public class SaveSystem: MonoBehaviour
         if (instance == null)
         {
             instance = this;
+            dataHandler = new FileDataHandler(Application.persistentDataPath, fileName, useEncryption);
+            dataObjects = FindAllDataSaveObjects();
+            LoadGame();
         }
-    }
-
-    private void Start()
-    {
-
-    }
-
-    public void Initialize()
-    {
-        dataHandler = new FileDataHandler(Application.persistentDataPath, fileName, useEncryption);
-        dataObjects = FindAllDataSaveObjects();
-        LoadGame();
     }
 
     private void OnApplicationQuit()
@@ -44,6 +35,7 @@ public class SaveSystem: MonoBehaviour
     public void NewGame()
     {
         gameData = new GameData();
+        gameData.NewGameData();
     }
 
 
@@ -70,7 +62,7 @@ public class SaveSystem: MonoBehaviour
         {
             dataObj.LoadData(gameData);
         }
-        ItemInventory.CallNullDefaultItems();
+        gameData.NullDefaultItems();
     }
 
     private List<IDataSave> FindAllDataSaveObjects()

@@ -1,12 +1,12 @@
 ManifestFileVersion: 0
-CRC: 4244868635
+CRC: 609656149
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 800895dde856df867c230253e82dec10
+    Hash: f0653f39ce418f9bbe887ea8d060928a
   TypeTreeHash:
     serializedVersion: 2
-    Hash: 0321e6a39d470ea52f57988d4c4362cd
+    Hash: d897377710b4150fe2f95c1faf06231e
 HashAppended: 0
 ClassTypes:
 - Class: 1
@@ -33,7 +33,9 @@ ClassTypes:
   Script: {instanceID: 0}
 - Class: 213
   Script: {instanceID: 0}
-SerializeReferenceClassIdentifiers: []
+SerializeReferenceClassIdentifiers:
+- AssemblyName: Assembly-CSharp
+  ClassName: Item
 Assets:
 - Assets/Prefabs/General/ItemObject.prefab
 - Assets/Prefabs/General/GoHereQuestGoal.prefab

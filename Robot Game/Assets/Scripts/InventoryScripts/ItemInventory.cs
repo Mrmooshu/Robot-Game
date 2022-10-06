@@ -8,12 +8,9 @@ public class ItemInventory : BaseInventory<Item>
 {
     public int stackLimit = 0;
 
-    public static event Action nullDefaultItems;
-
     public ItemInventory(int inventorySize , int stackLimit) : base(inventorySize)
     {
         this.stackLimit = stackLimit;
-        nullDefaultItems += NullDefaultItems;
     }
 
     public ItemInventory(int inventorySize) : base(inventorySize) { }
@@ -61,24 +58,5 @@ public class ItemInventory : BaseInventory<Item>
             return true;
         }
         return false;
-    }
-
-    private void NullDefaultItems()
-    {
-        for(int i = 0; i < inventory.Length; i++)
-        {
-            if (inventory[i] != null)
-            {
-                if (inventory[i].itemID == 0)
-                {
-                    inventory[i] = null;
-                }
-            }
-        }
-    }
-
-    public static void CallNullDefaultItems()
-    {
-        nullDefaultItems?.Invoke();
     }
 }
