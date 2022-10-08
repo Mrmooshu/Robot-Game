@@ -62,7 +62,7 @@ public class SaveSystem: MonoBehaviour
         {
             dataObj.LoadData(gameData);
         }
-        gameData.NullDefaultItems();
+        gameData.NullDefaultValues();
     }
 
     private List<IDataSave> FindAllDataSaveObjects()

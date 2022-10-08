@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
+[System.Serializable]
 public class BodyInventory : BaseInventory<PlayerBody>
 {
     public BodyInventory(int inventorySize) : base(inventorySize) { }

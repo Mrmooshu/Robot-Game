@@ -6,9 +6,16 @@ using UnityEngine;
 [System.Serializable]
 public class PlayerCore : ISerializationCallbackReceiver
 {
+    public enum Activity
+    {
+        Idle, Mining, Woodcutting, Fishing
+    }
+
     public PlayerBody currentBody;
     public ItemInventory inventory;
     public Vector3 position;
+    public Activity activity = Activity.Idle;
+
 
     public PlayerCore(PlayerBody currentBody, int inventorySize, int stackLimit)
     {

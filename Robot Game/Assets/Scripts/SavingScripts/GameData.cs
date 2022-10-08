@@ -6,19 +6,21 @@ using UnityEngine;
 public class GameData
 {
     public PlayerCore[] cores;
-    public PlayerBody[] bodyInventory;
+    public BodyInventory bodyInventory;
     public ItemInventory bankInventory;
     public List<QuestData> quests;
 
     public void NewGameData()
     {
-        bodyInventory = new PlayerBody[0];
+        bodyInventory = new BodyInventory(10);
         cores = new PlayerCore[2] { new PlayerCore(new PlayerBody("Clay Golem"), 10, 10) , new PlayerCore(new PlayerBody("Snow Golem"), 10, 10) };
         bankInventory = new ItemInventory(48);
         quests = new List<QuestData>();
 
         cores[0].currentBody.weapon = new Item(Database.GetItemID("Novium Pickaxe"),1);
         cores[1].currentBody.weapon = new Item(Database.GetItemID("Novium Pickaxe"), 1);
+
+        bodyInventory.inventory[0] = new PlayerBody("Clay Golem");
     }
 
     [System.Serializable]
@@ -29,8 +31,20 @@ public class GameData
         public int questState;
     }
 
-    public void NullDefaultItems()
+    public void NullDefaultValues()
     {
+        // check for default bodies in body inventories
+        for(int i = 0; i < bodyInventory.inventory.Length; i++)
+        {
+            if (bodyInventory.inventory[i] != null)
+            {
+                if (bodyInventory.inventory[i].variantName == "")
+                {
+                    bodyInventory.inventory[i] = null;
+                }
+            }
+        }
+
         // check for default items in core inventories
         foreach (PlayerCore core in cores)
         {
@@ -59,13 +73,16 @@ public class GameData
         }
 
         // check for deafault items in body items
-        foreach (PlayerBody body in bodyInventory)
+        foreach (PlayerBody body in bodyInventory.inventory)
         {
-            if (body.weapon != null)
+            if (body != null)
             {
-                if (body.weapon.itemID == 0)
+                if (body.weapon != null)
                 {
-                    body.weapon = null;
+                    if (body.weapon.itemID == 0)
+                    {
+                        body.weapon = null;
+                    }
                 }
             }
         }

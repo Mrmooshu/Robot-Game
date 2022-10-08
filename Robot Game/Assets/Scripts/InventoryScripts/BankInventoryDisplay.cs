@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BankInventoryDisplay : InventoryDisplay
+public class BankInventoryDisplay : ItemInventoryDisplay
 {
     public override void RefreshInventory()
     {

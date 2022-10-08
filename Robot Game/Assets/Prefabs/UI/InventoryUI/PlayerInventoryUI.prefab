@@ -51,10 +51,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f42148e198242cd4e81c1c50c7959e81, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemArea: {fileID: 2228918419860523082}
+  inventoryArea: {fileID: 2228918419860523082}
   pageNumber: {fileID: 3831934468388534068}
   columns: 5
   slotsPerPage: 25
+  currentInventory:
+    inventory: []
+    inventorySize: 0
+    currentPage: 0
+    stackLimit: 0
 --- !u!1 &2228918419860523082
 GameObject:
   m_ObjectHideFlags: 0

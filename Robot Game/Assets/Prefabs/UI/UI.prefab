@@ -33,7 +33,7 @@ RectTransform:
   - {fileID: 4433928141933102947}
   - {fileID: 5992460317288614706}
   - {fileID: 9217925642632617886}
-  - {fileID: 942719009322258508}
+  - {fileID: 2783057555293708932}
   - {fileID: 3611855932183890372}
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -893,6 +893,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: SwapPlayerMenu
       objectReference: {fileID: 0}
+    - target: {fileID: 734751932136694835, guid: 74e59e90c77ffbc4785a41506721585e, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4753634406949089830, guid: 74e59e90c77ffbc4785a41506721585e, type: 3}
+      propertyPath: m_RootOrder
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 7670211424799457518, guid: 74e59e90c77ffbc4785a41506721585e, type: 3}
       propertyPath: m_RootOrder
       value: 4
@@ -939,9 +947,9 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 74e59e90c77ffbc4785a41506721585e, type: 3}
---- !u!4 &942719009322258508 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 7670211424799457518, guid: 74e59e90c77ffbc4785a41506721585e, type: 3}
+--- !u!224 &2783057555293708932 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 4753634406949089830, guid: 74e59e90c77ffbc4785a41506721585e, type: 3}
   m_PrefabInstance: {fileID: 7450965165290934434}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &7878336894473598097 stripped

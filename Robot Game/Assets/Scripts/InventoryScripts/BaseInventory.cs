@@ -49,7 +49,15 @@ public abstract class BaseInventory<T>
         inventoryUpdated?.Invoke();
     }
 
-    public T GetItem(int index)
+    public static void Move(BaseInventory<T> inventory, T individual, int index)
+    {
+        T temp = inventory.inventory[index];
+        inventory.inventory[index] = individual;
+        individual = temp;
+        inventoryUpdated?.Invoke();
+    }
+
+    public T GetSlotByIndex(int index)
     {
         return inventory[index];
     }

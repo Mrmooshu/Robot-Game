@@ -15,6 +15,7 @@ public class VariantData : ScriptableObject
     public Type type;
     [Header("Base Variant Animations")]
     public RuntimeAnimatorController animController;
+    public Sprite sprite;
     [Header("Base Variant Base Stats")]
     public float moveSpeed = 1;
     public float jumpForce = 1;

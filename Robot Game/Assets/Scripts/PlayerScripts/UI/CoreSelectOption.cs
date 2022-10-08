@@ -26,7 +26,8 @@ public class CoreSelectOption : Toggle
     public void SelectInfoUpdate()
     {
         CoreSelectDisplay.selectedCore = this;
-        GameObject.Find("Second Camera").GetComponent<Camera>().GetComponent<TargetFollow>().followTransform = core.GetPlayer().transform; ;
+        GameObject.Find("Second Camera").GetComponent<Camera>().GetComponent<TargetFollow>().followTransform = core.GetPlayer().transform;
+        CoreInfoDisplay.UpdateInfo();
     }
 
 }

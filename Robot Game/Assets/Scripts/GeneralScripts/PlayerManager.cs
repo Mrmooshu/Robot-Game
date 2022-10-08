@@ -8,11 +8,9 @@ public class PlayerManager : MonoBehaviour, IDataSave
 {
     public static PlayerManager instance;
 
-    public int coreSlots = 1;
     public PlayerCore[] cores;
-
-    public int bodySlots = 10;
-    public PlayerBody[] bodies;
+    public BodyInventory bodies;
+    public ItemInventory bankInventory;
 
     public List<PlayerEntity> players;
 
@@ -20,9 +18,6 @@ public class PlayerManager : MonoBehaviour, IDataSave
     public GameObject sentinelBlueprint;
     public GameObject automatonBlueprint;
     public Camera mainCam;
-
-    public int bankSize;
-    public ItemInventory bankInventory;
 
     public PlayerCore activeCore;
 
