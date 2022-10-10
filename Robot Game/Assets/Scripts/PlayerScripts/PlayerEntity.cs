@@ -18,18 +18,14 @@ public class PlayerEntity : Entity
     private int movementInputDirection;
     public bool grounded, canJump;
 
-    public void Initialize(PlayerCore core, float movementSpeed, float jumpForce)
+    public void Initialize(PlayerCore core, float movementSpeed, float jumpForce, float gravity)
     {
+        rigBod = GetComponent<Rigidbody2D>();
+        animator = GetComponent<Animator>();
         this.core = core;
         this.movementSpeed = movementSpeed;
         this.jumpForce = jumpForce;
-    }
-
-    public override void Start()
-    {
-        base.Start();
-        rigBod = GetComponent<Rigidbody2D>();
-        animator = GetComponent<Animator>();
+        rigBod.gravityScale = gravity;
     }
 
     public override void Update()

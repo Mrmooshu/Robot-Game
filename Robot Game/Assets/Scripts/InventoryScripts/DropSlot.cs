@@ -14,8 +14,15 @@ public class DropSlot : MonoBehaviour, IDropHandler
             droppedItem.GetComponent<ItemObject>().SetItem(eventData.pointerDrag.GetComponent<InventoryItem>().item);
             droppedItem.GetComponent<Rigidbody2D>().AddForce(new Vector2(Random.Range(-50, 50), 80));
 
-            eventData.pointerDrag.transform.parent.parent.parent.GetComponentInParent<ItemInventoryDisplay>().currentInventory.Remove(eventData.pointerDrag.transform.parent.GetComponent<ItemInventorySlot>().inventoryIndex);
-            eventData.pointerDrag.transform.parent.parent.parent.GetComponentInParent<ItemInventoryDisplay>().RefreshInventory();
+            if (eventData.pointerDrag.transform.GetComponentInParent<SlotDisplay<Item>>())
+            {
+                eventData.pointerDrag.transform.GetComponentInParent<SlotDisplay<Item>>().RemoveFromSlot();
+            }
+            else
+            {
+                eventData.pointerDrag.transform.parent.parent.parent.GetComponentInParent<ItemInventoryDisplay>().currentInventory.Remove(eventData.pointerDrag.transform.parent.GetComponent<ItemInventorySlot>().inventoryIndex);
+                eventData.pointerDrag.transform.parent.parent.parent.GetComponentInParent<ItemInventoryDisplay>().RefreshInventory();
+            }
         }
     }
 }

@@ -1,12 +1,12 @@
 ManifestFileVersion: 0
-CRC: 349965734
+CRC: 498834078
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 295db59d5fe5109a1414309db13b546a
+    Hash: 5e3b3425d4bb65f9e1bd35e4928d629e
   TypeTreeHash:
     serializedVersion: 2
-    Hash: 3a27f31e3499bb97b24b8e03c737c27c
+    Hash: a27e9adf241e24a00b7b69818aab54b5
 HashAppended: 0
 ClassTypes:
 - Class: 1
@@ -31,6 +31,8 @@ ClassTypes:
   Script: {fileID: 11500000, guid: 397962b06f2f5484594473b5253a6268, type: 3}
 - Class: 114
   Script: {fileID: 11500000, guid: 89fc4abac15c5714b91540fc0b57c02e, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 0b64e517e6ab22441abc069007835e83, type: 3}
 - Class: 114
   Script: {fileID: 11500000, guid: 0e1347e0c1aca7b438b8cc5f2a09b48b, type: 3}
 - Class: 114
@@ -84,7 +86,9 @@ ClassTypes:
 - Class: 114
   Script: {fileID: 11500000, guid: 97cafdb748acf9841adca982b0b0718c, type: 3}
 - Class: 114
-  Script: {fileID: 11500000, guid: 0b64e517e6ab22441abc069007835e83, type: 3}
+  Script: {fileID: 11500000, guid: e71c72beb9d30d54bab969582508132e, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 902e11bac10f1f74f9f4b6bbeb7ca27b, type: 3}
 - Class: 115
   Script: {instanceID: 0}
 - Class: 213
@@ -155,17 +159,17 @@ SerializeReferenceClassIdentifiers:
 - AssemblyName: UnityEngine.UI
   ClassName: UnityEngine.UI.Toggle/ToggleEvent
 Assets:
-- Assets/Prefabs/UI/InventoryUI/InventoryPlayer.prefab
+- Assets/Prefabs/UI/InventoryUI/BodyUI/InventoryPlayer.prefab
 - Assets/Prefabs/UI/QuestUI/QuestListOption.prefab
-- Assets/Prefabs/UI/InventoryUI/PlayerSlot.prefab
+- Assets/Prefabs/UI/InventoryUI/BodyUI/PlayerSlot.prefab
 - Assets/Prefabs/UI/CoreUI/CoreSelectOption.prefab
 - Assets/Prefabs/UI/MainPlayerMenu.prefab
 - Assets/Prefabs/UI/Dialogue Box.prefab
 - Assets/Prefabs/UI/SafePointUI/SafePointMenu.prefab
-- Assets/Prefabs/UI/InventoryUI/InventoryItem.prefab
+- Assets/Prefabs/UI/InventoryUI/ItemUI/InventoryItem.prefab
 - Assets/Prefabs/UI/ItemRequirementDisplay.prefab
 - Assets/Prefabs/UI/UI.prefab
-- Assets/Prefabs/UI/InventoryUI/ItemSlot.prefab
+- Assets/Prefabs/UI/InventoryUI/ItemUI/ItemSlot.prefab
 Dependencies:
 - C:/Users/mrmoo/Desktop/MyGame/Game/Robot-Game/Robot Game/Assets/StreamingAssets/general
   prefabs

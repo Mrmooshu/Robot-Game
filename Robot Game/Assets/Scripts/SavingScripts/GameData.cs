@@ -17,10 +17,11 @@ public class GameData
         bankInventory = new ItemInventory(48);
         quests = new List<QuestData>();
 
-        cores[0].currentBody.weapon = new Item(Database.GetItemID("Novium Pickaxe"),1);
-        cores[1].currentBody.weapon = new Item(Database.GetItemID("Novium Pickaxe"), 1);
+        cores[0].currentBody.tool = new Item(Database.GetItemID("Novium Pickaxe"),1);
+        cores[1].currentBody.tool = new Item(Database.GetItemID("Novium Pickaxe"), 1);
 
         bodyInventory.inventory[0] = new PlayerBody("Clay Golem");
+        bodyInventory.inventory[1] = new PlayerBody("Snow Golem");
     }
 
     [System.Serializable]
@@ -58,6 +59,7 @@ public class GameData
                     }
                 }
             }
+            NullBodyItems(core.currentBody);
         }
 
         // check for default items in bank inventory
@@ -75,14 +77,26 @@ public class GameData
         // check for deafault items in body items
         foreach (PlayerBody body in bodyInventory.inventory)
         {
-            if (body != null)
+            NullBodyItems(body);
+        }
+    }
+
+    private void NullBodyItems(PlayerBody body)
+    {
+        if (body != null)
+        {
+            if (body.weapon != null)
             {
-                if (body.weapon != null)
+                if (body.weapon.itemID == 0)
                 {
-                    if (body.weapon.itemID == 0)
-                    {
-                        body.weapon = null;
-                    }
+                    body.weapon = null;
+                }
+            }
+            if (body.tool != null)
+            {
+                if (body.tool.itemID == 0)
+                {
+                    body.tool = null;
                 }
             }
         }

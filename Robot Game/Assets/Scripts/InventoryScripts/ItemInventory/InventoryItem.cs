@@ -18,8 +18,15 @@ public class InventoryItem : MonoBehaviour, IDragHandler, IEndDragHandler
         transform.position = eventData.position;
         canvasGroup.alpha = .5f;
         canvasGroup.blocksRaycasts = false;
-        transform.parent.SetAsLastSibling();
-        transform.parent.parent.parent.parent.SetAsLastSibling();
+        if (transform.parent.parent.parent.parent.GetComponent<ItemInventoryDisplay>())
+        {
+            transform.parent.SetAsLastSibling();
+            transform.parent.parent.parent.parent.SetAsLastSibling();
+        }
+        else if (transform.parent.GetComponent<SlotDisplay<Item>>())
+        {
+            transform.parent.parent.SetAsLastSibling();
+        }
     }
 
     public void OnEndDrag(PointerEventData eventData)

@@ -2801,6 +2801,9 @@ MonoBehaviour:
       weapon:
         itemID: 0
         quanityString: 0
+      tool:
+        itemID: 0
+        quanityString: 0
     inventory:
       inventory: []
       inventorySize: 0

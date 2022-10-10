@@ -36,7 +36,7 @@ public class BodyInventoryDisplay : InventoryDisplay
 
         int x = 0;
         int y = 0;
-        float slotSize = 34f;
+        float slotSize = 68f;
         for (int i = slotsPerPage * currentInventory.currentPage - slotsPerPage; i < currentInventory.GetSize() && i < slotsPerPage * currentInventory.currentPage; i++)
         {
             GameObject slotInstance = Instantiate(slotPrefab, inventoryArea.transform);

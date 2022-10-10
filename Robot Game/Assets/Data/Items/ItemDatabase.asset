@@ -43,7 +43,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: d0e1683626d6a104ba8028ff5b0fa47a, type: 2}
   - {fileID: 11400000, guid: ccfae0b34f741f04383bb93229ab77be, type: 2}
   - {fileID: 11400000, guid: 5a46752dec30fda4eaf1b24bb3380cc7, type: 2}
-  - {fileID: 11400000, guid: 5de60fc4d12d83b4696347d4bfbf23d0, type: 2}
   - {fileID: 11400000, guid: 2a313f2aa717fef42952d22c48bcb0f2, type: 2}
   - {fileID: 11400000, guid: df525bd6dc6a01246bfdf7453df3fde6, type: 2}
   - {fileID: 11400000, guid: 3b9ff9147ac3c794687438313c2285e5, type: 2}
@@ -52,6 +51,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 71b6fdd4572140d41b48be6cfd440128, type: 2}
   - {fileID: 11400000, guid: 4d514715a4740db4e8e686086219b73b, type: 2}
   - {fileID: 11400000, guid: 4ad1105b8c838334ea6f51bb1015d2bf, type: 2}
+  - {fileID: 11400000, guid: 63e121ff7e07a0342bb9eb97ada1720e, type: 2}
   miningItemsList:
   - {fileID: 11400000, guid: f20f0cc994a7bd3489ae567e13a8d1fc, type: 2}
   - {fileID: 11400000, guid: 054219649fe47a44898201d9fbc18b62, type: 2}
@@ -83,8 +83,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: d0e1683626d6a104ba8028ff5b0fa47a, type: 2}
   - {fileID: 11400000, guid: ccfae0b34f741f04383bb93229ab77be, type: 2}
   - {fileID: 11400000, guid: 5a46752dec30fda4eaf1b24bb3380cc7, type: 2}
-  weaponsItemsList:
-  - {fileID: 11400000, guid: 5de60fc4d12d83b4696347d4bfbf23d0, type: 2}
+  toolItemsList:
   - {fileID: 11400000, guid: 2a313f2aa717fef42952d22c48bcb0f2, type: 2}
   - {fileID: 11400000, guid: df525bd6dc6a01246bfdf7453df3fde6, type: 2}
   - {fileID: 11400000, guid: 3b9ff9147ac3c794687438313c2285e5, type: 2}
@@ -93,4 +92,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 71b6fdd4572140d41b48be6cfd440128, type: 2}
   - {fileID: 11400000, guid: 4d514715a4740db4e8e686086219b73b, type: 2}
   - {fileID: 11400000, guid: 4ad1105b8c838334ea6f51bb1015d2bf, type: 2}
+  weaponItemsList:
+  - {fileID: 11400000, guid: 63e121ff7e07a0342bb9eb97ada1720e, type: 2}
   miscItemsList: []

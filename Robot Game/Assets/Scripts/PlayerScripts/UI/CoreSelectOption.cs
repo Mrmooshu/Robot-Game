@@ -10,6 +10,8 @@ public class CoreSelectOption : Toggle
     protected override void Awake()
     {
         onValueChanged.AddListener(delegate { Selected(this); });
+        PlayerManager.instance.playerChanged += UpdateCamera;
+        UpdateCamera();
     }
 
     public void Selected(Toggle t)
@@ -28,6 +30,14 @@ public class CoreSelectOption : Toggle
         CoreSelectDisplay.selectedCore = this;
         GameObject.Find("Second Camera").GetComponent<Camera>().GetComponent<TargetFollow>().followTransform = core.GetPlayer().transform;
         CoreInfoDisplay.UpdateInfo();
+    }
+
+    private void UpdateCamera()
+    {
+        if (isOn)
+        {
+            GameObject.Find("Second Camera").GetComponent<Camera>().GetComponent<TargetFollow>().followTransform = core.GetPlayer().transform;
+        }
     }
 
 }

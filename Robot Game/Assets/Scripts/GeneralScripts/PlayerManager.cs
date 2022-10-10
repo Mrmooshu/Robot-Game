@@ -60,10 +60,19 @@ public class PlayerManager : MonoBehaviour, IDataSave
                 return;
         }
         PlayerEntity playerEntity = newPlayer.GetComponent<PlayerEntity>();
-        playerEntity.Initialize(core, variant.moveSpeed, variant.jumpForce);
+        playerEntity.Initialize(core, variant.moveSpeed, variant.jumpForce, variant.gravity);
         newPlayer.GetComponent<Animator>().runtimeAnimatorController = variant.animController;
         newPlayer.transform.position = playerEntity.core.position;
         players.Add(playerEntity);
+    }
+
+    public void Respawn(PlayerCore core)
+    {
+        core.position = core.GetPlayer().transform.position;
+        Destroy(core.GetPlayer().gameObject);
+        players.Remove(core.GetPlayer());
+        Spawn(core);
+        SetActiveCore(core);
     }
 
     public void SetActiveCore(PlayerCore core)

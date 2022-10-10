@@ -55,14 +55,14 @@ public class GolemEntity : PlayerEntity
     {
         if (!mining)
         {
-            if (core.currentBody.weapon != null)
+            if (core.currentBody.tool != null)
             {
-                if (Database.GetItem(core.currentBody.weapon.itemID) is Weapon)
+                if (Database.GetItem(core.currentBody.tool.itemID) is Tool)
                 {
-                    Weapon weapon = (Weapon)Database.GetItem(core.currentBody.weapon.itemID);
-                    if (core.currentBody.weapon != null && weapon.weaponType == Weapon.Type.pickaxe)
+                    Tool tool = (Tool)Database.GetItem(core.currentBody.tool.itemID);
+                    if (core.currentBody.tool != null && tool.toolType == Tool.Type.pickaxe)
                     {
-                        transform.GetChild(0).GetComponent<Animator>().runtimeAnimatorController = weapon.animController;
+                        transform.GetChild(0).GetComponent<Animator>().runtimeAnimatorController = tool.animController;
                         rigBod.velocity = Vector2.zero;
                         mining = true;
                         cantMove = true;
@@ -72,12 +72,12 @@ public class GolemEntity : PlayerEntity
                 }
                 else
                 {
-                    Debug.Log("weapon is not a weapon");
+                    Debug.Log("tool is not a tool");
                 }
             }
             else
             {
-                Debug.Log("no weapon equiped");
+                Debug.Log("no tool equiped");
             }
         }
         else if (mining)

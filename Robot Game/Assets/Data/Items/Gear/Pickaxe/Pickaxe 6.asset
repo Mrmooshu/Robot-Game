@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a157a8b022396624aa6177a7be728a7b, type: 3}
   m_Name: Pickaxe 6
   m_EditorClassIdentifier: 
-  itemID: 0
+  itemID: 37
   itemName: Pherium Pickaxe
   itemDescription: makes you feel free
-  stackable: 1
+  stackable: 0
   sprite: {fileID: 1618733268, guid: e9f58172755238646bbf7ece85de3480, type: 3}
-  weaponType: 0
+  toolType: 0
   animController: {fileID: 22100000, guid: 291b4d8a2fd836c42b0d71431523cc58, type: 2}

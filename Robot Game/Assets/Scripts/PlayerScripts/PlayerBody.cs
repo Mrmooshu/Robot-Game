@@ -8,6 +8,7 @@ public class PlayerBody
     public string variantName;
     public int level = 0;
     public Item weapon;
+    public Item tool;
 
     public PlayerBody(string variantName)
     {

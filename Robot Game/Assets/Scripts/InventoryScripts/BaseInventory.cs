@@ -49,7 +49,7 @@ public abstract class BaseInventory<T>
         inventoryUpdated?.Invoke();
     }
 
-    public static void Move(BaseInventory<T> inventory, T individual, int index)
+    public static void Move(BaseInventory<T> inventory, ref T individual, int index)
     {
         T temp = inventory.inventory[index];
         inventory.inventory[index] = individual;

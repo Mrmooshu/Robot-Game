@@ -15,7 +15,8 @@ MonoBehaviour:
   variantName: Snow Golem
   type: 0
   animController: {fileID: 22100000, guid: a0eee201c01da954285470ef4023dafb, type: 2}
-  sprite: {fileID: 21300000, guid: cb316f95c5827aa40a5264d653792890, type: 3}
-  moveSpeed: 8
-  jumpForce: 8
+  sprite: {fileID: 21300000, guid: 1cce159e01d0f334999e38572b2761a0, type: 3}
+  moveSpeed: 5
+  jumpForce: 5.5
+  gravity: 2
   test: 0

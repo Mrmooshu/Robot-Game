@@ -19,4 +19,5 @@ public class VariantData : ScriptableObject
     [Header("Base Variant Base Stats")]
     public float moveSpeed = 1;
     public float jumpForce = 1;
+    public float gravity = 1;
 }
