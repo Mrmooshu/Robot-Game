@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 6e215273eb4734548aacaa1e9b01d035
+guid: 14fd153038de6c241b30ca87a7bec633
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -104,7 +104,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Golem_Mining_pick_0
+      name: Golem_Mining_body-Sheet_0
       rect:
         serializedVersion: 2
         x: 0
@@ -118,14 +118,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7d6e6be3b5541fe40af6f31529744fac
-      internalID: -571567614
+      spriteID: 846fb2ae235109647b86b768abd872cf
+      internalID: 591937307
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Golem_Mining_pick_1
+      name: Golem_Mining_body-Sheet_1
       rect:
         serializedVersion: 2
         x: 64
@@ -139,14 +139,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 578b297f87df17c40a236e92c2a570c5
-      internalID: 353213693
+      spriteID: 9368d8b62176deb4ca427871e5c6d563
+      internalID: -86866651
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Golem_Mining_pick_2
+      name: Golem_Mining_body-Sheet_2
       rect:
         serializedVersion: 2
         x: 128
@@ -160,14 +160,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8bc6309d14837044aa6c3362121f6999
-      internalID: 991808514
+      spriteID: ac5714c50c385e9488d2047dc724a470
+      internalID: -1841155946
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Golem_Mining_pick_3
+      name: Golem_Mining_body-Sheet_3
       rect:
         serializedVersion: 2
         x: 192
@@ -181,14 +181,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e41c9354e0ebe0e469f98467d6854ca5
-      internalID: -85299749
+      spriteID: b7f1bc1c60f6b32459eb4b4095224e53
+      internalID: 2076507625
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Golem_Mining_pick_4
+      name: Golem_Mining_body-Sheet_4
       rect:
         serializedVersion: 2
         x: 256
@@ -202,14 +202,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f04e4f3625c290547bcf300f30eaa7a9
-      internalID: 1246851553
+      spriteID: 2a6c3d39f885a3746a90b108b04ef18b
+      internalID: -1489220704
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Golem_Mining_pick_5
+      name: Golem_Mining_body-Sheet_5
       rect:
         serializedVersion: 2
         x: 320
@@ -223,14 +223,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 15981a18a91b7fe44a9a61902c524d88
-      internalID: 1530140977
+      spriteID: 9c9a881b55914354ab517b0dc4a96d58
+      internalID: -1870254754
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Golem_Mining_pick_6
+      name: Golem_Mining_body-Sheet_6
       rect:
         serializedVersion: 2
         x: 384
@@ -244,8 +244,155 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6d89511a02933434c8e2fe701d3f8fdb
-      internalID: -1751415117
+      spriteID: dc65d7c6ce49b444eb0738e66f5718dc
+      internalID: 1385415429
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Golem_Mining_body-Sheet_7
+      rect:
+        serializedVersion: 2
+        x: 448
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 45a9002d171177743acdae1b8511f61d
+      internalID: -33770446
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Golem_Mining_body-Sheet_8
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6bce58a500b092d4d82f3107863b793e
+      internalID: 2145422151
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Golem_Mining_body-Sheet_9
+      rect:
+        serializedVersion: 2
+        x: 576
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bced18307f7e3d643b180b171b68cf06
+      internalID: -1422888098
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Golem_Mining_body-Sheet_10
+      rect:
+        serializedVersion: 2
+        x: 640
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fd21df4cc3083804b9a7101c45031899
+      internalID: 1168846220
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Golem_Mining_body-Sheet_11
+      rect:
+        serializedVersion: 2
+        x: 704
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7cd99d1c4e113ed4e911517892a5efbf
+      internalID: -158192608
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Golem_Mining_body-Sheet_12
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 15d05505c62e3d94a9d9348d10b83756
+      internalID: 701541242
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Golem_Mining_body-Sheet_13
+      rect:
+        serializedVersion: 2
+        x: 832
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d2653eee8304c334ca39b43b17fe8d7c
+      internalID: -1642311124
       vertices: []
       indices: 
       edges: []
@@ -261,13 +408,20 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Golem_Mining_pick_2: 991808514
-      Golem_Mining_pick_4: 1246851553
-      Golem_Mining_pick_3: -85299749
-      Golem_Mining_pick_6: -1751415117
-      Golem_Mining_pick_0: -571567614
-      Golem_Mining_pick_1: 353213693
-      Golem_Mining_pick_5: 1530140977
+      Golem_Mining_body-Sheet_3: 2076507625
+      Golem_Mining_body-Sheet_10: 1168846220
+      Golem_Mining_body-Sheet_4: -1489220704
+      Golem_Mining_body-Sheet_9: -1422888098
+      Golem_Mining_body-Sheet_2: -1841155946
+      Golem_Mining_body-Sheet_5: -1870254754
+      Golem_Mining_body-Sheet_12: 701541242
+      Golem_Mining_body-Sheet_7: -33770446
+      Golem_Mining_body-Sheet_13: -1642311124
+      Golem_Mining_body-Sheet_8: 2145422151
+      Golem_Mining_body-Sheet_11: -158192608
+      Golem_Mining_body-Sheet_1: -86866651
+      Golem_Mining_body-Sheet_0: 591937307
+      Golem_Mining_body-Sheet_6: 1385415429
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

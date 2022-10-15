@@ -15,9 +15,9 @@ public class QuestManager : MonoBehaviour, IDataSave
         if (instance == null)
         {
             instance = this;
-            // organize quests based on state
             foreach (Quest quest in Database.instance.questDatabase.questList)
             {
+                // organize quests based on state
                 switch (quest.questState)
                 {
                     case Quest.QuestState.inactive:
@@ -29,6 +29,12 @@ public class QuestManager : MonoBehaviour, IDataSave
                     case Quest.QuestState.completed:
                         completeQuests.Add(quest);
                         break;
+                }
+
+                // initialize all current steps
+                if (quest.questState == Quest.QuestState.active)
+                {
+                    quest.GetCurrentStep().Initialize(quest);
                 }
             }
         }
@@ -62,7 +68,7 @@ public class QuestManager : MonoBehaviour, IDataSave
     {
         foreach (GameData.QuestData quest in data.quests)
         {
-            Database.GetQuest(quest.name).questState = (Quest.QuestState)quest.questState;
+            Database.GetQuest(quest.name).questState = quest.questState;
             Database.GetQuest(quest.name).currentStep = quest.currentStep;
         }
     }
@@ -72,7 +78,7 @@ public class QuestManager : MonoBehaviour, IDataSave
         data.quests.Clear();
         foreach (Quest quest in Database.instance.questDatabase.questList)
         {
-            data.quests.Add(new GameData.QuestData { name = quest.info.questName, currentStep = quest.currentStep, questState = (int)quest.questState});
+            data.quests.Add(new GameData.QuestData { name = quest.info.questName, currentStep = quest.currentStep, questState = quest.questState});
         }
     }
 }

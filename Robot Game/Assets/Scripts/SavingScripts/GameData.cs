@@ -17,6 +17,12 @@ public class GameData
         bankInventory = new ItemInventory(48);
         quests = new List<QuestData>();
 
+        foreach (Quest quest in Database.instance.questDatabase.questList)
+        {
+            quest.currentStep = 0;
+            quest.questState = Quest.QuestState.inactive;
+        }
+
         cores[0].currentBody.tool = new Item(Database.GetItemID("Novium Pickaxe"),1);
         cores[1].currentBody.tool = new Item(Database.GetItemID("Novium Pickaxe"), 1);
 
@@ -29,7 +35,7 @@ public class GameData
     {
         public string name;
         public int currentStep;
-        public int questState;
+        public Quest.QuestState questState;
     }
 
     public void NullDefaultValues()

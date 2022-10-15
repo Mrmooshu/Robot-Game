@@ -83,6 +83,37 @@ MonoBehaviour:
   - {fileID: 11400000, guid: d0e1683626d6a104ba8028ff5b0fa47a, type: 2}
   - {fileID: 11400000, guid: ccfae0b34f741f04383bb93229ab77be, type: 2}
   - {fileID: 11400000, guid: 5a46752dec30fda4eaf1b24bb3380cc7, type: 2}
+  woodchoppingItemsList:
+  - {fileID: 11400000, guid: cd5f1871d6b25044e90813b184e89711, type: 2}
+  - {fileID: 11400000, guid: fb8e2c65bd65c7441879ef35147b6dbe, type: 2}
+  - {fileID: 11400000, guid: a7bd4c245c546074a9cc3537345da677, type: 2}
+  - {fileID: 11400000, guid: 969d877a07b078b45a16f464add6dbde, type: 2}
+  - {fileID: 11400000, guid: 74239a42afe36ea4288ffa5759536c86, type: 2}
+  - {fileID: 11400000, guid: 09978c05e5e6abf4a85c95daa1a879a6, type: 2}
+  - {fileID: 11400000, guid: 9bc129f9c51d3014c816e67466114644, type: 2}
+  - {fileID: 11400000, guid: 0a7fe0bb020223b4597ea21d5c2049be, type: 2}
+  - {fileID: 11400000, guid: 241e14d55b9e8534f9430c2023854c11, type: 2}
+  - {fileID: 11400000, guid: 765bfb438b022544c90e979bcafeb71b, type: 2}
+  - {fileID: 11400000, guid: 270c608e7603ada49a43a53a9d618a2e, type: 2}
+  - {fileID: 11400000, guid: 97c590a9c01e50a42bc064ad76de8bde, type: 2}
+  fishingItemsList: []
+  smithingItemsList:
+  - {fileID: 11400000, guid: 338773ba6d14b7543976baf0e127438f, type: 2}
+  - {fileID: 11400000, guid: 6e36309ae66092447a57f889b134dc04, type: 2}
+  - {fileID: 11400000, guid: 917758d6c5859b0448b4f03685a9ca89, type: 2}
+  - {fileID: 11400000, guid: 0745c5b37715ea5429e59ad0b88332a9, type: 2}
+  - {fileID: 11400000, guid: b47bd9d0bef79bd45bd0a2b7a9c198c3, type: 2}
+  - {fileID: 11400000, guid: 029be3f14afdb8d4690d29c1527451a3, type: 2}
+  - {fileID: 11400000, guid: f47eb5e886a6d9d4e9124e0efa4e41b1, type: 2}
+  - {fileID: 11400000, guid: 515fadccd182e4544a439b723e336c03, type: 2}
+  - {fileID: 11400000, guid: 98357c838d2cd30469dbabfaba69583e, type: 2}
+  - {fileID: 11400000, guid: a58c731f2eedb0944892f69dc052c1fe, type: 2}
+  - {fileID: 11400000, guid: c7eaa13bbfbf60a41a86a61ff8e1d2a6, type: 2}
+  - {fileID: 11400000, guid: 61906123168176f44a3bf86f5b8e1f1a, type: 2}
+  - {fileID: 11400000, guid: e1d2267187209094e9e4302bdbfa3618, type: 2}
+  - {fileID: 11400000, guid: a9a917992fd5a144da75bb8517e7cefc, type: 2}
+  - {fileID: 11400000, guid: d5cd75e212f16194c9799efe68da2d50, type: 2}
+  - {fileID: 11400000, guid: fab17831a8bc2d741843de96a0a5b6fa, type: 2}
   toolItemsList:
   - {fileID: 11400000, guid: 2a313f2aa717fef42952d22c48bcb0f2, type: 2}
   - {fileID: 11400000, guid: df525bd6dc6a01246bfdf7453df3fde6, type: 2}

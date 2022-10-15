@@ -18,10 +18,10 @@ MonoBehaviour:
     questPostInfo: You did it congratz
     postQuestDialogue: joe moment
   rewards:
-  - reward: {fileID: 11400000, guid: 5de60fc4d12d83b4696347d4bfbf23d0, type: 2}
+  - reward: {fileID: 11400000, guid: 63e121ff7e07a0342bb9eb97ada1720e, type: 2}
     quanity: 1
   steps:
   - {fileID: 11400000, guid: 0319f9000fc7def41b8d330ed9e42b21, type: 2}
   - {fileID: 11400000, guid: 82bce17259cd62440a95816d1e4ec07b, type: 2}
   currentStep: 0
-  questState: 0
+  questState: 1

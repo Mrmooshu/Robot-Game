@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: f861bca06ec284348acc2dd326e59fdf
+guid: da1a75ab8dd4aa347b47c7adb4b27bfa
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -104,7 +104,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Golem_Run-Sheet_0
+      name: Goelm_Crush_Basic-Sheet_0
       rect:
         serializedVersion: 2
         x: 0
@@ -118,14 +118,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f5370252887efc64fb890216018dae5b
-      internalID: -975364688
+      spriteID: 1a1b2f02ad69ccd4498c78396d1b14f8
+      internalID: 1219064261
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Golem_Run-Sheet_1
+      name: Goelm_Crush_Basic-Sheet_1
       rect:
         serializedVersion: 2
         x: 64
@@ -139,14 +139,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c831c37607f681441889aed45a772daa
-      internalID: -2068965892
+      spriteID: 701a7df0eff22cb4f988c7531809e50c
+      internalID: -1488929177
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Golem_Run-Sheet_2
+      name: Goelm_Crush_Basic-Sheet_2
       rect:
         serializedVersion: 2
         x: 128
@@ -160,14 +160,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6a32f4eadb8f4c14ca55166af07f87a5
-      internalID: -668656304
+      spriteID: d7a3e29ff1d2cfe4890cd22bf25de497
+      internalID: 1605949617
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Golem_Run-Sheet_3
+      name: Goelm_Crush_Basic-Sheet_3
       rect:
         serializedVersion: 2
         x: 192
@@ -181,14 +181,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a13f709b0aa855d4f9fdf3da5d8e57d9
-      internalID: 1201700228
+      spriteID: 0ef9faa20804cf2438b37b4bf32357fe
+      internalID: 1747439672
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Golem_Run-Sheet_4
+      name: Goelm_Crush_Basic-Sheet_4
       rect:
         serializedVersion: 2
         x: 256
@@ -202,14 +202,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8ecf02f8b414bc441b70b88bfa7e3e55
-      internalID: -1407601359
+      spriteID: c7c46666b77217f4aa32a64ebd4a7fc3
+      internalID: -108444874
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Golem_Run-Sheet_5
+      name: Goelm_Crush_Basic-Sheet_5
       rect:
         serializedVersion: 2
         x: 320
@@ -223,14 +223,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 81b796950854f064bbadbd7dc1f07c26
-      internalID: 1400127259
+      spriteID: 091e05d5dc54b2347bcc9ba09ec1f0f1
+      internalID: -2011263073
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Golem_Run-Sheet_6
+      name: Goelm_Crush_Basic-Sheet_6
       rect:
         serializedVersion: 2
         x: 384
@@ -244,113 +244,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 59a213dc2ba639647bf297c807884f81
-      internalID: 1192944064
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Golem_Run-Sheet_7
-      rect:
-        serializedVersion: 2
-        x: 448
-        y: 0
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: c2ed0c68cc878ae4fb7626453bccd1d5
-      internalID: -657543568
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Golem_Run-Sheet_8
-      rect:
-        serializedVersion: 2
-        x: 512
-        y: 0
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: fc390993bfe569a48b7803fc8b572ab2
-      internalID: 1665119000
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Golem_Run-Sheet_9
-      rect:
-        serializedVersion: 2
-        x: 576
-        y: 0
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 864d021ecd0cc3c4391f93e97c46fed4
-      internalID: -1066268052
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Golem_Run-Sheet_10
-      rect:
-        serializedVersion: 2
-        x: 640
-        y: 0
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: dfd1f397045d6f64aa8cd13df6aa98d4
-      internalID: 1541557324
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Golem_Run-Sheet_11
-      rect:
-        serializedVersion: 2
-        x: 704
-        y: 0
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: f2a818c07df73114c8e81e077e2e73fb
-      internalID: -978754577
+      spriteID: c60b775f08062344d8fdede77912cc87
+      internalID: -1968342182
       vertices: []
       indices: 
       edges: []
@@ -366,18 +261,13 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Golem_Run-Sheet_10: 1541557324
-      Golem_Run-Sheet_6: 1192944064
-      Golem_Run-Sheet_1: -2068965892
-      Golem_Run-Sheet_3: 1201700228
-      Golem_Run-Sheet_8: 1665119000
-      Golem_Run-Sheet_5: 1400127259
-      Golem_Run-Sheet_7: -657543568
-      Golem_Run-Sheet_9: -1066268052
-      Golem_Run-Sheet_11: -978754577
-      Golem_Run-Sheet_4: -1407601359
-      Golem_Run-Sheet_2: -668656304
-      Golem_Run-Sheet_0: -975364688
+      Goelm_Crush_Basic-Sheet_3: 1747439672
+      Goelm_Crush_Basic-Sheet_2: 1605949617
+      Goelm_Crush_Basic-Sheet_0: 1219064261
+      Goelm_Crush_Basic-Sheet_5: -2011263073
+      Goelm_Crush_Basic-Sheet_6: -1968342182
+      Goelm_Crush_Basic-Sheet_1: -1488929177
+      Goelm_Crush_Basic-Sheet_4: -108444874
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

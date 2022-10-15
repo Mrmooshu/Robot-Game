@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: lowMiningLuckTable
   m_EditorClassIdentifier: 
   tableItems:
-  - itemData: {fileID: 11400000, guid: 5de60fc4d12d83b4696347d4bfbf23d0, type: 2}
+  - itemData: {fileID: 11400000, guid: 63e121ff7e07a0342bb9eb97ada1720e, type: 2}
     itemQuanity: 1
     weight: 1

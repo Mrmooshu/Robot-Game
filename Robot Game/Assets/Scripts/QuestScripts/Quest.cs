@@ -55,7 +55,6 @@ public class Quest : ScriptableObject
         questStepUpdated?.Invoke();
         if (questState != QuestState.inactive)
         {
-
             steps[stepIndex].Initialize(this);
         }
     }

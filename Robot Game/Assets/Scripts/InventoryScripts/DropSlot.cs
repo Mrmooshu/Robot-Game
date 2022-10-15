@@ -17,6 +17,7 @@ public class DropSlot : MonoBehaviour, IDropHandler
             if (eventData.pointerDrag.transform.GetComponentInParent<SlotDisplay<Item>>())
             {
                 eventData.pointerDrag.transform.GetComponentInParent<SlotDisplay<Item>>().RemoveFromSlot();
+                eventData.pointerDrag.transform.GetComponentInParent<SlotDisplay<Item>>().RefreshSlot();
             }
             else
             {
