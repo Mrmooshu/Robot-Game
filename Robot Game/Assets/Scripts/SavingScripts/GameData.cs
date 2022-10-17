@@ -24,10 +24,20 @@ public class GameData
         }
 
         cores[0].currentBody.tool = new Item(Database.GetItemID("Novium Pickaxe"),1);
-        cores[1].currentBody.tool = new Item(Database.GetItemID("Novium Pickaxe"), 1);
+        cores[1].currentBody.tool = new Item(Database.GetItemID("Iromite Pickaxe"), 1);
+
+        cores[0].currentBody.weapon = new Item(Database.GetItemID("Novium Warhammer"), 1);
+        cores[1].currentBody.weapon = new Item(Database.GetItemID("Iromite Warhammer"), 1);
 
         bodyInventory.inventory[0] = new PlayerBody("Clay Golem");
         bodyInventory.inventory[1] = new PlayerBody("Snow Golem");
+
+        bankInventory.Add(new Item(Database.GetItemID("Slythril Warhammer"), 1));
+        bankInventory.Add(new Item(Database.GetItemID("Myphrite Warhammer"), 1));
+        bankInventory.Add(new Item(Database.GetItemID("Adzium Warhammer"), 1));
+        bankInventory.Add(new Item(Database.GetItemID("Pherium Warhammer"), 1));
+        bankInventory.Add(new Item(Database.GetItemID("Rhodisium Warhammer"), 1));
+        bankInventory.Add(new Item(Database.GetItemID("Lectonium Warhammer"), 1));
     }
 
     [System.Serializable]

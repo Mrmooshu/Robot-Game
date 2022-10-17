@@ -18,6 +18,7 @@ public class PlayerManager : MonoBehaviour, IDataSave
     public GameObject sentinelBlueprint;
     public GameObject automatonBlueprint;
     public Camera mainCam;
+    public GameObject PlayerHolderObject;
 
     public PlayerCore activeCore;
 
@@ -47,13 +48,13 @@ public class PlayerManager : MonoBehaviour, IDataSave
         switch (variant.type)
         {
             case VariantData.Type.golem:
-                newPlayer = Instantiate(golemBlueprint, transform);
+                newPlayer = Instantiate(golemBlueprint, PlayerHolderObject.transform);
                 break;
             case VariantData.Type.sentinel:
-                newPlayer = Instantiate(sentinelBlueprint, transform);
+                newPlayer = Instantiate(sentinelBlueprint, PlayerHolderObject.transform);
                 break;
             case VariantData.Type.automaton:
-                newPlayer = Instantiate(automatonBlueprint, transform);
+                newPlayer = Instantiate(automatonBlueprint, PlayerHolderObject.transform);
                 break;
             default:
                 Debug.Log("failed to spawn");
@@ -84,7 +85,8 @@ public class PlayerManager : MonoBehaviour, IDataSave
 
     private void ControlThisPlayer(PlayerEntity player)
     {
-        player.TakeControl();
+        mainCam.GetComponent<TargetFollow>().followTransform = player.transform;
+        player.transform.SetAsLastSibling();
         if (player.currentInteractable != null)
         {
             player.currentInteractable.PlayerInRange(player);

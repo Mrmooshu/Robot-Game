@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 27b223b09ca8cf243994b9d70fb18586, type: 3}
+  m_Name: Warhammer 4
+  m_EditorClassIdentifier: 
+  itemID: 71
+  itemName: Myphrite Warhammer
+  itemDescription: default description
+  stackable: 0
+  sprite: {fileID: -518487700, guid: ea7d185658128e84fbf8242d62bc55b4, type: 3}
+  animController: {fileID: 22100000, guid: f0b9738e01b280447a11c044ead36d7b, type: 2}
+  baseAttackSpeed: 1
+  baseDamage: 1
+  Hitcolliders:
+  - position: {x: 1.5, y: -0.8}
+    radius: 0.4
+  - position: {x: 1, y: -0.7}
+    radius: 0.3

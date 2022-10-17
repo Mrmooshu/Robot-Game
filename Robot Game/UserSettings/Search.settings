@@ -1,6 +1,6 @@
 trackSelection = true
 fetchPreview = true
-wantsMore = false
+defaultFlags = 0
 keepOpen = false
 queryFolder = "Assets"
 onBoardingDoNotAskAgain = true
@@ -10,6 +10,9 @@ scopes = {
 	"last_search.DD2EEDCB" = "snap"
 	"OpenInspectorPreview.DD2EEDCB" = "0"
 	"currentGroup.DD2EEDCB" = "all"
+	"last_search.2138236A" = "warha"
+	"OpenInspectorPreview.2138236A" = "0"
+	"currentGroup.2138236A" = "asset"
 }
 providers = {
 	expression = {
@@ -88,6 +91,8 @@ providers = {
 		defaultAction = null
 	}
 }
+objectSelectors = {
+}
 recentSearches = [
 	"snap"
 ]
@@ -97,3 +102,7 @@ savedSearchesSortOrder = 0
 showSavedSearchPanel = false
 expandedQueries = [
 ]
+queryBuilder = false
+ignoredProperties = "id;name;classname;imagecontentshash"
+helperWidgetCurrentArea = "all"
+disabledIndexers = ""
