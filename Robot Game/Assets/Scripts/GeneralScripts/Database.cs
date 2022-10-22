@@ -27,11 +27,6 @@ public class Database : MonoBehaviour
         }
     }
 
-    public void Initialize()
-    {
-
-    }
-
     public static ItemData GetItem(int id)
     {
         return instance.itemDatabase.itemsList.FirstOrDefault(i => i.itemID == id);
