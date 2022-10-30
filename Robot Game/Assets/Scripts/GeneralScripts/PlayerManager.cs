@@ -62,7 +62,7 @@ public class PlayerManager : MonoBehaviour, IDataSave
         }
         PlayerEntity playerEntity = newPlayer.GetComponent<PlayerEntity>();
         playerEntity.Initialize(core, variant.moveSpeed, variant.jumpForce, variant.gravity);
-        newPlayer.GetComponent<Animator>().runtimeAnimatorController = variant.animController;
+        playerEntity.upperAnimator.runtimeAnimatorController = variant.animController;
         newPlayer.transform.position = playerEntity.core.position;
         players.Add(playerEntity);
     }

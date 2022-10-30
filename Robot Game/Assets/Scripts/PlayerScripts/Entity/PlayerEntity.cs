@@ -9,9 +9,13 @@ public class PlayerEntity : Entity
     public InteractableEntity currentInteractable;
 
     protected Rigidbody2D rigBod;
-    protected Animator animator;
-    protected Animator toolAnimator;
-    protected Animator weaponAnimator;
+    public Animator upperAnimator { get;  protected set; }
+    public Animator lowerAnimator { get; protected set; }
+    public Animator frontAnimator { get; protected set; }
+    public Animator backAnimator { get; protected set; }
+    public PlayerTool tool;
+    public PlayerWeapon weaponFront;
+    public PlayerWeapon weaponBack;
     public Transform groundCheck;
     public float movementSpeed, jumpForce;
     public LayerMask whatIsGround;
@@ -24,9 +28,13 @@ public class PlayerEntity : Entity
     public void Initialize(PlayerCore core, float movementSpeed, float jumpForce, float gravity)
     {
         rigBod = GetComponent<Rigidbody2D>();
-        animator = GetComponent<Animator>();
-        toolAnimator = transform.GetChild(0).GetComponent<Animator>();
-        weaponAnimator = transform.GetChild(1).GetComponent<Animator>();
+        upperAnimator = transform.Find("UpperBody").GetComponent<Animator>();
+        lowerAnimator = transform.Find("LowerBody").GetComponent<Animator>();
+        frontAnimator = transform.Find("FrontArm").GetComponent<Animator>();
+        backAnimator = transform.Find("BackArm").GetComponent<Animator>();
+        tool = transform.Find("Tool").GetComponent<PlayerTool>();
+        weaponFront = transform.Find("WeaponFront").GetComponent<PlayerWeapon>();
+        weaponBack = transform.Find("WeaponBack").GetComponent<PlayerWeapon>();
         this.core = core;
         this.movementSpeed = movementSpeed;
         this.jumpForce = jumpForce;
@@ -55,7 +63,7 @@ public class PlayerEntity : Entity
         if (PlayerManager.instance.activeCore == core)
         {
             // movement
-            if (!(animator.GetBool("Skilling") || animator.GetCurrentAnimatorStateInfo(0).IsName("Basic Attack") || UIManager.instance.menuPreventingMovement) && PlayerManager.instance.activeCore == core)
+            if (!(tool.toolAnimator.GetBool("Skilling") || UIManager.instance.menuPreventingMovement) && PlayerManager.instance.activeCore == core)
             {
                 movementInputDirection = (int)Input.GetAxisRaw("Horizontal");
 
@@ -74,9 +82,17 @@ public class PlayerEntity : Entity
             // attack
             if (Input.GetButtonDown("Attack1") && core.currentBody.weapon != null)
             {
-                UpdateAnimators();
-                animator.SetTrigger("Attack");
-                weaponAnimator.SetTrigger("Attack");
+                weaponFront.UpdateAnimators();
+                weaponBack.UpdateAnimators();
+                if (weaponFront.weaponAnimator.runtimeAnimatorController != null)
+                {
+                    weaponFront.weaponAnimator.SetTrigger("Attack");
+                }
+                if (weaponBack.weaponAnimator.runtimeAnimatorController != null)
+                {
+                    weaponBack.weaponAnimator.SetTrigger("Attack");
+                }
+
             }
 
             // left click is down
@@ -109,14 +125,10 @@ public class PlayerEntity : Entity
                 }
             }
         }
-
         else
         {
             movementInputDirection = 0;
         }
-
-
-
     }
 
     protected  void Movement()
@@ -131,7 +143,7 @@ public class PlayerEntity : Entity
         rigBod.velocity = new Vector2(movementSpeed * movementInputDirection, rigBod.velocity.y);
 
         // player running anim
-        animator.SetInteger("Run", movementInputDirection);
+        upperAnimator.SetInteger("Run", movementInputDirection);
     }
 
     public virtual void ToolAction()
@@ -139,40 +151,12 @@ public class PlayerEntity : Entity
 
     }
 
-    public virtual void BasicAttack()
+    public virtual void BasicAttack(int followUpIndex)
     {
         if (core.currentBody.weapon != null)
         {
             Weapon weapon = (Weapon)Database.GetItem(core.currentBody.weapon.itemID);
-
-            // Warhammer
-            if (weapon is WarhammerWeapon)
-            {
-                WarhammerWeapon meleeWeapon = (WarhammerWeapon)weapon;
-
-                List<Collider2D> TargetsHit = new List<Collider2D>();
-                foreach (Weapon.HitColliderInfo collider in meleeWeapon.Hitcolliders)
-                {
-                    Collider2D[] hit = Physics2D.OverlapCircleAll(new Vector2((transform.position.x + collider.position.x * facingDirection), (transform.position.y + collider.position.y)), collider.radius, whatIsEnemy);
-                    foreach (Collider2D target in hit)
-                    {
-                        if (!TargetsHit.Contains(target))
-                        {
-                            TargetsHit.Add(target);
-                        }
-                    }
-                }
-                // damage targets
-            }
+            weapon.BasicAttack(this, followUpIndex);
         }
-    }
-
-    protected void UpdateAnimators()
-    {
-        Tool tool = (Tool)Database.GetItem(core.currentBody.tool.itemID);
-        Weapon weapon = (Weapon)Database.GetItem(core.currentBody.weapon.itemID);
-
-        toolAnimator.runtimeAnimatorController = tool.animController;
-        weaponAnimator.runtimeAnimatorController = weapon.animController;
     }
 }

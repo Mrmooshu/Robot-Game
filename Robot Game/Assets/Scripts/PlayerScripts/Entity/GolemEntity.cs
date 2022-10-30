@@ -16,7 +16,7 @@ public class GolemEntity : PlayerEntity
 
     public void ToggleMining()
     {
-        if (!animator.GetCurrentAnimatorStateInfo(0).IsName("Skilling"))
+        if (!upperAnimator.GetCurrentAnimatorStateInfo(0).IsName("Skill"))
         {
             if (core.currentBody.tool != null)
             {
@@ -24,10 +24,9 @@ public class GolemEntity : PlayerEntity
                 {
                     if (core.currentBody.tool != null)
                     {
-                        UpdateAnimators();
+                        tool.UpdateAnimators();
                         rigBod.velocity = Vector2.zero;
-                        animator.SetBool("Skilling", true);
-                        toolAnimator.SetBool("Skilling", true);
+                        tool.toolAnimator.SetBool("Skilling", true);
                         return;
                     }
                     Debug.Log("need to equip a pick to mine");
@@ -42,10 +41,9 @@ public class GolemEntity : PlayerEntity
                 Debug.Log("no tool equiped");
             }
         }
-        else if (animator.GetCurrentAnimatorStateInfo(0).IsName("Skilling"))
+        else if (upperAnimator.GetCurrentAnimatorStateInfo(0).IsName("Skill"))
         {
-            animator.SetBool("Skilling", false);
-            toolAnimator.SetBool("Skilling", false);
+            tool.toolAnimator.SetBool("Skilling", false);
         }
 
     }

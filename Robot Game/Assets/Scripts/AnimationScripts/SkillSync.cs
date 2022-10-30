@@ -7,7 +7,10 @@ public class SkillSync : StateMachineBehaviour
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        animator.transform.GetChild(0).GetComponent<Animator>().Play("Skill Action");
+        animator.transform.parent.Find("BackArm").GetComponent<Animator>().Play("Skill");
+        animator.transform.parent.Find("FrontArm").GetComponent<Animator>().Play("Skill");
+        animator.transform.parent.Find("LowerBody").GetComponent<Animator>().Play("Skill");
+        animator.transform.parent.Find("UpperBody").GetComponent<Animator>().Play("Skill");
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
@@ -19,7 +22,10 @@ public class SkillSync : StateMachineBehaviour
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        animator.transform.GetChild(0).GetComponent<Animator>().Play("Nothing");
+        animator.transform.parent.Find("BackArm").GetComponent<Animator>().Play("Idle");
+        animator.transform.parent.Find("FrontArm").GetComponent<Animator>().Play("Idle");
+        animator.transform.parent.Find("LowerBody").GetComponent<Animator>().Play("Idle");
+        animator.transform.parent.Find("UpperBody").GetComponent<Animator>().Play("Idle");
     }
 
     // OnStateMove is called right after Animator.OnAnimatorMove()

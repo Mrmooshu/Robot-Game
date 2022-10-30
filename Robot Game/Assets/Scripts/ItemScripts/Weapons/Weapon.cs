@@ -4,8 +4,11 @@ using UnityEngine;
 
 public abstract class Weapon : ItemData
 {
+    public List<HitColliderInfo> drawNow;
+
     [Header("Weapon Properties")]
     public RuntimeAnimatorController animController;
+    public RuntimeAnimatorController animControllerBack = null;
     public int baseAttackSpeed;
     public int baseDamage;
 
@@ -15,4 +18,8 @@ public abstract class Weapon : ItemData
         public Vector2 position;
         public float radius;
     }
+
+    public abstract void BasicAttack(PlayerEntity player, int followUpIndex);
+
+    
 }
