@@ -2,10 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "Item/Weapon/Melee/Warhammer", fileName = "Warhammer Weapon Item")]
-public class WarhammerWeapon : MeleeWeapon
+[CreateAssetMenu(menuName = "Item/Weapon/Melee/Crush", fileName = "Crush Weapon Item")]
+public class CrushWeapon : MeleeWeapon
 {
-    [Header("Warhammer Properties")]
+    [Header("Crush Properties")]
     public HitColliderInfo[] Hitcolliders;
 
     public override void BasicAttack(PlayerEntity player, int followUpIndex)

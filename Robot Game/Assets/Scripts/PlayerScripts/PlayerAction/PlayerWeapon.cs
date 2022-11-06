@@ -19,7 +19,11 @@ public class PlayerWeapon : MonoBehaviour
 
     public void CallBasicAttack(AnimationEvent animEvent)
     {
-        player.BasicAttack(animEvent.intParameter);
+        if (player.core.currentBody.weapon != null)
+        {
+            Weapon weapon = (Weapon)Database.GetItem(player.core.currentBody.weapon.itemID);
+            weapon.BasicAttack(player, animEvent.intParameter);
+        }
     }
 
     public void UpdateAnimators()
@@ -30,7 +34,7 @@ public class PlayerWeapon : MonoBehaviour
         {
             if (weapon.animController != null)
             {
-                weaponAnimator.runtimeAnimatorController = weapon.animControllerBack;
+                weaponAnimator.runtimeAnimatorController = weapon.animController;
             }
             else
             {
@@ -50,7 +54,7 @@ public class PlayerWeapon : MonoBehaviour
         }
 
         // weapon string
-        if (weapon is WarhammerWeapon)
+        if (weapon is CrushWeapon)
         {
             weaponString = "Crush";
         }
@@ -58,9 +62,9 @@ public class PlayerWeapon : MonoBehaviour
         {
             weaponString = "Punch";
         }
-        else if (weapon is DartWeapon)
+        else if (weapon is ThrowWeapon)
         {
-            weaponString = "Dart";
+            weaponString = "Throw";
         }
     }
 

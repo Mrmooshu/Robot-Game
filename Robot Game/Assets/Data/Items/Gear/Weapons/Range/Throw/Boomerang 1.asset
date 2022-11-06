@@ -9,19 +9,19 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 90c4e7c5c1d8478479812568e4c32246, type: 3}
-  m_Name: Dart 1
+  m_Script: {fileID: 11500000, guid: b2980fb43d6b29249b11186bd47d0747, type: 3}
+  m_Name: Boomerang 1
   m_EditorClassIdentifier: 
-  itemID: 77
-  itemName: Test Dart
+  itemID: 78
+  itemName: Test Boomerang
   itemDescription: default description
   stackable: 0
-  sprite: {fileID: 1028016929, guid: 9f8ac63f9da514e4bb0266f08bdc64e6, type: 3}
+  sprite: {fileID: 1389260501, guid: 9f8ac63f9da514e4bb0266f08bdc64e6, type: 3}
   drawNow: []
   animController: {fileID: 0}
   animControllerBack: {fileID: 22100000, guid: 831263da7ef3d8b43a2c2066ea18e221, type: 2}
   baseAttackSpeed: 0
   baseDamage: 0
-  projectilePrefab: {fileID: 4259154362121718386, guid: b5ced71ff67b9b244ae42ba7e181b7f4, type: 3}
+  projectilePrefab: {fileID: 311996050193231670, guid: a89a9e15d337a1c488b35ebb5e001912, type: 3}
   firePosition: {x: 1, y: -0.5}
-  projectileSpeed: 8
+  projectileSpeed: 2

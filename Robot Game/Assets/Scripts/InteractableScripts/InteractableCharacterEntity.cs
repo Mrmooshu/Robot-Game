@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
-public class InteractableCharacterEntity : InteractableEntity
+public class InteractableCharacter : Interactable
 {
     public Vector2 chatBoxSize = new Vector2(100,100);
     public int chatBoxDistanceAbove = 60;

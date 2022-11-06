@@ -4,7 +4,7 @@ using UnityEngine;
 
 [RequireComponent(typeof(BoxCollider2D))]
 
-public abstract class InteractableEntity : Entity
+public abstract class Interactable : MonoBehaviour
 {
     private void Reset()
     {

@@ -8,6 +8,7 @@ public class Database : MonoBehaviour
     public static Database instance;
 
     public ItemDatabase itemDatabase;
+    public EffectDatabase effectDatabase;
     public VariantDatabase variantDatabase;
     public SafePointDatabase safePointDatabase;
     public QuestDatabase questDatabase;
@@ -34,6 +35,15 @@ public class Database : MonoBehaviour
     public static int GetItemID(string name)
     {
         return instance.itemDatabase.itemsList.FirstOrDefault(i => i.itemName.ToLower() == name.ToLower()).itemID;
+    }
+    public static BuffData GetBuff(string name)
+    {
+        return instance.effectDatabase.buffList.FirstOrDefault(i => i.buffName.ToLower() == name.ToLower());
+    }
+
+    public static DebuffData GetDebuff(string name)
+    {
+        return instance.effectDatabase.debuffList.FirstOrDefault(i => i.debuffName.ToLower() == name.ToLower());
     }
 
     public static VariantData GetVariant(string name)

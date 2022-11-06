@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 [RequireComponent(typeof(DropTableRoller))]
 
-public class RockEntity : InteractableEntity
+public class RockInteractable : Interactable
 {
     public override void PlayerInRange(PlayerEntity playerEntitiy)
     {

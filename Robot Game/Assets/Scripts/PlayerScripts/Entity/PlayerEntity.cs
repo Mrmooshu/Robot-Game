@@ -2,11 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
+using System;
 
 public class PlayerEntity : Entity
 {
     public PlayerCore core;
-    public InteractableEntity currentInteractable;
+    public Interactable currentInteractable;
 
     protected Rigidbody2D rigBod;
     public Animator upperAnimator { get;  protected set; }
@@ -17,7 +18,6 @@ public class PlayerEntity : Entity
     public PlayerWeapon weaponFront;
     public PlayerWeapon weaponBack;
     public Transform groundCheck;
-    public float movementSpeed, jumpForce;
     public LayerMask whatIsGround;
     public LayerMask whatIsEnemy;
     protected float groundedRadius = .1f;
@@ -25,7 +25,7 @@ public class PlayerEntity : Entity
     private int movementInputDirection;
     public bool grounded, canJump;
 
-    public void Initialize(PlayerCore core, float movementSpeed, float jumpForce, float gravity)
+    public void Initialize(PlayerCore core)
     {
         rigBod = GetComponent<Rigidbody2D>();
         upperAnimator = transform.Find("UpperBody").GetComponent<Animator>();
@@ -36,9 +36,11 @@ public class PlayerEntity : Entity
         weaponFront = transform.Find("WeaponFront").GetComponent<PlayerWeapon>();
         weaponBack = transform.Find("WeaponBack").GetComponent<PlayerWeapon>();
         this.core = core;
-        this.movementSpeed = movementSpeed;
-        this.jumpForce = jumpForce;
-        rigBod.gravityScale = gravity;
+        CreateStats(new List<(StatType, float)> {
+            (StatType.MoveSpeed, Database.GetVariant(core.currentBody.variantName).moveSpeed),
+            (StatType.JumpForce, Database.GetVariant(core.currentBody.variantName).jumpForce),
+            (StatType.Gravity, Database.GetVariant(core.currentBody.variantName).gravity)
+        });
     }
 
     public override void Update()
@@ -70,7 +72,7 @@ public class PlayerEntity : Entity
                 if (Input.GetButtonDown("Jump") && canJump)
                 {
                     canJump = false;
-                    rigBod.velocity = new Vector2(rigBod.velocity.x, jumpForce);
+                    rigBod.velocity = new Vector2(rigBod.velocity.x, stats[StatType.JumpForce].Value);
                 }
             }
 
@@ -140,7 +142,7 @@ public class PlayerEntity : Entity
                 Flip();
             }
         }
-        rigBod.velocity = new Vector2(movementSpeed * movementInputDirection, rigBod.velocity.y);
+        rigBod.velocity = new Vector2(stats[StatType.MoveSpeed].Value * movementInputDirection, rigBod.velocity.y);
 
         // player running anim
         upperAnimator.SetInteger("Run", movementInputDirection);
@@ -151,12 +153,11 @@ public class PlayerEntity : Entity
 
     }
 
-    public virtual void BasicAttack(int followUpIndex)
+    protected override void CreateStats(List<(StatType, float)> statList = null)
     {
-        if (core.currentBody.weapon != null)
-        {
-            Weapon weapon = (Weapon)Database.GetItem(core.currentBody.weapon.itemID);
-            weapon.BasicAttack(this, followUpIndex);
-        }
+        base.CreateStats(statList);
+
+        // add listeners
+        stats[StatType.Gravity].statUpdated += () => { rigBod.gravityScale = stats[StatType.Gravity].Value; };
     }
 }

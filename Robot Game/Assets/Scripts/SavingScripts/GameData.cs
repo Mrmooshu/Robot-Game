@@ -40,6 +40,7 @@ public class GameData
         bankInventory.Add(new Item(Database.GetItemID("Lectonium Warhammer"), 1));
         bankInventory.Add(new Item(Database.GetItemID("Red Glove"), 1));
         bankInventory.Add(new Item(Database.GetItemID("Test Dart"), 1));
+        bankInventory.Add(new Item(Database.GetItemID("Test Boomerang"), 1));
     }
 
     [System.Serializable]

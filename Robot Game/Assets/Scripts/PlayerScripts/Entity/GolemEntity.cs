@@ -50,9 +50,9 @@ public class GolemEntity : PlayerEntity
 
     public override void ToolAction()
     {
-        if (currentInteractable is RockEntity)
+        if (currentInteractable is RockInteractable)
         {
-           ((RockEntity) currentInteractable).RollDrop();
+           ((RockInteractable) currentInteractable).RollDrop();
         }
     }
 }

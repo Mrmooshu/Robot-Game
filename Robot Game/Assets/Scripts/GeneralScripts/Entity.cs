@@ -6,6 +6,10 @@ public abstract class Entity : MonoBehaviour
 {
     public int facingDirection { get; protected set; }
 
+    public Dictionary<StatType, Stat> stats;
+    public List<Effect> buffs;
+    public List<Effect> debuffs;
+
     public virtual void Start()
     {
         facingDirection = (int)transform.localScale.x;
@@ -43,5 +47,15 @@ public abstract class Entity : MonoBehaviour
             theScale.x = -1;
         }
         transform.localScale = theScale;
+    }
+
+    protected virtual void CreateStats(List<(StatType, float)> statList = null)
+    {
+        stats = new Dictionary<StatType, Stat>();
+
+        foreach ((StatType, float) stat in statList)
+        {
+            stats.Add(stat.Item1, new Stat(stat.Item2));
+        }
     }
 }

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SafePointEntity : InteractableEntity
+public class SafePointEntity : Interactable
 {
     public override void PlayerInRange(PlayerEntity playerEntitiy)
     {

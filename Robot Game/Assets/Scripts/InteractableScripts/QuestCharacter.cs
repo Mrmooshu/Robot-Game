@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class QuestCharacter : InteractableCharacterEntity
+public class QuestCharacter : InteractableCharacter
 {
     public Quest quest;
     protected override void Interact()

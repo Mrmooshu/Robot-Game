@@ -89,6 +89,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 8d53556d0e6fe4448a3d4621b351489a, type: 2}
   - {fileID: 11400000, guid: 57e000abbc4a40349987720426220267, type: 2}
   - {fileID: 11400000, guid: 77ca1db1fc6424143a484593297ae498, type: 2}
+  - {fileID: 11400000, guid: 5dc4ef607162c074d936aecb875e19ab, type: 2}
+  - {fileID: 11400000, guid: b64c983b95dd2774c8fecb9690a75fac, type: 2}
   miningItemsList:
   - {fileID: 11400000, guid: f20f0cc994a7bd3489ae567e13a8d1fc, type: 2}
   - {fileID: 11400000, guid: 054219649fe47a44898201d9fbc18b62, type: 2}
@@ -172,4 +174,5 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 57e000abbc4a40349987720426220267, type: 2}
   - {fileID: 11400000, guid: 77ca1db1fc6424143a484593297ae498, type: 2}
   - {fileID: 11400000, guid: 5dc4ef607162c074d936aecb875e19ab, type: 2}
+  - {fileID: 11400000, guid: b64c983b95dd2774c8fecb9690a75fac, type: 2}
   miscItemsList: []
