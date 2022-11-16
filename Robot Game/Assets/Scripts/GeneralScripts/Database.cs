@@ -19,11 +19,17 @@ public class Database : MonoBehaviour
         {
             instance = this;
             itemDatabase.Initialize();
+            effectDatabase.Initialize();
 
             //assign item id's
             for (int i = 0; i < itemDatabase.itemsList.Count; i++)
             {
                 itemDatabase.itemsList[i].itemID = i + 1;
+            }
+            //assign effect id's
+            for (int i = 0; i < effectDatabase.effectList.Count; i++)
+            {
+                effectDatabase.effectList[i].effectID = i + 1;
             }
         }
     }
@@ -36,26 +42,22 @@ public class Database : MonoBehaviour
     {
         return instance.itemDatabase.itemsList.FirstOrDefault(i => i.itemName.ToLower() == name.ToLower()).itemID;
     }
-    public static BuffData GetBuff(string name)
+    public static EffectData GetEffect(int id)
     {
-        return instance.effectDatabase.buffList.FirstOrDefault(i => i.buffName.ToLower() == name.ToLower());
+        return instance.effectDatabase.effectList.FirstOrDefault(i => i.effectID == id);
     }
-
-    public static DebuffData GetDebuff(string name)
+    public static int GetEffectID(string name)
     {
-        return instance.effectDatabase.debuffList.FirstOrDefault(i => i.debuffName.ToLower() == name.ToLower());
+        return instance.effectDatabase.effectList.FirstOrDefault(i => i.effectName.ToLower() == name.ToLower()).effectID;
     }
-
     public static VariantData GetVariant(string name)
     {
         return instance.variantDatabase.variantList.FirstOrDefault(i => i.variantName == name);
     }
-
     public static SafePointData GetSafePoint(string name)
     {
         return instance.safePointDatabase.safePointList.FirstOrDefault(i => i.locationName == name);
     }
-
     public static Quest GetQuest(string name)
     {
         return instance.questDatabase.questList.FirstOrDefault(i => i.info.questName == name);

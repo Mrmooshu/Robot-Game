@@ -8,6 +8,7 @@ public abstract class ThrowWeapon : RangeWeapon
     {
         Projectile projectile = Instantiate(projectilePrefab, (Vector2)(player.transform.position) + new Vector2(firePosition.x * player.facingDirection, firePosition.y), player.transform.rotation).GetComponent<Projectile>();
         projectile.Initialize(projectileSpeed, player.facingDirection, player);
-        Effect buff = new Effect(Database.GetBuff("speed boost"), player);
+        Effect.AddEffect(Database.GetEffectID("speed boost"), player);
+        Effect.AddEffect(Database.GetEffectID("jump drop"), player);
     }
 }

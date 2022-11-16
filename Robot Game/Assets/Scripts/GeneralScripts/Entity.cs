@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,8 +8,7 @@ public abstract class Entity : MonoBehaviour
     public int facingDirection { get; protected set; }
 
     public Dictionary<StatType, Stat> stats;
-    public List<Effect> buffs;
-    public List<Effect> debuffs;
+    public Dictionary<int,Effect> effects;
 
     public virtual void Start()
     {
@@ -17,6 +17,7 @@ public abstract class Entity : MonoBehaviour
 
     public virtual void Update()
     {
+
 
     }
 
@@ -52,6 +53,7 @@ public abstract class Entity : MonoBehaviour
     protected virtual void CreateStats(List<(StatType, float)> statList = null)
     {
         stats = new Dictionary<StatType, Stat>();
+        effects = new Dictionary<int, Effect>();
 
         foreach ((StatType, float) stat in statList)
         {

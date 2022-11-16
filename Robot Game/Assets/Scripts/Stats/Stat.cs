@@ -17,15 +17,13 @@ public class Stat
     protected float _value;
     protected float lastBaseValue = float.MinValue;
 
-    protected readonly List<StatMod> statModifiers;
-    public readonly ReadOnlyCollection<StatMod> StatModifiers;
+    public readonly List<StatMod> statModifiers;
 
     public event Action statUpdated;
 
     public Stat()
     {
         statModifiers = new List<StatMod>();
-        StatModifiers = statModifiers.AsReadOnly();
     }
 
     public Stat(float baseValue) : this()
@@ -56,9 +54,9 @@ public class Stat
 
     protected int CompareModifierOrder(StatMod a, StatMod b)
     {
-        if (a.Type < b.Type)
+        if (a.bonusType < b.bonusType)
             return -1;
-        else if (a.Type > b.Type)
+        else if (a.bonusType > b.bonusType)
             return 1;
         return 0;
     }
@@ -79,7 +77,7 @@ public class Stat
 
         for (int i = statModifiers.Count - 1; i >= 0; i--)
         {
-            if (statModifiers[i].Source == source)
+            if (statModifiers[i].source == source)
             {
                 isDirty = true;
                 didRemove = true;
@@ -97,27 +95,34 @@ public class Stat
         for (int i = 0; i < statModifiers.Count; i++)
         {
             StatMod mod = statModifiers[i];
+            float modValue = mod.value;
 
-            if (mod.Type == StatModType.Base || mod.Type == StatModType.Flat)
+            if (mod.bonusType == StatModType.Base || mod.bonusType == StatModType.Flat)
             {
-                finalValue += mod.Value;
+                finalValue += modValue;
             }
-            else if (mod.Type == StatModType.Additive)
+            else if (mod.bonusType == StatModType.Additive)
             {
-                sumAdditive += mod.Value;
+                sumAdditive += modValue;
 
-                if (i + 1 >= statModifiers.Count || statModifiers[i + 1].Type != StatModType.Additive)
+                if (i + 1 >= statModifiers.Count || statModifiers[i + 1].bonusType != StatModType.Additive)
                 {
                     finalValue *= 1 + sumAdditive;
                     sumAdditive = 0;
                 }
             }
-            else if (mod.Type == StatModType.Multiplicative)
+            else if (mod.bonusType == StatModType.Multiplicative)
             {
-                finalValue *= 1 + mod.Value;
+                finalValue *= 1 + modValue;
             }
         }
         statUpdated?.Invoke();
         return (float)Math.Round(finalValue, 4);
+    }
+
+    public void Recalculate()
+    {
+        isDirty = true;
+        float v = Value;
     }
 }

@@ -31,6 +31,7 @@ public class CharacterEntity : Entity
 
     public override void Update()
     {
+        base.Update();
         if (walkTimer > 0)
         {
             movementDirection = facingDirection;

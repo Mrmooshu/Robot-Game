@@ -11,16 +11,18 @@ public enum StatModType
 [Serializable]
 public class StatMod
 {
-    public readonly float Value;
-    public readonly StatModType Type;
-    public readonly object Source;
+    public float value;
+    public StatModType bonusType;
+    public StatType statType;
+    public object source;
 
-    public StatMod(float value, StatModType type, object source)
+    public StatMod(float value, StatModType bonusType, StatType statType, object source)
     {
-        Value = value;
-        Type = type;
-        Source = source;
+        this.value = value;
+        this.bonusType = bonusType;
+        this.statType = statType;
+        this.source = source;
     }
 
-    public StatMod(float value, StatModType type) : this(value, type, null) { }
+    public StatMod(float value, StatModType bonusType, StatType statType) : this(value, bonusType, statType, null) { }
 }

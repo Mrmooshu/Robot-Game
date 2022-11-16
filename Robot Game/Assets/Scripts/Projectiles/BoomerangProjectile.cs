@@ -9,6 +9,7 @@ public class BoomerangProjectile : Projectile
 
     public override void Update()
     {
+        base.Update();
         duration -= Time.deltaTime;
 
         // homing

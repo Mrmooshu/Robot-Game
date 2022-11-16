@@ -21,6 +21,7 @@ public class Projectile : Entity
 
     public override void Update()
     {
+        base.Update();
         // homing
         //direction.right = origin.transform.position - transform.position;
         //visual.right = origin.transform.position - transform.position;

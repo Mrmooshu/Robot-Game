@@ -1,12 +1,12 @@
 ManifestFileVersion: 0
-CRC: 2879254679
+CRC: 2460791553
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 9596c9ea20916bbcf43c56be2b153568
+    Hash: c74eeb59e4a8e4f5e5e7ebad8768a08e
   TypeTreeHash:
     serializedVersion: 2
-    Hash: 928ca8a7fb0866823e3cd62ff154227e
+    Hash: add6aef7d07f74df14c75976c216d64c
 HashAppended: 0
 ClassTypes:
 - Class: 1
@@ -78,6 +78,8 @@ ClassTypes:
 - Class: 114
   Script: {fileID: 11500000, guid: 71c1514a6bd24e1e882cebbe1904ce04, type: 3}
 - Class: 114
+  Script: {fileID: 11500000, guid: 535855f7b36d4694888a5650e5e9553a, type: 3}
+- Class: 114
   Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
 - Class: 114
   Script: {fileID: 11500000, guid: 902e11bac10f1f74f9f4b6bbeb7ca27b, type: 3}
@@ -88,8 +90,12 @@ ClassTypes:
 - Class: 114
   Script: {fileID: 11500000, guid: e71c72beb9d30d54bab969582508132e, type: 3}
 - Class: 114
+  Script: {fileID: 11500000, guid: c91c854ae86352e4f8893a00aabe846a, type: 3}
+- Class: 114
   Script: {fileID: 11500000, guid: 97cafdb748acf9841adca982b0b0718c, type: 3}
 - Class: 115
+  Script: {instanceID: 0}
+- Class: 128
   Script: {instanceID: 0}
 - Class: 213
   Script: {instanceID: 0}
@@ -100,6 +106,8 @@ ClassTypes:
 - Class: 224
   Script: {instanceID: 0}
 - Class: 225
+  Script: {instanceID: 0}
+- Class: 687078895
   Script: {instanceID: 0}
 SerializeReferenceClassIdentifiers:
 - AssemblyName: Assembly-CSharp
@@ -124,6 +132,12 @@ SerializeReferenceClassIdentifiers:
   ClassName: TMPro.TMP_FontFeatureTable
 - AssemblyName: Unity.TextMeshPro
   ClassName: TMPro.TMP_FontWeightPair
+- AssemblyName: Unity.TextMeshPro
+  ClassName: TMPro.TMP_GlyphAdjustmentRecord
+- AssemblyName: Unity.TextMeshPro
+  ClassName: TMPro.TMP_GlyphPairAdjustmentRecord
+- AssemblyName: Unity.TextMeshPro
+  ClassName: TMPro.TMP_GlyphValueRecord
 - AssemblyName: Unity.TextMeshPro
   ClassName: TMPro.VertexGradient
 - AssemblyName: UnityEngine.CoreModule
@@ -161,6 +175,7 @@ SerializeReferenceClassIdentifiers:
 Assets:
 - Assets/Prefabs/UI/InventoryUI/BodyUI/InventoryPlayer.prefab
 - Assets/Prefabs/UI/QuestUI/QuestListOption.prefab
+- Assets/Prefabs/UI/EffectUI/EffectObject.prefab
 - Assets/Prefabs/UI/InventoryUI/BodyUI/PlayerSlot.prefab
 - Assets/Prefabs/UI/CoreUI/CoreSelectOption.prefab
 - Assets/Prefabs/UI/MainPlayerMenu.prefab

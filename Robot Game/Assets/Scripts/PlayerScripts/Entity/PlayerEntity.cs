@@ -25,6 +25,8 @@ public class PlayerEntity : Entity
     private int movementInputDirection;
     public bool grounded, canJump;
 
+    public static event Action effectUpdated;
+
     public void Initialize(PlayerCore core)
     {
         rigBod = GetComponent<Rigidbody2D>();
@@ -45,6 +47,7 @@ public class PlayerEntity : Entity
 
     public override void Update()
     {
+        base.Update();
         PlayerInput();
     }
 
@@ -159,5 +162,10 @@ public class PlayerEntity : Entity
 
         // add listeners
         stats[StatType.Gravity].statUpdated += () => { rigBod.gravityScale = stats[StatType.Gravity].Value; };
+    }
+
+    public void InvokeEffectUpdate()
+    {
+        effectUpdated?.Invoke();
     }
 }

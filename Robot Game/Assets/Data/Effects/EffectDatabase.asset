@@ -12,6 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ad7cca2295f8904b999d6d08079dbe2, type: 3}
   m_Name: EffectDatabase
   m_EditorClassIdentifier: 
+  effectList:
+  - {fileID: 11400000, guid: 45041bc318d5f614ba3795154fb7963b, type: 2}
+  - {fileID: 11400000, guid: 460b9183bb6630647b0e34c6ef6b4329, type: 2}
   buffList:
   - {fileID: 11400000, guid: 45041bc318d5f614ba3795154fb7963b, type: 2}
-  debuffList: []
+  debuffList:
+  - {fileID: 11400000, guid: 460b9183bb6630647b0e34c6ef6b4329, type: 2}
