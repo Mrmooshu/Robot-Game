@@ -86,7 +86,7 @@ public class PlayerEntity : Entity
             }
 
             // attack
-            if (Input.GetButtonDown("Attack1") && grounded && core.currentBody.weapon != null)
+            if (Input.GetButton("Attack1") && grounded && core.currentBody.weapon != null)
             {
                 animator.SetTrigger("Basic");
             }
@@ -145,7 +145,7 @@ public class PlayerEntity : Entity
         rigBod.AddForce(movement * Vector2.right);
 
         // player running anim
-        animator.SetInteger("Running", movementInputDirection);
+        animator.SetFloat("Running", Mathf.Abs(movementInputDirection));
         animator.SetFloat("Yvelocity", rigBod.velocity.y);
     }
 

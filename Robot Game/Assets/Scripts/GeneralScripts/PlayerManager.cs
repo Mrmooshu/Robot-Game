@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Numerics;
 using System;
+using Cinemachine;
 
 public class PlayerManager : MonoBehaviour, IDataSave
 {
@@ -17,7 +18,7 @@ public class PlayerManager : MonoBehaviour, IDataSave
     public GameObject golemBlueprint;
     public GameObject sentinelBlueprint;
     public GameObject automatonBlueprint;
-    public Camera mainCam;
+    public CinemachineVirtualCamera virtualCam;
     public GameObject PlayerHolderObject;
 
     public PlayerCore activeCore;
@@ -85,7 +86,7 @@ public class PlayerManager : MonoBehaviour, IDataSave
 
     private void ControlThisPlayer(PlayerEntity player)
     {
-        mainCam.GetComponent<TargetFollow>().followTransform = player.transform;
+        virtualCam.Follow = player.transform;
         player.transform.SetAsLastSibling();
         if (player.currentInteractable != null)
         {
