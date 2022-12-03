@@ -6,37 +6,36 @@ using System;
 
 public class PlayerEntity : Entity
 {
+    //core
     public PlayerCore core;
     public Interactable currentInteractable;
 
-    protected Rigidbody2D rigBod;
-    public Animator upperAnimator { get;  protected set; }
-    public Animator lowerAnimator { get; protected set; }
-    public Animator frontAnimator { get; protected set; }
-    public Animator backAnimator { get; protected set; }
-    public PlayerTool tool;
-    public PlayerWeapon weaponFront;
-    public PlayerWeapon weaponBack;
+
+    //gameobject components
+    protected Rigidbody2D rigBod { get; private set; }
+    public Animator animator { get;  protected set; }
+    public PlayerTool tool { get; private set; }
     public Transform groundCheck;
+
+    //other
     public LayerMask whatIsGround;
     public LayerMask whatIsEnemy;
     protected float groundedRadius = .1f;
 
+    //movement variables
     private int movementInputDirection;
-    public bool grounded, canJump;
+    public bool grounded { get; private set; }
+    public bool canJump { get; private set; }
+
+
 
     public static event Action effectUpdated;
 
     public void Initialize(PlayerCore core)
     {
         rigBod = GetComponent<Rigidbody2D>();
-        upperAnimator = transform.Find("UpperBody").GetComponent<Animator>();
-        lowerAnimator = transform.Find("LowerBody").GetComponent<Animator>();
-        frontAnimator = transform.Find("FrontArm").GetComponent<Animator>();
-        backAnimator = transform.Find("BackArm").GetComponent<Animator>();
+        animator = GetComponent<Animator>();
         tool = transform.Find("Tool").GetComponent<PlayerTool>();
-        weaponFront = transform.Find("WeaponFront").GetComponent<PlayerWeapon>();
-        weaponBack = transform.Find("WeaponBack").GetComponent<PlayerWeapon>();
         this.core = core;
         CreateStats(new List<(StatType, float)> {
             (StatType.MoveSpeed, Database.GetVariant(core.currentBody.variantName).moveSpeed),
@@ -63,19 +62,21 @@ public class PlayerEntity : Entity
         if (grounded && rigBod.velocity.y <= 0)
         {
             canJump = true;
+            animator.SetBool("Jumping", false) ;
         }
 
         if (PlayerManager.instance.activeCore == core)
         {
             // movement
-            if (!(tool.toolAnimator.GetBool("Skilling") || UIManager.instance.menuPreventingMovement) && PlayerManager.instance.activeCore == core)
+            if (!(animator.GetCurrentAnimatorStateInfo(0).IsTag("action") || UIManager.instance.menuPreventingMovement) && PlayerManager.instance.activeCore == core)
             {
                 movementInputDirection = (int)Input.GetAxisRaw("Horizontal");
 
                 if (Input.GetButtonDown("Jump") && canJump)
                 {
                     canJump = false;
-                    rigBod.velocity = new Vector2(rigBod.velocity.x, stats[StatType.JumpForce].Value);
+                    rigBod.AddForce(Vector2.up * stats[StatType.JumpForce].Value, ForceMode2D.Impulse);
+                    animator.SetBool("Jumping", true);
                 }
             }
 
@@ -85,19 +86,9 @@ public class PlayerEntity : Entity
             }
 
             // attack
-            if (Input.GetButtonDown("Attack1") && core.currentBody.weapon != null)
+            if (Input.GetButtonDown("Attack1") && grounded && core.currentBody.weapon != null)
             {
-                weaponFront.UpdateAnimators();
-                weaponBack.UpdateAnimators();
-                if (weaponFront.weaponAnimator.runtimeAnimatorController != null)
-                {
-                    weaponFront.weaponAnimator.SetTrigger("Attack");
-                }
-                if (weaponBack.weaponAnimator.runtimeAnimatorController != null)
-                {
-                    weaponBack.weaponAnimator.SetTrigger("Attack");
-                }
-
+                animator.SetTrigger("Basic");
             }
 
             // left click is down
@@ -140,15 +131,22 @@ public class PlayerEntity : Entity
     {
         if (PlayerManager.instance.activeCore == core)
         {
+            // turn around
             if ((facingDirection > 0 && movementInputDirection < 0) || (facingDirection < 0 && movementInputDirection > 0))
             {
                 Flip();
             }
         }
-        rigBod.velocity = new Vector2(stats[StatType.MoveSpeed].Value * movementInputDirection, rigBod.velocity.y);
+        // movement
+        float targetSpeed = movementInputDirection * stats[StatType.MoveSpeed].Value;
+        float speedDiff = targetSpeed - rigBod.velocity.x;
+        float accelRate = (Mathf.Abs(targetSpeed) > 0.01f) ? stats[StatType.MoveSpeed].Value*.5f : stats[StatType.MoveSpeed].Value*2;
+        float movement = Mathf.Pow(Mathf.Abs(speedDiff) * accelRate, 1) * Mathf.Sign(speedDiff);
+        rigBod.AddForce(movement * Vector2.right);
 
         // player running anim
-        upperAnimator.SetInteger("Run", movementInputDirection);
+        animator.SetInteger("Running", movementInputDirection);
+        animator.SetFloat("Yvelocity", rigBod.velocity.y);
     }
 
     public virtual void ToolAction()

@@ -16,7 +16,7 @@ public class GolemEntity : PlayerEntity
 
     public void ToggleMining()
     {
-        if (!upperAnimator.GetCurrentAnimatorStateInfo(0).IsName("Skill"))
+        if (!animator.GetCurrentAnimatorStateInfo(0).IsName("Skill"))
         {
             if (core.currentBody.tool != null)
             {
@@ -26,6 +26,7 @@ public class GolemEntity : PlayerEntity
                     {
                         tool.UpdateAnimators();
                         rigBod.velocity = Vector2.zero;
+                        animator.SetBool("Skilling", true);
                         tool.toolAnimator.SetBool("Skilling", true);
                         return;
                     }
@@ -41,8 +42,9 @@ public class GolemEntity : PlayerEntity
                 Debug.Log("no tool equiped");
             }
         }
-        else if (upperAnimator.GetCurrentAnimatorStateInfo(0).IsName("Skill"))
+        else if (animator.GetCurrentAnimatorStateInfo(0).IsName("Skill"))
         {
+            animator.SetBool("Skilling", false);
             tool.toolAnimator.SetBool("Skilling", false);
         }
 
@@ -54,5 +56,10 @@ public class GolemEntity : PlayerEntity
         {
            ((RockInteractable) currentInteractable).RollDrop();
         }
+    }
+
+    public void BasicForce()
+    {
+        rigBod.AddForce(new Vector2(stats[StatType.MoveSpeed].Value * facingDirection, 1.2f), ForceMode2D.Impulse);
     }
 }
