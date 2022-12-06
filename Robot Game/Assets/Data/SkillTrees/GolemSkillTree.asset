@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 51a6be713ed0a2845bce1ae793761d78, type: 3}
+  m_Name: GolemSkillTree
+  m_EditorClassIdentifier: 
+  skills:
+  - {fileID: 11400000, guid: 2bdc325e9b1b2f64c904eca05d3e49fe, type: 2}
+  - {fileID: 11400000, guid: 6135935cb4a3f5d449e791838a02f715, type: 2}

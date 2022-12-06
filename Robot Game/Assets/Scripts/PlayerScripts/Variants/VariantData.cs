@@ -13,6 +13,8 @@ public class VariantData : ScriptableObject
     [Header("Base Variant Info")]
     public string variantName = "Default";
     public Type type;
+    public SkillTree skillTree;
+    public GameObject blueprint;
     [Header("Base Variant Animations")]
     public RuntimeAnimatorController animController;
     public Sprite sprite;

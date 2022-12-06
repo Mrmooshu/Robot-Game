@@ -14,6 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   variantName: Snow Golem
   type: 0
+  skillTree: {fileID: 11400000, guid: 0268dad3a9738a14e80361dd7fac9882, type: 2}
+  blueprint: {fileID: 2644715624662573926, guid: 2ebf245875588e543ba0699bb7e0da6d, type: 3}
   animController: {fileID: 22100000, guid: a0eee201c01da954285470ef4023dafb, type: 2}
   sprite: {fileID: 21300000, guid: 1cce159e01d0f334999e38572b2761a0, type: 3}
   moveSpeed: 5

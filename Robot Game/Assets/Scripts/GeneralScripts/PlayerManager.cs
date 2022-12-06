@@ -46,21 +46,7 @@ public class PlayerManager : MonoBehaviour, IDataSave
     {
         VariantData variant = Database.GetVariant(core.currentBody.variantName);
         GameObject newPlayer;
-        switch (variant.type)
-        {
-            case VariantData.Type.golem:
-                newPlayer = Instantiate(golemBlueprint, PlayerHolderObject.transform);
-                break;
-            case VariantData.Type.sentinel:
-                newPlayer = Instantiate(sentinelBlueprint, PlayerHolderObject.transform);
-                break;
-            case VariantData.Type.automaton:
-                newPlayer = Instantiate(automatonBlueprint, PlayerHolderObject.transform);
-                break;
-            default:
-                Debug.Log("failed to spawn");
-                return;
-        }
+        newPlayer = Instantiate(variant.blueprint, PlayerHolderObject.transform);
         PlayerEntity playerEntity = newPlayer.GetComponent<PlayerEntity>();
         playerEntity.Initialize(core);
         playerEntity.animator.runtimeAnimatorController = variant.animController;
