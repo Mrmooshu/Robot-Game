@@ -4,38 +4,39 @@ using UnityEngine.UI;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class ActionButton : Button
+public class ActionButton : MonoBehaviour
 {
-    protected override void Start()
+    private Button button { get => GetComponent<Button>(); }
+
+    private void Start()
     {
-        base.Start();
         SetDefaultButton();
     }
 
     public void SetDefaultButton()
     {
         // clear any listners on this button
-        onClick.RemoveAllListeners();
+        button.onClick.RemoveAllListeners();
 
         // set sprites and action for button
         SpriteState state = new SpriteState();
         GetComponent<Image>().sprite = UIManager.instance.uiSprites.GetSprite("Action Buttons_1");
         state.highlightedSprite = UIManager.instance.uiSprites.GetSprite("Action Buttons_0");
         state.pressedSprite = UIManager.instance.uiSprites.GetSprite("Action Buttons_2");
-        spriteState = state;
+        button.spriteState = state;
     }
 
-    public void SetCurrentButton(UnityAction action, Sprite button, Sprite highlighted, Sprite pressed)
+    public void SetCurrentButton(UnityAction action, Sprite buttonSprite, Sprite highlightedSprite, Sprite pressedSprite)
     {
         // clear any listners on this button
-        onClick.RemoveAllListeners();
+        button.onClick.RemoveAllListeners();
 
         // set sprites and action for button
         SpriteState state = new SpriteState();
-        onClick.AddListener(action);
-        GetComponent<Image>().sprite = button;
-        state.highlightedSprite = highlighted;
-        state.pressedSprite = pressed;
-        spriteState = state;
+        button.onClick.AddListener(action);
+        GetComponent<Image>().sprite = buttonSprite;
+        state.highlightedSprite = highlightedSprite;
+        state.pressedSprite = pressedSprite;
+        button.spriteState = state;
     }
 }

@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class SkillUpgradeDisplay : Button
+public class SkillUpgradeDisplay : MonoBehaviour
 {
-
+    public SkillTreeUpgrade skill;
 
 }

@@ -13,7 +13,7 @@ public class GameData
     public void NewGameData()
     {
         bodyInventory = new BodyInventory(10);
-        cores = new PlayerCore[2] { new PlayerCore(new PlayerBody("Clay Golem"), 10, 10) , new PlayerCore(new PlayerBody("Snow Golem"), 10, 10) };
+        cores = new PlayerCore[2] { new PlayerCore(new PlayerBody("Clay Golem"), 10, 10) , new PlayerCore(new PlayerBody("Clay Golem"), 10, 10) };
         bankInventory = new ItemInventory(48);
         quests = new List<QuestData>();
 
@@ -30,7 +30,7 @@ public class GameData
         cores[1].currentBody.weapon = new Item(Database.GetItemID("Iromite Warhammer"), 1);
 
         bodyInventory.inventory[0] = new PlayerBody("Clay Golem");
-        bodyInventory.inventory[1] = new PlayerBody("Snow Golem");
+        bodyInventory.inventory[1] = new PlayerBody("Clay Golem");
 
         bankInventory.Add(new Item(Database.GetItemID("Slythril Warhammer"), 1));
         bankInventory.Add(new Item(Database.GetItemID("Myphrite Warhammer"), 1));

@@ -12,3 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3768290912663824baa5c9fa59a5a8b0, type: 3}
   m_Name: HealthSkill
   m_EditorClassIdentifier: 
+  abilityName: health up
+  abilityDescription: 
+  requiredSkills: []
+  maxLevel: 0

@@ -9,6 +9,7 @@ public class Item : ISerializationCallbackReceiver
     public int itemID;
     [System.NonSerialized] public BigInteger quanity;
 
+    // used to save quanity as a sting in json
     [SerializeField] private string quanityString;
 
     public Item(int itemID, BigInteger quanity)

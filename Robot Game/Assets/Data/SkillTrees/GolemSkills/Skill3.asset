@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3768290912663824baa5c9fa59a5a8b0, type: 3}
-  m_Name: Skill2
+  m_Name: Skill3
   m_EditorClassIdentifier: 
-  abilityName: skill 2
+  abilityName: skill 3
   abilityDescription: 
   requiredSkills:
   - reqiredSkill: {fileID: 11400000, guid: 2bdc325e9b1b2f64c904eca05d3e49fe, type: 2}

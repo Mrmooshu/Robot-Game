@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   variantName: Clay Golem
   type: 0
-  skillTree: {fileID: 11400000, guid: 0268dad3a9738a14e80361dd7fac9882, type: 2}
+  skillTree: {fileID: 52194782207523293, guid: 9f46285ffafa2ff4ebc0f2c8f3711c95, type: 3}
   blueprint: {fileID: 2644715624662573926, guid: 2ebf245875588e543ba0699bb7e0da6d, type: 3}
   animController: {fileID: 22100000, guid: f20c1e1d939fdce4592451a8d8ad1295, type: 2}
   sprite: {fileID: -1224567816, guid: a9d03e74de400624db8b922a0180d88c, type: 3}

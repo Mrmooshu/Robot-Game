@@ -2,8 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "SkillTree/SkillTree", fileName = "SkillTree")]
-public class SkillTree : ScriptableObject
+public class SkillTree : MonoBehaviour
 {
-    public List<SkillTreeUpgrade> skills;
+    public SkillUpgradeDisplay[] skills { get => transform.GetComponentsInChildren<SkillUpgradeDisplay>(); }
 }
