@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: Skill3
   m_EditorClassIdentifier: 
   abilityName: skill 3
-  abilityDescription: 
+  abilityDescription: nummba 3 gotta do somtin 4 me
   requiredSkills:
-  - reqiredSkill: {fileID: 11400000, guid: 2bdc325e9b1b2f64c904eca05d3e49fe, type: 2}
+  - reqiredSkill: {fileID: 11400000, guid: 6135935cb4a3f5d449e791838a02f715, type: 2}
     reqiredLevel: 5
-  maxLevel: 0
+  maxLevel: 5

@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: Skill2
   m_EditorClassIdentifier: 
   abilityName: skill 2
-  abilityDescription: 
+  abilityDescription: skill two what it gonna do
   requiredSkills:
   - reqiredSkill: {fileID: 11400000, guid: 2bdc325e9b1b2f64c904eca05d3e49fe, type: 2}
     reqiredLevel: 5
-  maxLevel: 0
+  maxLevel: 5

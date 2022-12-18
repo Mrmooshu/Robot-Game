@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: HealthSkill
   m_EditorClassIdentifier: 
   abilityName: health up
-  abilityDescription: 
+  abilityDescription: more helf plzz
   requiredSkills: []
-  maxLevel: 0
+  maxLevel: 10

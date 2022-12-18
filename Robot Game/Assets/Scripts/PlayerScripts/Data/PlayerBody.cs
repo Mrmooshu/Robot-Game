@@ -26,6 +26,9 @@ public class PlayerBody : ISerializationCallbackReceiver
     public Item weapon;
     public Item tool;
     public Dictionary<string,int> skills;
+    [SerializeField] private int _skillPoints;
+    public int SkillPoints { get { return _skillPoints; } set { _skillPoints = value; skillPointsUpdated?.Invoke(); } }
+    public static event Action skillPointsUpdated;
 
     // used to save skills as a list in json
     [SerializeField] private List<skill> skillsList;
@@ -35,7 +38,8 @@ public class PlayerBody : ISerializationCallbackReceiver
         this.variantName = variantName;
         // create fresh skill tree values from variants skill tree
         skills = new Dictionary<string, int>();
-        foreach (SkillUpgradeDisplay skill in Database.GetVariant(variantName).skillTree.GetComponent<SkillTree>().skills)
+        SkillPoints = 10;
+        foreach (SkillUpgradeDisplay skill in Database.GetVariant(variantName).skillTree.GetComponentsInChildren<SkillUpgradeDisplay>())
         {
             skills.Add(skill.skill.abilityName, 0);
         }
