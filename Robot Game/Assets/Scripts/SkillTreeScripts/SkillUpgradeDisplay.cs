@@ -21,7 +21,7 @@ public class SkillUpgradeDisplay : MonoBehaviour
 
     public void SelectSkill()
     {
-        SkillTreeDisplay.instance.selectedSkill = skill;
+        SkillTreeDisplay.instance.selectedSkill = this;
         SkillTreeDisplay.instance.RefreshInfoWindow();
     }
 }

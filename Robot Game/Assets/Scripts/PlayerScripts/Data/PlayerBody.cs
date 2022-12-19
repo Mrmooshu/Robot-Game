@@ -38,7 +38,7 @@ public class PlayerBody : ISerializationCallbackReceiver
         this.variantName = variantName;
         // create fresh skill tree values from variants skill tree
         skills = new Dictionary<string, int>();
-        SkillPoints = 10;
+        SkillPoints = 0;
         foreach (SkillUpgradeDisplay skill in Database.GetVariant(variantName).skillTree.GetComponentsInChildren<SkillUpgradeDisplay>())
         {
             skills.Add(skill.skill.abilityName, 0);

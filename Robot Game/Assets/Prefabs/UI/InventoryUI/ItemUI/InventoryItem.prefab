@@ -137,7 +137,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d08dbd05b2e8174b8285a630c9540fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cam: {fileID: 0}
+  item:
+    itemID: 0
+    quanityString: 0
 --- !u!225 &5225696225026262231
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -218,15 +220,15 @@ MonoBehaviour:
       m_Calls: []
   m_text: 0
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: c1e01abd6ed574d47b7bcb8961ef1003, type: 2}
-  m_sharedMaterial: {fileID: -2975592638403885386, guid: c1e01abd6ed574d47b7bcb8961ef1003, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: c555908fb8a16a941920d71a130acb9f, type: 2}
+  m_sharedMaterial: {fileID: 2139951316273551474, guid: c555908fb8a16a941920d71a130acb9f, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+    rgba: 4278255609
+  m_fontColor: {r: 0.9750097, g: 1, b: 0, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:

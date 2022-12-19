@@ -8,14 +8,15 @@ public class SkillTreeDisplay : MonoBehaviour
 {
 
     public Transform view;
-    public TextMeshProUGUI skillLevelText;
+    public TextMeshProUGUI skillNameText;
     public TextMeshProUGUI skillDescriptionText;
+    public TextMeshProUGUI skillLevelText;
     public TextMeshProUGUI pointsAvailableText;
     public Button skillUpgradeButton;
 
     public static SkillTreeDisplay instance;
 
-    public SkillTreeUpgrade selectedSkill = null;
+    public SkillUpgradeDisplay selectedSkill = null;
 
     private void Awake()
     {
@@ -58,13 +59,25 @@ public class SkillTreeDisplay : MonoBehaviour
 
     public void RefreshInfoWindow()
     {
-        pointsAvailableText.text = "" + PlayerManager.instance.activeCore.currentBody.SkillPoints;
+        pointsAvailableText.text = "Skill Points: " + PlayerManager.instance.activeCore.currentBody.SkillPoints;
         if (selectedSkill != null)
         {
-            skillLevelText.text = PlayerManager.instance.activeCore.currentBody.skills[selectedSkill.abilityName] + "/" + selectedSkill.maxLevel;
-            skillDescriptionText.text = selectedSkill.abilityDescription;
+            skillNameText.enabled = true;
+            skillDescriptionText.enabled = true;
+            skillLevelText.enabled = true;
+            skillUpgradeButton.enabled = true;
+            skillNameText.text = selectedSkill.skill.abilityName;
+            skillDescriptionText.text = selectedSkill.skill.abilityDescription;
+            skillLevelText.text = "Level: " +  PlayerManager.instance.activeCore.currentBody.skills[selectedSkill.skill.abilityName] + "/" + selectedSkill.skill.maxLevel;
             skillUpgradeButton.onClick.RemoveAllListeners();
             skillUpgradeButton.onClick.AddListener(UpgradeCurrentSkill);
+        }
+        else
+        {
+            skillNameText.enabled = false;
+            skillDescriptionText.enabled = false;
+            skillLevelText.enabled = false;
+            skillUpgradeButton.enabled = false;
         }
     }
 
@@ -72,9 +85,9 @@ public class SkillTreeDisplay : MonoBehaviour
     {
         if (selectedSkill != null)
         {
-            if (PlayerManager.instance.activeCore.currentBody.skills[selectedSkill.abilityName] < selectedSkill.maxLevel && PlayerManager.instance.activeCore.currentBody.SkillPoints >= 1)
+            if (PlayerManager.instance.activeCore.currentBody.skills[selectedSkill.skill.abilityName] < selectedSkill.skill.maxLevel && PlayerManager.instance.activeCore.currentBody.SkillPoints >= 1)
             {
-                PlayerManager.instance.activeCore.currentBody.skills[selectedSkill.abilityName]++;
+                PlayerManager.instance.activeCore.currentBody.skills[selectedSkill.skill.abilityName]++;
                 PlayerManager.instance.activeCore.currentBody.SkillPoints--;
             }
         }
