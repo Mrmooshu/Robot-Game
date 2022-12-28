@@ -68,7 +68,7 @@ public class PlayerEntity : Entity
         if (PlayerManager.instance.activeCore == core)
         {
             // movement
-            if (!(animator.GetCurrentAnimatorStateInfo(0).IsTag("action") || UIManager.instance.menuPreventingMovement) && PlayerManager.instance.activeCore == core)
+            if (!(animator.GetCurrentAnimatorStateInfo(0).IsTag("stuckaction") || UIManager.instance.menuPreventingMovement) && PlayerManager.instance.activeCore == core)
             {
                 movementInputDirection = (int)Input.GetAxisRaw("Horizontal");
 

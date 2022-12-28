@@ -70,7 +70,7 @@ public class CharacterEntity : Entity
         }
 
         // running anim
-        animator.SetInteger("Run", movementDirection);
+        animator.SetFloat("Running", Mathf.Abs(movementDirection));
     }
 
     public void Jump()
