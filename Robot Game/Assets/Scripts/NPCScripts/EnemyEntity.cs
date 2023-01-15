@@ -16,6 +16,12 @@ public class EnemyEntity : CharacterEntity
     {
         base.Start();
         wander = new WanderBehaviour(this);
+        CreateStats(new List<(StatType, float)> {
+            (StatType.Health, 10),
+            (StatType.MoveSpeed, 2),
+            (StatType.JumpForce, 2),
+            (StatType.Gravity, 2)
+        });
     }
 
     public override void FixedUpdate()

@@ -57,7 +57,14 @@ public abstract class Entity : MonoBehaviour
 
         foreach ((StatType, float) stat in statList)
         {
-            stats.Add(stat.Item1, new Stat(stat.Item2));
+            if (stat.Item1 == StatType.Health)
+            {
+                stats.Add(stat.Item1, new ResourceStat(stat.Item2));
+            }
+            else
+            {
+                stats.Add(stat.Item1, new Stat(stat.Item2));
+            }
         }
     }
 }

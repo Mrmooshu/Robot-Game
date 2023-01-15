@@ -21,6 +21,7 @@ public class PlayerEntity : Entity
     public LayerMask whatIsGround;
     public LayerMask whatIsEnemy;
     protected float groundedRadius = .1f;
+    public Transform hitboxes;
 
     //movement variables
     private int movementInputDirection;
@@ -152,6 +153,27 @@ public class PlayerEntity : Entity
     public virtual void ToolAction()
     {
 
+    }
+
+    public virtual void Attack()
+    {
+        List<Collider2D> c = new List<Collider2D>();
+
+        BoxCollider2D[] colliders = hitboxes.GetComponentsInChildren<BoxCollider2D>();
+        foreach(BoxCollider2D collider in colliders)
+        {
+            if (collider.gameObject.activeInHierarchy)
+            {
+                Collider2D[] a = Physics2D.OverlapBoxAll(collider.transform.position, collider.size, 0, whatIsEnemy);
+                c.AddRange(a);
+            }
+        }
+        c.Distinct();
+
+        foreach (Collider2D enemy in c)
+        {
+            DamageScript.ApplyDamage(enemy.transform.GetComponent<EnemyEntity>(), 1);
+        }
     }
 
     protected override void CreateStats(List<(StatType, float)> statList = null)

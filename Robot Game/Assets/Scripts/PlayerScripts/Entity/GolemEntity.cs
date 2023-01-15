@@ -58,8 +58,9 @@ public class GolemEntity : PlayerEntity
         }
     }
 
-    public void BasicForce()
+    public override void Attack()
     {
+        base.Attack();
         rigBod.AddForce(new Vector2(stats[StatType.MoveSpeed].Value * facingDirection, 1.2f), ForceMode2D.Impulse);
     }
 }
