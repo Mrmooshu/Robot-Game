@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using System.Linq;
 
 public class SkillTreeDisplay : MonoBehaviour
 {
@@ -56,6 +57,7 @@ public class SkillTreeDisplay : MonoBehaviour
         GameObject skillTree = PlayerManager.instance.activeCore.GetPlayer().skillTree;
         skillTree.transform.SetParent(view);
         skillTree.transform.position = view.transform.position;
+        skillTree.transform.localScale = new Vector3(1,1,1);
         skillTree.gameObject.SetActive(true);
         GetComponent<ScrollRect>().content = skillTree.GetComponent<RectTransform>();
         RefreshInfoWindow();
@@ -87,13 +89,13 @@ public class SkillTreeDisplay : MonoBehaviour
 
     private void UpgradeCurrentSkill()
     {
-        if (selectedSkill != null)
+        if (selectedSkill != null && selectedSkill.requiredSkills.ToList().TrueForAll(x => PlayerManager.instance.activeCore.currentBody.skills[x.reqiredSkill.passive.abilityName] >= x.reqiredLevel))
         {
             if (PlayerManager.instance.activeCore.currentBody.skills[selectedSkill.passive.abilityName] < selectedSkill.maxLevel && PlayerManager.instance.activeCore.currentBody.SkillPoints >= 1)
             {
                 PlayerManager.instance.activeCore.currentBody.skills[selectedSkill.passive.abilityName]++;
                 PlayerManager.instance.activeCore.currentBody.SkillPoints--;
-                //selectedSkill.Refresh();
+                selectedSkill.passive.Refresh();
             }
         }
     }

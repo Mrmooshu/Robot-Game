@@ -5,6 +5,4 @@ using UnityEngine;
 public abstract class PassiveStat : Passive
 {
     protected StatMod modifier;
-
-    public abstract void Refresh();
 }

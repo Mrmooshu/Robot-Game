@@ -11,6 +11,7 @@ public abstract class PlayerEntity : Entity
     public GameObject skillTree;
     [Header("Base Variant Base Stats")]
     public int health;
+    public int mana;
     public int attackDamage;
     public int magicDamage;
     public int attackDefense;
@@ -42,7 +43,7 @@ public abstract class PlayerEntity : Entity
     public bool canJump { get; private set; }
 
 
-
+    public event Action<Entity> onHitEvent;
     public static event Action effectUpdated;
 
     public virtual void Initialize(PlayerCore core)
@@ -53,6 +54,7 @@ public abstract class PlayerEntity : Entity
         this.core = core;
         CreateStats(new List<(StatType, float)> {
             (StatType.Health, health),
+            (StatType.Mana, mana),
             (StatType.AttackDamage, attackDamage),
             (StatType.MagicDamage, magicDamage),
             (StatType.AttackDefense, attackDefense),
@@ -61,7 +63,7 @@ public abstract class PlayerEntity : Entity
             (StatType.JumpForce, jumpForce),
             (StatType.Gravity, gravity)
         });
-        ApplySkillStats();
+        ApplySkills();
     }
 
     public override void Update()
@@ -181,17 +183,20 @@ public abstract class PlayerEntity : Entity
         stats[StatType.Gravity].statUpdated += () => { rigBod.gravityScale = stats[StatType.Gravity].Value; };
     }
 
-    protected virtual void ApplySkillStats()
+    protected virtual void ApplySkills()
     {
-        Debug.Log(stats[StatType.Health].Value);
         foreach (KeyValuePair<string,int> skill in core.currentBody.skills)
         {
-            foreach (PassiveStat passive in skillTree.GetComponentsInChildren<PassiveStat>())
+            foreach (Passive passive in skillTree.GetComponentsInChildren<Passive>())
             {
                 passive.InitializePassive(this);
-                Debug.Log(stats[StatType.Health].Value);
             }
         }
+    }
+
+    public void InvokeOnHitEvent(Entity target)
+    {
+        onHitEvent?.Invoke(target);
     }
 
     public void InvokeEffectUpdate()

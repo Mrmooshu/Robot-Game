@@ -113,6 +113,7 @@ MonoBehaviour:
   variantName: Clay Golem
   skillTree: {fileID: 8040974698390274048}
   health: 100
+  mana: 0
   attackDamage: 30
   magicDamage: 0
   attackDefense: 10
@@ -538,6 +539,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4712506359356141751, guid: 9f46285ffafa2ff4ebc0f2c8f3711c95, type: 3}
+      propertyPath: parentToHold
+      value: 
+      objectReference: {fileID: 2644715624662573926}
     - target: {fileID: 4712506359356141751, guid: 9f46285ffafa2ff4ebc0f2c8f3711c95, type: 3}
       propertyPath: paretnToHold
       value: 

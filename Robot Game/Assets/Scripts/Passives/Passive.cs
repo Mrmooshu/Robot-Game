@@ -8,5 +8,7 @@ public abstract class Passive : MonoBehaviour
     public string abilityDescription;
     protected PlayerEntity entity;
 
-    public abstract void InitializePassive(Entity target);
+    public abstract void InitializePassive(Entity host);
+
+    public abstract void Refresh();
 }

@@ -46,17 +46,20 @@ public static class DamageScript
         damageSources.Add(attackData.damageData);
         if (attackData.onHit)
         {
-            //foreach loop adding damage of on hit effects to damageSources
+            if (attackData.attacker is PlayerEntity)
+            {
+                ((PlayerEntity)attackData.attacker).InvokeOnHitEvent(target);
+            }
         }
         foreach (damageData damage in damageSources)
         {
             if (damage.type is damageType.physical)
             {
-                actualPhysicalDamage = (int)(damage.damage * (100 / (100 + target.stats[StatType.AttackDefense].Value)));
+                actualPhysicalDamage = Mathf.CeilToInt(damage.damage * (100 / (100 + target.stats[StatType.AttackDefense].Value)));
             }
             else if (damage.type is damageType.magic)
             {
-                actualMagicDamage = (int)(damage.damage * (100 / (100 + target.stats[StatType.MagicDefense].Value)));
+                actualMagicDamage = Mathf.CeilToInt(damage.damage * (100 / (100 + target.stats[StatType.MagicDefense].Value)));
             }
 
         }

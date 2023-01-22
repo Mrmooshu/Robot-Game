@@ -1,12 +1,12 @@
 ManifestFileVersion: 0
-CRC: 1864687182
+CRC: 3574286118
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 06501f78f23603874b4df5e040edf97e
+    Hash: 54ad2559989c83f1863316165a2e95d0
   TypeTreeHash:
     serializedVersion: 2
-    Hash: 9b80157a02ef8e6af3f90a8eb4230d51
+    Hash: f2f8691bd4f7e880b4488f79a626baa0
 HashAppended: 0
 ClassTypes:
 - Class: 1
@@ -49,6 +49,10 @@ ClassTypes:
   Script: {fileID: 11500000, guid: 51a3e6be9b8b3ac49a02f8c96412caf3, type: 3}
 - Class: 114
   Script: {fileID: 11500000, guid: e6471db6af3366e44a919587ddfe934b, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: ba663adae6a5e4842a689d0c21b33063, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: c465fb4921877ea489ff3fea718436ed, type: 3}
 - Class: 115
   Script: {instanceID: 0}
 - Class: 212
@@ -70,6 +74,8 @@ SerializeReferenceClassIdentifiers:
   ClassName: PlayerBody
 - AssemblyName: Assembly-CSharp
   ClassName: PlayerCore
+- AssemblyName: Assembly-CSharp
+  ClassName: SkillTreeUpgrade/requiredSkill
 - AssemblyName: UnityEngine.CoreModule
   ClassName: UnityEngine.Events.PersistentCallGroup
 - AssemblyName: UnityEngine.UI
