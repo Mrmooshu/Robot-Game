@@ -57,7 +57,7 @@ public abstract class Entity : MonoBehaviour
 
         foreach ((StatType, float) stat in statList)
         {
-            if (stat.Item1 == StatType.Health)
+            if (stat.Item1 == StatType.Health || stat.Item1 == StatType.Mana)
             {
                 stats.Add(stat.Item1, new ResourceStat(stat.Item2));
             }

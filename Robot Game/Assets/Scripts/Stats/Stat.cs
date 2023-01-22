@@ -6,7 +6,7 @@ using UnityEngine;
 
 public enum StatType
 {
-    Health,Mana,MoveSpeed,JumpForce,Gravity
+    Health,Mana,MoveSpeed,JumpForce,Gravity,AttackDamage,MagicDamage,AttackDefense,MagicDefense,CritChance
 }
 
 [Serializable]
@@ -50,6 +50,7 @@ public class Stat
         isDirty = true;
         statModifiers.Add(mod);
         statModifiers.Sort(CompareModifierOrder);
+        mod.stat = this;
     }
 
     protected int CompareModifierOrder(StatMod a, StatMod b)
@@ -95,7 +96,7 @@ public class Stat
         for (int i = 0; i < statModifiers.Count; i++)
         {
             StatMod mod = statModifiers[i];
-            float modValue = mod.value;
+            float modValue = mod.Value;
 
             if (mod.bonusType == StatModType.Base || mod.bonusType == StatModType.Flat)
             {

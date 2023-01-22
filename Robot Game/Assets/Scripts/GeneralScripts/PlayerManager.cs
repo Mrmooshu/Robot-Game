@@ -44,12 +44,10 @@ public class PlayerManager : MonoBehaviour, IDataSave
 
     public void Spawn(PlayerCore core)
     {
-        VariantData variant = Database.GetVariant(core.currentBody.variantName);
         GameObject newPlayer;
-        newPlayer = Instantiate(variant.blueprint, PlayerHolderObject.transform);
+        newPlayer = Instantiate(GeneralManager.instance.variantPrefabs.LoadAsset<GameObject>(core.currentBody.variantName), PlayerHolderObject.transform);
         PlayerEntity playerEntity = newPlayer.GetComponent<PlayerEntity>();
         playerEntity.Initialize(core);
-        playerEntity.animator.runtimeAnimatorController = variant.animController;
         newPlayer.transform.position = playerEntity.core.position;
         players.Add(playerEntity);
     }

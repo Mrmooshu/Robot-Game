@@ -54,6 +54,6 @@ public class CurrentPlayerDisplay : SlotDisplay<PlayerBody>, IDropHandler, ISlot
         GameObject bodyInstance = Instantiate(objectPrefab, transform);
         InventoryPlayer invenPlayer = bodyInstance.GetComponent<InventoryPlayer>();
         invenPlayer.body = PlayerManager.instance.activeCore.currentBody;
-        invenPlayer.transform.GetChild(0).GetComponent<Image>().sprite = Database.GetVariant(PlayerManager.instance.activeCore.currentBody.variantName).sprite;
+        invenPlayer.transform.GetChild(0).GetComponent<Image>().sprite = PlayerManager.instance.activeCore.GetPlayer().GetComponent<SpriteRenderer>().sprite;
     }
 }

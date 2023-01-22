@@ -1,5 +1,5 @@
 ManifestFileVersion: 0
-CRC: 1820762624
+CRC: 915545224
 AssetBundleManifest:
   AssetBundleInfos:
     Info_0:
@@ -8,4 +8,7 @@ AssetBundleManifest:
         Dependency_0: general prefabs
     Info_1:
       Name: general prefabs
+      Dependencies: {}
+    Info_2:
+      Name: variant prefabs
       Dependencies: {}

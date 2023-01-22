@@ -38,10 +38,10 @@ public class PlayerBody : ISerializationCallbackReceiver
         this.variantName = variantName;
         // create fresh skill tree values from variants skill tree
         skills = new Dictionary<string, int>();
-        SkillPoints = 0;
-        foreach (SkillUpgradeDisplay skill in Database.GetVariant(variantName).skillTree.GetComponentsInChildren<SkillUpgradeDisplay>())
+        SkillPoints = 100;
+        foreach (Passive skill in GeneralManager.instance.variantPrefabs.LoadAsset<GameObject>(variantName).GetComponent<PlayerEntity>().skillTree.GetComponentsInChildren<Passive>())
         {
-            skills.Add(skill.skill.abilityName, 0);
+            skills.Add(skill.abilityName, 0);
         }
 
     }

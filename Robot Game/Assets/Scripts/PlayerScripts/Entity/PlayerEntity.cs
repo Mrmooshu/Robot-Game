@@ -4,8 +4,21 @@ using UnityEngine;
 using System.Linq;
 using System;
 
-public class PlayerEntity : Entity
+public abstract class PlayerEntity : Entity
 {
+    [Header("Base Variant Info")]
+    public string variantName = "Default";
+    public GameObject skillTree;
+    [Header("Base Variant Base Stats")]
+    public int health;
+    public int attackDamage;
+    public int magicDamage;
+    public int attackDefense;
+    public int magicDefense;
+    public float moveSpeed;
+    public float jumpForce;
+    public float gravity;
+
     //core
     public PlayerCore core;
     public Interactable currentInteractable;
@@ -32,17 +45,23 @@ public class PlayerEntity : Entity
 
     public static event Action effectUpdated;
 
-    public void Initialize(PlayerCore core)
+    public virtual void Initialize(PlayerCore core)
     {
         rigBod = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         tool = transform.Find("Tool").GetComponent<PlayerTool>();
         this.core = core;
         CreateStats(new List<(StatType, float)> {
-            (StatType.MoveSpeed, Database.GetVariant(core.currentBody.variantName).moveSpeed),
-            (StatType.JumpForce, Database.GetVariant(core.currentBody.variantName).jumpForce),
-            (StatType.Gravity, Database.GetVariant(core.currentBody.variantName).gravity)
+            (StatType.Health, health),
+            (StatType.AttackDamage, attackDamage),
+            (StatType.MagicDamage, magicDamage),
+            (StatType.AttackDefense, attackDefense),
+            (StatType.MagicDefense, magicDefense),
+            (StatType.MoveSpeed, moveSpeed),
+            (StatType.JumpForce, jumpForce),
+            (StatType.Gravity, gravity)
         });
+        ApplySkillStats();
     }
 
     public override void Update()
@@ -150,31 +169,9 @@ public class PlayerEntity : Entity
         animator.SetFloat("Yvelocity", rigBod.velocity.y);
     }
 
-    public virtual void ToolAction()
-    {
+    public abstract void ToolAction();
 
-    }
-
-    public virtual void Attack()
-    {
-        List<Collider2D> c = new List<Collider2D>();
-
-        BoxCollider2D[] colliders = hitboxes.GetComponentsInChildren<BoxCollider2D>();
-        foreach(BoxCollider2D collider in colliders)
-        {
-            if (collider.gameObject.activeInHierarchy)
-            {
-                Collider2D[] a = Physics2D.OverlapBoxAll(collider.transform.position, collider.size, 0, whatIsEnemy);
-                c.AddRange(a);
-            }
-        }
-        c.Distinct();
-
-        foreach (Collider2D enemy in c)
-        {
-            DamageScript.ApplyDamage(enemy.transform.GetComponent<EnemyEntity>(), 1);
-        }
-    }
+    public abstract void BasicAttack();
 
     protected override void CreateStats(List<(StatType, float)> statList = null)
     {
@@ -182,6 +179,19 @@ public class PlayerEntity : Entity
 
         // add listeners
         stats[StatType.Gravity].statUpdated += () => { rigBod.gravityScale = stats[StatType.Gravity].Value; };
+    }
+
+    protected virtual void ApplySkillStats()
+    {
+        Debug.Log(stats[StatType.Health].Value);
+        foreach (KeyValuePair<string,int> skill in core.currentBody.skills)
+        {
+            foreach (PassiveStat passive in skillTree.GetComponentsInChildren<PassiveStat>())
+            {
+                passive.InitializePassive(this);
+                Debug.Log(stats[StatType.Health].Value);
+            }
+        }
     }
 
     public void InvokeEffectUpdate()

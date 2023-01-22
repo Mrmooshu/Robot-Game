@@ -9,6 +9,7 @@ public class GeneralManager : MonoBehaviour
     public static GeneralManager instance;
 
     public AssetBundle generalPrefabs;
+    public AssetBundle variantPrefabs;
 
     private void Awake()
     {
@@ -16,6 +17,7 @@ public class GeneralManager : MonoBehaviour
         {
             instance = this;
             generalPrefabs = AssetBundle.LoadFromFile(Path.Combine(Application.streamingAssetsPath, "general prefabs"));
+            variantPrefabs = AssetBundle.LoadFromFile(Path.Combine(Application.streamingAssetsPath, "variant prefabs"));
         }
     }
 

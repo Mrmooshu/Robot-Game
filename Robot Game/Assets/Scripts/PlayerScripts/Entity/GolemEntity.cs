@@ -58,9 +58,9 @@ public class GolemEntity : PlayerEntity
         }
     }
 
-    public override void Attack()
+    public override void BasicAttack()
     {
-        base.Attack();
+        DamageScript.Attack(new DamageScript.attackData(this, new DamageScript.damageData(stats[StatType.AttackDamage].Value, DamageScript.damageType.physical), true), hitboxes, whatIsEnemy, this);
         rigBod.AddForce(new Vector2(stats[StatType.MoveSpeed].Value * facingDirection, 1.2f), ForceMode2D.Impulse);
     }
 }

@@ -95,7 +95,7 @@ public class Effect
     {
         for (int i = 0; i < effectData.mods.Length; i++)
         {
-            mods.ElementAt(i).value = effectData.mods[i].value * currentStacks;
+            mods.ElementAt(i).Value = effectData.mods[i].value * currentStacks;
         }
     }
 

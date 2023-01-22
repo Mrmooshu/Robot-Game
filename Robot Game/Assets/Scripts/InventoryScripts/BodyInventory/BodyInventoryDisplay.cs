@@ -50,7 +50,7 @@ public class BodyInventoryDisplay : InventoryDisplay
                 GameObject bodyInstance = Instantiate(objectPrefab, slotInstance.transform);
                 InventoryPlayer invenPlayer = bodyInstance.GetComponent<InventoryPlayer>();
                 invenPlayer.body = currentInventory.GetSlotByIndex(i);
-                invenPlayer.transform.GetChild(0).GetComponent<Image>().sprite = Database.GetVariant(currentInventory.GetSlotByIndex(i).variantName).sprite;
+                invenPlayer.transform.GetChild(0).GetComponent<Image>().sprite = GeneralManager.instance.variantPrefabs.LoadAsset<GameObject>(currentInventory.GetSlotByIndex(i).variantName).GetComponent<SpriteRenderer>().sprite;
             }
 
             if (x >= columns)
