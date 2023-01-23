@@ -11,6 +11,7 @@ public abstract class PlayerEntity : Entity
     public GameObject skillTree;
     [Header("Base Variant Base Stats")]
     public int health;
+    public int healthRegen;
     public int mana;
     public int attackDamage;
     public int magicDamage;
@@ -54,6 +55,7 @@ public abstract class PlayerEntity : Entity
         this.core = core;
         CreateStats(new List<(StatType, float)> {
             (StatType.Health, health),
+            (StatType.HealthRegen, healthRegen),
             (StatType.Mana, mana),
             (StatType.AttackDamage, attackDamage),
             (StatType.MagicDamage, magicDamage),
