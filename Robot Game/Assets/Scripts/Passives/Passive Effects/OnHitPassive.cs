@@ -2,14 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class OnHitPassive : Passive
+public class OnHitPassive : Passive, IOnHit
 {
     public override void InitializePassive(Entity host)
     {
         entity = (PlayerEntity)host;
         if (host is PlayerEntity)
         {
-            ((PlayerEntity)host).onHitEvent += OnHit;
+            ((PlayerEntity)host).onHitPassives.Add(this) ;
         }
     }
 
@@ -17,8 +17,8 @@ public class OnHitPassive : Passive
     {
     }
 
-    private void OnHit(Entity target)
+    public DamageScript.damageData OnHit(Entity target)
     {
-        DamageScript.ApplyDamage(target, new DamageScript.attackData(entity, new DamageScript.damageData(entity.core.currentBody.skills[abilityName] * entity.stats[StatType.Health].Value * .01f, DamageScript.damageType.magic),false));
+        return new DamageScript.damageData(entity.core.currentBody.skills[abilityName] * entity.stats[StatType.Health].Value * .01f, DamageScript.damageType.magic);
     }
 }

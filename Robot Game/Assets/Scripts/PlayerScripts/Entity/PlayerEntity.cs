@@ -21,6 +21,9 @@ public abstract class PlayerEntity : Entity
     public float jumpForce;
     public float gravity;
 
+    public List<IOnHit> onHitPassives;
+    public HealthRegenPassive healthRegeneration;
+
     //core
     public PlayerCore core;
     public Interactable currentInteractable;
@@ -43,8 +46,6 @@ public abstract class PlayerEntity : Entity
     public bool grounded { get; private set; }
     public bool canJump { get; private set; }
 
-
-    public event Action<Entity> onHitEvent;
     public static event Action effectUpdated;
 
     public virtual void Initialize(PlayerCore core)
@@ -187,18 +188,12 @@ public abstract class PlayerEntity : Entity
 
     protected virtual void ApplySkills()
     {
-        foreach (KeyValuePair<string,int> skill in core.currentBody.skills)
+        onHitPassives = new List<IOnHit>();
+        //apply skills for skill tree
+        foreach (Passive passive in skillTree.GetComponentsInChildren<Passive>())
         {
-            foreach (Passive passive in skillTree.GetComponentsInChildren<Passive>())
-            {
-                passive.InitializePassive(this);
-            }
+            passive.InitializePassive(this);
         }
-    }
-
-    public void InvokeOnHitEvent(Entity target)
-    {
-        onHitEvent?.Invoke(target);
     }
 
     public void InvokeEffectUpdate()

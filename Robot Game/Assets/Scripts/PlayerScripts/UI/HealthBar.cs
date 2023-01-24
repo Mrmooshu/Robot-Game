@@ -18,6 +18,6 @@ public class HealthBar : MonoBehaviour
     void Update()
     {
         healthBar.fillAmount = ((ResourceStat)PlayerManager.instance.activeCore.GetPlayer().stats[StatType.Health]).currentValue / ((ResourceStat)PlayerManager.instance.activeCore.GetPlayer().stats[StatType.Health]).Value;
-        text.text = ((ResourceStat)PlayerManager.instance.activeCore.GetPlayer().stats[StatType.Health]).currentValue +  "/" + ((ResourceStat)PlayerManager.instance.activeCore.GetPlayer().stats[StatType.Health]).Value;
+        text.text = (int)((ResourceStat)PlayerManager.instance.activeCore.GetPlayer().stats[StatType.Health]).currentValue +  "/" + (int)((ResourceStat)PlayerManager.instance.activeCore.GetPlayer().stats[StatType.Health]).Value;
     }
 }

@@ -44,11 +44,11 @@ public static class DamageScript
         int actualMagicDamage = 0;
         List<damageData> damageSources = new List<damageData>();
         damageSources.Add(attackData.damageData);
-        if (attackData.onHit)
+        if (attackData.onHit && attackData.attacker is PlayerEntity)
         {
-            if (attackData.attacker is PlayerEntity)
+            foreach (IOnHit onHitEffect in ((PlayerEntity)attackData.attacker).onHitPassives)
             {
-                ((PlayerEntity)attackData.attacker).InvokeOnHitEvent(target);
+                damageSources.Add(onHitEffect.OnHit(target));
             }
         }
         foreach (damageData damage in damageSources)

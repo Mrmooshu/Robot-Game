@@ -113,6 +113,7 @@ MonoBehaviour:
   variantName: Clay Golem
   skillTree: {fileID: 8040974698390274048}
   health: 100
+  healthRegen: 1
   mana: 0
   attackDamage: 30
   magicDamage: 0
