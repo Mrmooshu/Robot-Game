@@ -110,18 +110,32 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51a3e6be9b8b3ac49a02f8c96412caf3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  statListInspector:
+  - type: 0
+    value: 100
+  - type: 1
+    value: 1
+  - type: 4
+    value: 6
+  - type: 5
+    value: 4
+  - type: 6
+    value: 1
+  - type: 7
+    value: 30
+  - type: 8
+    value: 0
+  - type: 9
+    value: 20
+  - type: 10
+    value: 20
+  - type: 11
+    value: 10
+  - type: 2
+    value: 100
   variantName: Clay Golem
   skillTree: {fileID: 8040974698390274048}
-  health: 100
-  healthRegen: 1
-  mana: 0
-  attackDamage: 30
-  magicDamage: 0
-  attackDefense: 10
-  magicDefense: 5
-  moveSpeed: 6
-  jumpForce: 4
-  gravity: 1
+  healthRegeneration: {fileID: 0}
   core:
     currentBody:
       variantName: 

@@ -9,20 +9,8 @@ public abstract class PlayerEntity : Entity
     [Header("Base Variant Info")]
     public string variantName = "Default";
     public GameObject skillTree;
-    [Header("Base Variant Base Stats")]
-    public int health;
-    public int healthRegen;
-    public int mana;
-    public int attackDamage;
-    public int magicDamage;
-    public int attackDefense;
-    public int magicDefense;
-    public float moveSpeed;
-    public float jumpForce;
-    public float gravity;
 
     public List<IOnHit> onHitPassives;
-    public HealthRegenPassive healthRegeneration;
 
     //core
     public PlayerCore core;
@@ -50,23 +38,18 @@ public abstract class PlayerEntity : Entity
 
     public virtual void Initialize(PlayerCore core)
     {
+        facingDirection = (int)transform.localScale.x;
         rigBod = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         tool = transform.Find("Tool").GetComponent<PlayerTool>();
         this.core = core;
-        CreateStats(new List<(StatType, float)> {
-            (StatType.Health, health),
-            (StatType.HealthRegen, healthRegen),
-            (StatType.Mana, mana),
-            (StatType.AttackDamage, attackDamage),
-            (StatType.MagicDamage, magicDamage),
-            (StatType.AttackDefense, attackDefense),
-            (StatType.MagicDefense, magicDefense),
-            (StatType.MoveSpeed, moveSpeed),
-            (StatType.JumpForce, jumpForce),
-            (StatType.Gravity, gravity)
-        });
+        CreateStats();
         ApplySkills();
+    }
+
+    public override void Start()
+    {
+        // do all start stuff in initialize instead
     }
 
     public override void Update()
@@ -83,7 +66,13 @@ public abstract class PlayerEntity : Entity
     private void PlayerInput()
     {
         grounded = Physics2D.OverlapCircle(groundCheck.position, groundedRadius, whatIsGround);
-        
+
+        if (dead)
+        {
+            rigBod.velocity = Vector2.zero;
+            return;
+        }
+
         if (grounded && rigBod.velocity.y <= 0)
         {
             canJump = true;
@@ -178,9 +167,9 @@ public abstract class PlayerEntity : Entity
 
     public abstract void BasicAttack();
 
-    protected override void CreateStats(List<(StatType, float)> statList = null)
+    protected override void CreateStats()
     {
-        base.CreateStats(statList);
+        base.CreateStats();
 
         // add listeners
         stats[StatType.Gravity].statUpdated += () => { rigBod.gravityScale = stats[StatType.Gravity].Value; };
@@ -194,6 +183,12 @@ public abstract class PlayerEntity : Entity
         {
             passive.InitializePassive(this);
         }
+    }
+
+    protected override void Die()
+    {
+        base.Die();
+        animator.SetTrigger("Die");
     }
 
     public void InvokeEffectUpdate()

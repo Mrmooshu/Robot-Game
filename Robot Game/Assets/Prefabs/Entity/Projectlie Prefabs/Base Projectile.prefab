@@ -216,8 +216,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4063b2a962b056648826d85d3e1da586, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  statList:
+  - type: 4
+    value: 2
+  origin: {fileID: 0}
   direction: {fileID: 0}
-  spriteCollider: {fileID: 0}
+  visual: {fileID: 0}
   speed: 2
 --- !u!1 &8532461127141304979
 GameObject:

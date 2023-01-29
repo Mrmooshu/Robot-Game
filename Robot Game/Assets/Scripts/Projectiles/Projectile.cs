@@ -7,16 +7,14 @@ public class Projectile : Entity
     public Entity origin;
     public Transform direction;
     public Transform visual;
-    public float speed;
 
     public void Initialize(float speed, int facingDirection, Entity origin)
     {
-        this.speed = speed;
         transform.right *= facingDirection;
         this.origin = origin;
         direction = transform.Find("Direction");
         visual = transform.Find("Visual");
-        CreateStats(new List<(StatType, float)> { (StatType.MoveSpeed, speed)});
+        CreateStats();
     }
 
     public override void Update()

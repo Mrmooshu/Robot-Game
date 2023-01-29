@@ -62,7 +62,7 @@ public class GolemEntity : PlayerEntity
     {
         DamageScript.Attack(new DamageScript.attackData(this, new DamageScript.damageData(stats[StatType.AttackDamage].Value, DamageScript.damageType.physical), true), hitboxes, whatIsEnemy, this);
         rigBod.AddForce(new Vector2(stats[StatType.MoveSpeed].Value * facingDirection, 1.2f), ForceMode2D.Impulse);
-        //test, delete this later plox
-        DamageScript.ApplyDamage(this, new DamageScript.attackData(this, new DamageScript.damageData(10, DamageScript.damageType.physical), false));
+        //kill switch (uncomment to kill urself)
+        //((ResourceStat)stats[StatType.Health]).CurrentValue -= 1000;
     }
 }

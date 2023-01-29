@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using UnityEngine;
 
+[Serializable]
 public enum StatType
 {
     Health,HealthRegen,Mana,ManaRegen,MoveSpeed,JumpForce,Gravity,AttackDamage,MagicDamage,AttackDefense,MagicDefense,CritChance
@@ -38,8 +39,8 @@ public class Stat
             if (isDirty || lastBaseValue != BaseValue)
             {
                 lastBaseValue = BaseValue;
-                _value = CalculateFinalValue();
                 isDirty = false;
+                _value = CalculateFinalValue();
             }
             return _value;
         }

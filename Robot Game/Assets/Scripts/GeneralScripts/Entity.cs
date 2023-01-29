@@ -5,7 +5,17 @@ using UnityEngine;
 
 public abstract class Entity : MonoBehaviour
 {
+    [Serializable]
+    public struct StatStruct
+    {
+        public StatType type;
+        public float value;
+    }
+
+    [SerializeField]private List<StatStruct> statListInspector;
+
     public int facingDirection { get; protected set; }
+    public bool dead = false;
 
     public Dictionary<StatType, Stat> stats;
     public Dictionary<int,Effect> effects;
@@ -13,6 +23,7 @@ public abstract class Entity : MonoBehaviour
     public virtual void Start()
     {
         facingDirection = (int)transform.localScale.x;
+        CreateStats();
     }
 
     public virtual void Update()
@@ -50,21 +61,43 @@ public abstract class Entity : MonoBehaviour
         transform.localScale = theScale;
     }
 
-    protected virtual void CreateStats(List<(StatType, float)> statList = null)
+    protected virtual void CreateStats()
     {
         stats = new Dictionary<StatType, Stat>();
         effects = new Dictionary<int, Effect>();
 
-        foreach ((StatType, float) stat in statList)
+        foreach (StatStruct stat in statListInspector)
         {
-            if (stat.Item1 == StatType.Health || stat.Item1 == StatType.Mana)
+            if (stat.type == StatType.Health || stat.type == StatType.Mana)
             {
-                stats.Add(stat.Item1, new ResourceStat(stat.Item2));
+                stats.Add(stat.type, new ResourceStat(stat.value));
             }
             else
             {
-                stats.Add(stat.Item1, new Stat(stat.Item2));
+                stats.Add(stat.type, new Stat(stat.value));
             }
+        }
+
+        if (stats.ContainsKey(StatType.Health))
+        {
+            ((ResourceStat)stats[StatType.Health]).currentValueUpdated += CheckToDie;
+        }
+    }
+
+    private void CheckToDie()
+    {
+        if (((ResourceStat)stats[StatType.Health]).CurrentValue <= 0)
+        {
+            Die();
+        }
+    }
+
+    protected virtual void Die()
+    {
+        dead = true;
+        if (GetComponent<DropTableRoller>())
+        {
+            GetComponent<DropTableRoller>().RollDrop();
         }
     }
 }

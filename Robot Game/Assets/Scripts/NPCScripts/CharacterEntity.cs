@@ -9,11 +9,9 @@ public class CharacterEntity : Entity
     public Transform groundCheck;
     public Transform wallCheck;
     public Transform jumpCheck;
-    public float movementSpeed, jumpForce;
     public LayerMask whatIsGround;
     protected float groundedRadius = .1f;
     protected float wallCheckLength = .1f;
-    public float walkSpeed = 1;
     public int walkTimer = 0;
     public int waitTimer = 0;
     public float spawnX;
@@ -51,6 +49,12 @@ public class CharacterEntity : Entity
     {
         grounded = Physics2D.OverlapCircle(groundCheck.position, groundedRadius, whatIsGround);
 
+        if (dead)
+        {
+            rigBod.velocity = Vector2.zero;
+            return;
+        }
+
         if (grounded && rigBod.velocity.y <= 0)
         {
             canJump = true;
@@ -62,11 +66,11 @@ public class CharacterEntity : Entity
         }
         if (walkTimer > 0)
         {
-            rigBod.velocity = new Vector2(walkSpeed * movementDirection, rigBod.velocity.y);
+            rigBod.velocity = new Vector2(stats[StatType.MoveSpeed].Value * movementDirection, rigBod.velocity.y);
         }
         else
         {
-            rigBod.velocity = new Vector2(movementSpeed * movementDirection, rigBod.velocity.y);
+            rigBod.velocity = new Vector2(stats[StatType.MoveSpeed].Value * movementDirection, rigBod.velocity.y);
         }
 
         // running anim
@@ -78,7 +82,7 @@ public class CharacterEntity : Entity
         if (canJump)
         {
             canJump = false;
-            rigBod.velocity = new Vector2(rigBod.velocity.x, jumpForce);
+            rigBod.velocity = new Vector2(rigBod.velocity.x, stats[StatType.JumpForce].Value);
         }
     }
 

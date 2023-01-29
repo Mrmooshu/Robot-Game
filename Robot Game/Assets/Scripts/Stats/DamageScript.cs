@@ -63,9 +63,9 @@ public static class DamageScript
             }
 
         }
-        ((ResourceStat)target.stats[StatType.Health]).currentValue -= (actualPhysicalDamage + actualMagicDamage);
+        ((ResourceStat)target.stats[StatType.Health]).CurrentValue -= (actualPhysicalDamage + actualMagicDamage);
         int damageDisplayCount = 0;
-        foreach ((int,Color) damage in new (int, Color)[]{(actualMagicDamage,Color.blue), (actualPhysicalDamage, Color.red) })
+        foreach ((int,Color) damage in new (int, Color)[]{(actualMagicDamage,Color.cyan), (actualPhysicalDamage, new Color(1,.74f,0)) })
         {
             if (damage.Item1 > 0)
             {

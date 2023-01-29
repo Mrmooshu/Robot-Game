@@ -4,10 +4,9 @@ using UnityEngine;
 
 public class DropTableRoller : MonoBehaviour
 {
-    [SerializeField] public GameObject itemObject;
     [SerializeField] public List<TableAndChance> Tables;
 
-    public void RollDrop(int xSpawnBump, int ySpawnBump)
+    public void RollDrop(int xSpawnBump = 100, int ySpawnBump = 150)
     {
         for (int i = 0; i < Tables.Count; i++)
         {

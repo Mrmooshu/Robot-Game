@@ -1,12 +1,12 @@
 ManifestFileVersion: 0
-CRC: 3979596762
+CRC: 1311272374
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: af5294c2a4b18c2b85f3495bbdfc3591
+    Hash: d120544220cf48723dbbf440425288f2
   TypeTreeHash:
     serializedVersion: 2
-    Hash: ad902519369f68e30ad7e464755a82b0
+    Hash: ff313036964626362351fef5e0c623f3
 HashAppended: 0
 ClassTypes:
 - Class: 1
@@ -52,9 +52,9 @@ ClassTypes:
 - Class: 114
   Script: {fileID: 11500000, guid: 3768290912663824baa5c9fa59a5a8b0, type: 3}
 - Class: 114
-  Script: {fileID: 11500000, guid: 158cf482610347c49b7e1fed11076eab, type: 3}
-- Class: 114
   Script: {fileID: 11500000, guid: 4ada99bf53298a3429d87ab9be3291ab, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 158cf482610347c49b7e1fed11076eab, type: 3}
 - Class: 115
   Script: {instanceID: 0}
 - Class: 212
@@ -69,6 +69,8 @@ ClassTypes:
   Script: {instanceID: 0}
 SerializeReferenceClassIdentifiers:
 - AssemblyName: Assembly-CSharp
+  ClassName: Entity/StatStruct
+- AssemblyName: Assembly-CSharp
   ClassName: Item
 - AssemblyName: Assembly-CSharp
   ClassName: ItemInventory
@@ -78,6 +80,8 @@ SerializeReferenceClassIdentifiers:
   ClassName: PlayerCore
 - AssemblyName: Assembly-CSharp
   ClassName: SkillTreeUpgrade/requiredSkill
+- AssemblyName: Assembly-CSharp
+  ClassName: StatType
 - AssemblyName: UnityEngine.CoreModule
   ClassName: UnityEngine.Events.PersistentCallGroup
 - AssemblyName: UnityEngine.UI

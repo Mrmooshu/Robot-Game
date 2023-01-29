@@ -6,10 +6,10 @@ using TMPro;
 
 public class HealthBar : MonoBehaviour
 {
-    private Image healthBar;
-    private TextMeshProUGUI text;
+    protected Image healthBar;
+    protected TextMeshProUGUI text;
 
-    void Start()
+    public virtual void Start()
     {
         healthBar = GetComponent<Image>();
         text = GetComponentInChildren<TextMeshProUGUI>();
@@ -17,7 +17,7 @@ public class HealthBar : MonoBehaviour
 
     void Update()
     {
-        healthBar.fillAmount = ((ResourceStat)PlayerManager.instance.activeCore.GetPlayer().stats[StatType.Health]).currentValue / ((ResourceStat)PlayerManager.instance.activeCore.GetPlayer().stats[StatType.Health]).Value;
-        text.text = (int)((ResourceStat)PlayerManager.instance.activeCore.GetPlayer().stats[StatType.Health]).currentValue +  "/" + (int)((ResourceStat)PlayerManager.instance.activeCore.GetPlayer().stats[StatType.Health]).Value;
+        healthBar.fillAmount = ((ResourceStat)PlayerManager.instance.activeCore.GetPlayer().stats[StatType.Health]).CurrentValue / ((ResourceStat)PlayerManager.instance.activeCore.GetPlayer().stats[StatType.Health]).Value;
+        text.text = (int)((ResourceStat)PlayerManager.instance.activeCore.GetPlayer().stats[StatType.Health]).CurrentValue +  "/" + (int)((ResourceStat)PlayerManager.instance.activeCore.GetPlayer().stats[StatType.Health]).Value;
     }
 }

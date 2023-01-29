@@ -19,7 +19,7 @@ public class BoomerangProjectile : Projectile
         }
 
         // movement
-        transform.position += direction.right * (speed + (Mathf.Abs(duration)*10)) * Time.deltaTime;
+        transform.position += direction.right * (stats[StatType.MoveSpeed].Value + (Mathf.Abs(duration)*10)) * Time.deltaTime;
 
         // rotate boomerang
         visual.Rotate(0,0,-rotationSpeed * Time.deltaTime);

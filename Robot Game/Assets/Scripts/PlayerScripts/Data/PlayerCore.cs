@@ -15,6 +15,7 @@ public class PlayerCore : ISerializationCallbackReceiver
     public ItemInventory inventory;
     public Vector3 position;
     public Activity activity = Activity.Idle;
+    public string lastSafePoint;
 
 
     public PlayerCore(PlayerBody currentBody, int inventorySize, int stackLimit)
