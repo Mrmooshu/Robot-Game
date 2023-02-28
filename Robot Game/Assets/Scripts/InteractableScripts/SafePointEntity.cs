@@ -6,7 +6,7 @@ public class SafePointEntity : Interactable
 {
     public override void PlayerInRange(PlayerEntity playerEntitiy)
     {
-        if (playerEntitiy.core == PlayerManager.instance.activeCore)
+        if (playerEntitiy.data == PlayerManager.instance.activePlayer)
         {
             UIManager.instance.actionButton.SetCurrentButton(SafeAction, UIManager.instance.uiSprites.GetSprite("Action Buttons_7"),
                 UIManager.instance.uiSprites.GetSprite("Action Buttons_8"), UIManager.instance.uiSprites.GetSprite("Action Buttons_6"));

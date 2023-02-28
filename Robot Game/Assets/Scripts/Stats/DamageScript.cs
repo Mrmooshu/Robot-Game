@@ -28,12 +28,16 @@ public static class DamageScript
         public Entity attacker;
         public damageData damageData;
         public bool onHit;
+        public Vector2 knockback;
+        public float hitStun;
 
-        public attackData(Entity attacker, damageData damageData, bool onHit)
+        public attackData(Entity attacker, damageData damageData, bool onHit, Vector2 knockback, float hitStun)
         {
             this.attacker = attacker;
             this.damageData = damageData;
             this.onHit = onHit;
+            this.knockback = knockback;
+            this.hitStun = hitStun;
         }
     }
 
@@ -101,6 +105,20 @@ public static class DamageScript
         foreach (Collider2D enemy in Totalhits)
         {
             ApplyDamage(enemy.transform.GetComponent<EnemyEntity>(), attackData);
+            KnockBack(enemy.transform.GetComponent<EnemyEntity>(), attackData);
         }
+    }
+
+    public static void KnockBack(Entity target, attackData attackData)
+    {
+        target.GetComponent<Rigidbody2D>().AddForce(attackData.knockback);
+        target.StartCoroutine(HitStunRoutine(target, attackData.hitStun));
+    }
+
+    private static IEnumerator HitStunRoutine(Entity target, float duration)
+    {
+        target.stunned = true;
+        yield return new WaitForSeconds(duration);
+        target.stunned = false;
     }
 }

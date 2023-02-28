@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GolemEntity : PlayerEntity
+public class GolemEntity : MinionEntity
 {
     public override void Start()
     {
@@ -18,16 +18,16 @@ public class GolemEntity : PlayerEntity
     {
         if (!animator.GetCurrentAnimatorStateInfo(0).IsName("Skill"))
         {
-            if (core.currentBody.tool != null)
+            if (data.tool != null)
             {
-                if (Database.GetItem(core.currentBody.tool.itemID) is Pickaxe)
+                if (Database.GetItem(data.tool.itemID) is Pickaxe)
                 {
-                    if (core.currentBody.tool != null)
+                    if (data.tool != null)
                     {
-                        tool.UpdateAnimators();
+                        //tool.UpdateAnimators();
                         rigBod.velocity = Vector2.zero;
                         animator.SetBool("Skilling", true);
-                        tool.toolAnimator.SetBool("Skilling", true);
+                        //tool.toolAnimator.SetBool("Skilling", true);
                         return;
                     }
                     Debug.Log("need to equip a pick to mine");
@@ -45,24 +45,17 @@ public class GolemEntity : PlayerEntity
         else if (animator.GetCurrentAnimatorStateInfo(0).IsName("Skill"))
         {
             animator.SetBool("Skilling", false);
-            tool.toolAnimator.SetBool("Skilling", false);
+            //tool.toolAnimator.SetBool("Skilling", false);
         }
 
     }
 
     public override void ToolAction()
     {
-        if (currentInteractable is RockInteractable)
-        {
-           ((RockInteractable) currentInteractable).RollDrop();
-        }
-    }
-
-    public override void BasicAttack()
-    {
-        DamageScript.Attack(new DamageScript.attackData(this, new DamageScript.damageData(stats[StatType.AttackDamage].Value, DamageScript.damageType.physical), true), hitboxes, whatIsEnemy, this);
-        rigBod.AddForce(new Vector2(stats[StatType.MoveSpeed].Value * facingDirection, 1.2f), ForceMode2D.Impulse);
-        //kill switch (uncomment to kill urself)
-        //((ResourceStat)stats[StatType.Health]).CurrentValue -= 1000;
+        //TODO need to fix
+        //if (currentInteractable is RockInteractable)
+        //{
+        //   ((RockInteractable) currentInteractable).RollDrop();
+        //}
     }
 }

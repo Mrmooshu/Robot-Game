@@ -7,7 +7,6 @@ using System.Linq;
 
 public class SkillTreeDisplay : MonoBehaviour
 {
-
     public Transform view;
     public TextMeshProUGUI skillNameText;
     public TextMeshProUGUI skillDescriptionText;
@@ -31,7 +30,7 @@ public class SkillTreeDisplay : MonoBehaviour
     {
         PlayerManager.instance.playerChanged += Refresh;
         skillUpgradeButton.onClick.AddListener(UpgradeCurrentSkill);
-        PlayerBody.skillPointsUpdated += RefreshInfoWindow;
+        UnitData.skillPointsUpdated += RefreshInfoWindow;
         Refresh();
     }
 
@@ -39,7 +38,7 @@ public class SkillTreeDisplay : MonoBehaviour
     {
         PlayerManager.instance.playerChanged -= Refresh;
         skillUpgradeButton.onClick.RemoveListener(UpgradeCurrentSkill);
-        PlayerBody.skillPointsUpdated -= RefreshInfoWindow;
+        UnitData.skillPointsUpdated -= RefreshInfoWindow;
     }
 
     private void OnEnable()
@@ -54,7 +53,7 @@ public class SkillTreeDisplay : MonoBehaviour
             child.SetParent(child.GetComponent<HoldParent>().parentToHold.transform);
             child.gameObject.SetActive(false);
         }
-        GameObject skillTree = PlayerManager.instance.activeCore.GetPlayer().skillTree;
+        GameObject skillTree = PlayerManager.instance.activePlayer.GetEntity().skillTree;
         skillTree.transform.SetParent(view);
         skillTree.transform.position = view.transform.position;
         skillTree.transform.localScale = new Vector3(1,1,1);
@@ -65,7 +64,7 @@ public class SkillTreeDisplay : MonoBehaviour
 
     public void RefreshInfoWindow()
     {
-        pointsAvailableText.text = "Skill Points: " + PlayerManager.instance.activeCore.currentBody.SkillPoints;
+        pointsAvailableText.text = "Skill Points: " + PlayerManager.instance.activePlayer.SkillPoints;
         if (selectedSkill != null)
         {
             skillNameText.enabled = true;
@@ -74,7 +73,7 @@ public class SkillTreeDisplay : MonoBehaviour
             skillUpgradeButton.enabled = true;
             skillNameText.text = selectedSkill.passive.abilityName;
             skillDescriptionText.text = selectedSkill.passive.abilityDescription;
-            skillLevelText.text = "Level: " +  PlayerManager.instance.activeCore.currentBody.skills[selectedSkill.passive.abilityName] + "/" + selectedSkill.maxLevel;
+            skillLevelText.text = "Level: " +  PlayerManager.instance.activePlayer.skills[selectedSkill.passive.abilityName] + "/" + selectedSkill.maxLevel;
             skillUpgradeButton.onClick.RemoveAllListeners();
             skillUpgradeButton.onClick.AddListener(UpgradeCurrentSkill);
         }
@@ -89,12 +88,12 @@ public class SkillTreeDisplay : MonoBehaviour
 
     private void UpgradeCurrentSkill()
     {
-        if (selectedSkill != null && selectedSkill.requiredSkills.ToList().TrueForAll(x => PlayerManager.instance.activeCore.currentBody.skills[x.reqiredSkill.passive.abilityName] >= x.reqiredLevel))
+        if (selectedSkill != null && selectedSkill.requiredSkills.ToList().TrueForAll(x => PlayerManager.instance.activePlayer.skills[x.reqiredSkill.passive.abilityName] >= x.reqiredLevel))
         {
-            if (PlayerManager.instance.activeCore.currentBody.skills[selectedSkill.passive.abilityName] < selectedSkill.maxLevel && PlayerManager.instance.activeCore.currentBody.SkillPoints >= 1)
+            if (PlayerManager.instance.activePlayer.skills[selectedSkill.passive.abilityName] < selectedSkill.maxLevel && PlayerManager.instance.activePlayer.SkillPoints >= 1)
             {
-                PlayerManager.instance.activeCore.currentBody.skills[selectedSkill.passive.abilityName]++;
-                PlayerManager.instance.activeCore.currentBody.SkillPoints--;
+                PlayerManager.instance.activePlayer.skills[selectedSkill.passive.abilityName]++;
+                PlayerManager.instance.activePlayer.SkillPoints--;
                 selectedSkill.passive.Refresh();
             }
         }

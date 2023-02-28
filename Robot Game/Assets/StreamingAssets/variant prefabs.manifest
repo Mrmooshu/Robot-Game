@@ -1,12 +1,12 @@
 ManifestFileVersion: 0
-CRC: 1311272374
+CRC: 3890369419
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: d120544220cf48723dbbf440425288f2
+    Hash: 06a258ddd37d1cc909c33ebab9a33fef
   TypeTreeHash:
     serializedVersion: 2
-    Hash: ff313036964626362351fef5e0c623f3
+    Hash: 7fb61eecf4bb3aebfb8d63799db3d956
 HashAppended: 0
 ClassTypes:
 - Class: 1
@@ -97,5 +97,5 @@ SerializeReferenceClassIdentifiers:
 - AssemblyName: UnityEngine.UI
   ClassName: UnityEngine.UI.SpriteState
 Assets:
-- Assets/Prefabs/Entity/Clay Golem.prefab
+- Assets/Prefabs/Entity/Player Prefabs/Clay Golem.prefab
 Dependencies: []

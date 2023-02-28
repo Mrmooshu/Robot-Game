@@ -71,7 +71,7 @@ public class Effect
                 target.stats[mod.statType].AddModifier(mod);
             }
         }
-        if (target == PlayerManager.instance.activeCore.GetPlayer())
+        if (target == PlayerManager.instance.activePlayer.GetEntity())
         {
             ((PlayerEntity)target).InvokeEffectUpdate();
         }
@@ -85,7 +85,7 @@ public class Effect
         {
             target.stats[mod.statType].RemoveModifier(mod);
         }
-        if (target == PlayerManager.instance.activeCore.GetPlayer())
+        if (target == PlayerManager.instance.activePlayer.GetEntity())
         {
             ((PlayerEntity)target).InvokeEffectUpdate();
         }

@@ -1,12 +1,12 @@
 ManifestFileVersion: 0
-CRC: 4253605358
+CRC: 3288124123
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 26ff9e082c05503ff97cec5338e1f1f3
+    Hash: f35eb1cd367fdc380e005202f3a6d3f1
   TypeTreeHash:
     serializedVersion: 2
-    Hash: cec9c4669e08418bdd7376f83425f322
+    Hash: 65b8d6631b315dd8b5354c41d54aedaf
 HashAppended: 0
 ClassTypes:
 - Class: 1
@@ -104,6 +104,8 @@ ClassTypes:
 - Class: 114
   Script: {fileID: 11500000, guid: c91c854ae86352e4f8893a00aabe846a, type: 3}
 - Class: 114
+  Script: {fileID: 11500000, guid: 9c034c74d2f65ea469bd17a5e81667be, type: 3}
+- Class: 114
   Script: {fileID: 11500000, guid: 97cafdb748acf9841adca982b0b0718c, type: 3}
 - Class: 115
   Script: {instanceID: 0}
@@ -123,15 +125,15 @@ ClassTypes:
   Script: {instanceID: 0}
 SerializeReferenceClassIdentifiers:
 - AssemblyName: Assembly-CSharp
-  ClassName: BodyInventory
-- AssemblyName: Assembly-CSharp
   ClassName: Item
 - AssemblyName: Assembly-CSharp
   ClassName: ItemInventory
 - AssemblyName: Assembly-CSharp
-  ClassName: PlayerBody
+  ClassName: MinionInventory
 - AssemblyName: Assembly-CSharp
-  ClassName: PlayerCore
+  ClassName: PlayerData
+- AssemblyName: Assembly-CSharp
+  ClassName: StatType
 - AssemblyName: Unity.TextMeshPro
   ClassName: TMPro.FaceInfo_Legacy
 - AssemblyName: Unity.TextMeshPro
@@ -185,12 +187,12 @@ SerializeReferenceClassIdentifiers:
 - AssemblyName: UnityEngine.UI
   ClassName: UnityEngine.UI.Toggle/ToggleEvent
 Assets:
-- Assets/Prefabs/UI/InventoryUI/BodyUI/InventoryPlayer.prefab
+- Assets/Prefabs/UI/InventoryUI/MinionInventoryUI/InventoryPlayer.prefab
 - Assets/Prefabs/UI/QuestUI/QuestListOption.prefab
 - Assets/Prefabs/UI/Misc Ui/Damage Text.prefab
 - Assets/Prefabs/UI/EffectUI/EffectObject.prefab
-- Assets/Prefabs/UI/InventoryUI/BodyUI/PlayerSlot.prefab
-- Assets/Prefabs/UI/CoreUI/CoreSelectOption.prefab
+- Assets/Prefabs/UI/InventoryUI/MinionInventoryUI/PlayerSlot.prefab
+- Assets/Prefabs/UI/PlayerSwapUI/PlayerSelectOption.prefab
 - Assets/Prefabs/UI/MainPlayerMenu.prefab
 - Assets/Prefabs/UI/QuestUI/Dialogue Box.prefab
 - Assets/Prefabs/UI/SafePointUI/SafePointMenu.prefab

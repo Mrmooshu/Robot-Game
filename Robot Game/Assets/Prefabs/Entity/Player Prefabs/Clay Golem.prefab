@@ -133,30 +133,9 @@ MonoBehaviour:
     value: 10
   - type: 2
     value: 100
-  variantName: Clay Golem
+  dead: 0
+  stunned: 0
   skillTree: {fileID: 8040974698390274048}
-  healthRegeneration: {fileID: 0}
-  core:
-    currentBody:
-      variantName: 
-      level: 0
-      health: 0
-      weapon:
-        itemID: 0
-        quanityString: 0
-      tool:
-        itemID: 0
-        quanityString: 0
-      _skillPoints: 0
-      skillsList: []
-    inventory:
-      inventory: []
-      inventorySize: 0
-      currentPage: 0
-      stackLimit: 0
-    position: {x: 0, y: 0, z: 0}
-    activity: 0
-  currentInteractable: {fileID: 0}
   groundCheck: {fileID: 2644715625916415002}
   whatIsGround:
     serializedVersion: 2
@@ -164,7 +143,21 @@ MonoBehaviour:
   whatIsEnemy:
     serializedVersion: 2
     m_Bits: 256
-  hitboxes: {fileID: 7958337410837006589}
+  data:
+    level: 0
+    inventory:
+      inventory: []
+      inventorySize: 0
+      currentPage: 0
+      stackLimit: 0
+    position: {x: 0, y: 0, z: 0}
+    activity: 0
+    _skillPoints: 0
+    skillsList: []
+    variantName: 
+    tool:
+      itemID: 0
+      quanityString: 0
 --- !u!50 &2644715624662573924
 Rigidbody2D:
   serializedVersion: 4
@@ -348,7 +341,6 @@ GameObject:
   - component: {fileID: 2187875904980758966}
   - component: {fileID: 7785826526039838524}
   - component: {fileID: 1649109007740195468}
-  - component: {fileID: 1188952047026631629}
   m_Layer: 7
   m_Name: Tool
   m_TagString: Untagged
@@ -443,18 +435,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &1188952047026631629
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6719373140980122093}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7a24f35607621e54799505223c058a44, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &8011385876207598045
 PrefabInstance:
   m_ObjectHideFlags: 0

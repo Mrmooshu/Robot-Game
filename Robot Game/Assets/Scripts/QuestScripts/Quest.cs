@@ -81,7 +81,7 @@ public class Quest : ScriptableObject
     {
         foreach (QuestReward reward in rewards)
         {
-            GameObject item = GeneralManager.SpawnItem(PlayerManager.instance.activeCore.GetPlayer().transform, new Item(reward.reward.itemID, reward.quanity));
+            GameObject item = GeneralManager.SpawnItem(PlayerManager.instance.activePlayer.GetEntity().transform, new Item(reward.reward.itemID, reward.quanity));
             item.GetComponent<Rigidbody2D>().AddForce(new Vector2(UnityEngine.Random.Range(-80, 80), 120));
         }
         QuestManager.ProgressQuestState(this);

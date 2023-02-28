@@ -1,0 +1,94 @@
+ManifestFileVersion: 0
+CRC: 1124661391
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: b7c7f9cd3a1ddbd03ad1b640469fa279
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: ac7b0795239660a9cda35cea8f078d6f
+HashAppended: 0
+ClassTypes:
+- Class: 1
+  Script: {instanceID: 0}
+- Class: 4
+  Script: {instanceID: 0}
+- Class: 21
+  Script: {instanceID: 0}
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 48
+  Script: {instanceID: 0}
+- Class: 50
+  Script: {instanceID: 0}
+- Class: 61
+  Script: {instanceID: 0}
+- Class: 62
+  Script: {instanceID: 0}
+- Class: 70
+  Script: {instanceID: 0}
+- Class: 74
+  Script: {instanceID: 0}
+- Class: 91
+  Script: {instanceID: 0}
+- Class: 95
+  Script: {instanceID: 0}
+- Class: 114
+  Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: ba663adae6a5e4842a689d0c21b33063, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: e6471db6af3366e44a919587ddfe934b, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: c465fb4921877ea489ff3fea718436ed, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 51a3e6be9b8b3ac49a02f8c96412caf3, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 3245ec927659c4140ac4f8d17403cc18, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 3768290912663824baa5c9fa59a5a8b0, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 4ada99bf53298a3429d87ab9be3291ab, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 2ce5c79d02d3ed44abc524fde614149b, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 158cf482610347c49b7e1fed11076eab, type: 3}
+- Class: 115
+  Script: {instanceID: 0}
+- Class: 212
+  Script: {instanceID: 0}
+- Class: 213
+  Script: {instanceID: 0}
+- Class: 221
+  Script: {instanceID: 0}
+- Class: 222
+  Script: {instanceID: 0}
+- Class: 224
+  Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers:
+- AssemblyName: Assembly-CSharp
+  ClassName: Entity/StatStruct
+- AssemblyName: Assembly-CSharp
+  ClassName: SkillTreeUpgrade/requiredSkill
+- AssemblyName: Assembly-CSharp
+  ClassName: StatType
+- AssemblyName: UnityEngine.CoreModule
+  ClassName: UnityEngine.Events.PersistentCallGroup
+- AssemblyName: UnityEngine.UI
+  ClassName: UnityEngine.UI.AnimationTriggers
+- AssemblyName: UnityEngine.UI
+  ClassName: UnityEngine.UI.Button/ButtonClickedEvent
+- AssemblyName: UnityEngine.UI
+  ClassName: UnityEngine.UI.ColorBlock
+- AssemblyName: UnityEngine.UI
+  ClassName: UnityEngine.UI.MaskableGraphic/CullStateChangedEvent
+- AssemblyName: UnityEngine.UI
+  ClassName: UnityEngine.UI.Navigation
+- AssemblyName: UnityEngine.UI
+  ClassName: UnityEngine.UI.SpriteState
+Assets:
+- Assets/Prefabs/Entity/Player Prefabs/Clay Golem.prefab
+- Assets/Prefabs/Entity/Player Prefabs/Player.prefab
+Dependencies: []

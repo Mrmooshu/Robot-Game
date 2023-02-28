@@ -15,7 +15,7 @@ public abstract class Interactable : MonoBehaviour
 
     public virtual void PlayerOutOfRange(PlayerEntity playerEntitiy)
     {
-        if (playerEntitiy.core == PlayerManager.instance.activeCore)
+        if (playerEntitiy.data == PlayerManager.instance.activePlayer)
         {
             UIManager.instance.actionButton.SetDefaultButton();
             playerEntitiy.currentInteractable = null;

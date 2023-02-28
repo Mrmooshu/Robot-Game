@@ -20,7 +20,7 @@ public class InteractableCharacter : Interactable
     public override void PlayerOutOfRange(PlayerEntity playerEntitiy)
     {
         base.PlayerOutOfRange(playerEntitiy);
-        if (playerEntitiy.core == PlayerManager.instance.activeCore && currentDialogueBox != null)
+        if (playerEntitiy.data == PlayerManager.instance.activePlayer && currentDialogueBox != null)
         {
             Destroy(currentDialogueBox.gameObject);
             currentDialogueBox = null;

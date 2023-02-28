@@ -54,6 +54,10 @@ public class CharacterEntity : Entity
             rigBod.velocity = Vector2.zero;
             return;
         }
+        if (stunned)
+        {
+            return;
+        }
 
         if (grounded && rigBod.velocity.y <= 0)
         {
@@ -64,14 +68,11 @@ public class CharacterEntity : Entity
         {
             Flip();
         }
-        if (walkTimer > 0)
-        {
-            rigBod.velocity = new Vector2(stats[StatType.MoveSpeed].Value * movementDirection, rigBod.velocity.y);
-        }
-        else
-        {
-            rigBod.velocity = new Vector2(stats[StatType.MoveSpeed].Value * movementDirection, rigBod.velocity.y);
-        }
+        float targetSpeed = movementDirection * stats[StatType.MoveSpeed].Value;
+        float speedDiff = targetSpeed - rigBod.velocity.x;
+        float accelRate = (Mathf.Abs(targetSpeed) > 0.01f) ? stats[StatType.MoveSpeed].Value * 1f : stats[StatType.MoveSpeed].Value * 2;
+        float movement = Mathf.Pow(Mathf.Abs(speedDiff) * accelRate, 1) * Mathf.Sign(speedDiff);
+        rigBod.AddForce(movement * Vector2.right);
 
         // running anim
         animator.SetFloat("Running", Mathf.Abs(movementDirection));

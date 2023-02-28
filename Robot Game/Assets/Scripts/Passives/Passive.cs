@@ -6,7 +6,7 @@ public abstract class Passive : MonoBehaviour
 {
     public string abilityName;
     public string abilityDescription;
-    protected PlayerEntity entity;
+    protected Entity entity;
 
     public abstract void InitializePassive(Entity host);
 

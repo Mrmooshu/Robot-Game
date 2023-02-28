@@ -39,7 +39,7 @@ public class EffectDisplay : MonoBehaviour
             Destroy(child.gameObject);
         }
 
-        Dictionary<int, Effect> effects = PlayerManager.instance.activeCore.GetPlayer().effects;
+        Dictionary<int, Effect> effects = PlayerManager.instance.activePlayer.GetEntity().effects;
 
         int buffCount = 0;
         int debuffCount = 0;

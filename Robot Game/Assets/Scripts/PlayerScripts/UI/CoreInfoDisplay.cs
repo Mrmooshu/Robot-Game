@@ -14,7 +14,6 @@ public class CoreInfoDisplay : MonoBehaviour
     public static void UpdateInfo()
     {
         GameObject.Find("Info Area/Area").GetComponent<TextMeshProUGUI>().text = "default zone atm";
-        GameObject.Find("Info Area/Activity").GetComponent<TextMeshProUGUI>().text = CoreSelectDisplay.selectedCore.core.activity.ToString();
-        GameObject.Find("Info Area/Variant").GetComponent<TextMeshProUGUI>().text = CoreSelectDisplay.selectedCore.core.currentBody.variantName;
+        GameObject.Find("Info Area/Activity").GetComponent<TextMeshProUGUI>().text = PlayerSelectDisplay.selectedPlayer.player.activity.ToString();
     }
 }

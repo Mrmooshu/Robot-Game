@@ -4,89 +4,45 @@ using UnityEngine;
 using System.Linq;
 using System;
 
-public abstract class PlayerEntity : Entity
+public class PlayerEntity : UnitEntity
 {
-    [Header("Base Variant Info")]
-    public string variantName = "Default";
-    public GameObject skillTree;
+    public PlayerData data;
 
     public List<IOnHit> onHitPassives;
 
-    //core
-    public PlayerCore core;
     public Interactable currentInteractable;
 
 
     //gameobject components
-    protected Rigidbody2D rigBod { get; private set; }
-    public Animator animator { get;  protected set; }
-    public PlayerTool tool { get; private set; }
-    public Transform groundCheck;
 
     //other
-    public LayerMask whatIsGround;
-    public LayerMask whatIsEnemy;
-    protected float groundedRadius = .1f;
     public Transform hitboxes;
 
-    //movement variables
-    private int movementInputDirection;
-    public bool grounded { get; private set; }
-    public bool canJump { get; private set; }
-
-    public static event Action effectUpdated;
-
-    public virtual void Initialize(PlayerCore core)
+    public virtual void Initialize(PlayerData data)
     {
-        facingDirection = (int)transform.localScale.x;
-        rigBod = GetComponent<Rigidbody2D>();
-        animator = GetComponent<Animator>();
-        tool = transform.Find("Tool").GetComponent<PlayerTool>();
-        this.core = core;
-        CreateStats();
-        ApplySkills();
+        this.data = data;
+        onHitPassives = new List<IOnHit>();
+        base.Initialize();
     }
 
-    public override void Start()
+    protected override void Input()
     {
-        // do all start stuff in initialize instead
-    }
-
-    public override void Update()
-    {
-        base.Update();
-        PlayerInput();
-    }
-
-    public override void  FixedUpdate()
-    {
-        Movement();
-    }
-
-    private void PlayerInput()
-    {
-        grounded = Physics2D.OverlapCircle(groundCheck.position, groundedRadius, whatIsGround);
-
-        if (dead)
-        {
-            rigBod.velocity = Vector2.zero;
-            return;
-        }
+        base.Input();
 
         if (grounded && rigBod.velocity.y <= 0)
         {
             canJump = true;
-            animator.SetBool("Jumping", false) ;
+            animator.SetBool("Jumping", false);
         }
 
-        if (PlayerManager.instance.activeCore == core)
+        if (PlayerManager.instance.activePlayer == data)
         {
             // movement
-            if (!(animator.GetCurrentAnimatorStateInfo(0).IsTag("stuckaction") || UIManager.instance.menuPreventingMovement) && PlayerManager.instance.activeCore == core)
+            if (!(animator.GetCurrentAnimatorStateInfo(0).IsTag("stuckaction") || UIManager.instance.menuPreventingMovement) && PlayerManager.instance.activePlayer == data)
             {
-                movementInputDirection = (int)Input.GetAxisRaw("Horizontal");
+                movementInputDirection = (int)UnityEngine.Input.GetAxisRaw("Horizontal");
 
-                if (Input.GetButtonDown("Jump") && canJump)
+                if (UnityEngine.Input.GetButtonDown("Jump") && canJump)
                 {
                     canJump = false;
                     rigBod.AddForce(Vector2.up * stats[StatType.JumpForce].Value, ForceMode2D.Impulse);
@@ -100,15 +56,15 @@ public abstract class PlayerEntity : Entity
             }
 
             // attack
-            if (Input.GetButton("Attack1") && grounded && core.currentBody.weapon != null)
+            if (UnityEngine.Input.GetButton("Attack1") && grounded)
             {
                 animator.SetTrigger("Basic");
             }
 
             // left click is down
-            if (Input.GetMouseButton(0) && PlayerManager.instance.activeCore == core)
+            if (UnityEngine.Input.GetMouseButton(0) && PlayerManager.instance.activePlayer == data)
             {
-                Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+                Vector3 mousePos = Camera.main.ScreenToWorldPoint(UnityEngine.Input.mousePosition);
                 Vector2 mousePos2D = new Vector2(mousePos.x, mousePos.y);
                 RaycastHit2D hit = Physics2D.Raycast(mousePos2D, Vector2.zero);
                 if (hit.collider != null)
@@ -123,7 +79,7 @@ public abstract class PlayerEntity : Entity
                     // Item Pick Up
                     if (hit.collider.gameObject.GetComponent<ItemObject>())
                     {
-                        if (core.inventory.Add(hit.collider.gameObject.GetComponent<ItemObject>().item))
+                        if (data.inventory.Add(hit.collider.gameObject.GetComponent<ItemObject>().item))
                         {
                             Destroy(hit.collider.gameObject);
                         }
@@ -141,58 +97,12 @@ public abstract class PlayerEntity : Entity
         }
     }
 
-    protected  void Movement()
+    public virtual void BasicAttack()
     {
-        if (PlayerManager.instance.activeCore == core)
-        {
-            // turn around
-            if ((facingDirection > 0 && movementInputDirection < 0) || (facingDirection < 0 && movementInputDirection > 0))
-            {
-                Flip();
-            }
-        }
-        // movement
-        float targetSpeed = movementInputDirection * stats[StatType.MoveSpeed].Value;
-        float speedDiff = targetSpeed - rigBod.velocity.x;
-        float accelRate = (Mathf.Abs(targetSpeed) > 0.01f) ? stats[StatType.MoveSpeed].Value*.5f : stats[StatType.MoveSpeed].Value*2;
-        float movement = Mathf.Pow(Mathf.Abs(speedDiff) * accelRate, 1) * Mathf.Sign(speedDiff);
-        rigBod.AddForce(movement * Vector2.right);
-
-        // player running anim
-        animator.SetFloat("Running", Mathf.Abs(movementInputDirection));
-        animator.SetFloat("Yvelocity", rigBod.velocity.y);
-    }
-
-    public abstract void ToolAction();
-
-    public abstract void BasicAttack();
-
-    protected override void CreateStats()
-    {
-        base.CreateStats();
-
-        // add listeners
-        stats[StatType.Gravity].statUpdated += () => { rigBod.gravityScale = stats[StatType.Gravity].Value; };
-    }
-
-    protected virtual void ApplySkills()
-    {
-        onHitPassives = new List<IOnHit>();
-        //apply skills for skill tree
-        foreach (Passive passive in skillTree.GetComponentsInChildren<Passive>())
-        {
-            passive.InitializePassive(this);
-        }
-    }
-
-    protected override void Die()
-    {
-        base.Die();
-        animator.SetTrigger("Die");
-    }
-
-    public void InvokeEffectUpdate()
-    {
-        effectUpdated?.Invoke();
+        Vector2 knockback = new Vector2(100 * facingDirection, 100);
+        DamageScript.Attack(new DamageScript.attackData(this, new DamageScript.damageData(stats[StatType.AttackDamage].Value, DamageScript.damageType.physical), true, knockback, .5f), hitboxes, whatIsEnemy, this);
+        rigBod.AddForce(new Vector2(stats[StatType.MoveSpeed].Value * facingDirection, 1.2f), ForceMode2D.Impulse);
+        //kill switch (uncomment to kill urself)
+        //((ResourceStat)stats[StatType.Health]).CurrentValue -= 1000;
     }
 }

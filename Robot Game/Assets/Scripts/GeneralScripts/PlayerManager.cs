@@ -9,11 +9,13 @@ public class PlayerManager : MonoBehaviour, IDataSave
 {
     public static PlayerManager instance;
 
-    public PlayerCore[] cores;
-    public BodyInventory bodies;
+    public List<PlayerData> players;
+    public List<MinionData> activeMinions;
+    public MinionInventory minionInventory;
     public ItemInventory bankInventory;
 
-    public List<PlayerEntity> players;
+    public List<PlayerEntity> playerEntities;
+    public List<MinionEntity> minionEntities;
 
     public GameObject golemBlueprint;
     public GameObject sentinelBlueprint;
@@ -21,7 +23,7 @@ public class PlayerManager : MonoBehaviour, IDataSave
     public CinemachineVirtualCamera virtualCam;
     public GameObject PlayerHolderObject;
 
-    public PlayerCore activeCore;
+    public PlayerData activePlayer;
 
     public event Action playerChanged;
 
@@ -30,41 +32,57 @@ public class PlayerManager : MonoBehaviour, IDataSave
         if (instance == null)
         {
             instance = this;
-            players = new List<PlayerEntity>();
-            foreach (PlayerCore core in cores)
+            playerEntities = new List<PlayerEntity>();
+            foreach (PlayerData player in players)
+            {
+                if (player != null)
+                {
+                    SpawnPlayer(player);
+                }
+            }
+            SetActivePlayer(players[0]);
+            foreach (MinionData core in activeMinions)
             {
                 if (core != null)
                 {
-                    Spawn(core);
+                    SpawnMinion(core);
                 }
             }
-            SetActiveCore(cores[0]);
         }
     }
 
-    public void Spawn(PlayerCore core)
+    public void SpawnPlayer(PlayerData player)
     {
         GameObject newPlayer;
-        newPlayer = Instantiate(GeneralManager.instance.variantPrefabs.LoadAsset<GameObject>(core.currentBody.variantName), PlayerHolderObject.transform);
+        newPlayer = Instantiate(GeneralManager.instance.entityPrefabs.LoadAsset<GameObject>("Player"), PlayerHolderObject.transform);
         PlayerEntity playerEntity = newPlayer.GetComponent<PlayerEntity>();
-        playerEntity.Initialize(core);
-        newPlayer.transform.position = playerEntity.core.position;
-        players.Add(playerEntity);
+        playerEntity.Initialize(player);
+        newPlayer.transform.position = playerEntity.data.position;
+        playerEntities.Add(playerEntity);
     }
 
-    public void Respawn(PlayerCore core)
+    public void SpawnMinion(MinionData minion)
     {
-        core.position = core.GetPlayer().transform.position;
-        Destroy(core.GetPlayer().gameObject);
-        players.Remove(core.GetPlayer());
-        Spawn(core);
-        SetActiveCore(core);
+        GameObject newMinion;
+        newMinion = Instantiate(GeneralManager.instance.entityPrefabs.LoadAsset<GameObject>(minion.variantName), PlayerHolderObject.transform);
+        MinionEntity minionEntity = newMinion.GetComponent<MinionEntity>();
+        minionEntity.Initialize(minion);
+        newMinion.transform.position = minionEntity.data.position;
+        minionEntities.Add(minionEntity);
     }
 
-    public void SetActiveCore(PlayerCore core)
+    public void RespawnMinion(MinionData minion)
     {
-        activeCore = core;
-        ControlThisPlayer(core.GetPlayer());
+        minion.position = minion.GetEntity().transform.position;
+        Destroy(minion.GetEntity().gameObject);
+        minionEntities.Remove((MinionEntity)minion.GetEntity());
+        SpawnMinion(minion);
+    }
+
+    public void SetActivePlayer(PlayerData player)
+    {
+        activePlayer = player;
+        ControlThisPlayer((PlayerEntity)player.GetEntity());
         playerChanged?.Invoke();
     }
 
@@ -83,7 +101,7 @@ public class PlayerManager : MonoBehaviour, IDataSave
     }
     public static void TeleportHere(string safePointName)
     {
-        instance.activeCore.GetPlayer().transform.position = Database.GetSafePoint(safePointName).cord;
+        instance.activePlayer.GetEntity().transform.position = Database.GetSafePoint(safePointName).cord;
     }
 
     /// <summary>
@@ -93,7 +111,7 @@ public class PlayerManager : MonoBehaviour, IDataSave
     /// <returns>The quanity of the item if found or 0 if not. </returns>
     public static BigInteger CheckCurrentInventoryForItem(int itemID)
     {
-        return CheckInventoryForItem(itemID, instance.activeCore.inventory);
+        return CheckInventoryForItem(itemID, instance.activePlayer.inventory);
     }
 
     /// <summary>
@@ -124,15 +142,17 @@ public class PlayerManager : MonoBehaviour, IDataSave
 
     public void LoadData(GameData data)
     {
-        cores = data.cores;
-        bodies = data.bodyInventory;
+        players = data.players;
+        activeMinions = data.activeMinions;
+        minionInventory = data.minionInventory;
         bankInventory = data.bankInventory;
     }
 
     public void SaveData(ref GameData data)
     {
-        data.cores = cores;
-        data.bodyInventory = bodies;
+        data.players = players;
+        data.activeMinions = activeMinions;
+        data.minionInventory = minionInventory;
         data.bankInventory = bankInventory;
     }
 }

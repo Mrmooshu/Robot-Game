@@ -5,15 +5,17 @@ using UnityEngine;
 [System.Serializable]
 public class GameData
 {
-    public PlayerCore[] cores;
-    public BodyInventory bodyInventory;
+    public List<PlayerData> players;
+    public List<MinionData> activeMinions;
+    public MinionInventory minionInventory;
     public ItemInventory bankInventory;
     public List<QuestData> quests;
 
     public void NewGameData()
     {
-        bodyInventory = new BodyInventory(10);
-        cores = new PlayerCore[2] { new PlayerCore(new PlayerBody("Clay Golem"), 10, 10) , new PlayerCore(new PlayerBody("Clay Golem"), 10, 10) };
+        players = new List<PlayerData> { new PlayerData("Player") };
+        activeMinions = new List<MinionData> { };
+        minionInventory = new MinionInventory(10);
         bankInventory = new ItemInventory(48);
         quests = new List<QuestData>();
 
@@ -23,14 +25,13 @@ public class GameData
             quest.questState = Quest.QuestState.inactive;
         }
 
-        cores[0].currentBody.tool = new Item(Database.GetItemID("Novium Pickaxe"),1);
-        cores[1].currentBody.tool = new Item(Database.GetItemID("Iromite Pickaxe"), 1);
 
-        cores[0].currentBody.weapon = new Item(Database.GetItemID("Novium Warhammer"), 1);
-        cores[1].currentBody.weapon = new Item(Database.GetItemID("Iromite Warhammer"), 1);
 
-        bodyInventory.inventory[0] = new PlayerBody("Clay Golem");
-        bodyInventory.inventory[1] = new PlayerBody("Clay Golem");
+        minionInventory.inventory[0] = new MinionData("Clay Golem");
+        minionInventory.inventory[1] = new MinionData("Clay Golem");
+
+        minionInventory.inventory[0].tool = new Item(Database.GetItemID("Novium Pickaxe"), 1);
+        minionInventory.inventory[1].tool = new Item(Database.GetItemID("Iromite Pickaxe"), 1);
 
         bankInventory.Add(new Item(Database.GetItemID("Slythril Warhammer"), 1));
         bankInventory.Add(new Item(Database.GetItemID("Myphrite Warhammer"), 1));
@@ -49,75 +50,5 @@ public class GameData
         public string name;
         public int currentStep;
         public Quest.QuestState questState;
-    }
-
-    public void NullDefaultValues()
-    {
-        // check for default bodies in body inventories
-        for(int i = 0; i < bodyInventory.inventory.Length; i++)
-        {
-            if (bodyInventory.inventory[i] != null)
-            {
-                if (bodyInventory.inventory[i].variantName == "")
-                {
-                    bodyInventory.inventory[i] = null;
-                }
-            }
-        }
-
-        // check for default items in core inventories
-        foreach (PlayerCore core in cores)
-        {
-            for (int i = 0; i < core.inventory.inventory.Length; i++)
-            {
-                if (core.inventory.inventory[i] != null)
-                {
-                    if (core.inventory.inventory[i].itemID == 0)
-                    {
-                        core.inventory.inventory[i] = null;
-                    }
-                }
-            }
-            NullBodyItems(core.currentBody);
-        }
-
-        // check for default items in bank inventory
-        for (int i = 0; i < bankInventory.inventory.Length; i++)
-        {
-            if (bankInventory.inventory[i] != null)
-            {
-                if (bankInventory.inventory[i].itemID == 0)
-                {
-                    bankInventory.inventory[i] = null;
-                }
-            }
-        }
-
-        // check for deafault items in body items
-        foreach (PlayerBody body in bodyInventory.inventory)
-        {
-            NullBodyItems(body);
-        }
-    }
-
-    private void NullBodyItems(PlayerBody body)
-    {
-        if (body != null)
-        {
-            if (body.weapon != null)
-            {
-                if (body.weapon.itemID == 0)
-                {
-                    body.weapon = null;
-                }
-            }
-            if (body.tool != null)
-            {
-                if (body.tool.itemID == 0)
-                {
-                    body.tool = null;
-                }
-            }
-        }
     }
 }

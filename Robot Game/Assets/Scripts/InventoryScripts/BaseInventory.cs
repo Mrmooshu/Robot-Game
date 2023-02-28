@@ -6,7 +6,7 @@ using System;
 [System.Serializable]
 public abstract class BaseInventory<T>
 {
-    public T[] inventory;
+    [SerializeReference] public T[] inventory;
     public int inventorySize;
     public int currentPage = 1;
 
@@ -17,10 +17,6 @@ public abstract class BaseInventory<T>
         this.inventorySize = inventorySize;
 
         inventory = new T[inventorySize];
-        //for (int i = 0; i < inventorySize; i++)
-        //{
-            //inventory[i] = default;
-        //}
     }
 
     public void Reinitialize(int inventorySize)
