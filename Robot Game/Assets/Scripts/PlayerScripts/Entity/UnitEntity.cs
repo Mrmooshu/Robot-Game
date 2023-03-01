@@ -73,13 +73,14 @@ public abstract class UnitEntity : Entity
         // movement
         float targetSpeed = movementInputDirection * stats[StatType.MoveSpeed].Value;
         float speedDiff = targetSpeed - rigBod.velocity.x;
-        float accelRate = (Mathf.Abs(targetSpeed) > 0.01f) ? stats[StatType.MoveSpeed].Value * .5f : stats[StatType.MoveSpeed].Value * 2;
+        float accelRate = (Mathf.Abs(targetSpeed) > 0.01f) ? stats[StatType.MoveAcceleration].Value : stats[StatType.MoveAcceleration].Value * 3;
         float movement = Mathf.Pow(Mathf.Abs(speedDiff) * accelRate, 1) * Mathf.Sign(speedDiff);
         rigBod.AddForce(movement * Vector2.right);
 
         // running anim
         animator.SetFloat("Running", Mathf.Abs(movementInputDirection));
         animator.SetFloat("Yvelocity", rigBod.velocity.y);
+        animator.SetFloat("Xvelocity", (Mathf.Abs(rigBod.velocity.x) * .2f + .2f));
     }
 
     protected virtual void ApplySkills()
