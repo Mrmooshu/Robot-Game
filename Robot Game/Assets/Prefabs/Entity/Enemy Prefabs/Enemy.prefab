@@ -187,9 +187,9 @@ MonoBehaviour:
     value: 1
   - type: 7
     value: 10
-  - type: 9
-    value: 5
   - type: 10
+    value: 5
+  - type: 11
     value: 5
   dead: 0
   stunned: 0
@@ -261,7 +261,7 @@ SpriteRenderer:
   m_SpriteSortPoint: 0
 --- !u!95 &2576253962605282561
 Animator:
-  serializedVersion: 4
+  serializedVersion: 5
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -278,7 +278,7 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
+  m_KeepAnimatorStateOnDisable: 0
 --- !u!50 &5995585834690837025
 Rigidbody2D:
   serializedVersion: 4

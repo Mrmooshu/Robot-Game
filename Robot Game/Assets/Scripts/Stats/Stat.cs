@@ -41,6 +41,7 @@ public class Stat
                 lastBaseValue = BaseValue;
                 isDirty = false;
                 _value = CalculateFinalValue();
+                statUpdated?.Invoke();
             }
             return _value;
         }
@@ -118,7 +119,6 @@ public class Stat
                 finalValue *= 1 + modValue;
             }
         }
-        statUpdated?.Invoke();
         return (float)Math.Round(finalValue, 4);
     }
 

@@ -56,7 +56,7 @@ public class PlayerEntity : UnitEntity
             }
 
             // attack
-            if (UnityEngine.Input.GetButton("Attack1") && grounded)
+            if (UnityEngine.Input.GetButton("Attack1"))
             {
                 animator.SetTrigger("Basic");
             }
@@ -99,10 +99,19 @@ public class PlayerEntity : UnitEntity
 
     public virtual void BasicAttack()
     {
+        animator.ResetTrigger("Basic");
         Vector2 knockback = new Vector2(100 * facingDirection, 100);
         DamageScript.Attack(new DamageScript.attackData(this, new DamageScript.damageData(stats[StatType.AttackDamage].Value, DamageScript.damageType.physical), true, knockback, .5f), hitboxes, whatIsEnemy, this);
-        rigBod.AddForce(new Vector2(stats[StatType.MoveSpeed].Value * facingDirection, 1.2f), ForceMode2D.Impulse);
+        //rigBod.AddForce(new Vector2(stats[StatType.MoveSpeed].Value * facingDirection, 1.2f), ForceMode2D.Impulse);
         //kill switch (uncomment to kill urself)
         //((ResourceStat)stats[StatType.Health]).CurrentValue -= 1000;
+    }
+
+    public void OnDrawGizmos()
+    {
+        if (hitboxes.GetComponentsInChildren<BoxCollider2D>().Length > 0)
+        {
+            Gizmos.DrawWireCube(hitboxes.GetComponentsInChildren<BoxCollider2D>()[0].transform.position, hitboxes.GetComponentsInChildren<BoxCollider2D>()[0].size);
+        }
     }
 }
