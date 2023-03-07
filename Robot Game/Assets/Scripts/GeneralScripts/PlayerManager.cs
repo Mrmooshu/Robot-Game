@@ -9,6 +9,8 @@ public class PlayerManager : MonoBehaviour, IDataSave
 {
     public static PlayerManager instance;
 
+
+
     public List<PlayerData> players;
     public List<MinionData> activeMinions;
     public MinionInventory minionInventory;
@@ -17,9 +19,7 @@ public class PlayerManager : MonoBehaviour, IDataSave
     public List<PlayerEntity> playerEntities;
     public List<MinionEntity> minionEntities;
 
-    public GameObject golemBlueprint;
-    public GameObject sentinelBlueprint;
-    public GameObject automatonBlueprint;
+    [SerializeField] private GameObject playerPrefab;
     public CinemachineVirtualCamera virtualCam;
     public GameObject PlayerHolderObject;
 
@@ -54,7 +54,7 @@ public class PlayerManager : MonoBehaviour, IDataSave
     public void SpawnPlayer(PlayerData player)
     {
         GameObject newPlayer;
-        newPlayer = Instantiate(GeneralManager.instance.entityPrefabs.LoadAsset<GameObject>("Player"), PlayerHolderObject.transform);
+        newPlayer = Instantiate(playerPrefab, PlayerHolderObject.transform);
         PlayerEntity playerEntity = newPlayer.GetComponent<PlayerEntity>();
         playerEntity.Initialize(player);
         newPlayer.transform.position = playerEntity.data.position;

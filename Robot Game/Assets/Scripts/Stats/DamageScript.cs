@@ -86,7 +86,9 @@ public static class DamageScript
 
 
     }
-
+    /*
+     * checks collision before damaging targets that are hit
+     */
     public static void Attack(attackData attackData, Transform hitboxParent, LayerMask targetMask, Entity attacker)
     {
         List<Collider2D> Totalhits = new List<Collider2D>();
@@ -107,6 +109,15 @@ public static class DamageScript
             ApplyDamage(enemy.transform.GetComponent<EnemyEntity>(), attackData);
             KnockBack(enemy.transform.GetComponent<EnemyEntity>(), attackData);
         }
+    }
+
+    /*
+     * damages directly
+     */
+    public static void Attack(attackData attackData, Entity target, Entity attacker)
+    {
+        ApplyDamage(target.transform.GetComponent<EnemyEntity>(), attackData);
+        KnockBack(target.transform.GetComponent<EnemyEntity>(), attackData);
     }
 
     public static void KnockBack(Entity target, attackData attackData)

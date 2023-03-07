@@ -8,12 +8,15 @@ public class Projectile : Entity
     public Transform direction;
     public Transform visual;
 
-    public void Initialize(float speed, int facingDirection, Entity origin)
+    protected List<Entity> alreadyHit;
+
+    public void Initialize(int facingDirection, Entity origin)
     {
         transform.right *= facingDirection;
         this.origin = origin;
         direction = transform.Find("Direction");
         visual = transform.Find("Visual");
+        alreadyHit = new List<Entity>();
         CreateStats();
     }
 

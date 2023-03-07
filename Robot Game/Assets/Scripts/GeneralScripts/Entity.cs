@@ -17,6 +17,7 @@ public abstract class Entity : MonoBehaviour
     public int facingDirection { get; protected set; }
     public bool dead = false;
     public bool stunned = false;
+    public LayerMask whatIsEnemy;
 
     public Dictionary<StatType, Stat> stats;
     public Dictionary<int,Effect> effects;

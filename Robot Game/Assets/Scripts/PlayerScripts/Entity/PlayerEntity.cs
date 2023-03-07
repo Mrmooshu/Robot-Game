@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 using System;
+using UnityEditor.Animations;
 
 public class PlayerEntity : UnitEntity
 {
@@ -12,6 +13,7 @@ public class PlayerEntity : UnitEntity
 
     public Interactable currentInteractable;
 
+    AnimatorController controller;
 
     //gameobject components
 
@@ -23,6 +25,7 @@ public class PlayerEntity : UnitEntity
         this.data = data;
         onHitPassives = new List<IOnHit>();
         base.Initialize();
+        controller = (AnimatorController)animator.runtimeAnimatorController;
     }
 
     protected override void Input()
@@ -58,7 +61,14 @@ public class PlayerEntity : UnitEntity
             // attack
             if (UnityEngine.Input.GetButton("Attack1"))
             {
-                animator.SetTrigger("Basic");
+                if (data.weapon != null)
+                {
+                    var state = controller.layers[2].stateMachine.states.FirstOrDefault(s => s.state.name.Equals("Basic")).state;
+                    controller.SetStateEffectiveMotion(state, ((Weapon)Database.GetItem(data.weapon.itemID)).animation);
+                    animator.Play(Database.GetItem(data.weapon.itemID).GetType().ToString() + " Basic", 0);
+                    animator.Play("Basic", 2);
+                }
+
             }
 
             // left click is down
@@ -100,8 +110,11 @@ public class PlayerEntity : UnitEntity
     public virtual void BasicAttack()
     {
         animator.ResetTrigger("Basic");
-        Vector2 knockback = new Vector2(100 * facingDirection, 100);
-        DamageScript.Attack(new DamageScript.attackData(this, new DamageScript.damageData(stats[StatType.AttackDamage].Value, DamageScript.damageType.physical), true, knockback, .5f), hitboxes, whatIsEnemy, this);
+        ((Weapon)Database.GetItem(data.weapon.itemID)).BasicAttack(this);
+
+
+        //Vector2 knockback = new Vector2(100 * facingDirection, 100);
+        //DamageScript.Attack(new DamageScript.attackData(this, new DamageScript.damageData(stats[StatType.AttackDamage].Value, DamageScript.damageType.physical), true, knockback, .5f), hitboxes, whatIsEnemy, this);
         //rigBod.AddForce(new Vector2(stats[StatType.MoveSpeed].Value * facingDirection, 1.2f), ForceMode2D.Impulse);
         //kill switch (uncomment to kill urself)
         //((ResourceStat)stats[StatType.Health]).CurrentValue -= 1000;

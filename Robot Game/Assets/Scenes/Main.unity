@@ -2904,9 +2904,7 @@ MonoBehaviour:
     stackLimit: 0
   playerEntities: []
   minionEntities: []
-  golemBlueprint: {fileID: 2644715624662573926, guid: 2ebf245875588e543ba0699bb7e0da6d, type: 3}
-  sentinelBlueprint: {fileID: 0}
-  automatonBlueprint: {fileID: 0}
+  playerPrefab: {fileID: 2947402111217047421, guid: 37320e058249dd6438173e326299cd87, type: 3}
   virtualCam: {fileID: 1462554856}
   PlayerHolderObject: {fileID: 1095336933}
   activePlayer:

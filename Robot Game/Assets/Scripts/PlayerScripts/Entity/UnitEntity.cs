@@ -14,7 +14,6 @@ public abstract class UnitEntity : Entity
 
     //other
     public LayerMask whatIsGround;
-    public LayerMask whatIsEnemy;
     protected float groundedRadius = .1f;
 
     //movement variables

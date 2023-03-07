@@ -22,4 +22,4 @@ MonoBehaviour:
   mods:
   - value: -1
     bonusType: 0
-    statType: 3
+    statType: 6

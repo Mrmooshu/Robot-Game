@@ -10,22 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 89edf9475430c6b4d9f40fa043b237ba, type: 3}
-  m_Name: RedGlove
+  m_Name: Dagger 1
   m_EditorClassIdentifier: 
   itemID: 76
-  itemName: Red Glove
-  itemDescription: default description
+  itemName: Dark Daggers
+  itemDescription: double penetration
   stackable: 0
   sprite: {fileID: -2141564340, guid: ea7d185658128e84fbf8242d62bc55b4, type: 3}
-  drawNow:
-  - position: {x: 0.65, y: -0.55}
-    radius: 0.3
-  animController: {fileID: 22100000, guid: 5ba7521a71b425047a2c338c4ad4f863, type: 2}
-  animControllerBack: {fileID: 22100000, guid: 72e7aba44f3f46c47b91699d97dcc6ff, type: 2}
-  baseAttackSpeed: 0
-  baseDamage: 0
-  HitColliders:
-  - position: {x: 0.8, y: -0.5}
-    radius: 0.3
-  - position: {x: 0.65, y: -0.55}
-    radius: 0.3
+  animation: {fileID: 7400000, guid: 20e9b9883e0c2dc45a8334cc64983ad9, type: 2}
+  baseAttackSpeed: 0.5
+  baseDamage: 5

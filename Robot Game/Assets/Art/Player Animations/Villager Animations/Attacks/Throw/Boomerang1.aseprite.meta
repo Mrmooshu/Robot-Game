@@ -1,0 +1,263 @@
+fileFormatVersion: 2
+guid: 1b4efc95f19746b439c55b9d668b484d
+ScriptedImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 2
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: 11500000, guid: 62a9f0aa5b59740cfbadc7e5f9823bb0, type: 3}
+  textureImporterSettings:
+    alphaSource: 1
+    mipMapMode: 0
+    enableMipMap: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+    convertToNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    isReadable: 0
+    streamingMipmaps: 0
+    streamingMipmapsPriority: 0
+    vTOnly: 0
+    ignoreMasterTextureLimit: 0
+    nPOTScale: 1
+    sRGBTexture: 1
+    spriteMode: 2
+    spriteExtrude: 1
+    spriteMeshType: 1
+    alignment: 0
+    spritePivot: {x: 0.5, y: 0.5}
+    spritePixelsToUnits: 32
+    spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+    spriteGenerateFallbackPhysicsShape: 0
+    generateCubemap: 6
+    cubemapConvolution: 0
+    seamlessCubemap: 0
+    alphaIsTransparency: 1
+    spriteTessellationDetail: -1
+    textureType: 8
+    textureShape: 1
+    singleChannelComponent: 0
+    flipbookRows: 0
+    flipbookColumns: 0
+    ignorePngGamma: 0
+    cookieMode: 0
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+    normalMap: 0
+    textureFormat: 0
+    maxTextureSize: 0
+    lightmap: 0
+    compressionQuality: 0
+    linearTexture: 0
+    grayScaleToAlpha: 0
+    rGBM: 0
+    cubemapConvolutionSteps: 0
+    cubemapConvolutionExponent: 0
+    maxTextureSizeSet: 0
+    compressionQualitySet: 0
+    textureFormatSet: 0
+    applyGammaDecoding: 0
+  previousAsepriteImporterSettings:
+    importHiddenLayers: 1
+    layerImportMode: 0
+    defaultPivotSpace: 0
+    defaultPivotAlignment: 7
+    customPivotPosition: {x: 0.5, y: 0.5}
+    generateModelPrefab: 1
+    generateAnimationClips: 0
+    addShadowCasters: 0
+  asepriteImporterSettings:
+    importHiddenLayers: 1
+    layerImportMode: 0
+    defaultPivotSpace: 0
+    defaultPivotAlignment: 7
+    customPivotPosition: {x: 0.5, y: 0.5}
+    generateModelPrefab: 1
+    generateAnimationClips: 0
+    addShadowCasters: 0
+  importFileNodeState: 1
+  platformSettingsDirtyTick: 0
+  textureAssetName: 
+  singleSpriteImportData:
+  - name: 
+    originalName: 
+    pivot: {x: 0, y: 0}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    spriteID: 
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 0, y: 0}
+  multiSpriteImportData:
+  - name: Boomerang_0
+    originalName: 
+    pivot: {x: 0.42857143, y: -0.8181819}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 4
+      width: 28
+      height: 33
+    spriteID: 85d45abd33cb61545aa8a4db3b92b802
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 4}
+  - name: Boomerang_1
+    originalName: 
+    pivot: {x: 0.33333334, y: -0.7647059}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 45
+      width: 27
+      height: 34
+    spriteID: 08507123527164d438e59ee0470055a1
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 45}
+  - name: Boomerang_2
+    originalName: 
+    pivot: {x: 0.080000035, y: -0.7647059}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 87
+      width: 25
+      height: 34
+    spriteID: fb61ecc54ef28704088918e031c22555
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 87}
+  - name: Boomerang_3
+    originalName: 
+    pivot: {x: 0.99999905, y: -16}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 40
+      y: 4
+      width: 1
+      height: 1
+    spriteID: 0dc6951b94b9d8b4f8fcec70a7527fe0
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 40, y: 4}
+  - name: Boomerang_4
+    originalName: 
+    pivot: {x: 0.99999905, y: -16}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 40
+      y: 13
+      width: 1
+      height: 1
+    spriteID: a67407c7ec96ffb47932c54ddd4de856
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 40, y: 13}
+  asepriteLayers:
+  - layerIndex: 0
+    name: Boomerang
+    layerFlags: 3
+    layerType: 0
+    cells:
+    - name: Boomerang_0
+      frameIndex: 0
+      cellRect:
+        x: 36
+        y: 27
+        width: 28
+        height: 33
+      spriteId: 85d45abd33cb61545aa8a4db3b92b802
+    - name: Boomerang_1
+      frameIndex: 1
+      cellRect:
+        x: 39
+        y: 26
+        width: 27
+        height: 34
+      spriteId: 08507123527164d438e59ee0470055a1
+    - name: Boomerang_2
+      frameIndex: 2
+      cellRect:
+        x: 46
+        y: 26
+        width: 25
+        height: 34
+      spriteId: fb61ecc54ef28704088918e031c22555
+    - name: Boomerang_3
+      frameIndex: 3
+      cellRect:
+        x: 47
+        y: 16
+        width: 1
+        height: 1
+      spriteId: 0dc6951b94b9d8b4f8fcec70a7527fe0
+    - name: Boomerang_4
+      frameIndex: 4
+      cellRect:
+        x: 47
+        y: 16
+        width: 1
+        height: 1
+      spriteId: a67407c7ec96ffb47932c54ddd4de856
+    linkedCells: []
+  platformSettings: []
+  secondarySpriteTextures: []
+  spritePackingTag: 

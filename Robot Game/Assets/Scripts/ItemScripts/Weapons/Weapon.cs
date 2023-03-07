@@ -4,22 +4,12 @@ using UnityEngine;
 
 public abstract class Weapon : ItemData
 {
-    public List<HitColliderInfo> drawNow;
-
     [Header("Weapon Properties")]
-    public RuntimeAnimatorController animController;
-    public RuntimeAnimatorController animControllerBack = null;
-    public int baseAttackSpeed;
+    public AnimationClip animation;
+    public float baseAttackSpeed;
     public int baseDamage;
 
-    [System.Serializable]
-    public struct HitColliderInfo
-    {
-        public Vector2 position;
-        public float radius;
-    }
-
-    public abstract void BasicAttack(PlayerEntity player, int followUpIndex);
+    public abstract void BasicAttack(PlayerEntity player);
 
     
 }
