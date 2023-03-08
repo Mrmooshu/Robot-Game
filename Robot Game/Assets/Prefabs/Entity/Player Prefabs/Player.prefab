@@ -372,16 +372,18 @@ MonoBehaviour:
     value: 10
   - type: 2
     value: 100
+  - type: 13
+    value: 0
   dead: 0
   stunned: 0
+  whatIsEnemy:
+    serializedVersion: 2
+    m_Bits: 256
   skillTree: {fileID: 1305344500577508324}
   groundCheck: {fileID: 2653229882561976576}
   whatIsGround:
     serializedVersion: 2
     m_Bits: 64
-  whatIsEnemy:
-    serializedVersion: 2
-    m_Bits: 256
   data:
     level: 0
     inventory:
