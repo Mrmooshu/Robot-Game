@@ -38,4 +38,9 @@ public class Item : ISerializationCallbackReceiver
             quanityString = "";
         }
     }
+
+    public ItemData GetItemFromDatabase()
+    {
+        return Database.GetItem(itemID);
+    }
 }

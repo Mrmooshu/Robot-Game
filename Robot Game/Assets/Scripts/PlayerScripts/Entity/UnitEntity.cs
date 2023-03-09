@@ -108,4 +108,6 @@ public abstract class UnitEntity : Entity
     {
         effectUpdated?.Invoke();
     }
+
+    protected abstract void EquipItemsFromData();
 }

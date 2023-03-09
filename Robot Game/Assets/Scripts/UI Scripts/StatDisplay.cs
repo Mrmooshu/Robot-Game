@@ -9,11 +9,14 @@ public class StatDisplay : MonoBehaviour
 
     private TextMeshProUGUI textField;
 
+    private Dictionary<StatType, Stat> stats;
+
     public void Start()
     {
         textField = GetComponentInChildren<TextMeshProUGUI>();
         RefreshStats();
         PlayerManager.instance.playerChanged += RefreshStats;
+        SubscribeToStats();
     }
 
     private void OnDestroy()
@@ -30,6 +33,25 @@ public class StatDisplay : MonoBehaviour
             {
                 textField.text += type.ToString() + ":" + PlayerManager.instance.activePlayer.GetEntity().stats[type].Value + "\n";
             }
+        }
+    }
+
+    private void SubscribeToStats()
+    {
+        //unsub from previous stats
+        if (stats != null)
+        {
+            foreach (var stat in stats)
+            {
+                stat.Value.statUpdated -= RefreshStats;
+            }
+        }
+        //change stats to new stats
+        stats = PlayerManager.instance.activePlayer.GetEntity().stats;
+        //sub to new stats
+        foreach (var stat in stats)
+        {
+            stat.Value.statUpdated += RefreshStats;
         }
     }
 }

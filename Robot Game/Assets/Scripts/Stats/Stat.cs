@@ -11,6 +11,13 @@ public enum StatType
 }
 
 [Serializable]
+public struct StatStruct
+{
+    public StatType type;
+    public float value;
+}
+
+[Serializable]
 public class Stat
 {
     public float BaseValue;
@@ -53,6 +60,7 @@ public class Stat
         statModifiers.Add(mod);
         statModifiers.Sort(CompareModifierOrder);
         mod.stat = this;
+        statUpdated?.Invoke();
     }
 
     protected int CompareModifierOrder(StatMod a, StatMod b)
@@ -69,6 +77,7 @@ public class Stat
         if (statModifiers.Remove(mod))
         {
             isDirty = true;
+            statUpdated?.Invoke();
             return true;
         }
         return false;

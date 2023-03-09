@@ -58,4 +58,9 @@ public class GolemEntity : MinionEntity
         //   ((RockInteractable) currentInteractable).RollDrop();
         //}
     }
+
+    protected override void EquipItemsFromData()
+    {
+        //TODO
+    }
 }

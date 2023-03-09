@@ -31,15 +31,20 @@ public class WeaponInventorySlot : SlotDisplay<Item>, IDropHandler, ISlot
     {
         if (inventorySlot.GetComponentInChildren<InventoryItem>())
         {
+            //swapping with another weapon
             if (Database.GetItem(inventorySlot.GetComponentInChildren<InventoryItem>().item.itemID) is Weapon)
             {
+                if (PlayerManager.instance.activePlayer.weapon != null) { ((Weapon)Database.GetItem(PlayerManager.instance.activePlayer.weapon.itemID)).Unequip(); }
                 ItemInventory.Move(inventorySlot.parent.parent.GetComponentInParent<ItemInventoryDisplay>().currentInventory, ref PlayerManager.instance.activePlayer.weapon, inventorySlot.GetComponent<ItemInventorySlot>().inventoryIndex);
+                ((Weapon)Database.GetItem(PlayerManager.instance.activePlayer.weapon.itemID)).Equip(ref PlayerManager.instance.activePlayer.GetEntity().stats);
                 inventorySlot.parent.parent.GetComponentInParent<ItemInventoryDisplay>().RefreshInventory();
                 RefreshSlot();
             }
         }
         else
         {
+            //swapping with emtpy slot
+            ((Weapon)Database.GetItem(PlayerManager.instance.activePlayer.weapon.itemID)).Unequip();
             ItemInventory.Move(inventorySlot.parent.parent.GetComponentInParent<ItemInventoryDisplay>().currentInventory, ref PlayerManager.instance.activePlayer.weapon, inventorySlot.GetComponent<ItemInventorySlot>().inventoryIndex);
             inventorySlot.parent.parent.GetComponentInParent<ItemInventoryDisplay>().RefreshInventory();
             RefreshSlot();
@@ -48,6 +53,7 @@ public class WeaponInventorySlot : SlotDisplay<Item>, IDropHandler, ISlot
 
     public override void RemoveFromSlot()
     {
+        ((Weapon)Database.GetItem(PlayerManager.instance.activePlayer.weapon.itemID)).Unequip();
         PlayerManager.instance.activePlayer.weapon = null;
     }
 

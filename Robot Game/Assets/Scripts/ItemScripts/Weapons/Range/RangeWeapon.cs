@@ -4,7 +4,7 @@ using UnityEngine;
 
 public abstract class RangeWeapon : Weapon
 {
-    [Header("Weapon Properties")]
+    [Header("Range Weapon Properties")]
     public GameObject projectilePrefab;
     public Vector2 firePosition;
 }

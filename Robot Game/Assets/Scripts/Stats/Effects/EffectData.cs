@@ -3,14 +3,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[Serializable]
-public struct modData
-{
-    public float value;
-    public StatModType bonusType;
-    public StatType statType;
-}
-
 public abstract class EffectData : ScriptableObject
 {
 
@@ -23,5 +15,5 @@ public abstract class EffectData : ScriptableObject
     public string effectName;
     public Sprite sprite;
     [Header("Modifier Properties")]
-    public modData[] mods;
+    public ModData[] mods;
 }

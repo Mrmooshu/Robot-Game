@@ -5,12 +5,6 @@ using UnityEngine;
 
 public abstract class Entity : MonoBehaviour
 {
-    [Serializable]
-    public struct StatStruct
-    {
-        public StatType type;
-        public float value;
-    }
 
     [SerializeField]private List<StatStruct> statListInspector;
 

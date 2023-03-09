@@ -26,6 +26,7 @@ public class PlayerEntity : UnitEntity
         onHitPassives = new List<IOnHit>();
         base.Initialize();
         controller = (AnimatorController)animator.runtimeAnimatorController;
+        EquipItemsFromData();
     }
 
     protected override void Input()
@@ -119,6 +120,17 @@ public class PlayerEntity : UnitEntity
         //rigBod.AddForce(new Vector2(stats[StatType.MoveSpeed].Value * facingDirection, 1.2f), ForceMode2D.Impulse);
         //kill switch (uncomment to kill urself)
         //((ResourceStat)stats[StatType.Health]).CurrentValue -= 1000;
+    }
+
+    protected override void EquipItemsFromData()
+    {
+        foreach (Item item in new Item[] { data.weapon, data.pickaxe, data.hatchet, data.fishingRod })
+        {
+            if (item != null)
+            {
+                ((Equipable)item.GetItemFromDatabase()).Equip(ref stats);
+            }
+        }
     }
 
     public void OnDrawGizmos()

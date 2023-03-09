@@ -9,6 +9,14 @@ public enum StatModType
 }
 
 [Serializable]
+public struct ModData
+{
+    public float value;
+    public StatModType bonusType;
+    public StatType statType;
+}
+
+[Serializable]
 public class StatMod
 {
     private float _value;

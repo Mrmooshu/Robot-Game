@@ -17,7 +17,7 @@ public class Effect
         effect.target = target;
         effect.effectData = effectData;
         effect.mods = new List<StatMod>();
-        foreach (modData mod in effectData.mods)
+        foreach (ModData mod in effectData.mods)
         {
             effect.mods.Add(new StatMod(mod.value, mod.bonusType, mod.statType, effect));
         }
