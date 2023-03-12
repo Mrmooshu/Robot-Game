@@ -6,7 +6,7 @@ public abstract class Equipable : ItemData
 {
     [Header("Equipable Properties")]
     [SerializeField] public List<ModData> itemModifiers;
-    private List<StatMod> mods;
+    private List<StatMod> mods = new List<StatMod>();
 
     public void Equip(ref Dictionary<StatType, Stat> stats)
     {

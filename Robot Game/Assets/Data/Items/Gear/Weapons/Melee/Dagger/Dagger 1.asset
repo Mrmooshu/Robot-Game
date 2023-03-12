@@ -13,10 +13,13 @@ MonoBehaviour:
   m_Name: Dagger 1
   m_EditorClassIdentifier: 
   itemID: 76
-  itemName: Dark Daggers
+  itemName: Test Daggers
   itemDescription: double penetration
   stackable: 0
   sprite: {fileID: -2141564340, guid: ea7d185658128e84fbf8242d62bc55b4, type: 3}
+  itemModifiers:
+  - value: 7
+    bonusType: 3
+    statType: 8
   animation: {fileID: 7400000, guid: 20e9b9883e0c2dc45a8334cc64983ad9, type: 2}
   baseAttackSpeed: 0.5
-  baseDamage: 5

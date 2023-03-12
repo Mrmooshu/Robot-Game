@@ -36,7 +36,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 64, y: 64}
+  m_SizeDelta: {x: 96, y: 64}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &954642364675541924
 CanvasRenderer:
@@ -136,12 +136,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ad8d76e54792bf4e85e765dde7e0b81, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  body:
-    variantName: 
-    level: 0
-    weapon:
-      itemID: 0
-      quanityString: 0
 --- !u!225 &6806001868279542687
 CanvasGroup:
   m_ObjectHideFlags: 0

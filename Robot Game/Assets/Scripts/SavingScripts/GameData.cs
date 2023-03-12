@@ -29,6 +29,7 @@ public class GameData
 
         minionInventory.inventory[0] = new MinionData("Clay Golem");
         minionInventory.inventory[1] = new MinionData("Clay Golem");
+        minionInventory.inventory[2] = new MinionData("Clay Golem");
 
         minionInventory.inventory[0].tool = new Item(Database.GetItemID("Novium Pickaxe"), 1);
         minionInventory.inventory[1].tool = new Item(Database.GetItemID("Iromite Pickaxe"), 1);
@@ -39,7 +40,7 @@ public class GameData
         bankInventory.Add(new Item(Database.GetItemID("Pherium Warhammer"), 1));
         bankInventory.Add(new Item(Database.GetItemID("Rhodisium Warhammer"), 1));
         bankInventory.Add(new Item(Database.GetItemID("Lectonium Warhammer"), 1));
-        bankInventory.Add(new Item(Database.GetItemID("Red Glove"), 1));
+        bankInventory.Add(new Item(Database.GetItemID("Test Daggers"), 1));
         bankInventory.Add(new Item(Database.GetItemID("Test Dart"), 1));
         bankInventory.Add(new Item(Database.GetItemID("Test Boomerang"), 1));
     }

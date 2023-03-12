@@ -1,12 +1,12 @@
 ManifestFileVersion: 0
-CRC: 1583596660
+CRC: 1033741989
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 059c17855d7fbf2d2fb1d929af6cd300
+    Hash: cfc0a725135d3afc6fdd876744f100f1
   TypeTreeHash:
     serializedVersion: 2
-    Hash: 01d602425d8b48bdeffc7c93a8a602cb
+    Hash: acea924f866ad73f15ceb9dbe187492d
 HashAppended: 0
 ClassTypes:
 - Class: 1
@@ -105,8 +105,6 @@ ClassTypes:
   Script: {fileID: 11500000, guid: c91c854ae86352e4f8893a00aabe846a, type: 3}
 - Class: 114
   Script: {fileID: 11500000, guid: 9c034c74d2f65ea469bd17a5e81667be, type: 3}
-- Class: 114
-  Script: {fileID: 11500000, guid: 97cafdb748acf9841adca982b0b0718c, type: 3}
 - Class: 115
   Script: {instanceID: 0}
 - Class: 128
@@ -191,12 +189,12 @@ Assets:
 - Assets/Prefabs/UI/QuestUI/QuestListOption.prefab
 - Assets/Prefabs/UI/Misc Ui/Damage Text.prefab
 - Assets/Prefabs/UI/EffectUI/EffectObject.prefab
-- Assets/Prefabs/UI/InventoryUI/MinionInventoryUI/PlayerSlot.prefab
 - Assets/Prefabs/UI/PlayerSwapUI/PlayerSelectOption.prefab
 - Assets/Prefabs/UI/MainPlayerMenu.prefab
 - Assets/Prefabs/UI/QuestUI/Dialogue Box.prefab
 - Assets/Prefabs/UI/SafePointUI/SafePointMenu.prefab
 - Assets/Prefabs/UI/InventoryUI/ItemUI/InventoryItem.prefab
+- Assets/Prefabs/UI/InventoryUI/MinionInventoryUI/PlayerSlot.prefab
 - Assets/Prefabs/UI/QuestUI/ItemRequirementDisplay.prefab
 - Assets/Prefabs/UI/UI.prefab
 - Assets/Prefabs/UI/InventoryUI/ItemUI/ItemSlot.prefab

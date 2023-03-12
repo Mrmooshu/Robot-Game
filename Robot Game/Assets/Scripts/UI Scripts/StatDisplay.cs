@@ -22,6 +22,13 @@ public class StatDisplay : MonoBehaviour
     private void OnDestroy()
     {
         PlayerManager.instance.playerChanged -= RefreshStats;
+        if (stats != null)
+        {
+            foreach (var stat in stats)
+            {
+                stat.Value.statUpdated -= RefreshStats;
+            }
+        }
     }
 
     private void RefreshStats()

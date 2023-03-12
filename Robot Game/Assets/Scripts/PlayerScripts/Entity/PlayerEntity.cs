@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 using System;
-using UnityEditor.Animations;
 
 public class PlayerEntity : UnitEntity
 {
@@ -13,9 +12,7 @@ public class PlayerEntity : UnitEntity
 
     public Interactable currentInteractable;
 
-    AnimatorController controller;
-
-    //gameobject components
+    AnimatorOverrideController controller;
 
     //other
     public Transform hitboxes;
@@ -25,7 +22,8 @@ public class PlayerEntity : UnitEntity
         this.data = data;
         onHitPassives = new List<IOnHit>();
         base.Initialize();
-        controller = (AnimatorController)animator.runtimeAnimatorController;
+        controller = new AnimatorOverrideController(animator.runtimeAnimatorController);
+        animator.runtimeAnimatorController = controller;
         EquipItemsFromData();
     }
 
@@ -65,8 +63,7 @@ public class PlayerEntity : UnitEntity
                 if (data.weapon != null)
                 {
                     animator.SetFloat("AttackSpeedModifier", ((Weapon)Database.GetItem(data.weapon.itemID)).baseAttackSpeed + ((Weapon)Database.GetItem(data.weapon.itemID)).baseAttackSpeed * stats[StatType.AttackSpeedBonus].Value);
-                    var state = controller.layers[2].stateMachine.states.FirstOrDefault(s => s.state.name.Equals("Basic")).state;
-                    controller.SetStateEffectiveMotion(state, ((Weapon)Database.GetItem(data.weapon.itemID)).animation);
+                    controller["Default Attack"] = ((Weapon)Database.GetItem(data.weapon.itemID)).animation;
                     animator.Play(Database.GetItem(data.weapon.itemID).GetType().ToString() + " Basic", 0);
                     animator.Play("Basic", 2);
                 }
