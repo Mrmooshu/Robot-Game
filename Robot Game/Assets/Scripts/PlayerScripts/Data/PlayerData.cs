@@ -12,10 +12,12 @@ public class PlayerData : UnitData
     [SerializeReference] public Item hatchet;
     [SerializeReference] public Item fishingRod;
 
-    public PlayerData(string player)
+    public PlayerData(string player, string sceneName, Vector2 position)
     {
         CreateSkillTree(player);
         inventory = new ItemInventory(20, 10);
+        this.sceneName = sceneName;
+        this.position = position;
     }
 
 

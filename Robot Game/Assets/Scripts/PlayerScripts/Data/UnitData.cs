@@ -28,6 +28,7 @@ public abstract class UnitData : ISerializationCallbackReceiver
     public int level = 1;
     public ItemInventory inventory;
     public Vector3 position;
+    public string sceneName;
     public Activity activity = Activity.Idle;
 
 

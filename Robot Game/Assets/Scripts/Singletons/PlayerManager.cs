@@ -4,12 +4,13 @@ using UnityEngine;
 using System.Numerics;
 using System;
 using Cinemachine;
+using UnityEngine.SceneManagement;
 
 public class PlayerManager : MonoBehaviour, IDataSave
 {
     public static PlayerManager instance;
 
-
+    List<string> loadedScenes = new List<string>();
 
     public List<PlayerData> players;
     public List<MinionData> activeMinions;
@@ -21,7 +22,6 @@ public class PlayerManager : MonoBehaviour, IDataSave
 
     [SerializeField] private GameObject playerPrefab;
     public CinemachineVirtualCamera virtualCam;
-    public GameObject PlayerHolderObject;
 
     public PlayerData activePlayer;
 
@@ -33,28 +33,39 @@ public class PlayerManager : MonoBehaviour, IDataSave
         {
             instance = this;
             playerEntities = new List<PlayerEntity>();
-            foreach (PlayerData player in players)
+            SpawnAllUnits();
+        }
+    }
+    public void SpawnAllUnits()
+    {
+        foreach (PlayerData player in players)
+        {
+            if (player != null)
             {
-                if (player != null)
-                {
-                    SpawnPlayer(player);
-                }
+                SpawnPlayer(player);
             }
-            SetActivePlayer(players[0]);
-            foreach (MinionData core in activeMinions)
+        }
+        SetActivePlayer(players[0]);
+        foreach (MinionData core in activeMinions)
+        {
+            if (core != null)
             {
-                if (core != null)
-                {
-                    SpawnMinion(core);
-                }
+                SpawnMinion(core);
             }
         }
     }
 
     public void SpawnPlayer(PlayerData player)
     {
+        if (!loadedScenes.Contains(player.sceneName))
+        {
+            SceneManager.LoadSceneAsync(player.sceneName, LoadSceneMode.Additive);
+            loadedScenes.Add(player.sceneName);
+        }
+
         GameObject newPlayer;
-        newPlayer = Instantiate(playerPrefab, PlayerHolderObject.transform);
+        newPlayer = Instantiate(playerPrefab);
+        SceneManager.MoveGameObjectToScene(newPlayer, SceneManager.GetSceneByName(player.sceneName));
         PlayerEntity playerEntity = newPlayer.GetComponent<PlayerEntity>();
         playerEntity.Initialize(player);
         newPlayer.transform.position = playerEntity.data.position;
@@ -63,8 +74,14 @@ public class PlayerManager : MonoBehaviour, IDataSave
 
     public void SpawnMinion(MinionData minion)
     {
+        if (!SceneManager.GetSceneByName(minion.sceneName).isLoaded)
+        {
+            SceneManager.LoadScene(minion.sceneName, LoadSceneMode.Additive);
+        }
+
         GameObject newMinion;
-        newMinion = Instantiate(GeneralManager.instance.entityPrefabs.LoadAsset<GameObject>(minion.variantName), PlayerHolderObject.transform);
+        newMinion = Instantiate(GeneralManager.instance.entityPrefabs.LoadAsset<GameObject>(minion.variantName));
+        SceneManager.MoveGameObjectToScene(newMinion, SceneManager.GetSceneByName(minion.sceneName));
         MinionEntity minionEntity = newMinion.GetComponent<MinionEntity>();
         minionEntity.Initialize(minion);
         newMinion.transform.position = minionEntity.data.position;

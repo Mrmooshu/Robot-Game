@@ -12,7 +12,6 @@ public class UpdateCaller : MonoBehaviour
         if (instance == null)
         {
             instance = this;
-            DontDestroyOnLoad(this);
         }
         else if (this != instance)
             Destroy(this);
