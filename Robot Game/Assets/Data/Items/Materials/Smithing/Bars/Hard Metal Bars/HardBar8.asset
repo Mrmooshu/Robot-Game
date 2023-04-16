@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44441154caaf6f646a1af9709488568c, type: 3}
   m_Name: HardBar8
   m_EditorClassIdentifier: 
-  itemID: 0
+  itemID: 50
   itemName: Lectonium Bar
   itemDescription: only the best will get this
   stackable: 1

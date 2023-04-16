@@ -27,8 +27,7 @@ public abstract class UnitData : ISerializationCallbackReceiver
 
     public int level = 1;
     public ItemInventory inventory;
-    public Vector3 position;
-    public string sceneName;
+    public Vector3 savedPosition;
     public Activity activity = Activity.Idle;
 
 
@@ -66,7 +65,7 @@ public abstract class UnitData : ISerializationCallbackReceiver
     {
         try
         {
-            position = GetEntity().transform.position;
+            savedPosition = GetEntity().transform.position;
             if (skills != null)
             {
                 skillsList = skills.Select(x => new skill(x.Key, x.Value)).ToList();

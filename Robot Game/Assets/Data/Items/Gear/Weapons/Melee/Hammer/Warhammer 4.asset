@@ -17,11 +17,6 @@ MonoBehaviour:
   itemDescription: default description
   stackable: 0
   sprite: {fileID: -518487700, guid: ea7d185658128e84fbf8242d62bc55b4, type: 3}
-  animController: {fileID: 22100000, guid: f0b9738e01b280447a11c044ead36d7b, type: 2}
+  itemModifiers: []
+  animation: {fileID: 0}
   baseAttackSpeed: 1
-  baseDamage: 1
-  Hitcolliders:
-  - position: {x: 1.5, y: -0.8}
-    radius: 0.4
-  - position: {x: 1, y: -0.7}
-    radius: 0.3

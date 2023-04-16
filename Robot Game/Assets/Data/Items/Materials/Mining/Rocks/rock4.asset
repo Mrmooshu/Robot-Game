@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44441154caaf6f646a1af9709488568c, type: 3}
   m_Name: rock4
   m_EditorClassIdentifier: 
-  itemID: 0
+  itemID: 20
   itemName: default name
   itemDescription: default description
+  stackable: 1
   sprite: {fileID: -456174935, guid: 5652b0ad6aa96f846b000545ad5e52ba, type: 3}

@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44441154caaf6f646a1af9709488568c, type: 3}
   m_Name: SoftBar4
   m_EditorClassIdentifier: 
-  itemID: 0
+  itemID: 54
   itemName: Golburr Bar
   itemDescription: not to be treated as a currency
   stackable: 1

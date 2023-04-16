@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44441154caaf6f646a1af9709488568c, type: 3}
   m_Name: SoftBar2
   m_EditorClassIdentifier: 
-  itemID: 0
+  itemID: 52
   itemName: Tzin Bar
   itemDescription: the t is silent, dont let anyone tell you otherwise
   stackable: 1

@@ -76,6 +76,7 @@ ScriptedImporter:
     customPivotPosition: {x: 0.5, y: 0.5}
     generateModelPrefab: 1
     generateAnimationClips: 0
+    addSortingGroup: 1
     addShadowCasters: 0
   asepriteImporterSettings:
     importHiddenLayers: 0
@@ -85,6 +86,7 @@ ScriptedImporter:
     customPivotPosition: {x: 0.5, y: 0.5}
     generateModelPrefab: 1
     generateAnimationClips: 0
+    addSortingGroup: 1
     addShadowCasters: 0
   importFileNodeState: 1
   platformSettingsDirtyTick: 0
@@ -111,7 +113,7 @@ ScriptedImporter:
     tessellationDetail: 0
     uvTransform: {x: 0, y: 0}
   multiSpriteImportData:
-  - name: Back Dagger_0
+  - name: Back Dagger_Frame_0
     originalName: 
     pivot: {x: 0.03999996, y: -0.8}
     alignment: 9
@@ -122,7 +124,7 @@ ScriptedImporter:
       y: 4
       width: 25
       height: 10
-    spriteID: 808a8e72ab11f944485cf26bb946a07c
+    spriteID: ae6be0f9390e95a498e46384c36c7e40
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -131,7 +133,7 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     uvTransform: {x: 4, y: 4}
-  - name: Back Dagger_1
+  - name: Back Dagger_Frame_1
     originalName: 
     pivot: {x: -0.16000007, y: -0.90000004}
     alignment: 9
@@ -142,7 +144,7 @@ ScriptedImporter:
       y: 4
       width: 25
       height: 10
-    spriteID: 02d9e42a83760ff4393e565f04c7a31d
+    spriteID: 57eae809b5529d94eb332bd10f3fa699
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -151,7 +153,7 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     uvTransform: {x: 37, y: 4}
-  - name: Back Dagger_2
+  - name: Back Dagger_Frame_2
     originalName: 
     pivot: {x: -0.6799999, y: -0.90000004}
     alignment: 9
@@ -162,7 +164,7 @@ ScriptedImporter:
       y: 4
       width: 25
       height: 10
-    spriteID: cb078c7ab20447640a9935b3eaaa48d9
+    spriteID: c2eae0cdea41c84469d4fec31550137b
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -171,7 +173,7 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     uvTransform: {x: 70, y: 4}
-  - name: Back Dagger_3
+  - name: Back Dagger_Frame_3
     originalName: 
     pivot: {x: 0.03999996, y: -0.8}
     alignment: 9
@@ -182,7 +184,7 @@ ScriptedImporter:
       y: 22
       width: 25
       height: 10
-    spriteID: 909d132175b280449bfd107395a5d35d
+    spriteID: 8f54cdf8062ee6f48921a5cd886c8a9b
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -191,7 +193,7 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     uvTransform: {x: 4, y: 22}
-  - name: Back Dagger_4
+  - name: Back Dagger_Frame_4
     originalName: 
     pivot: {x: 0.080000035, y: -0.7}
     alignment: 9
@@ -202,7 +204,7 @@ ScriptedImporter:
       y: 22
       width: 25
       height: 10
-    spriteID: f78af91820db895418e8f37efc6e1e48
+    spriteID: 021fea8e6b996b1419f17e5440b40625
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -211,7 +213,7 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     uvTransform: {x: 37, y: 22}
-  - name: Back Dagger_5
+  - name: Back Dagger_Frame_5
     originalName: 
     pivot: {x: 0.12, y: -0.8}
     alignment: 9
@@ -222,7 +224,7 @@ ScriptedImporter:
       y: 22
       width: 25
       height: 10
-    spriteID: 242b95ce94e9f2e4f9ff65494a7d7706
+    spriteID: 91b05e030f238b04cbd41cab4f498bd0
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -231,7 +233,7 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     uvTransform: {x: 70, y: 22}
-  - name: Front Dagger_0
+  - name: Front Dagger_Frame_0
     originalName: 
     pivot: {x: 0.03999996, y: -0.5}
     alignment: 9
@@ -242,7 +244,7 @@ ScriptedImporter:
       y: 40
       width: 25
       height: 10
-    spriteID: 7b4fae8b862c84d45aafd6aeeaa4b319
+    spriteID: 15f52247e1e38994897a894c39a9a936
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -251,7 +253,7 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     uvTransform: {x: 4, y: 40}
-  - name: Front Dagger_1
+  - name: Front Dagger_Frame_1
     originalName: 
     pivot: {x: 0.080000035, y: -0.4}
     alignment: 9
@@ -262,7 +264,7 @@ ScriptedImporter:
       y: 40
       width: 25
       height: 10
-    spriteID: 4bb74a743e38be545b6a1e6a6e164869
+    spriteID: 676ed46910ff9324db32931f7a5919c9
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -271,7 +273,7 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     uvTransform: {x: 37, y: 40}
-  - name: Front Dagger_2
+  - name: Front Dagger_Frame_2
     originalName: 
     pivot: {x: 0.12, y: -0.5}
     alignment: 9
@@ -282,7 +284,7 @@ ScriptedImporter:
       y: 40
       width: 25
       height: 10
-    spriteID: 7110444b8f248a44dbc6d8e6e4c618a2
+    spriteID: 1e6751bfb035c744ab17d4857dd638e7
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -291,7 +293,7 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     uvTransform: {x: 70, y: 40}
-  - name: Front Dagger_3
+  - name: Front Dagger_Frame_3
     originalName: 
     pivot: {x: 0.03999996, y: -0.5}
     alignment: 9
@@ -302,7 +304,7 @@ ScriptedImporter:
       y: 58
       width: 25
       height: 10
-    spriteID: 40179ca4cc070a84e938a3065607c35c
+    spriteID: 83c44a7a2bfebd54cb6256fcabeb815d
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -311,7 +313,7 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     uvTransform: {x: 4, y: 58}
-  - name: Front Dagger_4
+  - name: Front Dagger_Frame_4
     originalName: 
     pivot: {x: -0.12, y: -0.6}
     alignment: 9
@@ -322,7 +324,7 @@ ScriptedImporter:
       y: 58
       width: 25
       height: 10
-    spriteID: c392d2cfc64d2044e9c120327f31db3d
+    spriteID: 67ca755029300654ea260c99e4a49d55
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -331,7 +333,7 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     uvTransform: {x: 37, y: 58}
-  - name: Front Dagger_5
+  - name: Front Dagger_Frame_5
     originalName: 
     pivot: {x: -0.64000005, y: -0.7}
     alignment: 9
@@ -342,7 +344,7 @@ ScriptedImporter:
       y: 58
       width: 25
       height: 10
-    spriteID: 609ab09093a38d6468a06384b66295e4
+    spriteID: 9b0004a997d92be4591d6ffeb5305fbc
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -353,113 +355,117 @@ ScriptedImporter:
     uvTransform: {x: 70, y: 58}
   asepriteLayers:
   - layerIndex: 1
+    guid: 25894104
     name: Back Dagger
     layerFlags: 3
     layerType: 0
     cells:
-    - name: Back Dagger_0
+    - name: Back Dagger_Frame_0
       frameIndex: 0
       cellRect:
         x: 47
         y: 8
         width: 25
         height: 10
-      spriteId: 808a8e72ab11f944485cf26bb946a07c
-    - name: Back Dagger_1
+      spriteId: ae6be0f9390e95a498e46384c36c7e40
+    - name: Back Dagger_Frame_1
       frameIndex: 1
       cellRect:
         x: 52
         y: 9
         width: 25
         height: 10
-      spriteId: 02d9e42a83760ff4393e565f04c7a31d
-    - name: Back Dagger_2
+      spriteId: 57eae809b5529d94eb332bd10f3fa699
+    - name: Back Dagger_Frame_2
       frameIndex: 2
       cellRect:
         x: 65
         y: 9
         width: 25
         height: 10
-      spriteId: cb078c7ab20447640a9935b3eaaa48d9
-    - name: Back Dagger_3
+      spriteId: c2eae0cdea41c84469d4fec31550137b
+    - name: Back Dagger_Frame_3
       frameIndex: 3
       cellRect:
         x: 47
         y: 8
         width: 25
         height: 10
-      spriteId: 909d132175b280449bfd107395a5d35d
-    - name: Back Dagger_4
+      spriteId: 8f54cdf8062ee6f48921a5cd886c8a9b
+    - name: Back Dagger_Frame_4
       frameIndex: 4
       cellRect:
         x: 46
         y: 7
         width: 25
         height: 10
-      spriteId: f78af91820db895418e8f37efc6e1e48
-    - name: Back Dagger_5
+      spriteId: 021fea8e6b996b1419f17e5440b40625
+    - name: Back Dagger_Frame_5
       frameIndex: 5
       cellRect:
         x: 45
         y: 8
         width: 25
         height: 10
-      spriteId: 242b95ce94e9f2e4f9ff65494a7d7706
+      spriteId: 91b05e030f238b04cbd41cab4f498bd0
     linkedCells: []
+    parentIndex: -1
   - layerIndex: 7
+    guid: -895374220
     name: Front Dagger
     layerFlags: 3
     layerType: 0
     cells:
-    - name: Front Dagger_0
+    - name: Front Dagger_Frame_0
       frameIndex: 0
       cellRect:
         x: 47
         y: 5
         width: 25
         height: 10
-      spriteId: 7b4fae8b862c84d45aafd6aeeaa4b319
-    - name: Front Dagger_1
+      spriteId: 15f52247e1e38994897a894c39a9a936
+    - name: Front Dagger_Frame_1
       frameIndex: 1
       cellRect:
         x: 46
         y: 4
         width: 25
         height: 10
-      spriteId: 4bb74a743e38be545b6a1e6a6e164869
-    - name: Front Dagger_2
+      spriteId: 676ed46910ff9324db32931f7a5919c9
+    - name: Front Dagger_Frame_2
       frameIndex: 2
       cellRect:
         x: 45
         y: 5
         width: 25
         height: 10
-      spriteId: 7110444b8f248a44dbc6d8e6e4c618a2
-    - name: Front Dagger_3
+      spriteId: 1e6751bfb035c744ab17d4857dd638e7
+    - name: Front Dagger_Frame_3
       frameIndex: 3
       cellRect:
         x: 47
         y: 5
         width: 25
         height: 10
-      spriteId: 40179ca4cc070a84e938a3065607c35c
-    - name: Front Dagger_4
+      spriteId: 83c44a7a2bfebd54cb6256fcabeb815d
+    - name: Front Dagger_Frame_4
       frameIndex: 4
       cellRect:
         x: 51
         y: 6
         width: 25
         height: 10
-      spriteId: c392d2cfc64d2044e9c120327f31db3d
-    - name: Front Dagger_5
+      spriteId: 67ca755029300654ea260c99e4a49d55
+    - name: Front Dagger_Frame_5
       frameIndex: 5
       cellRect:
         x: 64
         y: 7
         width: 25
         height: 10
-      spriteId: 609ab09093a38d6468a06384b66295e4
+      spriteId: 9b0004a997d92be4591d6ffeb5305fbc
     linkedCells: []
+    parentIndex: -1
   platformSettings: []
   secondarySpriteTextures: []
   spritePackingTag: 

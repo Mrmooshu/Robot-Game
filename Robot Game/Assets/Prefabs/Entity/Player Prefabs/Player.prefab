@@ -391,7 +391,7 @@ MonoBehaviour:
       inventorySize: 0
       currentPage: 0
       stackLimit: 0
-    position: {x: 0, y: 0, z: 0}
+    savedPosition: {x: 0, y: 0, z: 0}
     activity: 0
     _skillPoints: 0
     skillsList: []

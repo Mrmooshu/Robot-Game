@@ -8,6 +8,4 @@ AnimatorOverrideController:
   m_PrefabAsset: {fileID: 0}
   m_Name: RedPunchBack
   m_Controller: {fileID: 9100000, guid: 5ee37a8abe111a84abb5b8a4ea65038c, type: 2}
-  m_Clips:
-  - m_OriginalClip: {fileID: 7400000, guid: 7e7ac7a63ac7dc3488db477eaaf3e0cc, type: 2}
-    m_OverrideClip: {fileID: 7400000, guid: 21c42472b018923408b697be8c813c04, type: 2}
+  m_Clips: []

@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class Door : Interactable
 {
-    public string sceneName;
+    public GameObject LinkedDoor;
 
     public override void PlayerInRange(PlayerEntity playerEntitiy)
     {
@@ -19,11 +19,6 @@ public class Door : Interactable
 
     private void EnterAction()
     {
-        if (!SceneManager.GetSceneByName(sceneName).isLoaded)
-        {
-            SceneManager.LoadSceneAsync(sceneName, LoadSceneMode.Additive);
-        }
-        SceneManager.MoveGameObjectToScene(PlayerManager.instance.activePlayer.GetEntity().gameObject, SceneManager.GetSceneByName(sceneName));
-        PlayerManager.instance.activePlayer.sceneName = sceneName;
+        PlayerManager.instance.activePlayer.GetEntity().transform.position = LinkedDoor.transform.position;
     }
 }

@@ -76,6 +76,7 @@ ScriptedImporter:
     customPivotPosition: {x: 0.5, y: 0.5}
     generateModelPrefab: 1
     generateAnimationClips: 0
+    addSortingGroup: 1
     addShadowCasters: 0
   asepriteImporterSettings:
     importHiddenLayers: 1
@@ -85,6 +86,7 @@ ScriptedImporter:
     customPivotPosition: {x: 0.5, y: 0.5}
     generateModelPrefab: 1
     generateAnimationClips: 0
+    addSortingGroup: 1
     addShadowCasters: 0
   importFileNodeState: 1
   platformSettingsDirtyTick: 0
@@ -111,7 +113,7 @@ ScriptedImporter:
     tessellationDetail: 0
     uvTransform: {x: 0, y: 0}
   multiSpriteImportData:
-  - name: Boomerang_0
+  - name: Boomerang_Frame_0
     originalName: 
     pivot: {x: 0.42857143, y: -0.8181819}
     alignment: 9
@@ -122,7 +124,7 @@ ScriptedImporter:
       y: 4
       width: 28
       height: 33
-    spriteID: 85d45abd33cb61545aa8a4db3b92b802
+    spriteID: 7a7903f1fa7117b48a0f90b4cdde712e
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -131,7 +133,7 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     uvTransform: {x: 4, y: 4}
-  - name: Boomerang_1
+  - name: Boomerang_Frame_1
     originalName: 
     pivot: {x: 0.33333334, y: -0.7647059}
     alignment: 9
@@ -142,7 +144,7 @@ ScriptedImporter:
       y: 45
       width: 27
       height: 34
-    spriteID: 08507123527164d438e59ee0470055a1
+    spriteID: 646f4cb635b0be343a8c5f204afc7da6
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -151,7 +153,7 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     uvTransform: {x: 4, y: 45}
-  - name: Boomerang_2
+  - name: Boomerang_Frame_2
     originalName: 
     pivot: {x: 0.080000035, y: -0.7647059}
     alignment: 9
@@ -162,7 +164,7 @@ ScriptedImporter:
       y: 87
       width: 25
       height: 34
-    spriteID: fb61ecc54ef28704088918e031c22555
+    spriteID: 37fc735ea64d2f94f82d14f5a7253697
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -171,7 +173,7 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     uvTransform: {x: 4, y: 87}
-  - name: Boomerang_3
+  - name: Boomerang_Frame_3
     originalName: 
     pivot: {x: 0.99999905, y: -16}
     alignment: 9
@@ -182,7 +184,7 @@ ScriptedImporter:
       y: 4
       width: 1
       height: 1
-    spriteID: 0dc6951b94b9d8b4f8fcec70a7527fe0
+    spriteID: 4e49ee1a7c6bae64f906f806721debb4
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -191,7 +193,7 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     uvTransform: {x: 40, y: 4}
-  - name: Boomerang_4
+  - name: Boomerang_Frame_4
     originalName: 
     pivot: {x: 0.99999905, y: -16}
     alignment: 9
@@ -202,7 +204,7 @@ ScriptedImporter:
       y: 13
       width: 1
       height: 1
-    spriteID: a67407c7ec96ffb47932c54ddd4de856
+    spriteID: 6a776a93fae16d3408b00ed9713d0cc9
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -213,51 +215,53 @@ ScriptedImporter:
     uvTransform: {x: 40, y: 13}
   asepriteLayers:
   - layerIndex: 0
+    guid: -1445075190
     name: Boomerang
     layerFlags: 3
     layerType: 0
     cells:
-    - name: Boomerang_0
+    - name: Boomerang_Frame_0
       frameIndex: 0
       cellRect:
         x: 36
         y: 27
         width: 28
         height: 33
-      spriteId: 85d45abd33cb61545aa8a4db3b92b802
-    - name: Boomerang_1
+      spriteId: 7a7903f1fa7117b48a0f90b4cdde712e
+    - name: Boomerang_Frame_1
       frameIndex: 1
       cellRect:
         x: 39
         y: 26
         width: 27
         height: 34
-      spriteId: 08507123527164d438e59ee0470055a1
-    - name: Boomerang_2
+      spriteId: 646f4cb635b0be343a8c5f204afc7da6
+    - name: Boomerang_Frame_2
       frameIndex: 2
       cellRect:
         x: 46
         y: 26
         width: 25
         height: 34
-      spriteId: fb61ecc54ef28704088918e031c22555
-    - name: Boomerang_3
+      spriteId: 37fc735ea64d2f94f82d14f5a7253697
+    - name: Boomerang_Frame_3
       frameIndex: 3
       cellRect:
         x: 47
         y: 16
         width: 1
         height: 1
-      spriteId: 0dc6951b94b9d8b4f8fcec70a7527fe0
-    - name: Boomerang_4
+      spriteId: 4e49ee1a7c6bae64f906f806721debb4
+    - name: Boomerang_Frame_4
       frameIndex: 4
       cellRect:
         x: 47
         y: 16
         width: 1
         height: 1
-      spriteId: a67407c7ec96ffb47932c54ddd4de856
+      spriteId: 6a776a93fae16d3408b00ed9713d0cc9
     linkedCells: []
+    parentIndex: -1
   platformSettings: []
   secondarySpriteTextures: []
   spritePackingTag: 

@@ -1,3 +1,4 @@
+using Cinemachine;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
@@ -10,6 +11,9 @@ public class GeneralManager : MonoBehaviour
 
     public AssetBundle generalPrefabs;
     public AssetBundle entityPrefabs;
+
+    public CinemachineVirtualCamera virtualCam;
+    public Camera mainCam;
 
     private void Awake()
     {

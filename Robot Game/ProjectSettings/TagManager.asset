@@ -38,11 +38,23 @@ TagManager:
   - 
   - 
   m_SortingLayers:
-  - name: Default
-    uniqueID: 0
+  - name: Background
+    uniqueID: 1720784267
+    locked: 0
+  - name: Backgroundtile
+    uniqueID: 2609407689
     locked: 0
   - name: Entity
     uniqueID: 2559860713
+    locked: 0
+  - name: Default
+    uniqueID: 0
+    locked: 0
+  - name: Groundtile
+    uniqueID: 1868969789
+    locked: 0
+  - name: Foregroundtile
+    uniqueID: 1354267863
     locked: 0
   - name: Projectile
     uniqueID: 4024844359

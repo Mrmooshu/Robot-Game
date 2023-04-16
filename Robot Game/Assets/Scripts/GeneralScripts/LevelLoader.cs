@@ -20,6 +20,7 @@ public class LevelLoader : MonoBehaviour
     public void StartGame()
     {
         SelectScene("Core", LoadSceneMode.Single);
+        SelectScene("World", LoadSceneMode.Additive);
     }
 
     IEnumerator LoadScene(string sceneName, LoadSceneMode mode)

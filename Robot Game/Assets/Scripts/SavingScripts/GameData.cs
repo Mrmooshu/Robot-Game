@@ -13,7 +13,7 @@ public class GameData
 
     public void NewGameData()
     {
-        players = new List<PlayerData> { new PlayerData("Player", "Test Level", new Vector2(0,0)), new PlayerData("Player", "Test Level", new Vector2(0, 0)) };
+        players = new List<PlayerData> { new PlayerData("Player", new Vector2(0,0)), new PlayerData("Player", new Vector2(0, 0)) };
         activeMinions = new List<MinionData> { };
         minionInventory = new MinionInventory(10);
         bankInventory = new ItemInventory(48);

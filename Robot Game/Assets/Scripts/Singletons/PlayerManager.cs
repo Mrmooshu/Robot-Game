@@ -10,8 +10,6 @@ public class PlayerManager : MonoBehaviour, IDataSave
 {
     public static PlayerManager instance;
 
-    List<string> loadedScenes = new List<string>();
-
     public List<PlayerData> players;
     public List<MinionData> activeMinions;
     public MinionInventory minionInventory;
@@ -21,7 +19,6 @@ public class PlayerManager : MonoBehaviour, IDataSave
     public List<MinionEntity> minionEntities;
 
     [SerializeField] private GameObject playerPrefab;
-    public CinemachineVirtualCamera virtualCam;
 
     public PlayerData activePlayer;
 
@@ -57,40 +54,28 @@ public class PlayerManager : MonoBehaviour, IDataSave
 
     public void SpawnPlayer(PlayerData player)
     {
-        if (!loadedScenes.Contains(player.sceneName))
-        {
-            SceneManager.LoadSceneAsync(player.sceneName, LoadSceneMode.Additive);
-            loadedScenes.Add(player.sceneName);
-        }
-
         GameObject newPlayer;
         newPlayer = Instantiate(playerPrefab);
-        SceneManager.MoveGameObjectToScene(newPlayer, SceneManager.GetSceneByName(player.sceneName));
         PlayerEntity playerEntity = newPlayer.GetComponent<PlayerEntity>();
         playerEntity.Initialize(player);
-        newPlayer.transform.position = playerEntity.data.position;
+        newPlayer.transform.position = playerEntity.data.savedPosition;
         playerEntities.Add(playerEntity);
     }
 
     public void SpawnMinion(MinionData minion)
     {
-        if (!SceneManager.GetSceneByName(minion.sceneName).isLoaded)
-        {
-            SceneManager.LoadScene(minion.sceneName, LoadSceneMode.Additive);
-        }
 
         GameObject newMinion;
         newMinion = Instantiate(GeneralManager.instance.entityPrefabs.LoadAsset<GameObject>(minion.variantName));
-        SceneManager.MoveGameObjectToScene(newMinion, SceneManager.GetSceneByName(minion.sceneName));
         MinionEntity minionEntity = newMinion.GetComponent<MinionEntity>();
         minionEntity.Initialize(minion);
-        newMinion.transform.position = minionEntity.data.position;
+        newMinion.transform.position = minionEntity.data.savedPosition;
         minionEntities.Add(minionEntity);
     }
 
     public void RespawnMinion(MinionData minion)
     {
-        minion.position = minion.GetEntity().transform.position;
+        minion.savedPosition = minion.GetEntity().transform.position;
         Destroy(minion.GetEntity().gameObject);
         minionEntities.Remove((MinionEntity)minion.GetEntity());
         SpawnMinion(minion);
@@ -105,7 +90,7 @@ public class PlayerManager : MonoBehaviour, IDataSave
 
     private void ControlThisPlayer(PlayerEntity player)
     {
-        virtualCam.Follow = player.transform;
+        GeneralManager.instance.virtualCam.Follow = player.transform;
         player.transform.SetAsLastSibling();
         if (player.currentInteractable != null)
         {
