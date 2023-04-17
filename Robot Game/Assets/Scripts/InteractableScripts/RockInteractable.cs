@@ -8,9 +8,9 @@ using UnityEngine.UI;
 public class RockInteractable : Interactable
 {
     //TODO needt oupdate this so that it works for minions
-    public override void PlayerInRange(PlayerEntity playerEntitiy)
+    public override void PlayerInRange(MinionEntity playerEntitiy)
     {
-        if (playerEntitiy.data == PlayerManager.instance.activePlayer)
+        if (playerEntitiy.data == PlayerManager.instance.activeMinion && PlayerManager.instance.activeMinion.GetEntity() is GolemEntity)
         {
             UIManager.instance.actionButton.SetCurrentButton(MineAction, UIManager.instance.uiSprites.GetSprite("Action Buttons_4"),
                 UIManager.instance.uiSprites.GetSprite("Action Buttons_3"), UIManager.instance.uiSprites.GetSprite("Action Buttons_5"));
@@ -19,7 +19,7 @@ public class RockInteractable : Interactable
     }
     private void MineAction()
     {
-        //(PlayerManager.instance.activePlayer.GetPlayer()).ToggleMining();
+        ((GolemEntity)(PlayerManager.instance.activeMinion.GetEntity())).ToggleMining();
     }
 
     public void RollDrop()

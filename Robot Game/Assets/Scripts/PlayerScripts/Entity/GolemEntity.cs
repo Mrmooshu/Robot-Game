@@ -16,7 +16,7 @@ public class GolemEntity : MinionEntity
 
     public void ToggleMining()
     {
-        if (!animator.GetCurrentAnimatorStateInfo(0).IsName("Skill"))
+        if (!animator.GetCurrentAnimatorStateInfo(0).IsName("Mine"))
         {
             if (data.tool != null)
             {
@@ -26,7 +26,7 @@ public class GolemEntity : MinionEntity
                     {
                         //tool.UpdateAnimators();
                         rigBod.velocity = Vector2.zero;
-                        animator.SetBool("Skilling", true);
+                        animator.SetBool("Mining", true);
                         //tool.toolAnimator.SetBool("Skilling", true);
                         return;
                     }
@@ -42,9 +42,9 @@ public class GolemEntity : MinionEntity
                 Debug.Log("no tool equiped");
             }
         }
-        else if (animator.GetCurrentAnimatorStateInfo(0).IsName("Skill"))
+        else if (animator.GetCurrentAnimatorStateInfo(0).IsName("Mine"))
         {
-            animator.SetBool("Skilling", false);
+            animator.SetBool("Mining", false);
             //tool.toolAnimator.SetBool("Skilling", false);
         }
 
@@ -52,15 +52,9 @@ public class GolemEntity : MinionEntity
 
     public override void ToolAction()
     {
-        //TODO need to fix
-        //if (currentInteractable is RockInteractable)
-        //{
-        //   ((RockInteractable) currentInteractable).RollDrop();
-        //}
-    }
-
-    protected override void EquipItemsFromData()
-    {
-        //TODO
+        if (currentInteractable is RockInteractable)
+        {
+           ((RockInteractable) currentInteractable).RollDrop();
+        }
     }
 }

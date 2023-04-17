@@ -11,12 +11,12 @@ public class WeaponInventorySlot : SlotDisplay<Item>, IDropHandler, ISlot
     {
         objectPrefab = UIManager.instance.uiPrefabs.LoadAsset<GameObject>("InventoryItem");
         CreateSlot();
-        PlayerManager.instance.playerChanged += RefreshSlot;
+        PlayerManager.instance.minionChanged += RefreshSlot;
     }
 
     private void OnDestroy()
     {
-        PlayerManager.instance.playerChanged -= RefreshSlot;
+        PlayerManager.instance.minionChanged -= RefreshSlot;
     }
 
     public void OnDrop(PointerEventData eventData)
@@ -34,9 +34,9 @@ public class WeaponInventorySlot : SlotDisplay<Item>, IDropHandler, ISlot
             //swapping with another weapon
             if (Database.GetItem(inventorySlot.GetComponentInChildren<InventoryItem>().item.itemID) is Weapon)
             {
-                if (PlayerManager.instance.activePlayer.weapon != null) { ((Weapon)Database.GetItem(PlayerManager.instance.activePlayer.weapon.itemID)).Unequip(); }
-                ItemInventory.Move(inventorySlot.parent.parent.GetComponentInParent<ItemInventoryDisplay>().currentInventory, ref PlayerManager.instance.activePlayer.weapon, inventorySlot.GetComponent<ItemInventorySlot>().inventoryIndex);
-                ((Weapon)Database.GetItem(PlayerManager.instance.activePlayer.weapon.itemID)).Equip(ref PlayerManager.instance.activePlayer.GetEntity().stats);
+                if (PlayerManager.instance.activeMinion.weapon != null) { ((Weapon)Database.GetItem(PlayerManager.instance.activeMinion.weapon.itemID)).Unequip(); }
+                ItemInventory.Move(inventorySlot.parent.parent.GetComponentInParent<ItemInventoryDisplay>().currentInventory, ref PlayerManager.instance.activeMinion.weapon, inventorySlot.GetComponent<ItemInventorySlot>().inventoryIndex);
+                ((Weapon)Database.GetItem(PlayerManager.instance.activeMinion.weapon.itemID)).Equip(ref PlayerManager.instance.activeMinion.GetEntity().stats);
                 inventorySlot.parent.parent.GetComponentInParent<ItemInventoryDisplay>().RefreshInventory();
                 RefreshSlot();
             }
@@ -44,8 +44,8 @@ public class WeaponInventorySlot : SlotDisplay<Item>, IDropHandler, ISlot
         else
         {
             //swapping with emtpy slot
-            ((Weapon)Database.GetItem(PlayerManager.instance.activePlayer.weapon.itemID)).Unequip();
-            ItemInventory.Move(inventorySlot.parent.parent.GetComponentInParent<ItemInventoryDisplay>().currentInventory, ref PlayerManager.instance.activePlayer.weapon, inventorySlot.GetComponent<ItemInventorySlot>().inventoryIndex);
+            ((Weapon)Database.GetItem(PlayerManager.instance.activeMinion.weapon.itemID)).Unequip();
+            ItemInventory.Move(inventorySlot.parent.parent.GetComponentInParent<ItemInventoryDisplay>().currentInventory, ref PlayerManager.instance.activeMinion.weapon, inventorySlot.GetComponent<ItemInventorySlot>().inventoryIndex);
             inventorySlot.parent.parent.GetComponentInParent<ItemInventoryDisplay>().RefreshInventory();
             RefreshSlot();
         }
@@ -53,8 +53,8 @@ public class WeaponInventorySlot : SlotDisplay<Item>, IDropHandler, ISlot
 
     public override void RemoveFromSlot()
     {
-        ((Weapon)Database.GetItem(PlayerManager.instance.activePlayer.weapon.itemID)).Unequip();
-        PlayerManager.instance.activePlayer.weapon = null;
+        ((Weapon)Database.GetItem(PlayerManager.instance.activeMinion.weapon.itemID)).Unequip();
+        PlayerManager.instance.activeMinion.weapon = null;
     }
 
     public override void RefreshSlot()
@@ -72,19 +72,19 @@ public class WeaponInventorySlot : SlotDisplay<Item>, IDropHandler, ISlot
             }
         }
 
-        if (PlayerManager.instance.activePlayer.weapon != null)
+        if (PlayerManager.instance.activeMinion.weapon != null)
         {
             GameObject itemInstance = Instantiate(objectPrefab, transform);
             InventoryItem invenItem = itemInstance.GetComponent<InventoryItem>();
-            invenItem.item = PlayerManager.instance.activePlayer.weapon;
-            invenItem.transform.GetChild(0).GetComponent<Image>().sprite = Database.GetItem(PlayerManager.instance.activePlayer.weapon.itemID).sprite;
+            invenItem.item = PlayerManager.instance.activeMinion.weapon;
+            invenItem.transform.GetChild(0).GetComponent<Image>().sprite = Database.GetItem(PlayerManager.instance.activeMinion.weapon.itemID).sprite;
             if (!Database.GetItem(invenItem.item.itemID).stackable)
             {
                 invenItem.transform.GetChild(1).gameObject.SetActive(false);
             }
             else
             {
-                invenItem.transform.GetChild(1).GetComponent<TextMeshProUGUI>().text = PlayerManager.instance.activePlayer.weapon.quanity.ToString();
+                invenItem.transform.GetChild(1).GetComponent<TextMeshProUGUI>().text = PlayerManager.instance.activeMinion.weapon.quanity.ToString();
             }
         }
     }

@@ -6,10 +6,10 @@ public class OnHitPassive : Passive, IOnHit
 {
     public override void InitializePassive(Entity host)
     {
-        entity = (PlayerEntity)host;
-        if (host is PlayerEntity)
+        entity = (MinionEntity)host;
+        if (host is MinionEntity)
         {
-            ((PlayerEntity)host).onHitPassives.Add(this);
+            ((MinionEntity)host).onHitPassives.Add(this);
         }
     }
 
@@ -19,6 +19,6 @@ public class OnHitPassive : Passive, IOnHit
 
     public DamageScript.damageData OnHit(Entity target)
     {
-        return new DamageScript.damageData(((PlayerEntity)entity).data.skills[abilityName] * entity.stats[StatType.Health].Value * .01f, DamageScript.damageType.magic);
+        return new DamageScript.damageData(((MinionEntity)entity).data.skills[abilityName] * entity.stats[StatType.Health].Value * .01f, DamageScript.damageType.magic);
     }
 }

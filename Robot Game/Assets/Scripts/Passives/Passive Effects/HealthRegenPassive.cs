@@ -6,7 +6,7 @@ public class HealthRegenPassive : Passive
 {
     public override void InitializePassive(Entity host)
     {
-        entity = (PlayerEntity)host;
+        entity = (MinionEntity)host;
         entity.StartCoroutine(HealTick());
     }
 

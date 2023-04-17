@@ -6,7 +6,7 @@ using UnityEngine.EventSystems;
 public class InventoryPlayer : MonoBehaviour, IDragHandler, IEndDragHandler
 {
     private CanvasGroup canvasGroup;
-    public UnitData unit;
+    public MinionData unit;
 
     private void Awake()
     {

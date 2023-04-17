@@ -36,7 +36,7 @@ public class PlayerSelectDisplay : ToggleGroup
         }
 
         int counter = 0;
-        foreach (PlayerData player in PlayerManager.instance.players)
+        foreach (MinionData player in PlayerManager.instance.activeMinions)
         {
             GameObject playerOption = Instantiate(playerPrefab, transform);
 
@@ -48,9 +48,9 @@ public class PlayerSelectDisplay : ToggleGroup
         }
     }
 
-    public static void SwitchToSelectedCore()
+    public static void SwitchToSelectedMinion()
     {
-        PlayerManager.instance.SetActivePlayer(selectedPlayer.player);
+        PlayerManager.instance.SetActiveMinion(selectedPlayer.player);
         UIManager.CloseMainUi();
     }
 }

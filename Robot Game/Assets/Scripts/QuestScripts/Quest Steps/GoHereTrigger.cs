@@ -9,7 +9,7 @@ public class GoHereTrigger : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
-            if (collision.GetComponent<PlayerEntity>() != null)
+            if (collision.GetComponent<MinionEntity>() != null)
             {
                 step.Evaluate();
                 Destroy(gameObject);

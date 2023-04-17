@@ -48,9 +48,9 @@ public static class DamageScript
         int actualMagicDamage = 0;
         List<damageData> damageSources = new List<damageData>();
         damageSources.Add(attackData.damageData);
-        if (attackData.onHit && attackData.attacker is PlayerEntity)
+        if (attackData.onHit && attackData.attacker is MinionEntity)
         {
-            foreach (IOnHit onHitEffect in ((PlayerEntity)attackData.attacker).onHitPassives)
+            foreach (IOnHit onHitEffect in ((MinionEntity)attackData.attacker).onHitPassives)
             {
                 damageSources.Add(onHitEffect.OnHit(target));
             }

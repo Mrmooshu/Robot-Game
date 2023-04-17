@@ -10,17 +10,17 @@ public class InteractableCharacter : Interactable
     public string chatText = "I need something better to say.";
     public DialogueBox currentDialogueBox;
 
-    public override void PlayerInRange(PlayerEntity playerEntitiy)
+    public override void PlayerInRange(MinionEntity playerEntitiy)
     {
         UIManager.instance.actionButton.SetCurrentButton(Interact, UIManager.instance.uiSprites.GetSprite("Action Buttons_7"),
             UIManager.instance.uiSprites.GetSprite("Action Buttons_8"), UIManager.instance.uiSprites.GetSprite("Action Buttons_6"));
         playerEntitiy.currentInteractable = this;
     }
 
-    public override void PlayerOutOfRange(PlayerEntity playerEntitiy)
+    public override void PlayerOutOfRange(MinionEntity playerEntitiy)
     {
         base.PlayerOutOfRange(playerEntitiy);
-        if (playerEntitiy.data == PlayerManager.instance.activePlayer && currentDialogueBox != null)
+        if (playerEntitiy.data == PlayerManager.instance.activeMinion && currentDialogueBox != null)
         {
             Destroy(currentDialogueBox.gameObject);
             currentDialogueBox = null;

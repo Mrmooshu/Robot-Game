@@ -13,13 +13,13 @@ public class ItemInventoryDisplay : InventoryDisplay
         slotPrefab = UIManager.instance.uiPrefabs.LoadAsset<GameObject>("ItemSlot");
         objectPrefab = UIManager.instance.uiPrefabs.LoadAsset<GameObject>("InventoryItem");
         RefreshInventory();
-        PlayerManager.instance.playerChanged += RefreshInventory;
+        PlayerManager.instance.minionChanged += RefreshInventory;
         ItemInventory.inventoryUpdated += RefreshInventory;
     }
 
     private void OnDestroy()
     {
-        PlayerManager.instance.playerChanged -= RefreshInventory;
+        PlayerManager.instance.minionChanged -= RefreshInventory;
         ItemInventory.inventoryUpdated -= RefreshInventory;
     }
 
@@ -111,6 +111,6 @@ public class ItemInventoryDisplay : InventoryDisplay
 
     public override void UpdateCurrentInventory()
     {
-        currentInventory = PlayerManager.instance.activePlayer.inventory;
+        currentInventory = PlayerManager.instance.activeMinion.inventory;
     }
 }

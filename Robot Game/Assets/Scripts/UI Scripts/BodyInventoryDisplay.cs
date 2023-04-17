@@ -14,13 +14,13 @@ public class BodyInventoryDisplay : InventoryDisplay
         slotPrefab = UIManager.instance.uiPrefabs.LoadAsset<GameObject>("PlayerSlot");
         objectPrefab = UIManager.instance.uiPrefabs.LoadAsset<GameObject>("InventoryPlayer");
         RefreshInventory();
-        PlayerManager.instance.playerChanged += RefreshInventory;
+        PlayerManager.instance.minionChanged += RefreshInventory;
         MinionInventory.inventoryUpdated += RefreshInventory;
     }
 
     private void OnDestroy()
     {
-        PlayerManager.instance.playerChanged -= RefreshInventory;
+        PlayerManager.instance.minionChanged -= RefreshInventory;
         MinionInventory.inventoryUpdated -= RefreshInventory;
     }
 

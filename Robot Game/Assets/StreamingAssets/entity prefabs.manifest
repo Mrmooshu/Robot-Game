@@ -1,12 +1,12 @@
 ManifestFileVersion: 0
-CRC: 717391478
+CRC: 1676952857
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: b4e7ada0494dafeef7fc73a733280adb
+    Hash: 13e6c03afe712455f3d645aebc34d834
   TypeTreeHash:
     serializedVersion: 2
-    Hash: 5dc5d6fd32a500732082270b6d66a4af
+    Hash: aca9aa9864c07cd4ed93266119822ea9
 HashAppended: 0
 ClassTypes:
 - Class: 1
@@ -52,8 +52,6 @@ ClassTypes:
 - Class: 114
   Script: {fileID: 11500000, guid: 4ada99bf53298a3429d87ab9be3291ab, type: 3}
 - Class: 114
-  Script: {fileID: 11500000, guid: 2ce5c79d02d3ed44abc524fde614149b, type: 3}
-- Class: 114
   Script: {fileID: 11500000, guid: 158cf482610347c49b7e1fed11076eab, type: 3}
 - Class: 115
   Script: {instanceID: 0}
@@ -61,21 +59,19 @@ ClassTypes:
   Script: {instanceID: 0}
 - Class: 213
   Script: {instanceID: 0}
-- Class: 221
-  Script: {instanceID: 0}
 - Class: 222
   Script: {instanceID: 0}
 - Class: 224
   Script: {instanceID: 0}
 SerializeReferenceClassIdentifiers:
 - AssemblyName: Assembly-CSharp
-  ClassName: Entity/StatStruct
-- AssemblyName: Assembly-CSharp
   ClassName: ItemInventory
 - AssemblyName: Assembly-CSharp
-  ClassName: PlayerData
+  ClassName: MinionData
 - AssemblyName: Assembly-CSharp
   ClassName: SkillTreeUpgrade/requiredSkill
+- AssemblyName: Assembly-CSharp
+  ClassName: StatStruct
 - AssemblyName: Assembly-CSharp
   ClassName: StatType
 - AssemblyName: UnityEngine.CoreModule
@@ -94,5 +90,4 @@ SerializeReferenceClassIdentifiers:
   ClassName: UnityEngine.UI.SpriteState
 Assets:
 - Assets/Prefabs/Entity/Player Prefabs/Clay Golem.prefab
-- Assets/Prefabs/Entity/Player Prefabs/Player.prefab
 Dependencies: []

@@ -15,13 +15,13 @@ public class StatDisplay : MonoBehaviour
     {
         textField = GetComponentInChildren<TextMeshProUGUI>();
         RefreshStats();
-        PlayerManager.instance.playerChanged += RefreshStats;
+        PlayerManager.instance.minionChanged += RefreshStats;
         SubscribeToStats();
     }
 
     private void OnDestroy()
     {
-        PlayerManager.instance.playerChanged -= RefreshStats;
+        PlayerManager.instance.minionChanged -= RefreshStats;
         if (stats != null)
         {
             foreach (var stat in stats)
@@ -36,9 +36,9 @@ public class StatDisplay : MonoBehaviour
         textField.text = "";
         foreach (StatType type in statsToDisplay)
         {
-            if (PlayerManager.instance.activePlayer.GetEntity().stats.ContainsKey(type))
+            if (PlayerManager.instance.activeMinion.GetEntity().stats.ContainsKey(type))
             {
-                textField.text += type.ToString() + ":" + PlayerManager.instance.activePlayer.GetEntity().stats[type].Value + "\n";
+                textField.text += type.ToString() + ":" + PlayerManager.instance.activeMinion.GetEntity().stats[type].Value + "\n";
             }
         }
     }
@@ -54,7 +54,7 @@ public class StatDisplay : MonoBehaviour
             }
         }
         //change stats to new stats
-        stats = PlayerManager.instance.activePlayer.GetEntity().stats;
+        stats = PlayerManager.instance.activeMinion.GetEntity().stats;
         //sub to new stats
         foreach (var stat in stats)
         {

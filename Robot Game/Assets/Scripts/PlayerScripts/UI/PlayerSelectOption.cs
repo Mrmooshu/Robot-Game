@@ -6,12 +6,12 @@ using System;
 
 public class PlayerSelectOption : Toggle
 {
-    public PlayerData player;
+    public MinionData player;
 
     protected override void Awake()
     {
         onValueChanged.AddListener(delegate { Selected(this); });
-        PlayerManager.instance.playerChanged += UpdateCamera;
+        PlayerManager.instance.minionChanged += UpdateCamera;
         UpdateCamera();
     }
 

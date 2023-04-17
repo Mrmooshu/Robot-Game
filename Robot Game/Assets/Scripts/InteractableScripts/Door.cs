@@ -7,9 +7,9 @@ public class Door : Interactable
 {
     public GameObject LinkedDoor;
 
-    public override void PlayerInRange(PlayerEntity playerEntitiy)
+    public override void PlayerInRange(MinionEntity playerEntitiy)
     {
-        if (playerEntitiy.data == PlayerManager.instance.activePlayer)
+        if (playerEntitiy.data == PlayerManager.instance.activeMinion)
         {
             UIManager.instance.actionButton.SetCurrentButton(EnterAction, UIManager.instance.uiSprites.GetSprite("Action Buttons_4"),
                 UIManager.instance.uiSprites.GetSprite("Action Buttons_3"), UIManager.instance.uiSprites.GetSprite("Action Buttons_5"));
@@ -19,6 +19,6 @@ public class Door : Interactable
 
     private void EnterAction()
     {
-        PlayerManager.instance.activePlayer.GetEntity().transform.position = LinkedDoor.transform.position;
+        PlayerManager.instance.activeMinion.GetEntity().transform.position = LinkedDoor.transform.position;
     }
 }

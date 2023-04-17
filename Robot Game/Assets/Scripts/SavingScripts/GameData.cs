@@ -5,7 +5,6 @@ using UnityEngine;
 [System.Serializable]
 public class GameData
 {
-    public List<PlayerData> players;
     public List<MinionData> activeMinions;
     public MinionInventory minionInventory;
     public ItemInventory bankInventory;
@@ -13,8 +12,7 @@ public class GameData
 
     public void NewGameData()
     {
-        players = new List<PlayerData> { new PlayerData("Player", new Vector2(0,0)), new PlayerData("Player", new Vector2(0, 0)) };
-        activeMinions = new List<MinionData> { };
+        activeMinions = new List<MinionData> { new MinionData("Clay Golem") };
         minionInventory = new MinionInventory(10);
         bankInventory = new ItemInventory(48);
         quests = new List<QuestData>();
@@ -43,6 +41,7 @@ public class GameData
         bankInventory.Add(new Item(Database.GetItemID("Test Daggers"), 1));
         bankInventory.Add(new Item(Database.GetItemID("Test Dart"), 1));
         bankInventory.Add(new Item(Database.GetItemID("Test Boomerang"), 1));
+        bankInventory.Add(new Item(Database.GetItemID("Novium Pickaxe"), 1));
     }
 
     [System.Serializable]

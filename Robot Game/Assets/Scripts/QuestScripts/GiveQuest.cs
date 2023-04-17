@@ -10,7 +10,7 @@ public class GiveQuest : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
-            if (collision.GetComponent<PlayerEntity>() != null)
+            if (collision.GetComponent<MinionEntity>() != null)
             {
                 ActivateQuest();
             }

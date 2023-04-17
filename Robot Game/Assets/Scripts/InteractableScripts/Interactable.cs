@@ -11,11 +11,11 @@ public abstract class Interactable : MonoBehaviour
         GetComponent<BoxCollider2D>().isTrigger = true;
     }
 
-    public abstract void PlayerInRange(PlayerEntity playerEntitiy);
+    public abstract void PlayerInRange(MinionEntity playerEntitiy);
 
-    public virtual void PlayerOutOfRange(PlayerEntity playerEntitiy)
+    public virtual void PlayerOutOfRange(MinionEntity playerEntitiy)
     {
-        if (playerEntitiy.data == PlayerManager.instance.activePlayer)
+        if (playerEntitiy.data == PlayerManager.instance.activeMinion)
         {
             UIManager.instance.actionButton.SetDefaultButton();
             playerEntitiy.currentInteractable = null;
@@ -26,9 +26,9 @@ public abstract class Interactable : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
-            if (collision.GetComponent<PlayerEntity>() != null)
+            if (collision.GetComponent<MinionEntity>() != null)
             {
-                PlayerInRange(collision.GetComponent<PlayerEntity>());
+                PlayerInRange(collision.GetComponent<MinionEntity>());
             }
         }
     }
@@ -37,9 +37,9 @@ public abstract class Interactable : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
-            if (collision.GetComponent<PlayerEntity>() != null)
+            if (collision.GetComponent<MinionEntity>() != null)
             {
-                PlayerOutOfRange(collision.GetComponent<PlayerEntity>());
+                PlayerOutOfRange(collision.GetComponent<MinionEntity>());
             }
         }
     }

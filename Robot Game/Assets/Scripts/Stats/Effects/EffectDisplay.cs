@@ -13,14 +13,14 @@ public class EffectDisplay : MonoBehaviour
     {
         effectPrefab = UIManager.instance.uiPrefabs.LoadAsset<GameObject>("EffectObject");
         RefreshEffects();
-        PlayerManager.instance.playerChanged += RefreshEffects;
-        PlayerEntity.effectUpdated += RefreshEffects;
+        PlayerManager.instance.minionChanged += RefreshEffects;
+        MinionEntity.effectUpdated += RefreshEffects;
     }
 
     private void OnDestroy()
     {
-        PlayerManager.instance.playerChanged -= RefreshEffects;
-        PlayerEntity.effectUpdated -= RefreshEffects;
+        PlayerManager.instance.minionChanged -= RefreshEffects;
+        MinionEntity.effectUpdated -= RefreshEffects;
     }
 
     public virtual void RefreshEffects()
@@ -38,7 +38,7 @@ public class EffectDisplay : MonoBehaviour
         {
             Destroy(child.gameObject);
         }
-        Dictionary<int, Effect> effects = PlayerManager.instance.activePlayer.GetEntity().effects;
+        Dictionary<int, Effect> effects = PlayerManager.instance.activeMinion.GetEntity().effects;
 
         int buffCount = 0;
         int debuffCount = 0;

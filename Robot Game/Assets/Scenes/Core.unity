@@ -391,7 +391,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a0ae6eaf811a6cf429784d576a319cf2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  players: []
+  minionBlueprints:
+  - {fileID: 2947402111217047421, guid: 37320e058249dd6438173e326299cd87, type: 3}
   activeMinions: []
   minionInventory:
     inventory: []
@@ -402,11 +403,15 @@ MonoBehaviour:
     inventorySize: 0
     currentPage: 0
     stackLimit: 0
-  playerEntities: []
   minionEntities: []
-  playerPrefab: {fileID: 2947402111217047421, guid: 37320e058249dd6438173e326299cd87, type: 3}
-  activePlayer:
-    level: 1
+  activeMinion:
+    lastSafePoint: 
+    variantName: 
+    tool:
+      rid: -2
+    weapon:
+      rid: -2
+    level: 0
     inventory:
       inventory: []
       inventorySize: 0
@@ -414,17 +419,8 @@ MonoBehaviour:
       stackLimit: 0
     savedPosition: {x: 0, y: 0, z: 0}
     activity: 0
-    _skillPoints: 100
+    _skillPoints: 0
     skillsList: []
-    lastSafePoint: 
-    weapon:
-      rid: -2
-    pickaxe:
-      rid: -2
-    hatchet:
-      rid: -2
-    fishingRod:
-      rid: -2
   references:
     version: 2
     RefIds:

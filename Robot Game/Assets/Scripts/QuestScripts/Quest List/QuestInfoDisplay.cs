@@ -21,14 +21,14 @@ public class QuestInfoDisplay : MonoBehaviour
     {
         Quest.questStepUpdated += RefreshInfo;
         ItemInventory.inventoryUpdated += RefreshItemQuanity;
-        PlayerManager.instance.playerChanged += RefreshItemQuanity;
+        PlayerManager.instance.minionChanged += RefreshItemQuanity;
     }
 
     public void OnDestroy()
     {
         Quest.questStepUpdated -= RefreshInfo;
         ItemInventory.inventoryUpdated -= RefreshItemQuanity;
-        PlayerManager.instance.playerChanged -= RefreshItemQuanity;
+        PlayerManager.instance.minionChanged -= RefreshItemQuanity;
     }
 
     public void RefreshInfo()

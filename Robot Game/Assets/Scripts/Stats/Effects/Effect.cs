@@ -71,9 +71,9 @@ public class Effect
                 target.stats[mod.statType].AddModifier(mod);
             }
         }
-        if (target == PlayerManager.instance.activePlayer.GetEntity())
+        if (target == PlayerManager.instance.activeMinion.GetEntity())
         {
-            ((PlayerEntity)target).InvokeEffectUpdate();
+            ((MinionEntity)target).InvokeEffectUpdate();
         }
     }
 
@@ -85,9 +85,9 @@ public class Effect
         {
             target.stats[mod.statType].RemoveModifier(mod);
         }
-        if (target == PlayerManager.instance.activePlayer.GetEntity())
+        if (target == PlayerManager.instance.activeMinion.GetEntity())
         {
-            ((PlayerEntity)target).InvokeEffectUpdate();
+            ((MinionEntity)target).InvokeEffectUpdate();
         }
     }
 

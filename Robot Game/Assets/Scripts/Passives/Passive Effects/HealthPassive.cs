@@ -6,13 +6,13 @@ public class HealthPassive : PassiveStat
 {
     public override void InitializePassive(Entity host)
     {
-        entity = (PlayerEntity)host;
-        modifier = new StatMod(((PlayerEntity)entity).data.skills[abilityName] * 10, StatModType.Base, StatType.Health);
+        entity = (MinionEntity)host;
+        modifier = new StatMod(((MinionEntity)entity).data.skills[abilityName] * 10, StatModType.Base, StatType.Health);
         entity.stats[StatType.Health].AddModifier(modifier);
     }
 
     public override void Refresh()
     {
-        modifier.Value = ((PlayerEntity)entity).data.skills[abilityName] * 10;
+        modifier.Value = ((MinionEntity)entity).data.skills[abilityName] * 10;
     }
 }

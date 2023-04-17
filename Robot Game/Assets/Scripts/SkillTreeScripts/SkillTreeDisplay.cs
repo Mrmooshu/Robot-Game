@@ -28,17 +28,17 @@ public class SkillTreeDisplay : MonoBehaviour
 
     private void Start()
     {
-        PlayerManager.instance.playerChanged += Refresh;
+        PlayerManager.instance.minionChanged += Refresh;
         skillUpgradeButton.onClick.AddListener(UpgradeCurrentSkill);
-        UnitData.skillPointsUpdated += RefreshInfoWindow;
+        MinionData.skillPointsUpdated += RefreshInfoWindow;
         Refresh();
     }
 
     private void OnDestroy()
     {
-        PlayerManager.instance.playerChanged -= Refresh;
+        PlayerManager.instance.minionChanged -= Refresh;
         skillUpgradeButton.onClick.RemoveListener(UpgradeCurrentSkill);
-        UnitData.skillPointsUpdated -= RefreshInfoWindow;
+        MinionData.skillPointsUpdated -= RefreshInfoWindow;
     }
 
     private void OnEnable()
@@ -53,7 +53,7 @@ public class SkillTreeDisplay : MonoBehaviour
             child.SetParent(child.GetComponent<HoldParent>().parentToHold.transform);
             child.gameObject.SetActive(false);
         }
-        GameObject skillTree = PlayerManager.instance.activePlayer.GetEntity().skillTree;
+        GameObject skillTree = PlayerManager.instance.activeMinion.GetEntity().skillTree;
         skillTree.transform.SetParent(view);
         skillTree.transform.position = view.transform.position;
         skillTree.transform.localScale = new Vector3(1,1,1);
@@ -64,7 +64,7 @@ public class SkillTreeDisplay : MonoBehaviour
 
     public void RefreshInfoWindow()
     {
-        pointsAvailableText.text = "Skill Points: " + PlayerManager.instance.activePlayer.SkillPoints;
+        pointsAvailableText.text = "Skill Points: " + PlayerManager.instance.activeMinion.SkillPoints;
         if (selectedSkill != null)
         {
             skillNameText.enabled = true;
@@ -73,7 +73,7 @@ public class SkillTreeDisplay : MonoBehaviour
             skillUpgradeButton.enabled = true;
             skillNameText.text = selectedSkill.passive.abilityName;
             skillDescriptionText.text = selectedSkill.passive.abilityDescription;
-            skillLevelText.text = "Level: " +  PlayerManager.instance.activePlayer.skills[selectedSkill.passive.abilityName] + "/" + selectedSkill.maxLevel;
+            skillLevelText.text = "Level: " +  PlayerManager.instance.activeMinion.skills[selectedSkill.passive.abilityName] + "/" + selectedSkill.maxLevel;
             skillUpgradeButton.onClick.RemoveAllListeners();
             skillUpgradeButton.onClick.AddListener(UpgradeCurrentSkill);
         }
@@ -88,12 +88,12 @@ public class SkillTreeDisplay : MonoBehaviour
 
     private void UpgradeCurrentSkill()
     {
-        if (selectedSkill != null && selectedSkill.requiredSkills.ToList().TrueForAll(x => PlayerManager.instance.activePlayer.skills[x.reqiredSkill.passive.abilityName] >= x.reqiredLevel))
+        if (selectedSkill != null && selectedSkill.requiredSkills.ToList().TrueForAll(x => PlayerManager.instance.activeMinion.skills[x.reqiredSkill.passive.abilityName] >= x.reqiredLevel))
         {
-            if (PlayerManager.instance.activePlayer.skills[selectedSkill.passive.abilityName] < selectedSkill.maxLevel && PlayerManager.instance.activePlayer.SkillPoints >= 1)
+            if (PlayerManager.instance.activeMinion.skills[selectedSkill.passive.abilityName] < selectedSkill.maxLevel && PlayerManager.instance.activeMinion.SkillPoints >= 1)
             {
-                PlayerManager.instance.activePlayer.skills[selectedSkill.passive.abilityName]++;
-                PlayerManager.instance.activePlayer.SkillPoints--;
+                PlayerManager.instance.activeMinion.skills[selectedSkill.passive.abilityName]++;
+                PlayerManager.instance.activeMinion.SkillPoints--;
                 selectedSkill.passive.Refresh();
             }
         }

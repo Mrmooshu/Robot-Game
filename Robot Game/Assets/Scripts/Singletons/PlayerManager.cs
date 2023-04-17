@@ -5,44 +5,33 @@ using System.Numerics;
 using System;
 using Cinemachine;
 using UnityEngine.SceneManagement;
+using System.Linq;
 
 public class PlayerManager : MonoBehaviour, IDataSave
 {
-    public static PlayerManager instance;
+    public List<GameObject> minionBlueprints;
 
-    public List<PlayerData> players;
+    public static PlayerManager instance;
     public List<MinionData> activeMinions;
     public MinionInventory minionInventory;
     public ItemInventory bankInventory;
 
-    public List<PlayerEntity> playerEntities;
     public List<MinionEntity> minionEntities;
 
-    [SerializeField] private GameObject playerPrefab;
+    public MinionData activeMinion;
 
-    public PlayerData activePlayer;
-
-    public event Action playerChanged;
+    public event Action minionChanged;
 
     private void Awake()
     {
         if (instance == null)
         {
             instance = this;
-            playerEntities = new List<PlayerEntity>();
-            SpawnAllUnits();
+            SpawnMinions();
         }
     }
-    public void SpawnAllUnits()
+    public void SpawnMinions()
     {
-        foreach (PlayerData player in players)
-        {
-            if (player != null)
-            {
-                SpawnPlayer(player);
-            }
-        }
-        SetActivePlayer(players[0]);
         foreach (MinionData core in activeMinions)
         {
             if (core != null)
@@ -50,23 +39,15 @@ public class PlayerManager : MonoBehaviour, IDataSave
                 SpawnMinion(core);
             }
         }
-    }
-
-    public void SpawnPlayer(PlayerData player)
-    {
-        GameObject newPlayer;
-        newPlayer = Instantiate(playerPrefab);
-        PlayerEntity playerEntity = newPlayer.GetComponent<PlayerEntity>();
-        playerEntity.Initialize(player);
-        newPlayer.transform.position = playerEntity.data.savedPosition;
-        playerEntities.Add(playerEntity);
+        SetActiveMinion(activeMinions[0]);
     }
 
     public void SpawnMinion(MinionData minion)
     {
 
         GameObject newMinion;
-        newMinion = Instantiate(GeneralManager.instance.entityPrefabs.LoadAsset<GameObject>(minion.variantName));
+        //newMinion = Instantiate(GeneralManager.instance.entityPrefabs.LoadAsset<GameObject>(minion.variantName));
+        newMinion = Instantiate(minionBlueprints.Where(x => x.name == minion.variantName).Single());
         MinionEntity minionEntity = newMinion.GetComponent<MinionEntity>();
         minionEntity.Initialize(minion);
         newMinion.transform.position = minionEntity.data.savedPosition;
@@ -81,14 +62,14 @@ public class PlayerManager : MonoBehaviour, IDataSave
         SpawnMinion(minion);
     }
 
-    public void SetActivePlayer(PlayerData player)
+    public void SetActiveMinion(MinionData minion)
     {
-        activePlayer = player;
-        ControlThisPlayer((PlayerEntity)player.GetEntity());
-        playerChanged?.Invoke();
+        activeMinion = minion;
+        ControlThisMinion((MinionEntity)minion.GetEntity());
+        minionChanged?.Invoke();
     }
 
-    private void ControlThisPlayer(PlayerEntity player)
+    private void ControlThisMinion(MinionEntity player)
     {
         GeneralManager.instance.virtualCam.Follow = player.transform;
         player.transform.SetAsLastSibling();
@@ -103,7 +84,7 @@ public class PlayerManager : MonoBehaviour, IDataSave
     }
     public static void TeleportHere(string safePointName)
     {
-        instance.activePlayer.GetEntity().transform.position = Database.GetSafePoint(safePointName).cord;
+        instance.activeMinion.GetEntity().transform.position = Database.GetSafePoint(safePointName).cord;
     }
 
     /// <summary>
@@ -113,7 +94,7 @@ public class PlayerManager : MonoBehaviour, IDataSave
     /// <returns>The quanity of the item if found or 0 if not. </returns>
     public static BigInteger CheckCurrentInventoryForItem(int itemID)
     {
-        return CheckInventoryForItem(itemID, instance.activePlayer.inventory);
+        return CheckInventoryForItem(itemID, instance.activeMinion.inventory);
     }
 
     /// <summary>
@@ -144,7 +125,6 @@ public class PlayerManager : MonoBehaviour, IDataSave
 
     public void LoadData(GameData data)
     {
-        players = data.players;
         activeMinions = data.activeMinions;
         minionInventory = data.minionInventory;
         bankInventory = data.bankInventory;
@@ -152,7 +132,6 @@ public class PlayerManager : MonoBehaviour, IDataSave
 
     public void SaveData(ref GameData data)
     {
-        data.players = players;
         data.activeMinions = activeMinions;
         data.minionInventory = minionInventory;
         data.bankInventory = bankInventory;

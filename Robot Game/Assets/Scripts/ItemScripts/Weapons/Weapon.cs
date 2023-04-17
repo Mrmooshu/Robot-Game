@@ -9,7 +9,7 @@ public abstract class Weapon : Equipable
     public float baseAttackSpeed;
 
 
-    public abstract void BasicAttack(PlayerEntity player);
+    public abstract void BasicAttack(MinionEntity player);
 
     
 }
