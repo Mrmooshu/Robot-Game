@@ -18,36 +18,38 @@ public class GolemEntity : MinionEntity
     {
         if (!animator.GetCurrentAnimatorStateInfo(0).IsName("Mine"))
         {
-            if (data.tool != null)
-            {
-                if (Database.GetItem(data.tool.itemID) is Pickaxe)
-                {
-                    if (data.tool != null)
-                    {
-                        //tool.UpdateAnimators();
-                        rigBod.velocity = Vector2.zero;
-                        animator.SetBool("Mining", true);
-                        //tool.toolAnimator.SetBool("Skilling", true);
-                        return;
-                    }
-                    Debug.Log("need to equip a pick to mine");
-                }
-                else
-                {
-                    Debug.Log("tool is not a tool");
-                }
-            }
-            else
-            {
-                Debug.Log("no tool equiped");
-            }
+            StartMining();
         }
         else if (animator.GetCurrentAnimatorStateInfo(0).IsName("Mine"))
         {
-            animator.SetBool("Mining", false);
-            //tool.toolAnimator.SetBool("Skilling", false);
+            StopMining();
         }
+    }
 
+    private void StartMining()
+    {
+        if (data.tool != null)
+        {
+            if (Database.GetItem(data.tool.itemID) is Pickaxe)
+            {
+                rigBod.velocity = Vector2.zero;
+                animator.SetBool("Mining", true);
+                return;
+            }
+            else
+            {
+                Debug.Log("tool is not a pickaxe");
+            }
+        }
+        else
+        {
+            Debug.Log("no tool equiped");
+        }
+    }
+
+    private void StopMining()
+    {
+        animator.SetBool("Mining", false);
     }
 
     public override void ToolAction()
@@ -56,5 +58,20 @@ public class GolemEntity : MinionEntity
         {
            ((RockInteractable) currentInteractable).RollDrop();
         }
+    }
+
+    protected override void Movement()
+    {
+        base.Movement();
+        if (rigBod.velocity.x > 0.1f)
+        {
+            StopMining();
+        }
+    }
+
+    protected override void DefaultBasic()
+    {
+        Vector2 knockback = new Vector2(100 * facingDirection, 100);
+        DamageScript.Attack(new DamageScript.attackData(this, new DamageScript.damageData(stats[StatType.AttackDamage].Value, DamageScript.damageType.physical), true, knockback, .5f), hitboxes, whatIsEnemy, this);
     }
 }

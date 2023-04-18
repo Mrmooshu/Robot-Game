@@ -24,4 +24,4 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 0319f9000fc7def41b8d330ed9e42b21, type: 2}
   - {fileID: 11400000, guid: 82bce17259cd62440a95816d1e4ec07b, type: 2}
   currentStep: 0
-  questState: 0
+  questState: 1

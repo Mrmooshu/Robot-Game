@@ -104,13 +104,13 @@ public class MinionEntity : Entity
             // attack
             if (UnityEngine.Input.GetButton("Attack1"))
             {
+                var baseAttackSpeed = 1f;
                 if (data.weapon != null)
                 {
-                    animator.SetFloat("AttackSpeedModifier", ((Weapon)Database.GetItem(data.weapon.itemID)).baseAttackSpeed + ((Weapon)Database.GetItem(data.weapon.itemID)).baseAttackSpeed * stats[StatType.AttackSpeedBonus].Value);
-                    controller["Default Attack"] = ((Weapon)Database.GetItem(data.weapon.itemID)).animation;
-                    animator.Play(Database.GetItem(data.weapon.itemID).GetType().ToString() + " Basic", 0);
-                    animator.Play("Basic", 2);
+                    baseAttackSpeed = ((Weapon)Database.GetItem(data.weapon.itemID)).baseAttackSpeed;
                 }
+                animator.SetFloat("AttackSpeedModifier", baseAttackSpeed + baseAttackSpeed * stats[StatType.AttackSpeedBonus].Value);
+                animator.SetTrigger("Basic");
 
             }
 
@@ -174,7 +174,15 @@ public class MinionEntity : Entity
     public virtual void BasicAttack()
     {
         animator.ResetTrigger("Basic");
-        ((Weapon)Database.GetItem(data.weapon.itemID)).BasicAttack(this);
+        if (data.weapon != null)
+        {
+            ((Weapon)Database.GetItem(data.weapon.itemID)).BasicAttack(this);
+        }
+        else
+        {
+            DefaultBasic();
+        }
+
 
 
         //Vector2 knockback = new Vector2(100 * facingDirection, 100);
@@ -182,6 +190,11 @@ public class MinionEntity : Entity
         //rigBod.AddForce(new Vector2(stats[StatType.MoveSpeed].Value * facingDirection, 1.2f), ForceMode2D.Impulse);
         //kill switch (uncomment to kill urself)
         //((ResourceStat)stats[StatType.Health]).CurrentValue -= 1000;
+    }
+
+    protected virtual void DefaultBasic()
+    {
+
     }
 
     public virtual void ToolAction()

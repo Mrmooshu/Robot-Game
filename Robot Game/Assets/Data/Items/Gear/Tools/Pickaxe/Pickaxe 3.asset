@@ -17,4 +17,5 @@ MonoBehaviour:
   itemDescription: default description
   stackable: 0
   sprite: {fileID: -1497176294, guid: e9f58172755238646bbf7ece85de3480, type: 3}
+  itemModifiers: []
   animController: {fileID: 22100000, guid: a649ad5fe8bab2848a9fc5d2e0b02541, type: 2}
