@@ -69,9 +69,39 @@ public class GolemEntity : MinionEntity
         }
     }
 
-    protected override void DefaultBasic()
+    public override void BasicAttack()
     {
+        if (data.weapon != null)
+        {
+
+        }
+        else
+        {
+            //If first punch is in action buffer second punch
+            if (animator.GetCurrentAnimatorStateInfo(0).IsName("Basic_Punch_First"))
+            {
+                bufferedAction = "Basic_Punch_Second";
+            }
+            //If second punch is in action buffer first punch
+            else if (animator.GetCurrentAnimatorStateInfo(0).IsName("Basic_Punch_Second"))
+            {
+                bufferedAction = "Basic_Punch_First";
+            }
+            //If there are no buffered actions
+            if (bufferedAction == "")
+            {
+                animator.Play("Basic_Punch_First", 0);
+                //animator.Play("Basic_Punch_First", 1);
+            }
+        }
+
+    }
+
+    protected override void DefaultBasicHit()
+    {
+        bufferedAction = "";
         Vector2 knockback = new Vector2(100 * facingDirection, 100);
         DamageScript.Attack(new DamageScript.attackData(this, new DamageScript.damageData(stats[StatType.AttackDamage].Value, DamageScript.damageType.physical), true, knockback, .5f), hitboxes, whatIsEnemy, this);
+        //rigBod.AddForce(new Vector2(stats[StatType.MoveSpeed].Value * facingDirection, 1.2f), ForceMode2D.Impulse);
     }
 }

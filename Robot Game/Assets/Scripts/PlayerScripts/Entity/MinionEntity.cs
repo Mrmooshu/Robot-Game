@@ -28,9 +28,9 @@ public class MinionEntity : Entity
     public LayerMask whatIsGround;
     protected float groundedRadius = .1f;
 
+
     //movement variables
     protected int movementInputDirection;
-    public bool grounded { get; protected set; }
     public bool canJump { get; protected set; }
 
     public static event Action effectUpdated;
@@ -67,7 +67,7 @@ public class MinionEntity : Entity
 
     protected virtual void Input()
     {
-        grounded = Physics2D.OverlapCircle(groundCheck.position, groundedRadius, whatIsGround);
+        animator.SetBool("Grounded", Physics2D.OverlapCircle(groundCheck.position, groundedRadius, whatIsGround));
 
         if (dead)
         {
@@ -75,7 +75,7 @@ public class MinionEntity : Entity
             return;
         }
 
-        if (grounded && rigBod.velocity.y <= 0)
+        if (animator.GetBool("Grounded") && rigBod.velocity.y <= 0)
         {
             canJump = true;
             animator.SetBool("Jumping", false);
@@ -109,9 +109,8 @@ public class MinionEntity : Entity
                 {
                     baseAttackSpeed = ((Weapon)Database.GetItem(data.weapon.itemID)).baseAttackSpeed;
                 }
-                animator.SetFloat("AttackSpeedModifier", baseAttackSpeed + baseAttackSpeed * stats[StatType.AttackSpeedBonus].Value);
-                animator.SetTrigger("Basic");
-
+                animator.SetFloat("AttackSpeedModifier", baseAttackSpeed * (1 + stats[StatType.AttackSpeedBonus].Value / 100));
+                BasicAttack();
             }
 
             // left click is down
@@ -173,14 +172,18 @@ public class MinionEntity : Entity
 
     public virtual void BasicAttack()
     {
-        animator.ResetTrigger("Basic");
+
+    }
+
+    public virtual void BasicAttackHit()
+    {
         if (data.weapon != null)
         {
             ((Weapon)Database.GetItem(data.weapon.itemID)).BasicAttack(this);
         }
         else
         {
-            DefaultBasic();
+            DefaultBasicHit();
         }
 
 
@@ -192,7 +195,7 @@ public class MinionEntity : Entity
         //((ResourceStat)stats[StatType.Health]).CurrentValue -= 1000;
     }
 
-    protected virtual void DefaultBasic()
+    protected virtual void DefaultBasicHit()
     {
 
     }
@@ -216,6 +219,7 @@ public class MinionEntity : Entity
         base.CreateStats();
         // add listeners
         stats[StatType.Gravity].statUpdated += () => { rigBod.gravityScale = stats[StatType.Gravity].Value; };
+        stats[StatType.Gravity].Recalculate();
     }
 
     protected override void Die()
