@@ -8,6 +8,8 @@ public class MinionEntity : Entity
 {
     public MinionData data;
 
+    public Sprite icon;
+
     public List<IOnHit> onHitPassives;
 
     public Interactable currentInteractable;
@@ -91,7 +93,7 @@ public class MinionEntity : Entity
                 if (UnityEngine.Input.GetButtonDown("Jump") && canJump)
                 {
                     canJump = false;
-                    rigBod.AddForce(Vector2.up * stats[StatType.JumpForce].Value, ForceMode2D.Impulse);
+                    rigBod.AddForce(Vector2.up * stats[EntityStatType.JumpForce].Value, ForceMode2D.Impulse);
                     animator.SetBool("Jumping", true);
                 }
             }
@@ -109,7 +111,7 @@ public class MinionEntity : Entity
                 {
                     baseAttackSpeed = ((Weapon)Database.GetItem(data.weapon.itemID)).baseAttackSpeed;
                 }
-                animator.SetFloat("AttackSpeedModifier", baseAttackSpeed * (1 + stats[StatType.AttackSpeedBonus].Value / 100));
+                animator.SetFloat("AttackSpeedModifier", baseAttackSpeed * (1 + stats[EntityStatType.AttackSpeedBonus].Value / 100));
                 BasicAttack();
             }
 
@@ -158,9 +160,9 @@ public class MinionEntity : Entity
         }
 
         // movement
-        float targetSpeed = movementInputDirection * stats[StatType.MoveSpeed].Value;
+        float targetSpeed = movementInputDirection * stats[EntityStatType.MoveSpeed].Value;
         float speedDiff = targetSpeed - rigBod.velocity.x;
-        float accelRate = (Mathf.Abs(targetSpeed) > 0.01f) ? stats[StatType.MoveAcceleration].Value : stats[StatType.MoveAcceleration].Value * 3;
+        float accelRate = (Mathf.Abs(targetSpeed) > 0.01f) ? stats[EntityStatType.MoveAcceleration].Value : stats[EntityStatType.MoveAcceleration].Value * 3;
         float movement = Mathf.Pow(Mathf.Abs(speedDiff) * accelRate, 1) * Mathf.Sign(speedDiff);
         rigBod.AddForce(movement * Vector2.right);
 
@@ -218,8 +220,8 @@ public class MinionEntity : Entity
     {
         base.CreateStats();
         // add listeners
-        stats[StatType.Gravity].statUpdated += () => { rigBod.gravityScale = stats[StatType.Gravity].Value; };
-        stats[StatType.Gravity].Recalculate();
+        stats[EntityStatType.Gravity].statUpdated += () => { rigBod.gravityScale = stats[EntityStatType.Gravity].Value; };
+        stats[EntityStatType.Gravity].Recalculate();
     }
 
     protected override void Die()

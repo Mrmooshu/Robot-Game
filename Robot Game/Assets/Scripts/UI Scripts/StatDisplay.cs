@@ -5,11 +5,11 @@ using UnityEngine;
 
 public class StatDisplay : MonoBehaviour
 {
-    public List<StatType> statsToDisplay;
+    public List<EntityStatType> statsToDisplay;
 
     private TextMeshProUGUI textField;
 
-    private Dictionary<StatType, Stat> stats;
+    private Dictionary<EntityStatType, Stat> stats;
 
     public void Start()
     {
@@ -34,7 +34,7 @@ public class StatDisplay : MonoBehaviour
     private void RefreshStats()
     {
         textField.text = "";
-        foreach (StatType type in statsToDisplay)
+        foreach (EntityStatType type in statsToDisplay)
         {
             if (PlayerManager.instance.activeMinion.GetEntity().stats.ContainsKey(type))
             {

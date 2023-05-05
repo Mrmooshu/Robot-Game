@@ -4,7 +4,7 @@ using UnityEngine;
 
 public abstract class InventoryDisplay : MonoBehaviour
 {
-    protected GameObject slotPrefab;
+    public GameObject slotPrefab;
     protected GameObject objectPrefab;
     public GameObject inventoryArea;
     public GameObject pageNumber;

@@ -68,9 +68,9 @@ public class CharacterEntity : Entity
         {
             Flip();
         }
-        float targetSpeed = movementDirection * stats[StatType.MoveSpeed].Value;
+        float targetSpeed = movementDirection * stats[EntityStatType.MoveSpeed].Value;
         float speedDiff = targetSpeed - rigBod.velocity.x;
-        float accelRate = (Mathf.Abs(targetSpeed) > 0.01f) ? stats[StatType.MoveSpeed].Value * 1f : stats[StatType.MoveSpeed].Value * 2;
+        float accelRate = (Mathf.Abs(targetSpeed) > 0.01f) ? stats[EntityStatType.MoveSpeed].Value * 1f : stats[EntityStatType.MoveSpeed].Value * 2;
         float movement = Mathf.Pow(Mathf.Abs(speedDiff) * accelRate, 1) * Mathf.Sign(speedDiff);
         rigBod.AddForce(movement * Vector2.right);
 
@@ -83,7 +83,7 @@ public class CharacterEntity : Entity
         if (canJump)
         {
             canJump = false;
-            rigBod.velocity = new Vector2(rigBod.velocity.x, stats[StatType.JumpForce].Value);
+            rigBod.velocity = new Vector2(rigBod.velocity.x, stats[EntityStatType.JumpForce].Value);
         }
     }
 

@@ -10,7 +10,10 @@ public class ItemInventoryDisplay : InventoryDisplay
 
     public void Start()
     {
-        slotPrefab = UIManager.instance.uiPrefabs.LoadAsset<GameObject>("ItemSlot");
+        if (slotPrefab == null)
+        {
+            slotPrefab = UIManager.instance.uiPrefabs.LoadAsset<GameObject>("ItemSlot");
+        }
         objectPrefab = UIManager.instance.uiPrefabs.LoadAsset<GameObject>("InventoryItem");
         RefreshInventory();
         PlayerManager.instance.minionChanged += RefreshInventory;
@@ -41,7 +44,7 @@ public class ItemInventoryDisplay : InventoryDisplay
 
         int x = 0;
         int y = 0;
-        float slotSize = 34f;
+        float slotSize = 39f;
         for (int i = slotsPerPage * currentInventory.currentPage - slotsPerPage; i < currentInventory.GetSize() && i < slotsPerPage * currentInventory.currentPage; i++)
         {
             GameObject slotInstance = Instantiate(slotPrefab, inventoryArea.transform);

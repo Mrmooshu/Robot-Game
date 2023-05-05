@@ -5,6 +5,7 @@ using UnityEngine;
 [System.Serializable]
 public class GameData
 {
+    public UniversalPlayerData universal;
     public List<MinionData> activeMinions;
     public MinionInventory minionInventory;
     public ItemInventory bankInventory;

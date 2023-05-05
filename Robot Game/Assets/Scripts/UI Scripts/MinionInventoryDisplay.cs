@@ -4,7 +4,12 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class BodyInventoryDisplay : InventoryDisplay
+/*
+ * Inventory Display used to store minions
+ * 
+ * 
+ */
+public class MinionInventoryDisplay : InventoryDisplay
 {
 
     public MinionInventory currentInventory;
@@ -50,7 +55,7 @@ public class BodyInventoryDisplay : InventoryDisplay
                 GameObject bodyInstance = Instantiate(objectPrefab, slotInstance.transform);
                 InventoryPlayer invenPlayer = bodyInstance.GetComponent<InventoryPlayer>();
                 invenPlayer.unit = currentInventory.GetSlotByIndex(i);
-                invenPlayer.transform.GetChild(0).GetComponent<Image>().sprite = GeneralManager.instance.entityPrefabs.LoadAsset<GameObject>(currentInventory.GetSlotByIndex(i).variantName).GetComponent<SpriteRenderer>().sprite;
+                invenPlayer.transform.GetChild(0).GetComponent<Image>().sprite = GeneralManager.instance.entityPrefabs.LoadAsset<GameObject>(currentInventory.GetSlotByIndex(i).variantName).GetComponent<MinionEntity>().icon;
             }
 
             if (x >= columns)

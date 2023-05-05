@@ -8,7 +8,7 @@ public abstract class Equipable : ItemData
     [SerializeField] public List<ModData> itemModifiers;
     private List<StatMod> mods = new List<StatMod>();
 
-    public void Equip(ref Dictionary<StatType, Stat> stats)
+    public void Equip(ref Dictionary<EntityStatType, Stat> stats)
     {
         //create mods if they havent bene created yet
         if (mods.Count == 0)

@@ -27,7 +27,7 @@ public class Projectile : Entity
         //direction.right = origin.transform.position - transform.position;
         //visual.right = origin.transform.position - transform.position;
 
-        transform.position += direction.right * stats[StatType.MoveSpeed].Value * Time.deltaTime;
+        transform.position += direction.right * stats[EntityStatType.MoveSpeed].Value * Time.deltaTime;
 
         // despawn if far enough away from origin
         if (Vector2.Distance(origin.transform.position, transform.position) > 100)

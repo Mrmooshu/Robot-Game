@@ -191,7 +191,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 200, y: 266}
+  m_SizeDelta: {x: 208, y: 301}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7690640422146791966
 CanvasRenderer:
@@ -529,10 +529,6 @@ PrefabInstance:
     - target: {fileID: 2228918418884933702, guid: d0a8bd10a79c3c24ebc59de92801a0e3, type: 3}
       propertyPath: m_Name
       value: PlayerInventoryUI
-      objectReference: {fileID: 0}
-    - target: {fileID: 2228918419860523081, guid: d0a8bd10a79c3c24ebc59de92801a0e3, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 68
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d0a8bd10a79c3c24ebc59de92801a0e3, type: 3}

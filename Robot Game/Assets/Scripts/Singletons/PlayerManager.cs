@@ -12,6 +12,7 @@ public class PlayerManager : MonoBehaviour, IDataSave
     public List<GameObject> minionBlueprints;
 
     public static PlayerManager instance;
+    public UniversalPlayerData universal;
     public List<MinionData> activeMinions;
     public MinionInventory minionInventory;
     public ItemInventory bankInventory;
@@ -58,14 +59,14 @@ public class PlayerManager : MonoBehaviour, IDataSave
     {
         minion.savedPosition = minion.GetEntity().transform.position;
         Destroy(minion.GetEntity().gameObject);
-        minionEntities.Remove((MinionEntity)minion.GetEntity());
+        minionEntities.Remove(minion.GetEntity());
         SpawnMinion(minion);
     }
 
     public void SetActiveMinion(MinionData minion)
     {
         activeMinion = minion;
-        ControlThisMinion((MinionEntity)minion.GetEntity());
+        ControlThisMinion(minion.GetEntity());
         minionChanged?.Invoke();
     }
 
@@ -125,6 +126,7 @@ public class PlayerManager : MonoBehaviour, IDataSave
 
     public void LoadData(GameData data)
     {
+        universal = data.universal;
         activeMinions = data.activeMinions;
         minionInventory = data.minionInventory;
         bankInventory = data.bankInventory;
@@ -132,6 +134,7 @@ public class PlayerManager : MonoBehaviour, IDataSave
 
     public void SaveData(ref GameData data)
     {
+        data.universal = universal;
         data.activeMinions = activeMinions;
         data.minionInventory = minionInventory;
         data.bankInventory = bankInventory;

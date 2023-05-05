@@ -44,11 +44,14 @@ TagManager:
   - name: Backgroundtile
     uniqueID: 2609407689
     locked: 0
+  - name: Default
+    uniqueID: 0
+    locked: 0
   - name: Entity
     uniqueID: 2559860713
     locked: 0
-  - name: Default
-    uniqueID: 0
+  - name: PlayerEntity
+    uniqueID: 506174663
     locked: 0
   - name: Groundtile
     uniqueID: 1868969789

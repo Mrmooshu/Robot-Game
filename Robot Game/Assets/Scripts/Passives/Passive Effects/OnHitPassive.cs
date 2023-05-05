@@ -19,6 +19,6 @@ public class OnHitPassive : Passive, IOnHit
 
     public DamageScript.damageData OnHit(Entity target)
     {
-        return new DamageScript.damageData(((MinionEntity)entity).data.skills[abilityName] * entity.stats[StatType.Health].Value * .01f, DamageScript.damageType.magic);
+        return new DamageScript.damageData(((MinionEntity)entity).data.skills[abilityName] * entity.stats[EntityStatType.Health].Value * .01f, DamageScript.damageType.magic);
     }
 }

@@ -767,7 +767,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   followTransform: {fileID: 0}
-  height: 0.6
+  height: 1.6
 --- !u!20 &1731023239
 Camera:
   m_ObjectHideFlags: 0
@@ -794,7 +794,7 @@ Camera:
   near clip plane: 0.3
   far clip plane: 1000
   field of view: 13
-  orthographic: 0
+  orthographic: 1
   orthographic size: 1
   m_Depth: -1
   m_CullingMask:

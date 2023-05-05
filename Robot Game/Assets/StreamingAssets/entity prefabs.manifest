@@ -1,12 +1,12 @@
 ManifestFileVersion: 0
-CRC: 1676952857
+CRC: 3689083284
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 13e6c03afe712455f3d645aebc34d834
+    Hash: 328b24bfc4c625514732eda4ead93cea
   TypeTreeHash:
     serializedVersion: 2
-    Hash: aca9aa9864c07cd4ed93266119822ea9
+    Hash: f05c8e94b33336bd114e189f65fd88b4
 HashAppended: 0
 ClassTypes:
 - Class: 1
@@ -53,6 +53,8 @@ ClassTypes:
   Script: {fileID: 11500000, guid: 4ada99bf53298a3429d87ab9be3291ab, type: 3}
 - Class: 114
   Script: {fileID: 11500000, guid: 158cf482610347c49b7e1fed11076eab, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 4b27e476298f9174ca3bf5e6e6c4422f, type: 3}
 - Class: 115
   Script: {instanceID: 0}
 - Class: 212
@@ -65,15 +67,15 @@ ClassTypes:
   Script: {instanceID: 0}
 SerializeReferenceClassIdentifiers:
 - AssemblyName: Assembly-CSharp
+  ClassName: EntitiyStatStruct
+- AssemblyName: Assembly-CSharp
+  ClassName: EntityStatType
+- AssemblyName: Assembly-CSharp
   ClassName: ItemInventory
 - AssemblyName: Assembly-CSharp
   ClassName: MinionData
 - AssemblyName: Assembly-CSharp
   ClassName: SkillTreeUpgrade/requiredSkill
-- AssemblyName: Assembly-CSharp
-  ClassName: StatStruct
-- AssemblyName: Assembly-CSharp
-  ClassName: StatType
 - AssemblyName: UnityEngine.CoreModule
   ClassName: UnityEngine.Events.PersistentCallGroup
 - AssemblyName: UnityEngine.UI

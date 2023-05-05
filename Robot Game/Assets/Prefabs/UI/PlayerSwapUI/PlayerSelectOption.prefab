@@ -68,8 +68,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 0
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: c1e01abd6ed574d47b7bcb8961ef1003, type: 2}
-  m_sharedMaterial: {fileID: -2975592638403885386, guid: c1e01abd6ed574d47b7bcb8961ef1003, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -190,7 +190,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4335622410315004761}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d2ac78b33d801d9448b1551c1438067b, type: 3}
   m_Name: 
@@ -231,20 +231,28 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_IsOn: 0
-  core:
-    currentBody:
-      variantName: 
-      level: 0
-      weapon:
-        itemID: 0
-        quanityString: 0
+  player:
+    lastSafePoint: 
+    variantName: 
+    tool:
+      rid: -2
+    weapon:
+      rid: -2
+    level: 0
     inventory:
       inventory: []
       inventorySize: 0
       currentPage: 0
       stackLimit: 0
-    position: {x: 0, y: 0, z: 0}
+    savedPosition: {x: 0, y: 0, z: 0}
     activity: 0
+    _skillPoints: 0
+    skillsList: []
+  references:
+    version: 2
+    RefIds:
+    - rid: -2
+      type: {class: , ns: , asm: }
 --- !u!1 &4383940862886099448
 GameObject:
   m_ObjectHideFlags: 0

@@ -59,15 +59,15 @@ public static class DamageScript
         {
             if (damage.type is damageType.physical)
             {
-                actualPhysicalDamage = Mathf.CeilToInt(damage.damage * (100 / (100 + target.stats[StatType.AttackDefense].Value)));
+                actualPhysicalDamage = Mathf.CeilToInt(damage.damage * (100 / (100 + target.stats[EntityStatType.AttackDefense].Value)));
             }
             else if (damage.type is damageType.magic)
             {
-                actualMagicDamage = Mathf.CeilToInt(damage.damage * (100 / (100 + target.stats[StatType.MagicDefense].Value)));
+                actualMagicDamage = Mathf.CeilToInt(damage.damage * (100 / (100 + target.stats[EntityStatType.MagicDefense].Value)));
             }
 
         }
-        ((ResourceStat)target.stats[StatType.Health]).CurrentValue -= (actualPhysicalDamage + actualMagicDamage);
+        ((ResourceStat)target.stats[EntityStatType.Health]).CurrentValue -= (actualPhysicalDamage + actualMagicDamage);
         int damageDisplayCount = 0;
         foreach ((int,Color) damage in new (int, Color)[]{(actualMagicDamage,Color.cyan), (actualPhysicalDamage, new Color(1,.74f,0)) })
         {

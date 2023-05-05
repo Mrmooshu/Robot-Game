@@ -20,7 +20,6 @@ public class BufferableAction : StateMachineBehaviour
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         animator.Play(animator.gameObject.GetComponent<Entity>().bufferedAction, 0);
-        //animator.Play(animator.gameObject.GetComponent<Entity>().bufferedAction, 1);
         animator.gameObject.GetComponent<Entity>().bufferedAction = "--------------";
     }
 

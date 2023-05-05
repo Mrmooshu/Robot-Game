@@ -6,14 +6,14 @@ using UnityEngine;
 public abstract class Entity : MonoBehaviour
 {
 
-    [SerializeField]private List<StatStruct> statListInspector;
+    [SerializeField]private List<EntitiyStatStruct> statListInspector;
 
     public int facingDirection { get; protected set; }
     public bool dead = false;
     public bool stunned = false;
     public LayerMask whatIsEnemy;
 
-    public Dictionary<StatType, Stat> stats;
+    public Dictionary<EntityStatType, Stat> stats;
     public Dictionary<int,Effect> effects;
 
     public string bufferedAction = "";
@@ -66,12 +66,12 @@ public abstract class Entity : MonoBehaviour
 
     protected virtual void CreateStats()
     {
-        stats = new Dictionary<StatType, Stat>();
+        stats = new Dictionary<EntityStatType, Stat>();
         effects = new Dictionary<int, Effect>();
 
-        foreach (StatStruct stat in statListInspector)
+        foreach (EntitiyStatStruct stat in statListInspector)
         {
-            if (stat.type == StatType.Health || stat.type == StatType.Mana)
+            if (stat.type == EntityStatType.Health || stat.type == EntityStatType.Mana)
             {
                 stats.Add(stat.type, new ResourceStat(stat.value));
             }
@@ -81,15 +81,15 @@ public abstract class Entity : MonoBehaviour
             }
         }
 
-        if (stats.ContainsKey(StatType.Health))
+        if (stats.ContainsKey(EntityStatType.Health))
         {
-            ((ResourceStat)stats[StatType.Health]).currentValueUpdated += CheckToDie;
+            ((ResourceStat)stats[EntityStatType.Health]).currentValueUpdated += CheckToDie;
         }
     }
 
     private void CheckToDie()
     {
-        if (((ResourceStat)stats[StatType.Health]).CurrentValue <= 0)
+        if (((ResourceStat)stats[EntityStatType.Health]).CurrentValue <= 0)
         {
             Die();
         }

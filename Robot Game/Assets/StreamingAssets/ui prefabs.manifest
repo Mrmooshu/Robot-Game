@@ -1,12 +1,12 @@
 ManifestFileVersion: 0
-CRC: 2191154120
+CRC: 159219948
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: ce377eba423a3426c5097ee6fd806cde
+    Hash: cf01e9390efecf715dd8a86d20cbf354
   TypeTreeHash:
     serializedVersion: 2
-    Hash: 678a142382ad270b1d1b5c08ad0bce02
+    Hash: 5d7fda381617b0eb2f16c6b29fc26243
 HashAppended: 0
 ClassTypes:
 - Class: 1
@@ -42,9 +42,9 @@ ClassTypes:
 - Class: 114
   Script: {fileID: 11500000, guid: 89fc4abac15c5714b91540fc0b57c02e, type: 3}
 - Class: 114
-  Script: {fileID: 11500000, guid: 0b64e517e6ab22441abc069007835e83, type: 3}
-- Class: 114
   Script: {fileID: 11500000, guid: 0e1347e0c1aca7b438b8cc5f2a09b48b, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 0d39ce78a921b364d8ef35822f384b35, type: 3}
 - Class: 114
   Script: {fileID: 11500000, guid: 1344c3c82d62a2a41a3576d8abb8e3ea, type: 3}
 - Class: 114
@@ -76,6 +76,8 @@ ClassTypes:
 - Class: 114
   Script: {fileID: 11500000, guid: 31a19414c41e5ae4aae2af33fee712f6, type: 3}
 - Class: 114
+  Script: {fileID: 11500000, guid: 0465b3de1e202ab409c428519497b4c9, type: 3}
+- Class: 114
   Script: {fileID: 11500000, guid: 099bd599b85a8c346a31a4cc820c63cf, type: 3}
 - Class: 114
   Script: {fileID: 11500000, guid: bb9e0cf60a8646a4995807d633e7dc49, type: 3}
@@ -103,8 +105,6 @@ ClassTypes:
   Script: {fileID: 11500000, guid: c91c854ae86352e4f8893a00aabe846a, type: 3}
 - Class: 114
   Script: {fileID: 11500000, guid: 9c034c74d2f65ea469bd17a5e81667be, type: 3}
-- Class: 114
-  Script: {fileID: 11500000, guid: 0465b3de1e202ab409c428519497b4c9, type: 3}
 - Class: 115
   Script: {instanceID: 0}
 - Class: 128
@@ -123,6 +123,8 @@ ClassTypes:
   Script: {instanceID: 0}
 SerializeReferenceClassIdentifiers:
 - AssemblyName: Assembly-CSharp
+  ClassName: EntityStatType
+- AssemblyName: Assembly-CSharp
   ClassName: Item
 - AssemblyName: Assembly-CSharp
   ClassName: ItemInventory
@@ -130,8 +132,6 @@ SerializeReferenceClassIdentifiers:
   ClassName: MinionData
 - AssemblyName: Assembly-CSharp
   ClassName: MinionInventory
-- AssemblyName: Assembly-CSharp
-  ClassName: StatType
 - AssemblyName: Unity.TextMeshPro
   ClassName: TMPro.FaceInfo_Legacy
 - AssemblyName: Unity.TextMeshPro
@@ -188,7 +188,10 @@ Assets:
 - Assets/Prefabs/UI/InventoryUI/MinionInventoryUI/InventoryPlayer.prefab
 - Assets/Prefabs/UI/QuestUI/QuestListOption.prefab
 - Assets/Prefabs/UI/Misc Ui/Damage Text.prefab
+- Assets/Prefabs/UI/InventoryUI/ItemUI/ItemSlotBlue.prefab
+- Assets/Prefabs/UI/InventoryUI/ItemUI/ItemSlotGreen.prefab
 - Assets/Prefabs/UI/EffectUI/EffectObject.prefab
+- Assets/Prefabs/UI/InventoryUI/ItemUI/ItemSlotOrange.prefab
 - Assets/Prefabs/UI/PlayerSwapUI/PlayerSelectOption.prefab
 - Assets/Prefabs/UI/MainPlayerMenu.prefab
 - Assets/Prefabs/UI/QuestUI/Dialogue Box.prefab

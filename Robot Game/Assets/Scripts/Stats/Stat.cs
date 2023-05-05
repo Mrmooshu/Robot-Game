@@ -5,15 +5,15 @@ using System.Collections.ObjectModel;
 using UnityEngine;
 
 [Serializable]
-public enum StatType
+public enum EntityStatType
 {
     Health,HealthRegen,Mana,ManaRegen,MoveSpeed, MoveAcceleration,JumpForce,Gravity,AttackDamage,MagicDamage,AttackDefense,MagicDefense,CritChance,AttackSpeedBonus
 }
 
 [Serializable]
-public struct StatStruct
+public struct EntitiyStatStruct
 {
-    public StatType type;
+    public EntityStatType type;
     public float value;
 }
 

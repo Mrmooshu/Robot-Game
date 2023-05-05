@@ -17,8 +17,8 @@ public class HealthBarEntitiy : HealthBar
 
     void Update()
     {
-        healthBar.fillAmount = ((ResourceStat)entity.stats[StatType.Health]).CurrentValue / ((ResourceStat)entity.stats[StatType.Health]).Value;
-        text.text = (int)((ResourceStat)entity.stats[StatType.Health]).CurrentValue + "/" + (int)((ResourceStat)entity.stats[StatType.Health]).Value;
+        healthBar.fillAmount = ((ResourceStat)entity.stats[EntityStatType.Health]).CurrentValue / ((ResourceStat)entity.stats[EntityStatType.Health]).Value;
+        text.text = (int)((ResourceStat)entity.stats[EntityStatType.Health]).CurrentValue + "/" + (int)((ResourceStat)entity.stats[EntityStatType.Health]).Value;
         if (entity.facingDirection < 0)
         {
             transform.localScale = new Vector3(-1,1,1);

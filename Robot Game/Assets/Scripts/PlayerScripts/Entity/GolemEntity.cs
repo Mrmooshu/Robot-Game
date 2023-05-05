@@ -71,6 +71,7 @@ public class GolemEntity : MinionEntity
 
     public override void BasicAttack()
     {
+        StopMining();
         if (data.weapon != null)
         {
 
@@ -91,7 +92,6 @@ public class GolemEntity : MinionEntity
             if (bufferedAction == "")
             {
                 animator.Play("Basic_Punch_First", 0);
-                //animator.Play("Basic_Punch_First", 1);
             }
         }
 
@@ -101,7 +101,7 @@ public class GolemEntity : MinionEntity
     {
         bufferedAction = "";
         Vector2 knockback = new Vector2(100 * facingDirection, 100);
-        DamageScript.Attack(new DamageScript.attackData(this, new DamageScript.damageData(stats[StatType.AttackDamage].Value, DamageScript.damageType.physical), true, knockback, .5f), hitboxes, whatIsEnemy, this);
+        DamageScript.Attack(new DamageScript.attackData(this, new DamageScript.damageData(stats[EntityStatType.AttackDamage].Value, DamageScript.damageType.physical), true, knockback, .5f), hitboxes, whatIsEnemy, this);
         //rigBod.AddForce(new Vector2(stats[StatType.MoveSpeed].Value * facingDirection, 1.2f), ForceMode2D.Impulse);
     }
 }

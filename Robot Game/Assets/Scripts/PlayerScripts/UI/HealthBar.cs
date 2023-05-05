@@ -17,7 +17,7 @@ public class HealthBar : MonoBehaviour
 
     void Update()
     {
-        healthBar.fillAmount = ((ResourceStat)PlayerManager.instance.activeMinion.GetEntity().stats[StatType.Health]).CurrentValue / ((ResourceStat)PlayerManager.instance.activeMinion.GetEntity().stats[StatType.Health]).Value;
-        text.text = (int)((ResourceStat)PlayerManager.instance.activeMinion.GetEntity().stats[StatType.Health]).CurrentValue +  "/" + (int)((ResourceStat)PlayerManager.instance.activeMinion.GetEntity().stats[StatType.Health]).Value;
+        healthBar.fillAmount = ((ResourceStat)PlayerManager.instance.activeMinion.GetEntity().stats[EntityStatType.Health]).CurrentValue / ((ResourceStat)PlayerManager.instance.activeMinion.GetEntity().stats[EntityStatType.Health]).Value;
+        text.text = (int)((ResourceStat)PlayerManager.instance.activeMinion.GetEntity().stats[EntityStatType.Health]).CurrentValue +  "/" + (int)((ResourceStat)PlayerManager.instance.activeMinion.GetEntity().stats[EntityStatType.Health]).Value;
     }
 }

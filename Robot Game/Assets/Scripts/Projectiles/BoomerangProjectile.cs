@@ -24,7 +24,7 @@ public class BoomerangProjectile : Projectile
         }
 
         // movement
-        transform.position += direction.right * (stats[StatType.MoveSpeed].Value + (Mathf.Abs(duration)*10)) * Time.deltaTime;
+        transform.position += direction.right * (stats[EntityStatType.MoveSpeed].Value + (Mathf.Abs(duration)*10)) * Time.deltaTime;
 
         // rotate boomerang
         visual.Rotate(0,0,-rotationSpeed * Time.deltaTime);
@@ -42,7 +42,7 @@ public class BoomerangProjectile : Projectile
         if (collision.GetComponent<Entity>() != null && (1 << collision.gameObject.layer & origin.whatIsEnemy) != 0 && !alreadyHit.Contains(collision.GetComponent<Entity>()))
         {
             Vector2 knockback = new Vector2(100 * (duration <= 0 ? 1 : -1), 100);
-            DamageScript.Attack(new DamageScript.attackData(origin, new DamageScript.damageData(origin.stats[StatType.AttackDamage].Value, DamageScript.damageType.physical), true, knockback, .5f), collision.GetComponent<Entity>(), origin);
+            DamageScript.Attack(new DamageScript.attackData(origin, new DamageScript.damageData(origin.stats[EntityStatType.AttackDamage].Value, DamageScript.damageType.physical), true, knockback, .5f), collision.GetComponent<Entity>(), origin);
             alreadyHit.Add(collision.GetComponent<Entity>());
         }
 
