@@ -18,14 +18,14 @@ public class InventoryItem : MonoBehaviour, IDragHandler, IEndDragHandler
         transform.position = eventData.position;
         canvasGroup.alpha = .5f;
         canvasGroup.blocksRaycasts = false;
-        if (transform.parent.parent.parent.parent.GetComponent<ItemInventoryDisplay>())
+        if (GetComponentInParent<ItemInventoryDisplay>())
         {
-            transform.parent.SetAsLastSibling();
-            transform.parent.parent.parent.parent.SetAsLastSibling();
+            GetComponentInParent<ItemInventorySlot>().transform.SetAsLastSibling();
+            GetComponentInParent<ItemInventoryDisplay>().transform.SetAsLastSibling();
         }
-        else if (transform.parent.GetComponent<SlotDisplay<Item>>())
+        else if (GetComponentInParent<SlotDisplay<Item>>())
         {
-            transform.parent.parent.SetAsLastSibling();
+            GetComponentInParent<SlotDisplay<Item>>().transform.parent.SetAsLastSibling();
         }
     }
 
