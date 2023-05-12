@@ -10,9 +10,12 @@ public class DropSlot : MonoBehaviour, IDropHandler
     {
         if (eventData.pointerDrag.GetComponent<InventoryItem>())
         {
-            GameObject droppedItem = Instantiate(itemPrefab, PlayerManager.instance.activeMinion.GetEntity().transform.position, Quaternion.identity);
-            droppedItem.GetComponent<ItemObject>().SetItem(eventData.pointerDrag.GetComponent<InventoryItem>().item);
-            droppedItem.GetComponent<Rigidbody2D>().AddForce(new Vector2(Random.Range(-50, 50), 80));
+            var activeMinion = PlayerManager.instance.activeMinion.GetEntity();
+
+            var droppedItem = GeneralManager.SpawnItem(activeMinion.groundCheck.transform, eventData.pointerDrag.GetComponent<InventoryItem>().item);
+            //GameObject droppedItem = Instantiate(itemPrefab, PlayerManager.instance.activeMinion.GetEntity().groundCheck.position, Quaternion.identity);
+            //droppedItem.GetComponent<ItemObject>().SetItem(eventData.pointerDrag.GetComponent<InventoryItem>().item);
+            droppedItem.GetComponent<Rigidbody2D>().AddForce(new Vector2(Random.Range(120, 150) * activeMinion.facingDirection, 200));
 
             if (eventData.pointerDrag.transform.GetComponentInParent<SlotDisplay<Item>>())
             {
