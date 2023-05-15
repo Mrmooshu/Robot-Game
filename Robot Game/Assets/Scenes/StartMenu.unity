@@ -104,7 +104,7 @@ NavMeshSettings:
   serializedVersion: 2
   m_ObjectHideFlags: 0
   m_BuildSettings:
-    serializedVersion: 2
+    serializedVersion: 3
     agentTypeID: 0
     agentRadius: 0.5
     agentHeight: 2
@@ -117,7 +117,7 @@ NavMeshSettings:
     cellSize: 0.16666667
     manualTileSize: 0
     tileSize: 256
-    accuratePlacement: 0
+    buildHeightMesh: 0
     maxJobWorkers: 0
     preserveTilesOutsideBounds: 0
     debug:
@@ -221,6 +221,7 @@ Canvas:
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 25
+  m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
@@ -625,9 +626,17 @@ Camera:
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
+  m_Iso: 200
+  m_ShutterSpeed: 0.005
+  m_Aperture: 16
+  m_FocusDistance: 10
+  m_FocalLength: 50
+  m_BladeCount: 5
+  m_Curvature: {x: 2, y: 11}
+  m_BarrelClipping: 0.25
+  m_Anamorphism: 0
   m_SensorSize: {x: 36, y: 24}
   m_LensShift: {x: 0, y: 0}
-  m_FocalLength: 50
   m_NormalizedViewPortRect:
     serializedVersion: 2
     x: 0
@@ -699,9 +708,19 @@ MonoBehaviour:
   m_Dithering: 0
   m_ClearDepth: 1
   m_AllowXRRendering: 1
+  m_UseScreenCoordOverride: 0
+  m_ScreenSizeOverride: {x: 0, y: 0, z: 0, w: 0}
+  m_ScreenCoordScaleBias: {x: 0, y: 0, z: 0, w: 0}
   m_RequiresDepthTexture: 0
   m_RequiresColorTexture: 0
   m_Version: 2
+  m_TaaSettings:
+    quality: 3
+    frameInfluence: 0.1
+    jitterScale: 1
+    mipBias: 0
+    varianceClampScale: 0.9
+    contrastAdaptiveSharpening: 0
 --- !u!1 &666504244
 GameObject:
   m_ObjectHideFlags: 0
@@ -744,6 +763,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 754851710}
     m_Modifications:
     - target: {fileID: 1692527841845240949, guid: 958f3dc93831c0e438d1305cc17b475b, type: 3}
@@ -835,10 +855,18 @@ PrefabInstance:
       value: Wipe
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 958f3dc93831c0e438d1305cc17b475b, type: 3}
 --- !u!95 &2143118082 stripped
 Animator:
   m_CorrespondingSourceObject: {fileID: 7070737211400105827, guid: 958f3dc93831c0e438d1305cc17b475b, type: 3}
+  m_PrefabInstance: {fileID: 2143118081}
+  m_PrefabAsset: {fileID: 0}
+--- !u!224 &2143118083 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 1692527841845240949, guid: 958f3dc93831c0e438d1305cc17b475b, type: 3}
   m_PrefabInstance: {fileID: 2143118081}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &26773991132046065
@@ -846,6 +874,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 26773992688341412, guid: 853af822d770f05448a1d3986b5cf531, type: 3}
@@ -909,4 +938,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2143118082}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 26773992688341412, guid: 853af822d770f05448a1d3986b5cf531, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2143118083}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 853af822d770f05448a1d3986b5cf531, type: 3}

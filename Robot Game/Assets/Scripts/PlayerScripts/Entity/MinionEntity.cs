@@ -129,8 +129,8 @@ public class MinionEntity : Entity
                     {
                         PlayerManager.instance.SetActiveCore(hit.collider.gameObject.GetComponent<PlayerEntity>().core);
                     }
-                    */
-                    // Item Pick Up
+                    
+                    // Item Pick Up disabled
                     if (hit.collider.gameObject.GetComponent<ItemObject>())
                     {
                         if (data.inventory.Add(hit.collider.gameObject.GetComponent<ItemObject>().item))
@@ -142,6 +142,7 @@ public class MinionEntity : Entity
                             Debug.Log("full inventory");
                         }
                     }
+                    */
                 }
             }
         }
@@ -246,6 +247,7 @@ public class MinionEntity : Entity
         }
     }
 
+    /*
     public void OnDrawGizmos()
     {
         if (hitboxes.GetComponentsInChildren<BoxCollider2D>().Length > 0)
@@ -253,4 +255,5 @@ public class MinionEntity : Entity
             Gizmos.DrawWireCube(hitboxes.GetComponentsInChildren<BoxCollider2D>()[0].transform.position, hitboxes.GetComponentsInChildren<BoxCollider2D>()[0].size);
         }
     }
+    */
 }

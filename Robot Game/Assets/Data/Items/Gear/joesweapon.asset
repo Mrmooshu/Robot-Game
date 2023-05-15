@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 27b223b09ca8cf243994b9d70fb18586, type: 3}
-  m_Name: JoesWeapon
+  m_Name: joesweapon
   m_EditorClassIdentifier: 
   itemID: 67
   itemName: joes weapon

@@ -56,6 +56,9 @@ TagManager:
   - name: PlayerEntity
     uniqueID: 506174663
     locked: 0
+  - name: Water
+    uniqueID: 3744605677
+    locked: 0
   - name: Foregroundtile
     uniqueID: 1354267863
     locked: 0

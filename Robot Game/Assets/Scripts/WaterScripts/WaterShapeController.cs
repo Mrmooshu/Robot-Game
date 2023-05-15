@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.U2D;
 
-[ExecuteAlways]
+
 public class WaterShapeController : MonoBehaviour
 {
 
-    private int CorsnersCount = 2;
+    private int CornersCount = 2;
     [SerializeField]
     private SpriteShapeController spriteShapeController;
     [SerializeField]
@@ -16,7 +16,7 @@ public class WaterShapeController : MonoBehaviour
     private GameObject wavePoints;
 
     [SerializeField]
-    [Range(1, 100)]
+    [Range(1, 1000)]
     private int WavesCount;
     private List<WaterSpring> springs = new();
     // How stiff should our spring be constnat
@@ -27,10 +27,6 @@ public class WaterShapeController : MonoBehaviour
     public float spread = 0.006f;
 
     void Start()
-    {
-
-    }
-    void OnValidate()
     {
         // Clean waterpoints 
         StartCoroutine(CreateWaves());
@@ -59,9 +55,9 @@ public class WaterShapeController : MonoBehaviour
         // Keep only the corners
         // Removing 1 point at a time we can remove only the 1st point
         // This means every time we remove 1st point the 2nd point becomes first
-        for (int i = CorsnersCount; i < waterPointsCount - CorsnersCount; i++)
+        for (int i = CornersCount; i < waterPointsCount - CornersCount; i++)
         {
-            waterSpline.RemovePointAt(CorsnersCount);
+            waterSpline.RemovePointAt(CornersCount);
         }
 
         Vector3 waterTopLeftCorner = waterSpline.GetPosition(1);
@@ -72,7 +68,7 @@ public class WaterShapeController : MonoBehaviour
         // Set new points for the waves
         for (int i = WavesCount; i > 0; i--)
         {
-            int index = CorsnersCount;
+            int index = CornersCount;
 
             float xPosition = waterTopLeftCorner.x + (spacingPerWave * i);
             Vector3 wavePoint = new Vector3(xPosition, waterTopLeftCorner.y, waterTopLeftCorner.z);
@@ -104,8 +100,6 @@ public class WaterShapeController : MonoBehaviour
             // WaveSpring waveSpring = wavePoint.GetComponent<WaveSpring>();
             // waveSpring.Init(spriteShapeController);
         }
-
-        //Splash(5,1f);
     }
     private void Smoothen(Spline waterSpline, int index)
     {
@@ -163,13 +157,6 @@ public class WaterShapeController : MonoBehaviour
                 right_deltas[i] = spread * (springs[i].height - springs[i + 1].height);
                 springs[i + 1].velocity += right_deltas[i];
             }
-        }
-    }
-    private void Splash(int index, float speed)
-    {
-        if (index >= 0 && index < springs.Count)
-        {
-            springs[index].velocity += speed;
         }
     }
 }
