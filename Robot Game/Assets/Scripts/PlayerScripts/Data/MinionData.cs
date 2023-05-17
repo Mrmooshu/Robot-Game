@@ -12,20 +12,45 @@ public class MinionData : ISerializationCallbackReceiver
         Idle, Mining, Woodcutting, Fishing
     }
 
+    [System.Serializable]
+    protected struct skill
+    {
+        public string name;
+        public int level;
+
+        public skill(string name, int level)
+        {
+            this.name = name;
+            this.level = level;
+        }
+    }
+
+    //Saved variables
     public string lastSafePoint;
     public string variantName;
     [SerializeReference] public Item tool;
     [SerializeReference] public Item weapon;
-
     public int level = 1;
     public ItemInventory inventory;
     public Vector3 savedPosition;
     public Activity activity = Activity.Idle;
+    // used to save skills as a list in json
+    [SerializeField] private List<skill> skillsList;
+    [SerializeField] private int _skillPoints;
+    public int SkillPoints { get { return _skillPoints; } set { _skillPoints = value; skillPointsUpdated?.Invoke(); } }
+
+
+    //Unsaved variables
+    [NonSerialized]public List<Passive> passives;
+    public Dictionary<string, int> skills;
+
+
+    public static event Action skillPointsUpdated;
 
     public MinionData(string variantName)
     {
         this.variantName = variantName;
-        CreateSkillTree(variantName);
+        CreateSkills(variantName);
         inventory = new ItemInventory(20, 10);
     }
 
@@ -42,40 +67,22 @@ public class MinionData : ISerializationCallbackReceiver
         return null;
     }
 
-    [System.Serializable]
-    protected struct skill
+    public Passive GetPassiveByName(string skillName)
     {
-        public string name;
-        public int level;
-
-        public skill(string name, int level)
-        {
-            this.name = name;
-            this.level = level;
-        }
+        return passives.FirstOrDefault(x => x.skillName == skillName);
     }
 
-    public Dictionary<string, int> skills;
-    [SerializeField] private int _skillPoints;
-    public int SkillPoints { get { return _skillPoints; } set { _skillPoints = value; skillPointsUpdated?.Invoke(); } }
-    public static event Action skillPointsUpdated;
-
-    // used to save skills as a list in json
-    [SerializeField] private List<skill> skillsList;
-
-    protected void CreateSkillTree(string prefabName)
+    protected virtual void CreateSkills(string prefabName)
     {
-        // create fresh skill tree values from variants skill tree
-        skills = new Dictionary<string, int>();
-        SkillPoints = 100;
-        foreach (Passive skill in GeneralManager.instance.entityPrefabs.LoadAsset<GameObject>(prefabName).GetComponent<MinionEntity>().skillTree.GetComponentsInChildren<Passive>())
-        {
-            skills.Add(skill.abilityName, 0);
-        }
+    }
+
+    public virtual void InitializePassives()
+    {
+
     }
 
 
-    public void OnAfterDeserialize()
+    public virtual void OnAfterDeserialize()
     {
         if (skillsList != null)
         {

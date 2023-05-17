@@ -45,7 +45,7 @@ public class MinionEntity : Entity
         rigBod = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         CreateStats();
-        ApplySkills();
+        data.InitializePassives();
         controller = new AnimatorOverrideController(animator.runtimeAnimatorController);
         animator.runtimeAnimatorController = controller;
         EquipItemsFromData();
@@ -206,15 +206,6 @@ public class MinionEntity : Entity
     public virtual void ToolAction()
     {
 
-    }
-
-    protected virtual void ApplySkills()
-    {
-        //apply skills for skill tree
-        foreach (Passive passive in skillTree.GetComponentsInChildren<Passive>())
-        {
-            passive.InitializePassive(this);
-        }
     }
 
     protected override void CreateStats()

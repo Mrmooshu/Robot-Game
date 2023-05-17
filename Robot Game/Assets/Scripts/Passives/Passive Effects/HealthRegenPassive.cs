@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class HealthRegenPassive : Passive
 {
-    public override void InitializePassive(Entity host)
+    public HealthRegenPassive(Entity host)
     {
-        entity = (MinionEntity)host;
+        entity = host;
         entity.StartCoroutine(HealTick());
     }
 

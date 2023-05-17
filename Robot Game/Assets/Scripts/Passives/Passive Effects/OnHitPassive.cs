@@ -4,9 +4,10 @@ using UnityEngine;
 
 public class OnHitPassive : Passive, IOnHit
 {
-    public override void InitializePassive(Entity host)
+    public OnHitPassive(string name, Entity host)
     {
-        entity = (MinionEntity)host;
+        skillName = name;
+        entity = host;
         if (host is MinionEntity)
         {
             ((MinionEntity)host).onHitPassives.Add(this);
@@ -19,6 +20,6 @@ public class OnHitPassive : Passive, IOnHit
 
     public DamageScript.damageData OnHit(Entity target)
     {
-        return new DamageScript.damageData(((MinionEntity)entity).data.skills[abilityName] * entity.stats[EntityStatType.Health].Value * .01f, DamageScript.damageType.magic);
+        return new DamageScript.damageData(((MinionEntity)entity).data.skills[skillName] * entity.stats[EntityStatType.Health].Value * .01f, DamageScript.damageType.magic);
     }
 }

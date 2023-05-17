@@ -9,14 +9,15 @@ public class SkillTreeUpgrade : MonoBehaviour
     [Serializable]
     public struct requiredSkill
     {
-        public SkillTreeUpgrade reqiredSkill;
+        public string reqiredSkillName;
         public int reqiredLevel;
     }
 
     [Header("Skill info")]
+    public string skillName;
+    public string skillDescription;
     public int maxLevel;
     public requiredSkill[] requiredSkills;
-    public Passive passive;
 
     private Button button { get => GetComponent<Button>(); }
 

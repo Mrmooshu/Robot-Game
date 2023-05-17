@@ -50,9 +50,9 @@ public class PlayerManager : MonoBehaviour, IDataSave
         //newMinion = Instantiate(GeneralManager.instance.entityPrefabs.LoadAsset<GameObject>(minion.variantName));
         newMinion = Instantiate(minionBlueprints.Where(x => x.name == minion.variantName).Single());
         MinionEntity minionEntity = newMinion.GetComponent<MinionEntity>();
+        minionEntities.Add(minionEntity);
         minionEntity.Initialize(minion);
         newMinion.transform.position = minionEntity.data.savedPosition;
-        minionEntities.Add(minionEntity);
     }
 
     public void RespawnMinion(MinionData minion)

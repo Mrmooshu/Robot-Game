@@ -423,8 +423,8 @@ MonoBehaviour:
       stackLimit: 0
     savedPosition: {x: 0, y: 0, z: 0}
     activity: 0
-    _skillPoints: 0
     skillsList: []
+    _skillPoints: 0
   references:
     version: 2
     RefIds:

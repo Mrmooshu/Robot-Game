@@ -6,14 +6,14 @@ using UnityEngine;
 public class GameData
 {
     public UniversalPlayerData universal;
-    public List<MinionData> activeMinions;
-    public MinionInventory minionInventory;
+    [SerializeReference] public List<MinionData> activeMinions;
+    [SerializeReference] public MinionInventory minionInventory;
     public ItemInventory bankInventory;
     public List<QuestData> quests;
 
     public void NewGameData()
     {
-        activeMinions = new List<MinionData> { new MinionData("Clay Golem") };
+        activeMinions = new List<MinionData> { new ClayGolemData("Clay Golem") };
         minionInventory = new MinionInventory(10);
         bankInventory = new ItemInventory(48);
         quests = new List<QuestData>();
@@ -26,9 +26,9 @@ public class GameData
 
 
 
-        minionInventory.inventory[0] = new MinionData("Clay Golem");
-        minionInventory.inventory[1] = new MinionData("Clay Golem");
-        minionInventory.inventory[2] = new MinionData("Clay Golem");
+        minionInventory.inventory[0] = new ClayGolemData("Clay Golem");
+        minionInventory.inventory[1] = new ClayGolemData("Clay Golem");
+        minionInventory.inventory[2] = new ClayGolemData("Clay Golem");
 
         minionInventory.inventory[0].tool = new Item(Database.GetItemID("Novium Pickaxe"), 1);
         minionInventory.inventory[1].tool = new Item(Database.GetItemID("Iromite Pickaxe"), 1);
