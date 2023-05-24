@@ -175165,10 +175165,10 @@ MonoBehaviour:
   spriteShapeController: {fileID: 4644135484164942028}
   wavePointPref: {fileID: 2670079030715518166, guid: 5ecce8e518ba9ce42881ad9768573e91, type: 3}
   wavePoints: {fileID: 4644135483763811406}
-  WavesCount: 100
+  WavesCount: 150
   springStiffness: 0.1
-  dampening: 0.07
-  spread: 0.007
+  dampening: 0.3
+  spread: 0.08
 --- !u!1971053207 &4644135484164942031
 SpriteShapeRenderer:
   m_ObjectHideFlags: 0

@@ -13,7 +13,8 @@ public class GameData
 
     public void NewGameData()
     {
-        activeMinions = new List<MinionData> { new ClayGolemData("Clay Golem") };
+        universal = new UniversalPlayerData();
+        activeMinions = new List<MinionData> { new ClayGolemData("Clay Golem"), new ClayGolemData("Clay Golem") };
         minionInventory = new MinionInventory(10);
         bankInventory = new ItemInventory(48);
         quests = new List<QuestData>();
@@ -43,6 +44,12 @@ public class GameData
         bankInventory.Add(new Item(Database.GetItemID("Test Dart"), 1));
         bankInventory.Add(new Item(Database.GetItemID("Test Boomerang"), 1));
         bankInventory.Add(new Item(Database.GetItemID("Novium Pickaxe"), 1));
+
+        activeMinions[0].SkillPoints += 70;
+
+        activeMinions[0].inventory.inventory[0] = new Item(Database.GetItemID("Novium Pickaxe"), 1);
+
+        activeMinions[1].inventory.inventory[0] = new Item(Database.GetItemID("Iromite Pickaxe"), 1);
     }
 
     [System.Serializable]

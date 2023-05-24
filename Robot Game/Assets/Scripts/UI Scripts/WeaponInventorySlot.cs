@@ -29,15 +29,21 @@ public class WeaponInventorySlot : SlotDisplay<Item>, IDropHandler, ISlot
 
     public void Swap(Transform inventorySlot)
     {
+        //if other slot is not and item slot
+        if (!inventorySlot.GetComponent<ItemInventorySlot>())
+        {
+            return;
+        }
+
         if (inventorySlot.GetComponentInChildren<InventoryItem>())
         {
             //swapping with another weapon
             if (Database.GetItem(inventorySlot.GetComponentInChildren<InventoryItem>().item.itemID) is Weapon)
             {
                 if (PlayerManager.instance.activeMinion.weapon != null) { ((Weapon)Database.GetItem(PlayerManager.instance.activeMinion.weapon.itemID)).Unequip(); }
-                ItemInventory.Move(inventorySlot.parent.parent.GetComponentInParent<ItemInventoryDisplay>().currentInventory, ref PlayerManager.instance.activeMinion.weapon, inventorySlot.GetComponent<ItemInventorySlot>().inventoryIndex);
+                ItemInventory.Move(inventorySlot.GetComponentInParent<ItemInventoryDisplay>().currentInventory, ref PlayerManager.instance.activeMinion.weapon, inventorySlot.GetComponent<ItemInventorySlot>().inventoryIndex);
                 ((Weapon)Database.GetItem(PlayerManager.instance.activeMinion.weapon.itemID)).Equip(ref PlayerManager.instance.activeMinion.GetEntity().stats);
-                inventorySlot.parent.parent.GetComponentInParent<ItemInventoryDisplay>().RefreshInventory();
+                inventorySlot.GetComponentInParent<ItemInventoryDisplay>().RefreshInventory();
                 RefreshSlot();
             }
         }
@@ -45,8 +51,8 @@ public class WeaponInventorySlot : SlotDisplay<Item>, IDropHandler, ISlot
         {
             //swapping with emtpy slot
             ((Weapon)Database.GetItem(PlayerManager.instance.activeMinion.weapon.itemID)).Unequip();
-            ItemInventory.Move(inventorySlot.parent.parent.GetComponentInParent<ItemInventoryDisplay>().currentInventory, ref PlayerManager.instance.activeMinion.weapon, inventorySlot.GetComponent<ItemInventorySlot>().inventoryIndex);
-            inventorySlot.parent.parent.GetComponentInParent<ItemInventoryDisplay>().RefreshInventory();
+            ItemInventory.Move(inventorySlot.GetComponentInParent<ItemInventoryDisplay>().currentInventory, ref PlayerManager.instance.activeMinion.weapon, inventorySlot.GetComponent<ItemInventorySlot>().inventoryIndex);
+            inventorySlot.GetComponentInParent<ItemInventoryDisplay>().RefreshInventory();
             RefreshSlot();
         }
     }

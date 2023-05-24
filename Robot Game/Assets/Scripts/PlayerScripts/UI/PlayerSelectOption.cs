@@ -15,6 +15,11 @@ public class PlayerSelectOption : Toggle
         UpdateCamera();
     }
 
+    protected override void OnDestroy()
+    {
+        PlayerManager.instance.minionChanged -= UpdateCamera;
+    }
+
     public void Selected(Toggle t)
     {
         if (t.group.AnyTogglesOn())

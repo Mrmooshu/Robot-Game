@@ -22,10 +22,22 @@ public class PlayerSelectDisplay : ToggleGroup
 
         playerPrefab = UIManager.instance.uiPrefabs.LoadAsset<GameObject>("PlayerSelectOption");
 
-        CreateList();
+        Refresh();
+
+        PlayerManager.instance.minionChanged += Refresh;
 
         selectedPlayer = GetComponentInChildren<PlayerSelectOption>();
         selectedPlayer.SelectInfoUpdate();
+    }
+
+    protected override void OnDestroy()
+    {
+        PlayerManager.instance.minionChanged -= Refresh;
+    }
+
+    public void Refresh()
+    {
+        CreateList();
     }
 
     protected void CreateList()

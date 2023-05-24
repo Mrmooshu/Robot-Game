@@ -9,7 +9,7 @@ public class MinionData : ISerializationCallbackReceiver
 {
     public enum Activity
     {
-        Idle, Mining, Woodcutting, Fishing
+        Storage, Idle, Mining, Woodcutting, Fishing
     }
 
     [System.Serializable]
@@ -33,7 +33,7 @@ public class MinionData : ISerializationCallbackReceiver
     public int level = 1;
     public ItemInventory inventory;
     public Vector3 savedPosition;
-    public Activity activity = Activity.Idle;
+    public Activity activity = Activity.Storage;
     // used to save skills as a list in json
     [SerializeField] private List<skill> skillsList;
     [SerializeField] private int _skillPoints;
@@ -94,7 +94,10 @@ public class MinionData : ISerializationCallbackReceiver
     {
         try
         {
-            savedPosition = GetEntity().transform.position;
+            if (activity != Activity.Storage)
+            {
+                savedPosition = GetEntity().transform.position;
+            }
             if (skills != null)
             {
                 skillsList = skills.Select(x => new skill(x.Key, x.Value)).ToList();

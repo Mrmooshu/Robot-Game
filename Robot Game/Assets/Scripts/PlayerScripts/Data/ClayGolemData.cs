@@ -31,8 +31,9 @@ public class ClayGolemData : MinionData
     {
         var host = GetEntity();
         passives = new List<Passive>();
-        passives.Add(new PassiveStat("health passive", host, StatModType.Base, EntityStatType.Health));
-        passives.Add(new PassiveStat("mana passive", host, StatModType.Base, EntityStatType.Mana));
-        passives.Add(new OnHitPassive("on hit passive", host));
+        passives.Add(new HealthRegenPassive(host));
+        passives.Add(new PassiveStat("health passive", host, StatModType.Base, EntityStatType.Health, 5));
+        passives.Add(new PassiveStat("mana passive", host, StatModType.Base, EntityStatType.Mana, 5));
+        passives.Add(new OnHitPassive("on hit passive", host, delegate(Entity target) { return new DamageScript.damageData((host).data.skills["on hit passive"] * host.stats[EntityStatType.Health].Value * .01f, DamageScript.damageType.magic); }));
     }
 }

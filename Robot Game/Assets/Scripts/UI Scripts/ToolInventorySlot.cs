@@ -30,19 +30,25 @@ public class ToolInventorySlot : SlotDisplay<Item>, IDropHandler, ISlot
 
     public void Swap(Transform inventorySlot)
     {
+        //if other slot is not and item slot
+        if (!inventorySlot.GetComponent<ItemInventorySlot>())
+        {
+            return;
+        }
+
         if (inventorySlot.GetComponentInChildren<InventoryItem>())
         {
             if (Database.GetItem(inventorySlot.GetComponentInChildren<InventoryItem>().item.itemID) is Tool)
             {
                 ItemInventory.Move(inventorySlot.parent.parent.GetComponentInParent<ItemInventoryDisplay>().currentInventory, ref PlayerManager.instance.activeMinion.tool, inventorySlot.GetComponent<ItemInventorySlot>().inventoryIndex);
-                inventorySlot.parent.parent.GetComponentInParent<ItemInventoryDisplay>().RefreshInventory();
+                inventorySlot.GetComponentInParent<ItemInventoryDisplay>().RefreshInventory();
                 RefreshSlot();
             }
         }
         else
         {
-            ItemInventory.Move(inventorySlot.parent.parent.GetComponentInParent<ItemInventoryDisplay>().currentInventory, ref PlayerManager.instance.activeMinion.tool, inventorySlot.GetComponent<ItemInventorySlot>().inventoryIndex);
-            inventorySlot.parent.parent.GetComponentInParent<ItemInventoryDisplay>().RefreshInventory();
+            ItemInventory.Move(inventorySlot.GetComponentInParent<ItemInventoryDisplay>().currentInventory, ref PlayerManager.instance.activeMinion.tool, inventorySlot.GetComponent<ItemInventorySlot>().inventoryIndex);
+            inventorySlot.GetComponentInParent<ItemInventoryDisplay>().RefreshInventory();
             RefreshSlot();
         }
     }

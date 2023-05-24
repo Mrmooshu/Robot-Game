@@ -33,6 +33,7 @@ public class PlayerManager : MonoBehaviour, IDataSave
     }
     public void SpawnMinions()
     {
+        UniversalPlayerData.InitializePassives();
         foreach (MinionData core in activeMinions)
         {
             if (core != null)
@@ -45,21 +46,37 @@ public class PlayerManager : MonoBehaviour, IDataSave
 
     public void SpawnMinion(MinionData minion)
     {
-
         GameObject newMinion;
         //newMinion = Instantiate(GeneralManager.instance.entityPrefabs.LoadAsset<GameObject>(minion.variantName));
         newMinion = Instantiate(minionBlueprints.Where(x => x.name == minion.variantName).Single());
         MinionEntity minionEntity = newMinion.GetComponent<MinionEntity>();
         minionEntities.Add(minionEntity);
         minionEntity.Initialize(minion);
+        UniversalPlayerData.AddMinionPassives(minionEntity);
         newMinion.transform.position = minionEntity.data.savedPosition;
+        minion.activity = MinionData.Activity.Idle;
+        minionChanged?.Invoke();
+    }
+
+    public void StoreMinion(MinionData minion)
+    {
+        minion.activity = MinionData.Activity.Storage;
+        DespawnMinion(minion);
+    }
+
+    public void DespawnMinion(MinionData minion)
+    {
+        var entity = minion.GetEntity();
+        UniversalPlayerData.RemoveMinionPassives(minion.GetEntity());
+        minion.savedPosition = minion.GetEntity().transform.position;
+        minionEntities.Remove(minion.GetEntity());
+        Destroy(entity.gameObject);
+        minionChanged?.Invoke();
     }
 
     public void RespawnMinion(MinionData minion)
     {
-        minion.savedPosition = minion.GetEntity().transform.position;
-        Destroy(minion.GetEntity().gameObject);
-        minionEntities.Remove(minion.GetEntity());
+        DespawnMinion(minion);
         SpawnMinion(minion);
     }
 
@@ -122,6 +139,11 @@ public class PlayerManager : MonoBehaviour, IDataSave
             }
         }
         return total;
+    }
+
+    public void InvokeMinionChange()
+    {
+        minionChanged?.Invoke();
     }
 
     public void LoadData(GameData data)

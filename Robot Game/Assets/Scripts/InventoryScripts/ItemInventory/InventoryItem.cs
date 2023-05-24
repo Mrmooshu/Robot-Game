@@ -18,15 +18,7 @@ public class InventoryItem : MonoBehaviour, IDragHandler, IEndDragHandler
         transform.position = eventData.position;
         canvasGroup.alpha = .5f;
         canvasGroup.blocksRaycasts = false;
-        if (GetComponentInParent<ItemInventoryDisplay>())
-        {
-            GetComponentInParent<ItemInventorySlot>().transform.SetAsLastSibling();
-            GetComponentInParent<ItemInventoryDisplay>().transform.SetAsLastSibling();
-        }
-        else if (GetComponentInParent<SlotDisplay<Item>>())
-        {
-            GetComponentInParent<SlotDisplay<Item>>().transform.parent.SetAsLastSibling();
-        }
+        GetComponent<Canvas>().sortingOrder = 14;
     }
 
     public void OnEndDrag(PointerEventData eventData)
@@ -34,5 +26,6 @@ public class InventoryItem : MonoBehaviour, IDragHandler, IEndDragHandler
         transform.localPosition = Vector2.zero;
         canvasGroup.alpha = 1f;
         canvasGroup.blocksRaycasts = true;
+        GetComponent<Canvas>().sortingOrder = 13;
     }
 }

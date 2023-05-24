@@ -168,7 +168,7 @@ RectTransform:
   - {fileID: 3272750327464986971}
   - {fileID: 2032971647925167254}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -190,7 +190,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4335622410315004761}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d2ac78b33d801d9448b1551c1438067b, type: 3}
   m_Name: 
@@ -246,8 +246,8 @@ MonoBehaviour:
       stackLimit: 0
     savedPosition: {x: 0, y: 0, z: 0}
     activity: 0
-    _skillPoints: 0
     skillsList: []
+    _skillPoints: 0
   references:
     version: 2
     RefIds:

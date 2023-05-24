@@ -16,8 +16,8 @@ public class PlayerInventorySlot : MonoBehaviour, IDropHandler, ISlot
 
     public void Swap(Transform inventoryItem)
     {
-        MinionInventory.Move(inventoryItem.parent.parent.parent.GetComponentInParent<MinionInventoryDisplay>().currentInventory, transform.parent.parent.parent.GetComponentInParent<MinionInventoryDisplay>().currentInventory, inventoryItem.parent.GetComponent<PlayerInventorySlot>().inventoryIndex, inventoryIndex);
-        inventoryItem.parent.parent.parent.GetComponentInParent<MinionInventoryDisplay>().RefreshInventory();
-        transform.parent.parent.parent.GetComponentInParent<MinionInventoryDisplay>().RefreshInventory();
+        MinionInventory.Move(inventoryItem.GetComponentInParent<MinionInventoryDisplay>().currentInventory, transform.GetComponentInParent<MinionInventoryDisplay>().currentInventory, inventoryItem.parent.GetComponent<PlayerInventorySlot>().inventoryIndex, inventoryIndex);
+        inventoryItem.GetComponentInParent<MinionInventoryDisplay>().RefreshInventory();
+        transform.GetComponentInParent<MinionInventoryDisplay>().RefreshInventory();
     }
 }

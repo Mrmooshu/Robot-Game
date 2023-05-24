@@ -41,7 +41,7 @@ public class MinionInventoryDisplay : InventoryDisplay
 
         int x = 0;
         int y = 0;
-        float slotSize = 68f;
+        float slotSize = 39f;
         for (int i = slotsPerPage * currentInventory.currentPage - slotsPerPage; i < currentInventory.GetSize() && i < slotsPerPage * currentInventory.currentPage; i++)
         {
             GameObject slotInstance = Instantiate(slotPrefab, inventoryArea.transform);
@@ -104,5 +104,21 @@ public class MinionInventoryDisplay : InventoryDisplay
             currentInventory.currentPage = 1;
         }
         RefreshInventory();
+    }
+
+    //static methods
+    public static void UploadMinion()
+    {
+        SafePointEntity.UploadMinion();
+    }
+
+    public static void DeployMinion()
+    {
+        SafePointEntity.DeployMinion();
+    }
+
+    public static void SwapMinion()
+    {
+        SafePointEntity.SwapMinion();
     }
 }

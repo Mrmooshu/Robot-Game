@@ -6,12 +6,38 @@ public class PassiveStat : Passive
 {
     protected StatMod modifier;
 
-    public PassiveStat(string name, Entity host, StatModType mathType, EntityStatType statType)
+    public float perLevel;
+
+    private StatModType mathType;
+
+    private EntityStatType statType;
+
+    public PassiveStat(string name, Entity host, StatModType mathType, EntityStatType statType, float perLevel)
     {
+        type = passiveType.single;
         skillName = name;
         entity = host;
+        entities = new List<Entity> { };
+        this.mathType = mathType;
+        this.statType = statType;
+        this.perLevel = perLevel;
         modifier = new StatMod(StatFormula(), mathType, statType);
-        entity.stats[statType].AddModifier(modifier);
+        AddEntity(host);
+    }
+
+    public PassiveStat(string name, List<Entity> hosts, StatModType mathType, EntityStatType statType, float perLevel)
+    {
+        type = passiveType.multiple;
+        skillName = name;
+        entities = new List<Entity> { };
+        this.mathType = mathType;
+        this.statType = statType;
+        this.perLevel = perLevel;
+        modifier = new StatMod(StatFormula(), mathType, statType);
+        foreach (Entity host in hosts)
+        {
+            AddEntity(host);
+        }
     }
 
     public override void Refresh()
@@ -21,6 +47,27 @@ public class PassiveStat : Passive
 
     protected float StatFormula()
     {
-        return ((MinionEntity)entity).data.skills[skillName];
+        if (type is passiveType.single)
+        {
+            return ((MinionEntity)entity).data.skills[skillName] * perLevel;
+        }
+        else if(type is passiveType.multiple)
+        {
+            return UniversalPlayerData.upgrades[skillName] * perLevel;
+        }
+        return 0;
+
+    }
+
+    public override void AddEntity(Entity entity)
+    {
+        entities.Add(entity);
+        entity.stats[statType].AddModifier(modifier);
+    }
+
+    public override void RemoveEntity(Entity entity)
+    {
+        entities.Remove(entity);
+        entity.stats[statType].RemoveModifier(modifier);
     }
 }

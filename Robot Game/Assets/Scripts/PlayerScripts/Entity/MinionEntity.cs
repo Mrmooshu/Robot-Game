@@ -10,7 +10,7 @@ public class MinionEntity : Entity
 
     public Sprite icon;
 
-    public List<IOnHit> onHitPassives;
+    public List<OnHitPassive> onHitPassives;
 
     public Interactable currentInteractable;
 
@@ -40,7 +40,7 @@ public class MinionEntity : Entity
     public virtual void Initialize(MinionData data)
     {
         this.data = data;
-        onHitPassives = new List<IOnHit>();
+        onHitPassives = new List<OnHitPassive>();
         facingDirection = (int)transform.localScale.x;
         rigBod = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();

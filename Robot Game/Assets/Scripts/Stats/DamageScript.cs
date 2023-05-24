@@ -50,7 +50,7 @@ public static class DamageScript
         damageSources.Add(attackData.damageData);
         if (attackData.onHit && attackData.attacker is MinionEntity)
         {
-            foreach (IOnHit onHitEffect in ((MinionEntity)attackData.attacker).onHitPassives)
+            foreach (OnHitPassive onHitEffect in ((MinionEntity)attackData.attacker).onHitPassives)
             {
                 damageSources.Add(onHitEffect.OnHit(target));
             }
