@@ -6,6 +6,7 @@ using System;
 using Cinemachine;
 using UnityEngine.SceneManagement;
 using System.Linq;
+using UnityEngine.Rendering;
 
 public class PlayerManager : MonoBehaviour, IDataSave
 {
@@ -82,7 +83,12 @@ public class PlayerManager : MonoBehaviour, IDataSave
 
     public void SetActiveMinion(MinionData minion)
     {
+        if (activeMinion.GetEntity() != null)
+        {
+            activeMinion.GetEntity().GetComponent<SortingGroup>().sortingOrder = 0;
+        }
         activeMinion = minion;
+        activeMinion.GetEntity().GetComponent<SortingGroup>().sortingOrder = 1;
         ControlThisMinion(minion.GetEntity());
         minionChanged?.Invoke();
     }

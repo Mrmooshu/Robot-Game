@@ -18,7 +18,7 @@ public class InventoryItem : MonoBehaviour, IDragHandler, IEndDragHandler
         transform.position = eventData.position;
         canvasGroup.alpha = .5f;
         canvasGroup.blocksRaycasts = false;
-        GetComponent<Canvas>().sortingOrder = 14;
+        GetComponent<Canvas>().sortingOrder = 15;
     }
 
     public void OnEndDrag(PointerEventData eventData)
@@ -26,6 +26,6 @@ public class InventoryItem : MonoBehaviour, IDragHandler, IEndDragHandler
         transform.localPosition = Vector2.zero;
         canvasGroup.alpha = 1f;
         canvasGroup.blocksRaycasts = true;
-        GetComponent<Canvas>().sortingOrder = 13;
+        GetComponent<Canvas>().sortingOrder = 14;
     }
 }

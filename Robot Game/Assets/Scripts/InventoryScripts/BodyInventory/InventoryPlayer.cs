@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class InventoryPlayer : MonoBehaviour, IDragHandler, IEndDragHandler, IPointerClickHandler
+public class InventoryPlayer : MonoBehaviour, IDragHandler, IEndDragHandler, IPointerDownHandler
 {
     private CanvasGroup canvasGroup;
     public MinionData unit;
@@ -21,8 +21,7 @@ public class InventoryPlayer : MonoBehaviour, IDragHandler, IEndDragHandler, IPo
             transform.position = eventData.position;
             canvasGroup.alpha = .5f;
             canvasGroup.blocksRaycasts = false;
-            transform.parent.SetAsLastSibling();
-            transform.parent.parent.parent.parent.SetAsLastSibling();
+            GetComponent<Canvas>().sortingOrder = 15;
         }
     }
 
@@ -33,10 +32,10 @@ public class InventoryPlayer : MonoBehaviour, IDragHandler, IEndDragHandler, IPo
             transform.localPosition = Vector2.zero;
             canvasGroup.alpha = 1f;
             canvasGroup.blocksRaycasts = true;
+            GetComponent<Canvas>().sortingOrder = 14;
         }
     }
-
-    public void OnPointerClick(PointerEventData eventData)
+    public void OnPointerDown(PointerEventData eventData)
     {
         SafePointEntity.selectedMinion = unit;
     }
