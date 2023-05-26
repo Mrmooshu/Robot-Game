@@ -6,6 +6,11 @@ using System;
 
 public class SafePointEntity : Interactable
 {
+    public static List<SafePointEntity> safepoints = new List<SafePointEntity>();
+
+    public string locationName = "default name";
+    public GameObject teleportSpot;
+
     public static List<MinionEntity> minionsInRangeToInteract;
     public static MinionData selectedMinion;
 
@@ -14,6 +19,7 @@ public class SafePointEntity : Interactable
     private void Awake()
     {
         minionsInRangeToInteract = new List<MinionEntity>();
+        safepoints.Add(this);
     }
 
     public override void PlayerInRange(MinionEntity playerEntitiy)

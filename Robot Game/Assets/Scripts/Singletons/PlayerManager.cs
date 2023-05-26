@@ -108,7 +108,7 @@ public class PlayerManager : MonoBehaviour, IDataSave
     }
     public static void TeleportHere(string safePointName)
     {
-        instance.activeMinion.GetEntity().transform.position = Database.GetSafePoint(safePointName).cord;
+        instance.activeMinion.GetEntity().transform.position = Database.GetSafePoint(safePointName).teleportSpot.transform.position;
     }
 
     /// <summary>

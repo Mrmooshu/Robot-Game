@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class TeleportAction : MonoBehaviour
 {
-    public string safePointName = "SafePoint 1";
+    public string safePointName = "default";
 
     public void Teleport()
     {

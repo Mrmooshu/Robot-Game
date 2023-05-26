@@ -446,7 +446,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemDatabase: {fileID: 11400000, guid: 4587ff6b6d5488d4cacb953a69ee68be, type: 2}
   effectDatabase: {fileID: 11400000, guid: bf181ab49fa878542a3f1e15b4297799, type: 2}
-  safePointDatabase: {fileID: 11400000, guid: 97ae47155ce7a854f9a71267bf5e4c8b, type: 2}
+  safePointDatabase: {fileID: 0}
   questDatabase: {fileID: 11400000, guid: f7c2771e8800df744bf1855b3c0ec543, type: 2}
 --- !u!4 &959256515
 Transform:

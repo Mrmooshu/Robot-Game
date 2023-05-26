@@ -9,7 +9,6 @@ public class Database : MonoBehaviour
 
     public ItemDatabase itemDatabase;
     public EffectDatabase effectDatabase;
-    public SafePointDatabase safePointDatabase;
     public QuestDatabase questDatabase;
 
     private void Awake()
@@ -50,9 +49,9 @@ public class Database : MonoBehaviour
         return instance.effectDatabase.effectList.FirstOrDefault(i => i.effectName.ToLower() == name.ToLower()).effectID;
     }
 
-    public static SafePointData GetSafePoint(string name)
+    public static SafePointEntity GetSafePoint(string name)
     {
-        return instance.safePointDatabase.safePointList.FirstOrDefault(i => i.locationName == name);
+        return SafePointEntity.safepoints.FirstOrDefault(i => i.locationName == name);
     }
     public static Quest GetQuest(string name)
     {

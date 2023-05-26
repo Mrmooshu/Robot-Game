@@ -2231,7 +2231,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 815969298763235764, guid: 64996302a65753344acc88b801b255a6, type: 3}
       propertyPath: safePointName
-      value: SafePoint 2
+      value: location 2
       objectReference: {fileID: 0}
     - target: {fileID: 1240441723326676061, guid: 64996302a65753344acc88b801b255a6, type: 3}
       propertyPath: m_Name
@@ -2779,6 +2779,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 8851459603457064476}
     m_Modifications:
+    - target: {fileID: 815969298763235764, guid: 64996302a65753344acc88b801b255a6, type: 3}
+      propertyPath: safePointName
+      value: location 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1240441723326676061, guid: 64996302a65753344acc88b801b255a6, type: 3}
       propertyPath: m_Name
       value: Tele 1

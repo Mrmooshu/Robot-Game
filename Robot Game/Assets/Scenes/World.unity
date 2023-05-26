@@ -49376,6 +49376,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SafePoint B
       objectReference: {fileID: 0}
+    - target: {fileID: 5394020982008692929, guid: b46c193a2c629b946ae08a5df60dcbc2, type: 3}
+      propertyPath: locationName
+      value: location 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -175396,6 +175400,10 @@ PrefabInstance:
     - target: {fileID: 2744346621253095801, guid: b46c193a2c629b946ae08a5df60dcbc2, type: 3}
       propertyPath: m_Name
       value: SafePoint A
+      objectReference: {fileID: 0}
+    - target: {fileID: 5394020982008692929, guid: b46c193a2c629b946ae08a5df60dcbc2, type: 3}
+      propertyPath: locationName
+      value: location 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
