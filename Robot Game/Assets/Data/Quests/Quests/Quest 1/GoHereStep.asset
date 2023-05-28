@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogue: Dont panic this is just a test. Go to the left.
   info: Go left of spawn and go get some joe.
-  goalCord: {x: -10, y: 0.5}
+  goalCord: {x: -5, y: 0.5}
   boxDimensions: {x: 1, y: 1}

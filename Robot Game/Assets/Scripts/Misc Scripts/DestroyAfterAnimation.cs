@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class DestroyAfterAnimation : MonoBehaviour
 {
-    public void DestroyParent()
+    [SerializeField] protected GameObject go;
+    public void DestroyObject()
     {
-        Destroy(transform.parent.gameObject);
+        Destroy(go);
     }
 }

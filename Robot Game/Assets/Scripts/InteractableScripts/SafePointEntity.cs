@@ -32,6 +32,10 @@ public class SafePointEntity : Interactable
         }
         minionsInRangeToInteract.Add(playerEntitiy);
         InRangeChange?.Invoke();
+        if (!PlayerManager.instance.universal.unlockedSafepoints.Contains(locationName))
+        {
+            PlayerManager.instance.universal.unlockedSafepoints.Add(locationName);
+        }
     }
 
     public override void PlayerOutOfRange(MinionEntity playerEntitiy)

@@ -11,7 +11,7 @@ public class StatDisplay : MonoBehaviour
 
     private Dictionary<EntityStatType, Stat> stats;
 
-    public void Start()
+    public void Awake()
     {
         textField = GetComponentInChildren<TextMeshProUGUI>();
         RefreshStats();
@@ -29,6 +29,11 @@ public class StatDisplay : MonoBehaviour
                 stat.Value.statUpdated -= RefreshStats;
             }
         }
+    }
+
+    private void OnEnable()
+    {
+        RefreshStats();
     }
 
     private void RefreshStats()

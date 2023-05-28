@@ -1,23 +1,27 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 public class Projectile : Entity
 {
     public Entity origin;
-    public Transform direction;
-    public Transform visual;
+    [SerializeField] protected float lifeTime = 20;
+    [SerializeField] protected Transform direction;
+    [SerializeField] protected Transform visual;
+    [SerializeField] protected Animator animator;
+    protected DamageScript.attackData attack;
 
     protected List<Entity> alreadyHit;
 
-    public void Initialize(int facingDirection, Entity origin)
+    public void Initialize(int facingDirection, Entity origin, DamageScript.attackData attack)
     {
         transform.right *= facingDirection;
         this.origin = origin;
-        direction = transform.Find("Direction");
-        visual = transform.Find("Visual");
+        this.attack = attack;
         alreadyHit = new List<Entity>();
         CreateStats();
+        StartCoroutine(Lifespan());
     }
 
     public override void Update()
@@ -38,13 +42,35 @@ public class Projectile : Entity
 
     public virtual void OnTriggerEnter2D(Collider2D collision)
     {
+        //neat bitshift trick to compare layermask with layer
+        if (collision.GetComponent<Entity>() != null && (1 << collision.gameObject.layer & origin.whatIsEnemy) != 0 && !alreadyHit.Contains(collision.GetComponent<Entity>()))
+        {
+            DamageScript.Attack(attack, collision.GetComponent<Entity>(), origin);
+            alreadyHit.Add(collision.GetComponent<Entity>());
+            Die();
+        }
+
         if (collision.gameObject.layer == LayerMask.NameToLayer("Enemies"))
         {
-            Destroy(gameObject);
+            Die();
         }
         else if (collision.gameObject.layer == LayerMask.NameToLayer("Ground"))
         {
-            Destroy(gameObject);
+            Die();
         }
+    }
+
+    protected IEnumerator Lifespan()
+    {
+        yield return new WaitForSeconds(lifeTime);
+        Die();
+    }
+
+    protected override void Die()
+    {
+        base.Die();
+        stats[EntityStatType.MoveSpeed].BaseValue = 0;
+        visual.GetComponentsInChildren<Collider>().ToList().ForEach(x => x.enabled = false);
+        animator.SetTrigger("Die");
     }
 }

@@ -8,7 +8,10 @@ public class TeleportAction : MonoBehaviour
 
     public void Teleport()
     {
-        PlayerManager.TeleportHere(safePointName);
-        UIManager.CloseMainUi();
+        if (PlayerManager.instance.universal.unlockedSafepoints.Contains(safePointName))
+        {
+            PlayerManager.TeleportHere(safePointName);
+            UIManager.CloseMainUi();
+        }
     }
 }

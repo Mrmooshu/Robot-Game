@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class GolemEntity : MinionEntity
 {
+    [SerializeField] private GameObject sandblastPrefab;
+    [SerializeField] private Transform sandblastSpawn;
+
     public override void Start()
     {
         base.Start();
@@ -101,7 +104,14 @@ public class GolemEntity : MinionEntity
     {
         bufferedAction = "";
         Vector2 knockback = new Vector2(100 * facingDirection, 100);
-        DamageScript.Attack(new DamageScript.attackData(this, new DamageScript.damageData(stats[EntityStatType.AttackDamage].Value, DamageScript.damageType.physical), true, knockback, .5f), hitboxes, whatIsEnemy, this);
+        if (!DamageScript.Attack(new DamageScript.attackData(this, new DamageScript.damageData(stats[EntityStatType.AttackDamage].Value, DamageScript.damageType.physical), true, knockback, .5f), hitboxes, whatIsEnemy, this)){
+            if (data.skills["sandblast"] > 0)
+            {
+                Projectile projectile = Instantiate(sandblastPrefab, sandblastSpawn.position, transform.rotation).GetComponent<Projectile>();
+                projectile.Initialize(facingDirection, this, new DamageScript.attackData(this, new DamageScript.damageData(stats[EntityStatType.AttackDamage].Value * .1f + stats[EntityStatType.MagicDamage].Value, DamageScript.damageType.magic), false, Vector2.zero, .5f));
+            }
+
+        }
         //rigBod.AddForce(new Vector2(stats[StatType.MoveSpeed].Value * facingDirection, 1.2f), ForceMode2D.Impulse);
     }
 }

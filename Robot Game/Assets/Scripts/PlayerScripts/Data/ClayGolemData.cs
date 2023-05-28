@@ -15,7 +15,8 @@ public class ClayGolemData : MinionData
         {
             { "health passive", 0},
             { "mana passive", 0},
-            { "on hit passive", 0}
+            { "on hit passive", 0},
+            { "sandblast", 0}
 
 
 

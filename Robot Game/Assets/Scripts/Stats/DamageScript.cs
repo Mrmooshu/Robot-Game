@@ -59,11 +59,11 @@ public static class DamageScript
         {
             if (damage.type is damageType.physical)
             {
-                actualPhysicalDamage = Mathf.CeilToInt(damage.damage * (100 / (100 + target.stats[EntityStatType.AttackDefense].Value)));
+                actualPhysicalDamage += Mathf.CeilToInt(damage.damage * (100 / (100 + target.stats[EntityStatType.AttackDefense].Value)));
             }
             else if (damage.type is damageType.magic)
             {
-                actualMagicDamage = Mathf.CeilToInt(damage.damage * (100 / (100 + target.stats[EntityStatType.MagicDefense].Value)));
+                actualMagicDamage += Mathf.CeilToInt(damage.damage * (100 / (100 + target.stats[EntityStatType.MagicDefense].Value)));
             }
 
         }
@@ -89,7 +89,7 @@ public static class DamageScript
     /*
      * checks collision before damaging targets that are hit
      */
-    public static void Attack(attackData attackData, Transform hitboxParent, LayerMask targetMask, Entity attacker)
+    public static bool Attack(attackData attackData, Transform hitboxParent, LayerMask targetMask, Entity attacker)
     {
         List<Collider2D> Totalhits = new List<Collider2D>();
 
@@ -109,6 +109,8 @@ public static class DamageScript
             ApplyDamage(enemy.transform.GetComponent<EnemyEntity>(), attackData);
             KnockBack(enemy.transform.GetComponent<EnemyEntity>(), attackData);
         }
+        //return it the attack hit any targets
+        return Totalhits.Count() > 0;
     }
 
     /*

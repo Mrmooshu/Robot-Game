@@ -1,12 +1,12 @@
 ManifestFileVersion: 0
-CRC: 4265615980
+CRC: 3410237815
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 1f212e9a4cee0ad611fad6e1fdee1fd7
+    Hash: d832c667e1587021e46b03e79d56bfb1
   TypeTreeHash:
     serializedVersion: 2
-    Hash: 2d14aa6c6fafcbfeccca53a2ab1797f8
+    Hash: e6e928861a5a49f73364667d2613910b
 HashAppended: 0
 ClassTypes:
 - Class: 1
@@ -195,7 +195,6 @@ Assets:
 - Assets/Prefabs/UI/EffectUI/EffectObject.prefab
 - Assets/Prefabs/UI/InventoryUI/ItemUI/ItemSlotOrange.prefab
 - Assets/Prefabs/UI/PlayerSwapUI/PlayerSelectOption.prefab
-- Assets/Prefabs/UI/MainPlayerMenu.prefab
 - Assets/Prefabs/UI/QuestUI/Dialogue Box.prefab
 - Assets/Prefabs/UI/SafePointUI/SafePointMenu.prefab
 - Assets/Prefabs/UI/InventoryUI/ItemUI/InventoryItem.prefab

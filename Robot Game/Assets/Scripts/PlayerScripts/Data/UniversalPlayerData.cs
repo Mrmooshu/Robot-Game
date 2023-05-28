@@ -27,10 +27,15 @@ public class UniversalPlayerData : ISerializationCallbackReceiver
 
     [NonSerialized] static private List<Passive> minionPassives;
 
+    //dynamic data
     public float ConnectionPowerCapacity { get { return
                 100 +
                 upgrades["ConnectionPowerCapacityUpgrade"] * 10
-                ; } }
+                ; }
+    }
+
+    // saved data
+    public List<string> unlockedSafepoints = new List<string>();
 
 
 
