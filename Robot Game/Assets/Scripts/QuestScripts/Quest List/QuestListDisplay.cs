@@ -9,10 +9,10 @@ public class QuestListDisplay : ToggleGroup
 {
     public static QuestListDisplay instance;
 
-    private GameObject questPrefab;
-    public static bool showInactiveToggle = true;
-    public static bool showActiveToggle = true;
-    public static bool showCompleteToggle = true;
+    public GameObject questPrefab;
+    public Toggle InactiveToggle;
+    public Toggle ActiveToggle;
+    public Toggle CompleteToggle;
     public static Quest selectedQuest;
     public GameObject questInfoGo;
 
@@ -23,13 +23,17 @@ public class QuestListDisplay : ToggleGroup
         {
             instance = this;
         }
-
-        questPrefab = UIManager.instance.uiPrefabs.LoadAsset<GameObject>("QuestListOption");
-        transform.parent.parent.Find("Inactive Toggle").GetComponent<Toggle>().isOn = showInactiveToggle;
-        transform.parent.parent.Find("Active Toggle").GetComponent<Toggle>().isOn = showActiveToggle;
-        transform.parent.parent.Find("Complete Toggle").GetComponent<Toggle>().isOn = showCompleteToggle;
-
+        InactiveToggle.onValueChanged.AddListener(delegate { instance.RefreshList(); });
+        ActiveToggle.onValueChanged.AddListener(delegate { instance.RefreshList(); });
+        CompleteToggle.onValueChanged.AddListener(delegate { instance.RefreshList(); });
         RefreshList();
+    }
+
+    protected override void OnDestroy()
+    {
+        InactiveToggle.onValueChanged.RemoveAllListeners();
+        ActiveToggle.onValueChanged.RemoveAllListeners();
+        CompleteToggle.onValueChanged.RemoveAllListeners();
     }
 
     protected override void OnDisable()
@@ -49,7 +53,7 @@ public class QuestListDisplay : ToggleGroup
             Destroy(child.gameObject);
         }
 
-        if (showInactiveToggle)
+        if (InactiveToggle.isOn)
         {
             foreach (Quest quest in QuestManager.instance.inactiveQuests)
             {
@@ -60,7 +64,7 @@ public class QuestListDisplay : ToggleGroup
                 questOption.GetComponent<Toggle>().group = this;
             }
         }
-        if (showActiveToggle)
+        if (ActiveToggle.isOn)
         {
             foreach (Quest quest in QuestManager.instance.activeQuests)
             {
@@ -71,7 +75,7 @@ public class QuestListDisplay : ToggleGroup
                 questOption.GetComponent<Toggle>().group = this;
             }
         }
-        if (showCompleteToggle)
+        if (CompleteToggle.isOn)
         {
             foreach (Quest quest in QuestManager.instance.completeQuests)
             {
@@ -81,31 +85,6 @@ public class QuestListDisplay : ToggleGroup
                 questOption.GetComponent<QuestListOption>().quest = quest;
                 questOption.GetComponent<Toggle>().group = this;
             }
-        }
-    }
-
-    public void SetInactiveToggle(bool value)
-    {
-        showInactiveToggle = value;
-        if (instance != null)
-        {
-            RefreshList();
-        }
-    }
-    public void SetActiveToggle(bool value)
-    {
-        showActiveToggle = value;
-        if (instance != null)
-        {
-            RefreshList();
-        }
-    }
-    public void SetCompleteToggle(bool value)
-    {
-        showCompleteToggle = value;
-        if (instance != null)
-        {
-            RefreshList();
         }
     }
 }

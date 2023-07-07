@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class GolemEntity : MinionEntity
 {
@@ -72,35 +73,33 @@ public class GolemEntity : MinionEntity
         }
     }
 
-    public override void BasicAttack()
+    public override void PassInput(InputAction.CallbackContext context)
     {
         StopMining();
-        if (data.weapon != null)
-        {
+        base.PassInput(context);
+    }
 
+    public virtual void BasicAttack()
+    {
+        //If first punch is in action then buffer a second punch
+        if (animator.GetCurrentAnimatorStateInfo(0).IsName("Basic_Punch_First"))
+        {
+            AttemptAction(animator, "Basic_Punch_Second", "BasicAttackSecond");
         }
         else
         {
-            //If first punch is in action buffer second punch
-            if (animator.GetCurrentAnimatorStateInfo(0).IsName("Basic_Punch_First"))
-            {
-                bufferedAction = "Basic_Punch_Second";
-            }
-            //If second punch is in action buffer first punch
-            else if (animator.GetCurrentAnimatorStateInfo(0).IsName("Basic_Punch_Second"))
-            {
-                bufferedAction = "Basic_Punch_First";
-            }
-            //If there are no buffered actions
-            if (bufferedAction == "")
-            {
-                animator.Play("Basic_Punch_First", 0);
-            }
+            AttemptAction(animator, "Basic_Punch_First", "BasicAttack");
         }
-
     }
 
-    protected override void DefaultBasicHit()
+    public virtual void BasicAttackSecond()
+    {
+        AttemptAction(animator, "Basic_Punch_Second", "BasicAttackSecond");
+    }
+
+    // functions for all unique golem attacks
+
+    public virtual void BasicAttackHit()
     {
         bufferedAction = "";
         Vector2 knockback = new Vector2(100 * facingDirection, 100);
@@ -113,5 +112,26 @@ public class GolemEntity : MinionEntity
 
         }
         //rigBod.AddForce(new Vector2(stats[StatType.MoveSpeed].Value * facingDirection, 1.2f), ForceMode2D.Impulse);
+    }
+
+    public void Tornado()
+    {
+        //If Tornado is charging
+        if (animator.GetCurrentAnimatorStateInfo(0).IsName("Tornado_Charge"))
+        {
+            animator.Play("Tornado_Start", 0);
+        }
+        else
+        {
+            AttemptAction(animator, "Tornado_Charge", "TornadoCharge");
+        }
+    }
+
+
+    public void TornadoHit()
+    {
+        bufferedAction = "";
+        Vector2 knockback = new Vector2(50 * facingDirection, 150);
+        DamageScript.Attack(new DamageScript.attackData(this, new DamageScript.damageData(stats[EntityStatType.AttackDamage].Value, DamageScript.damageType.physical), true, knockback, .1f), hitboxes, whatIsEnemy, this);
     }
 }

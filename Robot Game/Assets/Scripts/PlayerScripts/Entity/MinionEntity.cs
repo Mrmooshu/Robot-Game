@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 using System;
+using UnityEngine.InputSystem;
 
 public class MinionEntity : Entity
 {
@@ -21,12 +22,15 @@ public class MinionEntity : Entity
 
     public GameObject skillTree;
 
+    private float baseAttackSpeed = 1f;
+
     //gameobject components
     protected Rigidbody2D rigBod;
     public Animator animator { get; protected set; }
     public Transform groundCheck;
 
     //other
+    public string bufferedAction = "";
     public LayerMask whatIsGround;
     protected float groundedRadius = .1f;
 
@@ -59,6 +63,11 @@ public class MinionEntity : Entity
     public override void Update()
     {
         base.Update();
+        if (bufferedAction != "" && animator.GetCurrentAnimatorStateInfo(0).IsTag("NeutralState"))
+        {
+            Invoke(bufferedAction, 0);
+            bufferedAction = "";
+        }
         Input();
     }
 
@@ -86,64 +95,14 @@ public class MinionEntity : Entity
         if (PlayerManager.instance.activeMinion == data)
         {
             // movement
-            if (!(animator.GetCurrentAnimatorStateInfo(0).IsTag("stuckaction") || UIManager.instance.menuPreventingMovement) && PlayerManager.instance.activeMinion == data)
+            if (!(animator.GetCurrentAnimatorStateInfo(0).IsTag("stuckaction") || UIManager.instance.menuPreventingMovement))
             {
-                movementInputDirection = (int)UnityEngine.Input.GetAxisRaw("Horizontal");
-
-                if (UnityEngine.Input.GetButtonDown("Jump") && canJump)
-                {
-                    canJump = false;
-                    rigBod.AddForce(Vector2.up * stats[EntityStatType.JumpForce].Value, ForceMode2D.Impulse);
-                    animator.SetBool("Jumping", true);
-                }
+                movementInputDirection = (int)PlayerManager.instance.moveAction.ReadValue<Vector2>().x;
             }
 
             else
             {
                 movementInputDirection = 0;
-            }
-
-            // attack
-            if (UnityEngine.Input.GetButton("Attack1"))
-            {
-                var baseAttackSpeed = 1f;
-                if (data.weapon != null)
-                {
-                    baseAttackSpeed = ((Weapon)Database.GetItem(data.weapon.itemID)).baseAttackSpeed;
-                }
-                animator.SetFloat("AttackSpeedModifier", baseAttackSpeed * (1 + stats[EntityStatType.AttackSpeedBonus].Value / 100));
-                BasicAttack();
-            }
-
-            // left click is down
-            if (UnityEngine.Input.GetMouseButton(0) && PlayerManager.instance.activeMinion == data)
-            {
-                Vector3 mousePos = Camera.main.ScreenToWorldPoint(UnityEngine.Input.mousePosition);
-                Vector2 mousePos2D = new Vector2(mousePos.x, mousePos.y);
-                RaycastHit2D hit = Physics2D.Raycast(mousePos2D, Vector2.zero);
-                if (hit.collider != null)
-                {
-                    // Player Control Change (disabled and replaced with core select menu)
-                    /*
-                    if (hit.collider.gameObject.GetComponent<PlayerEntity>() && hit.collider.gameObject != gameObject && Input.GetMouseButtonDown(0))
-                    {
-                        PlayerManager.instance.SetActiveCore(hit.collider.gameObject.GetComponent<PlayerEntity>().core);
-                    }
-                    
-                    // Item Pick Up disabled
-                    if (hit.collider.gameObject.GetComponent<ItemObject>())
-                    {
-                        if (data.inventory.Add(hit.collider.gameObject.GetComponent<ItemObject>().item))
-                        {
-                            Destroy(hit.collider.gameObject);
-                        }
-                        else
-                        {
-                            Debug.Log("full inventory");
-                        }
-                    }
-                    */
-                }
             }
         }
         else
@@ -173,34 +132,43 @@ public class MinionEntity : Entity
         animator.SetFloat("Xvelocity", (Mathf.Abs(rigBod.velocity.x) * .2f + .2f));
     }
 
-    public virtual void BasicAttack()
+    public virtual void PassInput(InputAction.CallbackContext context)
     {
-
+        switch (context.action.name.ToLower())
+        {
+            case "jump":
+                if (canJump)
+                {
+                    canJump = false;
+                    rigBod.AddForce(Vector2.up * stats[EntityStatType.JumpForce].Value, ForceMode2D.Impulse);
+                    animator.SetBool("Jumping", true);
+                }
+                break;
+            case "basic attack":
+                animator.SetFloat("AttackSpeedModifier", baseAttackSpeed * (1 + stats[EntityStatType.AttackSpeedBonus].Value / 100));
+                Invoke("BasicAttack", 0);
+                break;
+            case "ability 1":
+                animator.SetFloat("AttackSpeedModifier", baseAttackSpeed * (1 + stats[EntityStatType.AttackSpeedBonus].Value / 100));
+                Invoke("Tornado", 0);
+                break;
+            default:
+                break;
+        }
     }
 
-    public virtual void BasicAttackHit()
+    //used to buffer actions
+    protected virtual void AttemptAction(Animator animator, string animationName, string actionName)
     {
-        if (data.weapon != null)
+        //If there is no buffered action
+        if ((bufferedAction == "" || bufferedAction == actionName) && animator.GetCurrentAnimatorStateInfo(0).IsTag("NeutralState"))
         {
-            ((Weapon)Database.GetItem(data.weapon.itemID)).BasicAttack(this);
+            animator.Play(animationName, 0);
         }
         else
         {
-            DefaultBasicHit();
+            bufferedAction = actionName;
         }
-
-
-
-        //Vector2 knockback = new Vector2(100 * facingDirection, 100);
-        //DamageScript.Attack(new DamageScript.attackData(this, new DamageScript.damageData(stats[StatType.AttackDamage].Value, DamageScript.damageType.physical), true, knockback, .5f), hitboxes, whatIsEnemy, this);
-        //rigBod.AddForce(new Vector2(stats[StatType.MoveSpeed].Value * facingDirection, 1.2f), ForceMode2D.Impulse);
-        //kill switch (uncomment to kill urself)
-        //((ResourceStat)stats[StatType.Health]).CurrentValue -= 1000;
-    }
-
-    protected virtual void DefaultBasicHit()
-    {
-
     }
 
     public virtual void ToolAction()

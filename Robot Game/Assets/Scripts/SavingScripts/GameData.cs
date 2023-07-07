@@ -25,7 +25,7 @@ public class GameData
             quest.questState = Quest.QuestState.inactive;
         }
 
-
+        //testing pusposes stuff
 
         minionInventory.inventory[0] = new ClayGolemData("Clay Golem");
         minionInventory.inventory[1] = new ClayGolemData("Clay Golem");
@@ -50,6 +50,8 @@ public class GameData
         activeMinions[0].inventory.inventory[0] = new Item(Database.GetItemID("Novium Pickaxe"), 1);
 
         activeMinions[1].inventory.inventory[0] = new Item(Database.GetItemID("Iromite Pickaxe"), 1);
+
+        UniversalPlayerData.abilities["Tornado"] = true;
     }
 
     [System.Serializable]

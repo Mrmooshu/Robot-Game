@@ -10,6 +10,7 @@ public class Database : MonoBehaviour
     public ItemDatabase itemDatabase;
     public EffectDatabase effectDatabase;
     public QuestDatabase questDatabase;
+    public ActiveAbilityDatabase activeDatabase;
 
     private void Awake()
     {
@@ -18,6 +19,7 @@ public class Database : MonoBehaviour
             instance = this;
             itemDatabase.Initialize();
             effectDatabase.Initialize();
+            activeDatabase.Initialize();
 
             //assign item id's
             for (int i = 0; i < itemDatabase.itemsList.Count; i++)
@@ -56,5 +58,9 @@ public class Database : MonoBehaviour
     public static Quest GetQuest(string name)
     {
         return instance.questDatabase.questList.FirstOrDefault(i => i.info.questName == name);
+    }
+    public static ActiveAbilityData GetActiveAbility(string name)
+    {
+        return instance.activeDatabase.ActivesList.FirstOrDefault(i => i.name == name);
     }
 }

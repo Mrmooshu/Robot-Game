@@ -15,7 +15,6 @@ public class ClayGolemData : MinionData
         {
             { "health passive", 0},
             { "mana passive", 0},
-            { "on hit passive", 0},
             { "sandblast", 0}
 
 
@@ -35,6 +34,6 @@ public class ClayGolemData : MinionData
         passives.Add(new HealthRegenPassive(host));
         passives.Add(new PassiveStat("health passive", host, StatModType.Base, EntityStatType.Health, 5));
         passives.Add(new PassiveStat("mana passive", host, StatModType.Base, EntityStatType.Mana, 5));
-        passives.Add(new OnHitPassive("on hit passive", host, delegate(Entity target) { return new DamageScript.damageData((host).data.skills["on hit passive"] * host.stats[EntityStatType.Health].Value * .01f, DamageScript.damageType.magic); }));
+        passives.Add(new OnHitPassive("sandblast", host, delegate(Entity target) { return new DamageScript.damageData( (.1f + host.data.skills["sandblast"] * .01f) * host.stats[EntityStatType.MagicDamage].Value, DamageScript.damageType.magic); })); // (10% + (.1% per level) ap) magic damage
     }
 }

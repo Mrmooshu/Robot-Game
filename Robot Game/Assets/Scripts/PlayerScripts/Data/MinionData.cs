@@ -32,6 +32,7 @@ public class MinionData : ISerializationCallbackReceiver
     [SerializeReference] public Item weapon;
     public int level = 1;
     public ItemInventory inventory;
+    public string[] ActiveAbilities;
     public Vector3 savedPosition;
     public Activity activity = Activity.Storage;
     // used to save skills as a list in json
@@ -52,6 +53,7 @@ public class MinionData : ISerializationCallbackReceiver
         this.variantName = variantName;
         CreateSkills(variantName);
         inventory = new ItemInventory(20, 10);
+        ActiveAbilities = new string[]{"","","","","",""};
     }
 
 

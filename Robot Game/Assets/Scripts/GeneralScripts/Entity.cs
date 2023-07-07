@@ -16,8 +16,6 @@ public abstract class Entity : MonoBehaviour
     public Dictionary<EntityStatType, Stat> stats;
     public Dictionary<int,Effect> effects;
 
-    public string bufferedAction = "";
-
     public virtual void Start()
     {
         facingDirection = (int)transform.localScale.x;
@@ -26,13 +24,7 @@ public abstract class Entity : MonoBehaviour
 
     public virtual void Update()
     {
-        if (bufferedAction != "")
-        {
-            if (bufferedAction.Substring(0, 1) == "-")
-            {
-                bufferedAction = bufferedAction[1..];
-            }
-        }
+
     }
 
     public virtual void FixedUpdate()

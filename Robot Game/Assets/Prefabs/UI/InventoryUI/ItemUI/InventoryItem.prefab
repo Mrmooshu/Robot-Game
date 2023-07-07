@@ -139,6 +139,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d08dbd05b2e8174b8285a630c9540fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  canvasGroup: {fileID: 5225696225026262231}
+  canvas: {fileID: 4908319168248088007}
+  draggable: 1
   item:
     itemID: 0
     quanityString: 0

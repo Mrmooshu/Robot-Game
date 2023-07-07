@@ -817,24 +817,12 @@ MonoBehaviour:
     m_DisabledTrigger: Disabled
   m_Interactable: 1
   m_TargetGraphic: {fileID: 2438757335143152180}
-  toggleTransition: 0
+  toggleTransition: 1
   graphic: {fileID: 6766351816053115409}
   m_Group: {fileID: 0}
   onValueChanged:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 2948708396501234773}
-        m_TargetAssemblyTypeName: QuestListDisplay, Assembly-CSharp
-        m_MethodName: SetInactiveToggle
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: SetInactiveToggle
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
   m_IsOn: 1
 --- !u!1 &2855087059963948263
 GameObject:
@@ -1052,19 +1040,7 @@ MonoBehaviour:
   m_Group: {fileID: 0}
   onValueChanged:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 2948708396501234773}
-        m_TargetAssemblyTypeName: QuestListDisplay, Assembly-CSharp
-        m_MethodName: SetActiveToggle
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: SetInactiveToggle
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
   m_IsOn: 1
 --- !u!1 &3239127450083200602
 GameObject:
@@ -1520,7 +1496,7 @@ RectTransform:
   - {fileID: 1146240291006152461}
   - {fileID: 821545836831980638}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -1689,19 +1665,7 @@ MonoBehaviour:
   m_Group: {fileID: 0}
   onValueChanged:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 2948708396501234773}
-        m_TargetAssemblyTypeName: QuestListDisplay, Assembly-CSharp
-        m_MethodName: SetCompleteToggle
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: SetInactiveToggle
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
   m_IsOn: 1
 --- !u!1 &8504285292923160521
 GameObject:
@@ -1795,4 +1759,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_AllowSwitchOff: 1
+  questPrefab: {fileID: 806052926547657575, guid: 38b3ed27347ddca4e848ff3af3586cbe, type: 3}
+  InactiveToggle: {fileID: 4683607068925660810}
+  ActiveToggle: {fileID: 1592080393613307185}
+  CompleteToggle: {fileID: 4035942454107176926}
   questInfoGo: {fileID: 1864686579019154398}

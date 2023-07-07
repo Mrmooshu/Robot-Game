@@ -22,6 +22,5 @@ MonoBehaviour:
     bonusType: 3
     statType: 8
   animation: {fileID: 7400000, guid: abf4aa097a2cc3a49ad28cbcd3535c47, type: 2}
-  baseAttackSpeed: 0.5
   projectilePrefab: {fileID: 311996050193231670, guid: a89a9e15d337a1c488b35ebb5e001912, type: 3}
   firePosition: {x: 1, y: 1}

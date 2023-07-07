@@ -22,4 +22,3 @@ MonoBehaviour:
     bonusType: 3
     statType: 8
   animation: {fileID: 7400000, guid: 20e9b9883e0c2dc45a8334cc64983ad9, type: 2}
-  baseAttackSpeed: 0.5

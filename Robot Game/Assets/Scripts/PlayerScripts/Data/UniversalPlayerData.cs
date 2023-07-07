@@ -8,20 +8,23 @@ using UnityEngine;
 public class UniversalPlayerData : ISerializationCallbackReceiver
 {
     [System.Serializable]
-    protected struct Upgrade
+    protected struct SavedData<T>
     {
         public string name;
-        public int level;
+        public T state;
 
-        public Upgrade(string name, int level)
+        public SavedData(string name, T state)
         {
             this.name = name;
-            this.level = level;
+            this.state = state;
         }
     }
 
-    [SerializeField] private List<Upgrade> upgradesList;
+    [SerializeField] private List<SavedData<int>> upgradesList;
     public static Dictionary<string, int> upgrades;
+
+    [SerializeField] private List<SavedData<bool>> abilityList;
+    public static Dictionary<string, bool> abilities;
 
     [NonSerialized] static private List<Passive> passives;
 
@@ -44,10 +47,14 @@ public class UniversalPlayerData : ISerializationCallbackReceiver
 
     public UniversalPlayerData()
     {
-        CreateUpgrades();
+        Initialize();
     }
 
-
+    public void Initialize()
+    {
+        CreateUpgrades();
+        CreateAbilities();
+    }
 
 
 
@@ -57,11 +64,50 @@ public class UniversalPlayerData : ISerializationCallbackReceiver
 
     protected void CreateUpgrades()
     {
-        upgrades = new Dictionary<string, int>()
+        // inital creating of upgrades dictionary
+        if (upgrades == null)
         {
-            { "ConnectionPowerCapacityUpgrade", 0},
-            { "health passive", 5}
-        };
+            upgrades = new Dictionary<string, int>();
+            foreach (string name in upgradeNames)
+            {
+                upgrades.Add(name, 0);
+            }
+        }
+        // adds new upgrades to existing dictionary
+        else
+        {
+            foreach (string name in upgradeNames)
+            {
+                if (!upgrades.ContainsKey(name))
+                {
+                    upgrades.Add(name, 0);
+                }
+            }
+        }
+    }
+
+    protected void CreateAbilities()
+    {
+        // inital creating of abilities dictionary
+        if (abilities == null)
+        {
+            abilities = new Dictionary<string, bool>();
+            foreach (string name in abilityNames)
+            {
+                abilities.Add(name, false);
+            }
+        }
+        // adds new abilities to existing dictionary
+        else
+        {
+            foreach (string name in abilityNames)
+            {
+                if (!abilities.ContainsKey(name))
+                {
+                    abilities.Add(name, false);
+                }
+            }
+        }
     }
 
     public static void InitializePassives()
@@ -90,7 +136,11 @@ public class UniversalPlayerData : ISerializationCallbackReceiver
     {
         if (upgradesList != null)
         {
-            upgrades = upgradesList.ToDictionary(x => x.name, x => x.level);
+            upgrades = upgradesList.ToDictionary(x => x.name, x => x.state);
+        }
+        if (abilityList != null)
+        {
+            abilities = abilityList.ToDictionary(x => x.name, x => x.state);
         }
     }
 
@@ -100,7 +150,18 @@ public class UniversalPlayerData : ISerializationCallbackReceiver
         {
             if (upgrades != null)
             {
-                upgradesList = upgrades.Select(x => new Upgrade(x.Key, x.Value)).ToList();
+                upgradesList = upgrades.Select(x => new SavedData<int>(x.Key, x.Value)).ToList();
+            }
+        }
+        catch (Exception)
+        {
+
+        }
+        try
+        {
+            if (abilities != null)
+            {
+                abilityList = abilities.Select(x => new SavedData<bool>(x.Key, x.Value)).ToList();
             }
         }
         catch (Exception)
@@ -108,4 +169,21 @@ public class UniversalPlayerData : ISerializationCallbackReceiver
 
         }
     }
+
+
+
+    private List<string> upgradeNames = new List<string>()
+    {
+        "ConnectionPowerCapacityUpgrade",
+        "health passive"
+
+
+
+    };
+
+    private List<string> abilityNames = new List<string>()
+    {
+        "Tornado"
+
+    };
 }

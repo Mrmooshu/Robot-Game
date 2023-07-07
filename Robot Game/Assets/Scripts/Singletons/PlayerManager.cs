@@ -7,9 +7,13 @@ using Cinemachine;
 using UnityEngine.SceneManagement;
 using System.Linq;
 using UnityEngine.Rendering;
+using UnityEngine.InputSystem;
 
 public class PlayerManager : MonoBehaviour, IDataSave
 {
+    public InputActionAsset inputActions;
+    public InputAction moveAction;
+
     public List<GameObject> minionBlueprints;
 
     public static PlayerManager instance;
@@ -26,6 +30,14 @@ public class PlayerManager : MonoBehaviour, IDataSave
 
     private void Awake()
     {
+        moveAction = inputActions.FindActionMap("Player").FindAction("Move");
+
+        foreach (string action in new []{"Jump","Basic Attack","Ability 1"})
+        {
+            inputActions.FindActionMap("Player").FindAction(action).performed += PassInputToActivePlayer;
+        }
+
+        universal.Initialize();
         if (instance == null)
         {
             instance = this;
@@ -150,6 +162,21 @@ public class PlayerManager : MonoBehaviour, IDataSave
     public void InvokeMinionChange()
     {
         minionChanged?.Invoke();
+    }
+
+
+    public void PassInputToActivePlayer(InputAction.CallbackContext context)
+    {
+        activeMinion.GetEntity().PassInput(context);
+    }
+
+    void OnEnable()
+    {
+        inputActions.FindActionMap("Player").Enable();
+    }
+    void OnDisable()
+    {
+        inputActions.FindActionMap("Player").Disable();
     }
 
     public void LoadData(GameData data)

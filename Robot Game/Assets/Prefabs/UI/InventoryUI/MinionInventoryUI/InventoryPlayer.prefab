@@ -138,6 +138,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ad8d76e54792bf4e85e765dde7e0b81, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  canvasGroup: {fileID: 6806001868279542687}
+  canvas: {fileID: 7867251784415817357}
+  draggable: 1
   unit:
     lastSafePoint: 
     variantName: 
@@ -155,7 +158,6 @@ MonoBehaviour:
     activity: 0
     skillsList: []
     _skillPoints: 0
-  draggable: 1
   references:
     version: 2
     RefIds:

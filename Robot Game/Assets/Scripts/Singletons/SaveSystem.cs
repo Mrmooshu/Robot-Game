@@ -9,6 +9,7 @@ public class SaveSystem: MonoBehaviour
     [Header("File Storage Config")]
     [SerializeField] private string fileName;
     [SerializeField] private bool useEncryption;
+    [SerializeField] private bool useNewFile;
 
     public static SaveSystem instance { get; private set; }
 
@@ -53,7 +54,7 @@ public class SaveSystem: MonoBehaviour
     {
         gameData = dataHandler.Load();
 
-        if (gameData == null)
+        if (gameData == null || useNewFile)
         {
             NewGame();
         }
