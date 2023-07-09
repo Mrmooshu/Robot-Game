@@ -13,8 +13,11 @@ MonoBehaviour:
   m_Name: Tornado
   m_EditorClassIdentifier: 
   owner: 1
-  Icon: {fileID: -5164467898190715619, guid: 5886a3d83885b584ebd8c21f0c94f2f9, type: 3}
-  Name: Tornado
+  Icon:
+  - {fileID: -5164467898190715619, guid: 5886a3d83885b584ebd8c21f0c94f2f9, type: 3}
+  - {fileID: 102733616497964900, guid: 921c69119d383c14798e29b4251030df, type: 3}
+  InternalName: 
+  DisplayName: 
   Description: 'Initial cast: begin charging up your charge level. Second cast: unleash
     a horizontal spinning attack. This attack resets charge level back to 1, but
     is enhanced based on charge level when cast.'

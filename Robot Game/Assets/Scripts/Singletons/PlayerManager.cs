@@ -32,7 +32,7 @@ public class PlayerManager : MonoBehaviour, IDataSave
     {
         moveAction = inputActions.FindActionMap("Player").FindAction("Move");
 
-        foreach (string action in new []{"Jump","Basic Attack","Ability 1"})
+        foreach (string action in new []{"Jump","Basic Attack","Ability 1","Ability 2", "Ability 3" , "Ability 4" , "Ability 5" , "Ability 6" })
         {
             inputActions.FindActionMap("Player").FindAction(action).performed += PassInputToActivePlayer;
         }

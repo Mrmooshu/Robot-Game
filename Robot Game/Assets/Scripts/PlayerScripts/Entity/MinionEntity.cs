@@ -22,7 +22,7 @@ public class MinionEntity : Entity
 
     public GameObject skillTree;
 
-    private float baseAttackSpeed = 1f;
+    public float baseAttackSpeed { get; protected set; } = 1f;
 
     //gameobject components
     protected Rigidbody2D rigBod;
@@ -149,25 +149,49 @@ public class MinionEntity : Entity
                 Invoke("BasicAttack", 0);
                 break;
             case "ability 1":
-                animator.SetFloat("AttackSpeedModifier", baseAttackSpeed * (1 + stats[EntityStatType.AttackSpeedBonus].Value / 100));
-                Invoke("Tornado", 0);
+                ActivateAbility(0);
+                break;
+            case "ability 2":
+                ActivateAbility(1);
+                break;
+            case "ability 3":
+                ActivateAbility(2);
+                break;
+            case "ability 4":
+                ActivateAbility(3);
+                break;
+            case "ability 5":
+                ActivateAbility(4);
+                break;
+            case "ability 6":
+                ActivateAbility(5);
                 break;
             default:
                 break;
         }
+
+        void ActivateAbility(int index)
+        {
+            if (AbilitySlot.instances[index].iconGO != null)
+            {
+                AbilitySlot.instances[index].GetComponentInChildren<ActiveAbilityIcon>().Activate();
+            }
+        }
     }
 
     //used to buffer actions
-    protected virtual void AttemptAction(Animator animator, string animationName, string actionName)
+    protected virtual bool AttemptAction(Animator animator, string animationName, string actionName)
     {
         //If there is no buffered action
         if ((bufferedAction == "" || bufferedAction == actionName) && animator.GetCurrentAnimatorStateInfo(0).IsTag("NeutralState"))
         {
             animator.Play(animationName, 0);
+            return true;
         }
         else
         {
             bufferedAction = actionName;
+            return false;
         }
     }
 
@@ -204,6 +228,19 @@ public class MinionEntity : Entity
                 ((Equipable)item.GetItemFromDatabase()).Equip(ref stats);
             }
         }
+    }
+
+    public void CalculateASForAnimator()
+    {
+        animator.SetFloat("AttackSpeedModifier", baseAttackSpeed * (1 + stats[EntityStatType.AttackSpeedBonus].Value / 100));
+    }
+
+    protected void StartActiveCooldown(ActiveAbilityIcon active)
+    {
+        var index = Array.FindIndex(PlayerManager.instance.activeMinion.ActiveAbilities, x => x.name == active.activeAbility);
+        var cdrAppliedCD = Database.GetActiveAbility(active.activeAbility).CoolDown;
+        data.ActiveAbilities[index].cooldown = cdrAppliedCD;
+        active.ResetStage();
     }
 
     /*

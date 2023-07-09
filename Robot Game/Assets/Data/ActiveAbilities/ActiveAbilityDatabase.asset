@@ -12,6 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5bed777f23dad2848a6d58294a13e4f3, type: 3}
   m_Name: ActiveAbilityDatabase
   m_EditorClassIdentifier: 
-  ActivesList: []
+  ActivesList:
+  - {fileID: 11400000, guid: 196c250b39d16fc4e96598fdd553008f, type: 2}
   GeneralActives: []
-  GolemActives: []
+  GolemActives:
+  - {fileID: 11400000, guid: 196c250b39d16fc4e96598fdd553008f, type: 2}

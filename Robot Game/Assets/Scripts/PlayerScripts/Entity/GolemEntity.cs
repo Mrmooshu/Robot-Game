@@ -114,17 +114,19 @@ public class GolemEntity : MinionEntity
         //rigBod.AddForce(new Vector2(stats[StatType.MoveSpeed].Value * facingDirection, 1.2f), ForceMode2D.Impulse);
     }
 
-    public void Tornado()
+    public void Tornado(ActiveAbilityIcon active)
     {
         //If Tornado is charging
         if (animator.GetCurrentAnimatorStateInfo(0).IsName("Tornado_Charge"))
         {
             animator.Play("Tornado_Start", 0);
+            StartActiveCooldown(active);
         }
         else
         {
             AttemptAction(animator, "Tornado_Charge", "TornadoCharge");
         }
+
     }
 
 

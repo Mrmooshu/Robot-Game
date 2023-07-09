@@ -115,7 +115,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 640, y: 360}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 32, y: 32}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4393923991428908970
@@ -142,6 +142,8 @@ MonoBehaviour:
   canvas: {fileID: 3618177605902702659}
   draggable: 1
   activeAbility: 
+  onAbilityBar: 0
+  CooldownPrefab: {fileID: 1132593695071212763, guid: c4472346584709c4b84eff171ec7c3a5, type: 3}
 --- !u!225 &6495030296508651311
 CanvasGroup:
   m_ObjectHideFlags: 0

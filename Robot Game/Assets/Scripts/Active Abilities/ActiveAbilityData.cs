@@ -10,8 +10,9 @@ public class ActiveAbilityData : ScriptableObject
     }
 
     public ActiveAbilityOwner owner = ActiveAbilityOwner.general;
-    public Sprite Icon;
-    public string Name;
+    public Sprite[] Icon; //Icons after the first are used for actives with multiple stages
+    public string InternalName;
+    public string DisplayName;
     public string Description;
     public float CoolDown;
     public float Cost;

@@ -25,6 +25,19 @@ public class MinionData : ISerializationCallbackReceiver
         }
     }
 
+    [System.Serializable]
+    public struct active
+    {
+        public string name;
+        public float cooldown;
+
+        public active(string name, float cooldown)
+        {
+            this.name = name;
+            this.cooldown = cooldown;
+        }
+    }
+
     //Saved variables
     public string lastSafePoint;
     public string variantName;
@@ -32,7 +45,7 @@ public class MinionData : ISerializationCallbackReceiver
     [SerializeReference] public Item weapon;
     public int level = 1;
     public ItemInventory inventory;
-    public string[] ActiveAbilities;
+    public active[] ActiveAbilities;
     public Vector3 savedPosition;
     public Activity activity = Activity.Storage;
     // used to save skills as a list in json
@@ -53,7 +66,7 @@ public class MinionData : ISerializationCallbackReceiver
         this.variantName = variantName;
         CreateSkills(variantName);
         inventory = new ItemInventory(20, 10);
-        ActiveAbilities = new string[]{"","","","","",""};
+        ActiveAbilities = new active[6] { new active("",0) , new active("", 0) , new active("", 0) , new active("", 0) , new active("", 0) , new active("", 0) };
     }
 
 
