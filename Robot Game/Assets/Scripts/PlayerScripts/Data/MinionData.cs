@@ -30,11 +30,13 @@ public class MinionData : ISerializationCallbackReceiver
     {
         public string name;
         public float cooldown;
+        public int stage;
 
         public active(string name, float cooldown)
         {
             this.name = name;
             this.cooldown = cooldown;
+            stage = 0;
         }
     }
 
@@ -103,6 +105,8 @@ public class MinionData : ISerializationCallbackReceiver
         {
             skills = skillsList.ToDictionary(x => x.name, x => x.level);
         }
+        // reset active stages
+        ActiveAbilities.ToList().ForEach(i => i.stage = 0);
     }
 
     public void OnBeforeSerialize()

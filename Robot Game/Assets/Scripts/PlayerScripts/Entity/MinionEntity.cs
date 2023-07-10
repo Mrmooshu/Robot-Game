@@ -68,6 +68,7 @@ public class MinionEntity : Entity
             Invoke(bufferedAction, 0);
             bufferedAction = "";
         }
+        ActiveCoolDownTick();
         Input();
     }
 
@@ -241,6 +242,21 @@ public class MinionEntity : Entity
         var cdrAppliedCD = Database.GetActiveAbility(active.activeAbility).CoolDown;
         data.ActiveAbilities[index].cooldown = cdrAppliedCD;
         active.ResetStage();
+    }
+
+    private void ActiveCoolDownTick()
+    {
+        for (int i = 0; i < data.ActiveAbilities.Length; i++)
+        {
+            if (data.ActiveAbilities[i].cooldown > 0)
+            {
+                data.ActiveAbilities[i].cooldown -= Time.deltaTime;
+            }
+            else
+            {
+                data.ActiveAbilities[i].cooldown = 0;
+            }
+        }
     }
 
     /*

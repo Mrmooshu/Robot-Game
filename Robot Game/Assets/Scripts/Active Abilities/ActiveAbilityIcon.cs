@@ -9,11 +9,16 @@ public class ActiveAbilityIcon : UIDraggable
 {
     public string activeAbility;
     public bool onAbilityBar = false;
-    public int stage { get; private set; } = 0;
+
+    private MinionData am;
+    private MinionEntity ame;
 
     private void Start()
     {
-        GetComponentInChildren<Image>().sprite = Database.GetActiveAbility(activeAbility).Icon[stage];
+        am = PlayerManager.instance.activeMinion;
+        ame = am.GetEntity();
+
+        GetComponentInChildren<Image>().sprite = Database.GetActiveAbility(activeAbility).Icon[GetActive().stage];
     }
 
     public override void OnPointerDown(PointerEventData eventData)
@@ -25,9 +30,7 @@ public class ActiveAbilityIcon : UIDraggable
 
     public void Activate()
     {
-        var am = PlayerManager.instance.activeMinion;
-        var ame = am.GetEntity();
-        var ability = am.ActiveAbilities[Array.FindIndex(PlayerManager.instance.activeMinion.ActiveAbilities, x => x.name == activeAbility)];
+        ref var ability = ref GetActive();
 
         //check if ability is assigned and if is off of cooldown
         if (ability.name != "" && ability.cooldown <= 0)
@@ -40,16 +43,25 @@ public class ActiveAbilityIcon : UIDraggable
 
     public void TryToAdvanceStage()
     {
-        if (stage+1 < Database.GetActiveAbility(activeAbility).Icon.Length)
+        ref var ability = ref GetActive();
+
+        if (ability.stage+1 < Database.GetActiveAbility(activeAbility).Icon.Length)
         {
-            stage++;
-            GetComponentInChildren<Image>().sprite = Database.GetActiveAbility(activeAbility).Icon[stage];
+            ability.stage++;
+            GetComponentInChildren<Image>().sprite = Database.GetActiveAbility(activeAbility).Icon[ability.stage];
         }
     }
 
     public void ResetStage()
     {
-        stage = 0;
-        GetComponentInChildren<Image>().sprite = Database.GetActiveAbility(activeAbility).Icon[stage];
+        ref var ability = ref GetActive();
+
+        ability.stage = 0;
+        GetComponentInChildren<Image>().sprite = Database.GetActiveAbility(activeAbility).Icon[ability.stage];
+    }
+
+    public ref MinionData.active GetActive()
+    {
+        return ref am.ActiveAbilities[Array.FindIndex(PlayerManager.instance.activeMinion.ActiveAbilities, x => x.name == activeAbility)];
     }
 }

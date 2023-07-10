@@ -1,11 +1,17 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class ClayGolemData : MinionData
 {
+    [SerializeField] private int _chargeLevel;
+    public int ChargeLevel { get { return _chargeLevel; } set { _chargeLevel = value; ChargeLevelUpdated?.Invoke(); } }
+    public event Action ChargeLevelUpdated;
+
     public ClayGolemData(string variantName) : base(variantName)
     {
+        ChargeLevel = 0;
     }
 
     protected override void CreateSkills(string prefabName)

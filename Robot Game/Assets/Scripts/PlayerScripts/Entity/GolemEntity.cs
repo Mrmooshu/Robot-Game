@@ -79,6 +79,14 @@ public class GolemEntity : MinionEntity
         base.PassInput(context);
     }
 
+    public void IncrementCharge()
+    {
+        if (((ClayGolemData)data).ChargeLevel < 2)
+        {
+            ((ClayGolemData)data).ChargeLevel++;
+        }
+    }
+
     public virtual void BasicAttack()
     {
         //If first punch is in action then buffer a second punch

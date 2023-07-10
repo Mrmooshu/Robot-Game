@@ -482,7 +482,6 @@ MonoBehaviour:
   whatIsEnemy:
     serializedVersion: 2
     m_Bits: 256
-  bufferedAction: 
   data:
     lastSafePoint: 
     variantName: 
@@ -496,6 +495,7 @@ MonoBehaviour:
       inventorySize: 0
       currentPage: 0
       stackLimit: 0
+    ActiveAbilities: []
     savedPosition: {x: 0, y: 0, z: 0}
     activity: 0
     skillsList: []
@@ -505,18 +505,10 @@ MonoBehaviour:
   hitboxes: {fileID: 2426644850212123448}
   skillTree: {fileID: 52194782207523293, guid: d62f92d9bd3bfa54c991f51a6df19f47, type: 3}
   groundCheck: {fileID: 2653229882561976576}
+  bufferedAction: 
   whatIsGround:
     serializedVersion: 2
     m_Bits: 64
-  playerInputs:
-    m_Name: Player Inputs
-    m_Type: 0
-    m_ExpectedControlType: 
-    m_Id: 03a15eaf-4d03-40db-abe2-19e6ef38163d
-    m_Processors: 
-    m_Interactions: 
-    m_SingletonActionBindings: []
-    m_Flags: 0
   sandblastPrefab: {fileID: 1411473070836644815, guid: 25df9f619fd8306499fc4b731611d9a0, type: 3}
   sandblastSpawn: {fileID: 9029728899028962331}
   references:
@@ -915,6 +907,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6514780121260028311}
   - component: {fileID: 3107069496708495684}
+  - component: {fileID: 6102172991144436536}
   m_Layer: 7
   m_Name: Body
   m_TagString: Untagged
@@ -957,7 +950,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  - {fileID: 2100000, guid: 1f4b9957dfeac914a932db74c11f36f6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -989,6 +982,31 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &6102172991144436536
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7244450635282805970}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 38c82d4245dbc0b4a8366273402a4ac7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  golem: {fileID: 5560100982269744626}
+  body: {fileID: 3107069496708495684}
+  levelColors:
+  - color1: {r: 0.078431375, g: 0.454902, b: 0.1764706, a: 1}
+    color2: {r: 0.4156863, g: 0.74509805, b: 0.18823531, a: 1}
+  - color1: {r: 0.8078432, g: 0.454902, b: 0.121568635, a: 1}
+    color2: {r: 0.9058824, g: 0.6745098, b: 0.24313727, a: 1}
+  - color1: {r: 0.7607844, g: 0.1137255, b: 0.1137255, a: 1}
+    color2: {r: 0.8588236, g: 0.43921572, b: 0.43921572, a: 1}
+  - color1: {r: 0.6901961, g: 0.07450981, b: 0.47450984, a: 1}
+    color2: {r: 0.8352942, g: 0.43921572, b: 0.8588236, a: 1}
+  - color1: {r: 0.18039216, g: 0.14117648, b: 0.8705883, a: 1}
+    color2: {r: 0.43921572, g: 0.654902, b: 0.8588236, a: 1}
 --- !u!1 &7254525738330517405
 GameObject:
   m_ObjectHideFlags: 0

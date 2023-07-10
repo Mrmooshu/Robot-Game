@@ -20,6 +20,10 @@ public class AbilitySlot : MonoBehaviour, IDropHandler
 
     private void Start()
     {
+        if (instances.Count == 0)
+        {
+            PlayerManager.instance.minionChanged += Refresh;
+        }
         instances.Add(this);
         Refresh();
     }
@@ -27,6 +31,10 @@ public class AbilitySlot : MonoBehaviour, IDropHandler
     private void OnDestroy()
     {
         instances.Remove(this);
+        if (instances.Count == 0)
+        {
+            PlayerManager.instance.minionChanged -= Refresh;
+        }
     }
 
     private void Update()
@@ -40,7 +48,6 @@ public class AbilitySlot : MonoBehaviour, IDropHandler
                     cooldownGO.SetActive(true);
                 }
                 cooldownGO.GetComponentInChildren<TextMeshProUGUI>().text = "" + Mathf.Round(PlayerManager.instance.activeMinion.ActiveAbilities[abilitySlotIndex].cooldown * 10) * .1;
-                PlayerManager.instance.activeMinion.ActiveAbilities[abilitySlotIndex].cooldown -= Time.deltaTime;
             }
             else if (cooldownGO.activeInHierarchy)
             {
@@ -52,7 +59,7 @@ public class AbilitySlot : MonoBehaviour, IDropHandler
     public void OnDrop(PointerEventData eventData)
     {
         // Exit if ability in slot is on cooldown
-        if (PlayerManager.instance.activeMinion.ActiveAbilities[abilitySlotIndex].cooldown > 0 || eventData.pointerDrag.transform.GetComponentInParent<ActiveAbilityIcon>().stage > 0)
+        if (PlayerManager.instance.activeMinion.ActiveAbilities[abilitySlotIndex].cooldown > 0 || eventData.pointerDrag.transform.GetComponentInParent<ActiveAbilityIcon>().GetActive().stage > 0)
         {
             return;
         }
@@ -69,7 +76,7 @@ public class AbilitySlot : MonoBehaviour, IDropHandler
 
 
                 // Exit if same ability is on bar and on cooldown
-                if (PlayerManager.instance.activeMinion.ActiveAbilities[index].cooldown > 0 || instances[index].iconGO.GetComponent<ActiveAbilityIcon>().stage > 0)
+                if (PlayerManager.instance.activeMinion.ActiveAbilities[index].cooldown > 0 || instances[index].iconGO.GetComponent<ActiveAbilityIcon>().GetActive().stage > 0)
                 {
                     return;
                 }
