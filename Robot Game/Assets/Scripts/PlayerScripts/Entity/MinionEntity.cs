@@ -30,6 +30,8 @@ public class MinionEntity : Entity
     public Transform groundCheck;
 
     //other
+    public bool MoveLocked = false;
+    public bool JumpLocked = false;
     public string bufferedAction = "";
     public LayerMask whatIsGround;
     protected float groundedRadius = .1f;
@@ -96,7 +98,7 @@ public class MinionEntity : Entity
         if (PlayerManager.instance.activeMinion == data)
         {
             // movement
-            if (!(animator.GetCurrentAnimatorStateInfo(0).IsTag("stuckaction") || UIManager.instance.menuPreventingMovement))
+            if (!(MoveLocked || UIManager.instance.menuPreventingMovement))
             {
                 movementInputDirection = (int)PlayerManager.instance.moveAction.ReadValue<Vector2>().x;
             }
@@ -138,12 +140,7 @@ public class MinionEntity : Entity
         switch (context.action.name.ToLower())
         {
             case "jump":
-                if (canJump)
-                {
-                    canJump = false;
-                    rigBod.AddForce(Vector2.up * stats[EntityStatType.JumpForce].Value, ForceMode2D.Impulse);
-                    animator.SetBool("Jumping", true);
-                }
+                Jump();
                 break;
             case "basic attack":
                 animator.SetFloat("AttackSpeedModifier", baseAttackSpeed * (1 + stats[EntityStatType.AttackSpeedBonus].Value / 100));
@@ -180,13 +177,25 @@ public class MinionEntity : Entity
         }
     }
 
+    protected void Jump()
+    {
+        if (canJump && !JumpLocked)
+        {
+            canJump = false;
+            rigBod.AddForce(Vector2.up * stats[EntityStatType.JumpForce].Value, ForceMode2D.Impulse);
+            animator.SetBool("Jumping", true);
+        }
+    }
+
     //used to buffer actions
-    protected virtual bool AttemptAction(Animator animator, string animationName, string actionName)
+
+    protected virtual bool AttemptAction(string animationName, string actionName, Action action = null)
     {
         //If there is no buffered action
         if ((bufferedAction == "" || bufferedAction == actionName) && animator.GetCurrentAnimatorStateInfo(0).IsTag("NeutralState"))
         {
             animator.Play(animationName, 0);
+            action?.Invoke();
             return true;
         }
         else
@@ -205,8 +214,8 @@ public class MinionEntity : Entity
     {
         base.CreateStats();
         // add listeners
-        stats[EntityStatType.Gravity].statUpdated += () => { rigBod.gravityScale = stats[EntityStatType.Gravity].Value; };
-        stats[EntityStatType.Gravity].Recalculate();
+        //stats[EntityStatType.Gravity].statUpdated += () => { rigBod.gravityScale = stats[EntityStatType.Gravity].Value; };
+        //stats[EntityStatType.Gravity].Recalculate();
     }
 
     protected override void Die()

@@ -1,12 +1,12 @@
 ManifestFileVersion: 0
-CRC: 1345590229
+CRC: 1157836442
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 9912fcb91af0b7add0d83be161bb4253
+    Hash: 5b43dd71840d1ce311da9ea657bf5ee0
   TypeTreeHash:
     serializedVersion: 2
-    Hash: d5c1a58b2e8410149ffe3e4ca574c8c6
+    Hash: 1608dcd33f3f9798d3766c698b77a2a4
 HashAppended: 0
 ClassTypes:
 - Class: 1
@@ -52,6 +52,8 @@ ClassTypes:
 - Class: 114
   Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
 - Class: 114
+  Script: {fileID: 11500000, guid: 38c82d4245dbc0b4a8366273402a4ac7, type: 3}
+- Class: 114
   Script: {fileID: 11500000, guid: 3245ec927659c4140ac4f8d17403cc18, type: 3}
 - Class: 114
   Script: {fileID: 11500000, guid: 3768290912663824baa5c9fa59a5a8b0, type: 3}
@@ -74,6 +76,8 @@ SerializeReferenceClassIdentifiers:
   ClassName: EntitiyStatStruct
 - AssemblyName: Assembly-CSharp
   ClassName: EntityStatType
+- AssemblyName: Assembly-CSharp
+  ClassName: GolemEyeLevel/colorStruct
 - AssemblyName: Assembly-CSharp
   ClassName: ItemInventory
 - AssemblyName: Assembly-CSharp

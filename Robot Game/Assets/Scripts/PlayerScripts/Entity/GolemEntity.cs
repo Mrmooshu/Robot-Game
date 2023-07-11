@@ -92,17 +92,17 @@ public class GolemEntity : MinionEntity
         //If first punch is in action then buffer a second punch
         if (animator.GetCurrentAnimatorStateInfo(0).IsName("Basic_Punch_First"))
         {
-            AttemptAction(animator, "Basic_Punch_Second", "BasicAttackSecond");
+            AttemptAction("Basic_Punch_Second", "BasicAttackSecond");
         }
         else
         {
-            AttemptAction(animator, "Basic_Punch_First", "BasicAttack");
+            AttemptAction("Basic_Punch_First", "BasicAttack");
         }
     }
 
     public virtual void BasicAttackSecond()
     {
-        AttemptAction(animator, "Basic_Punch_Second", "BasicAttackSecond");
+        AttemptAction("Basic_Punch_Second", "BasicAttackSecond");
     }
 
     // functions for all unique golem attacks
@@ -128,11 +128,24 @@ public class GolemEntity : MinionEntity
         if (animator.GetCurrentAnimatorStateInfo(0).IsName("Tornado_Charge"))
         {
             animator.Play("Tornado_Start", 0);
+            StartCoroutine(TornadoMovement());
             StartActiveCooldown(active);
         }
         else
         {
-            AttemptAction(animator, "Tornado_Charge", "TornadoCharge");
+            AttemptAction("Tornado_Charge", "TornadoCharge");
+        }
+
+        IEnumerator TornadoMovement()
+        {
+            //come back to this and finish
+            var charge = ((ClayGolemData)data).ChargeLevel;
+            ((ClayGolemData)data).ChargeLevel = 0;
+            ConstantForce2D force = gameObject.AddComponent<ConstantForce2D>();
+            force.relativeForce = new Vector2(((3 * (charge + 1)) + (stats[EntityStatType.MoveSpeed].Value + 1)) * facingDirection * 3, 10.1f);
+            yield return new WaitForSeconds(charge * .4f + .8f);
+            Destroy(force);
+            animator.SetTrigger("EndTornado");
         }
 
     }

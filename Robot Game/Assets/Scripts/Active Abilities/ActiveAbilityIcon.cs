@@ -18,7 +18,10 @@ public class ActiveAbilityIcon : UIDraggable
         am = PlayerManager.instance.activeMinion;
         ame = am.GetEntity();
 
-        GetComponentInChildren<Image>().sprite = Database.GetActiveAbility(activeAbility).Icon[GetActive().stage];
+        if (onAbilityBar)
+        {
+            GetComponentInChildren<Image>().sprite = Database.GetActiveAbility(activeAbility).Icon[GetActive().stage];
+        }
     }
 
     public override void OnPointerDown(PointerEventData eventData)

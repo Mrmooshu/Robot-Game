@@ -21,6 +21,6 @@ MonoBehaviour:
   Description: 'Initial cast: begin charging up your charge level. Second cast: unleash
     a horizontal spinning attack. This attack resets charge level back to 1, but
     is enhanced based on charge level when cast.'
-  CoolDown: 10
+  CoolDown: 3
   Cost: 0
   CostType: 0

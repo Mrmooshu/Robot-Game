@@ -59,10 +59,14 @@ public class AbilitySlot : MonoBehaviour, IDropHandler
     public void OnDrop(PointerEventData eventData)
     {
         // Exit if ability in slot is on cooldown
-        if (PlayerManager.instance.activeMinion.ActiveAbilities[abilitySlotIndex].cooldown > 0 || eventData.pointerDrag.transform.GetComponentInParent<ActiveAbilityIcon>().GetActive().stage > 0)
+        if (iconGO != null)
         {
-            return;
+            if (PlayerManager.instance.activeMinion.ActiveAbilities[abilitySlotIndex].cooldown > 0 || iconGO.GetComponent<ActiveAbilityIcon>().GetActive().stage > 0)
+            {
+                return;
+            }
         }
+
 
         // index must be within min and max of ability slot indexes
         if (eventData.pointerDrag != null && abilitySlotIndex >= 0 && abilitySlotIndex <= 5 && !eventData.pointerDrag.transform.GetComponentInParent<ActiveAbilityIcon>().onAbilityBar)

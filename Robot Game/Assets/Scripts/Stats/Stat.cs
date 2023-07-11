@@ -7,7 +7,7 @@ using UnityEngine;
 [Serializable]
 public enum EntityStatType
 {
-    Health,HealthRegen,Mana,ManaRegen,MoveSpeed, MoveAcceleration,JumpForce,Gravity,AttackDamage,MagicDamage,AttackDefense,MagicDefense,CritChance,AttackSpeedBonus
+    Health,HealthRegen,Mana,ManaRegen,MoveSpeed, MoveAcceleration,JumpForce,Placeholderstat,AttackDamage,MagicDamage,AttackDefense,MagicDefense,CritChance,AttackSpeedBonus
 }
 
 [Serializable]
