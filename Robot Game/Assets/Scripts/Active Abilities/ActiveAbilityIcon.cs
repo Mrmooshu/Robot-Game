@@ -20,7 +20,11 @@ public class ActiveAbilityIcon : UIDraggable
 
         if (onAbilityBar)
         {
-            GetComponentInChildren<Image>().sprite = Database.GetActiveAbility(activeAbility).Icon[GetActive().stage];
+            RefreshOnBar();
+        }
+        else
+        {
+            GetComponentInChildren<Image>().sprite = Database.GetActiveAbility(activeAbility).Icon[0];
         }
     }
 
@@ -51,7 +55,7 @@ public class ActiveAbilityIcon : UIDraggable
         if (ability.stage+1 < Database.GetActiveAbility(activeAbility).Icon.Length)
         {
             ability.stage++;
-            GetComponentInChildren<Image>().sprite = Database.GetActiveAbility(activeAbility).Icon[ability.stage];
+            RefreshOnBar();
         }
     }
 
@@ -60,11 +64,19 @@ public class ActiveAbilityIcon : UIDraggable
         ref var ability = ref GetActive();
 
         ability.stage = 0;
-        GetComponentInChildren<Image>().sprite = Database.GetActiveAbility(activeAbility).Icon[ability.stage];
+        RefreshOnBar();
     }
 
     public ref MinionData.active GetActive()
     {
         return ref am.ActiveAbilities[Array.FindIndex(PlayerManager.instance.activeMinion.ActiveAbilities, x => x.name == activeAbility)];
+    }
+
+    public void RefreshOnBar()
+    {
+        if (onAbilityBar)
+        {
+            GetComponentInChildren<Image>().sprite = Database.GetActiveAbility(activeAbility).Icon[GetActive().stage];
+        }
     }
 }

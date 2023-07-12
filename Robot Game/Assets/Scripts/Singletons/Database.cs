@@ -61,6 +61,6 @@ public class Database : MonoBehaviour
     }
     public static ActiveAbilityData GetActiveAbility(string name)
     {
-        return instance.activeDatabase.ActivesList.FirstOrDefault(i => i.name == name);
+        return instance.activeDatabase.ActivesList.FirstOrDefault(i => i.InternalName == name);
     }
 }

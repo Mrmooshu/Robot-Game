@@ -32,7 +32,7 @@ public class MinionEntity : Entity
     //other
     public bool MoveLocked = false;
     public bool JumpLocked = false;
-    public string bufferedAction = "";
+    public Action bufferedAction = null;
     public LayerMask whatIsGround;
     protected float groundedRadius = .1f;
 
@@ -65,10 +65,10 @@ public class MinionEntity : Entity
     public override void Update()
     {
         base.Update();
-        if (bufferedAction != "" && animator.GetCurrentAnimatorStateInfo(0).IsTag("NeutralState"))
+        if (bufferedAction != null && animator.GetCurrentAnimatorStateInfo(0).IsTag("NeutralState"))
         {
-            Invoke(bufferedAction, 0);
-            bufferedAction = "";
+            bufferedAction();
+            bufferedAction = null;
         }
         ActiveCoolDownTick();
         Input();
@@ -187,20 +187,35 @@ public class MinionEntity : Entity
         }
     }
 
+    protected void RoamingCancel(ActiveAbilityIcon active)
+    {
+        for (int i = 0; i < data.ActiveAbilities.Length; i++)
+        {
+            data.ActiveAbilities[i].stage = 0;
+        }
+        bufferedAction = null;
+        animator.Play("Idle", 0);
+        AbilitySlot.instances.Where(x => x.iconGO != null).ToList().ForEach(x => x.iconGO.GetComponent<ActiveAbilityIcon>().RefreshOnBar());
+        foreach (ConstantForce2D a in gameObject.GetComponents<ConstantForce2D>())
+        {
+            Destroy(a);
+        }
+        StartActiveCooldown(active);
+    }
+
     //used to buffer actions
 
-    protected virtual bool AttemptAction(string animationName, string actionName, Action action = null)
+    protected virtual bool AttemptAction(Action action = null)
     {
         //If there is no buffered action
-        if ((bufferedAction == "" || bufferedAction == actionName) && animator.GetCurrentAnimatorStateInfo(0).IsTag("NeutralState"))
+        if ((bufferedAction == null) && animator.GetCurrentAnimatorStateInfo(0).IsTag("NeutralState"))
         {
-            animator.Play(animationName, 0);
-            action?.Invoke();
+            action();
             return true;
         }
         else
         {
-            bufferedAction = actionName;
+            bufferedAction = action;
             return false;
         }
     }

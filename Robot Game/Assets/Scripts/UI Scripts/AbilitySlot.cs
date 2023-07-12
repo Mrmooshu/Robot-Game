@@ -15,8 +15,8 @@ public class AbilitySlot : MonoBehaviour, IDropHandler
 
     public static List<AbilitySlot> instances = new List<AbilitySlot>();
 
-    [NonSerialized] public GameObject iconGO;
-    [NonSerialized] public GameObject cooldownGO;
+    [NonSerialized] public GameObject iconGO = null;
+    [NonSerialized] public GameObject cooldownGO = null;
 
     private void Start()
     {
@@ -69,7 +69,7 @@ public class AbilitySlot : MonoBehaviour, IDropHandler
 
 
         // index must be within min and max of ability slot indexes
-        if (eventData.pointerDrag != null && abilitySlotIndex >= 0 && abilitySlotIndex <= 5 && !eventData.pointerDrag.transform.GetComponentInParent<ActiveAbilityIcon>().onAbilityBar)
+        if (eventData.pointerDrag != null && abilitySlotIndex >= 0 && abilitySlotIndex <= 5 && eventData.pointerDrag.transform.GetComponentInParent<ActiveAbilityIcon>() == true)
         {
             var abilityName = eventData.pointerDrag.transform.GetComponentInParent<ActiveAbilityIcon>().activeAbility;
 
@@ -86,6 +86,7 @@ public class AbilitySlot : MonoBehaviour, IDropHandler
                 }
 
                 PlayerManager.instance.activeMinion.ActiveAbilities[Array.FindIndex(PlayerManager.instance.activeMinion.ActiveAbilities, x => x.name == abilityName)].name = "";
+                PlayerManager.instance.activeMinion.ActiveAbilities[Array.FindIndex(PlayerManager.instance.activeMinion.ActiveAbilities, x => x.name == abilityName)].stage = 0;
             }
             PlayerManager.instance.activeMinion.ActiveAbilities[abilitySlotIndex].name = abilityName;
             Refresh();

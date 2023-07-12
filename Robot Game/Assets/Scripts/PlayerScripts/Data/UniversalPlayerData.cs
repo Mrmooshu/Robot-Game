@@ -21,10 +21,10 @@ public class UniversalPlayerData : ISerializationCallbackReceiver
     }
 
     [SerializeField] private List<SavedData<int>> upgradesList;
-    public static Dictionary<string, int> upgrades;
+    public Dictionary<string, int> upgrades { get; private set; }
 
     [SerializeField] private List<SavedData<bool>> abilityList;
-    public static Dictionary<string, bool> abilities;
+    public Dictionary<string, bool> abilities { get; private set; }
 
     [NonSerialized] static private List<Passive> passives;
 
@@ -110,13 +110,13 @@ public class UniversalPlayerData : ISerializationCallbackReceiver
         }
     }
 
-    public static void InitializePassives()
+    public void InitializePassives()
     {
         minionPassives = new List<Passive>();
-        minionPassives.Add(new PassiveStat("health passive", new List<Entity> { }, StatModType.Base, EntityStatType.Health, 1));
+        minionPassives.Add(new PassiveStat("HealthPassive", new List<Entity> { }, StatModType.Base, EntityStatType.Health, 1));
     }
 
-    public static void AddMinionPassives(MinionEntity minion)
+    public void AddMinionPassives(MinionEntity minion)
     {
         foreach (Passive passive in minionPassives)
         {
@@ -124,7 +124,7 @@ public class UniversalPlayerData : ISerializationCallbackReceiver
         }
     }
 
-    public static void RemoveMinionPassives(MinionEntity minion)
+    public void RemoveMinionPassives(MinionEntity minion)
     {
         foreach (Passive passive in minionPassives)
         {
@@ -175,7 +175,7 @@ public class UniversalPlayerData : ISerializationCallbackReceiver
     private List<string> upgradeNames = new List<string>()
     {
         "ConnectionPowerCapacityUpgrade",
-        "health passive"
+        "HealthPassive"
 
 
 
@@ -183,7 +183,11 @@ public class UniversalPlayerData : ISerializationCallbackReceiver
 
     private List<string> abilityNames = new List<string>()
     {
+        //General Abilities
+        "RoamingCancel",
+        // Golem Abilites
         "Tornado"
+        // more go here
 
     };
 }

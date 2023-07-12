@@ -92,24 +92,19 @@ public class GolemEntity : MinionEntity
         //If first punch is in action then buffer a second punch
         if (animator.GetCurrentAnimatorStateInfo(0).IsName("Basic_Punch_First"))
         {
-            AttemptAction("Basic_Punch_Second", "BasicAttackSecond");
+            AttemptAction(() => { animator.Play("Basic_Punch_Second", 0); });
         }
         else
         {
-            AttemptAction("Basic_Punch_First", "BasicAttack");
+            AttemptAction(() => { animator.Play("Basic_Punch_First", 0); });
         }
-    }
-
-    public virtual void BasicAttackSecond()
-    {
-        AttemptAction("Basic_Punch_Second", "BasicAttackSecond");
     }
 
     // functions for all unique golem attacks
 
     public virtual void BasicAttackHit()
     {
-        bufferedAction = "";
+        bufferedAction = null;
         Vector2 knockback = new Vector2(100 * facingDirection, 100);
         if (!DamageScript.Attack(new DamageScript.attackData(this, new DamageScript.damageData(stats[EntityStatType.AttackDamage].Value, DamageScript.damageType.physical), true, knockback, .5f), hitboxes, whatIsEnemy, this)){
             if (data.skills["sandblast"] > 0)
@@ -133,14 +128,17 @@ public class GolemEntity : MinionEntity
         }
         else
         {
-            AttemptAction("Tornado_Charge", "TornadoCharge");
+            AttemptAction(() => { animator.Play("Tornado_Charge", 0); });
         }
 
         IEnumerator TornadoMovement()
         {
-            //come back to this and finish
+            animator.ResetTrigger("EndTornado");
             var charge = ((ClayGolemData)data).ChargeLevel;
             ((ClayGolemData)data).ChargeLevel = 0;
+            var v = rigBod.velocity;
+            v.y *= .3f;
+            rigBod.velocity = v;
             ConstantForce2D force = gameObject.AddComponent<ConstantForce2D>();
             force.relativeForce = new Vector2(((3 * (charge + 1)) + (stats[EntityStatType.MoveSpeed].Value + 1)) * facingDirection * 3, 10.1f);
             yield return new WaitForSeconds(charge * .4f + .8f);
@@ -153,8 +151,8 @@ public class GolemEntity : MinionEntity
 
     public void TornadoHit()
     {
-        bufferedAction = "";
-        Vector2 knockback = new Vector2(50 * facingDirection, 150);
-        DamageScript.Attack(new DamageScript.attackData(this, new DamageScript.damageData(stats[EntityStatType.AttackDamage].Value, DamageScript.damageType.physical), true, knockback, .1f), hitboxes, whatIsEnemy, this);
+        bufferedAction = null;
+        Vector2 knockback = new Vector2(100, 100); // replace this with a magnetic effect later that applies to the target and pulls them close for the following hits
+        DamageScript.Attack(new DamageScript.attackData(this, new DamageScript.damageData(stats[EntityStatType.AttackDamage].Value * .1f, DamageScript.damageType.physical), true, knockback, .1f), hitboxes, whatIsEnemy, this);
     }
 }

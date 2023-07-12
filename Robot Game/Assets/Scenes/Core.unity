@@ -333,7 +333,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fileName: gamedata
   useEncryption: 0
-  useNewFile: 0
+  useNewFile: 1
 --- !u!114 &959256510
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -414,10 +414,14 @@ MonoBehaviour:
       state: 0
     - name: health passive
       state: 0
+    - name: Health Passive
+      state: 0
     abilityList:
     - name: GolemTornado
       state: 0
     - name: Tornado
+      state: 0
+    - name: Roaming Cancel
       state: 0
     unlockedSafepoints: []
   activeMinions: []

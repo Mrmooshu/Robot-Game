@@ -39,13 +39,17 @@ public class ActiveAbilityDisplay : ToggleGroup
         int y = 0;
         int columns = 5;
         float slotSize = 39f;
-        foreach (var active in UniversalPlayerData.abilities)
+        foreach (var active in PlayerManager.instance.universal.abilities)
         {
             if (active.Value != false)
             {
+                GameObject origin = new GameObject();
+                origin.transform.SetParent(transform);
+                origin.transform.localPosition = new Vector2((x * slotSize), (-y * slotSize));
                 GameObject activeAbilityIconInstance = Instantiate(ActiveAbilityPrefab, transform);
                 activeAbilityIconInstance.GetComponent<ActiveAbilityIcon>().activeAbility = active.Key;
-                activeAbilityIconInstance.transform.localPosition = new Vector2((x * slotSize), (-y * slotSize));
+                activeAbilityIconInstance.transform.SetParent(origin.transform);
+                activeAbilityIconInstance.transform.localPosition = Vector3.zero;
                 x++;
                 if (x >= columns)
                 {

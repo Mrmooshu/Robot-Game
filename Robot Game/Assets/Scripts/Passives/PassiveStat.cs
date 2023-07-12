@@ -53,7 +53,7 @@ public class PassiveStat : Passive
         }
         else if(type is passiveType.multiple)
         {
-            return UniversalPlayerData.upgrades[skillName] * perLevel;
+            return PlayerManager.instance.universal.upgrades[skillName] * perLevel;
         }
         return 0;
 

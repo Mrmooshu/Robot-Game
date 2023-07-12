@@ -51,7 +51,8 @@ public class GameData
 
         activeMinions[1].inventory.inventory[0] = new Item(Database.GetItemID("Iromite Pickaxe"), 1);
 
-        UniversalPlayerData.abilities["Tornado"] = true;
+        universal.abilities["Tornado"] = true;
+        universal.abilities["RoamingCancel"] = true;
     }
 
     [System.Serializable]

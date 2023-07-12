@@ -46,7 +46,7 @@ public class PlayerManager : MonoBehaviour, IDataSave
     }
     public void SpawnMinions()
     {
-        UniversalPlayerData.InitializePassives();
+        universal.InitializePassives();
         foreach (MinionData core in activeMinions)
         {
             if (core != null)
@@ -65,7 +65,7 @@ public class PlayerManager : MonoBehaviour, IDataSave
         MinionEntity minionEntity = newMinion.GetComponent<MinionEntity>();
         minionEntities.Add(minionEntity);
         minionEntity.Initialize(minion);
-        UniversalPlayerData.AddMinionPassives(minionEntity);
+        universal.AddMinionPassives(minionEntity);
         newMinion.transform.position = minionEntity.data.savedPosition;
         minion.activity = MinionData.Activity.Idle;
         minionChanged?.Invoke();
@@ -80,7 +80,7 @@ public class PlayerManager : MonoBehaviour, IDataSave
     public void DespawnMinion(MinionData minion)
     {
         var entity = minion.GetEntity();
-        UniversalPlayerData.RemoveMinionPassives(minion.GetEntity());
+        universal.RemoveMinionPassives(minion.GetEntity());
         minion.savedPosition = minion.GetEntity().transform.position;
         minionEntities.Remove(minion.GetEntity());
         Destroy(entity.gameObject);
