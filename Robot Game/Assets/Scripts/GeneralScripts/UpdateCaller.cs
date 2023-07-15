@@ -19,7 +19,6 @@ public class UpdateCaller : MonoBehaviour
 
     void Update()
     {
-        if (OnUpdate != null)
-            OnUpdate();
+        OnUpdate?.Invoke();
     }
 }

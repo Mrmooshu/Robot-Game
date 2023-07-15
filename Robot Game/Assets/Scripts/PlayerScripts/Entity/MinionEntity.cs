@@ -196,10 +196,6 @@ public class MinionEntity : Entity
         bufferedAction = null;
         animator.Play("Idle", 0);
         AbilitySlot.instances.Where(x => x.iconGO != null).ToList().ForEach(x => x.iconGO.GetComponent<ActiveAbilityIcon>().RefreshOnBar());
-        foreach (ConstantForce2D a in gameObject.GetComponents<ConstantForce2D>())
-        {
-            Destroy(a);
-        }
         StartActiveCooldown(active);
     }
 

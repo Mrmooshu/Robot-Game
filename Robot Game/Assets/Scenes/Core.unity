@@ -333,7 +333,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fileName: gamedata
   useEncryption: 0
-  useNewFile: 1
+  useNewFile: 0
 --- !u!114 &959256510
 MonoBehaviour:
   m_ObjectHideFlags: 0
