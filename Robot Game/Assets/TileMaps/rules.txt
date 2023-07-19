@@ -1,2 +1,4 @@
 Rules\autotile rules.tmx
+Rules\overlay rules.tmx
+Rules\oneway rules.tmx
 Rules\revision rules.tmx

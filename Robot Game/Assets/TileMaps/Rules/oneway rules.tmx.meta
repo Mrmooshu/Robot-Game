@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: f709ce773bbb76047b305040647e1c34
+guid: ddffc27bd4f01234e972121325f131f8
 ScriptedImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -15,8 +15,6 @@ ScriptedImporter:
     for more details. Your map may be broken until these are fixed.
   - 'Missing tileset asset: :/automap-tiles.tsx'
   warnings:
-  - Pixels Per Unit mismatch between map (100) and tileset '../Grassland Tileset.tsx'
-    (32)
   - Pixels Per Unit mismatch between map (100) and tileset '../Shape Tileset.tsx'
     (32)
   missingSortingLayers: []

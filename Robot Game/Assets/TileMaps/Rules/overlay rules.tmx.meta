@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: f709ce773bbb76047b305040647e1c34
+guid: 857effb37a6f68c489d1bb5e371e5d80
 ScriptedImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -11,14 +11,8 @@ ScriptedImporter:
   missingFiles:
   - :/automap-tiles.tsx
   errors:
-  - Errors detected in tileset '../Shape Tileset.tsx'. Check the tileset inspector
-    for more details. Your map may be broken until these are fixed.
   - 'Missing tileset asset: :/automap-tiles.tsx'
-  warnings:
-  - Pixels Per Unit mismatch between map (100) and tileset '../Grassland Tileset.tsx'
-    (32)
-  - Pixels Per Unit mismatch between map (100) and tileset '../Shape Tileset.tsx'
-    (32)
+  warnings: []
   missingSortingLayers: []
   missingLayers: []
   missingTags: []

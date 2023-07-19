@@ -11,8 +11,6 @@ ScriptedImporter:
   missingFiles:
   - :/automap-tiles.tsx
   errors:
-  - Errors detected in tileset 'Grassland Tileset.tsx'. Check the tileset inspector
-    for more details. Your map may be broken until these are fixed.
   - Errors detected in tileset 'Shape Tileset.tsx'. Check the tileset inspector for
     more details. Your map may be broken until these are fixed.
   - 'Missing tileset asset: :/automap-tiles.tsx'

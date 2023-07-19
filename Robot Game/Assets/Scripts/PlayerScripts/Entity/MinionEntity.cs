@@ -197,6 +197,7 @@ public class MinionEntity : Entity
         animator.Play("Idle", 0);
         AbilitySlot.instances.Where(x => x.iconGO != null).ToList().ForEach(x => x.iconGO.GetComponent<ActiveAbilityIcon>().RefreshOnBar());
         StartActiveCooldown(active);
+        GetComponent<FlashEffect>().FlashStart(Color.white, .2f);
     }
 
     //used to buffer actions

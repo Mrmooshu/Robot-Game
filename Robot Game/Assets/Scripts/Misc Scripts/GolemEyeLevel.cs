@@ -24,7 +24,7 @@ public class GolemEyeLevel : MonoBehaviour
 
     public void EyeUpdate()
     {
-        body.material.SetColor("_FirstColor", levelColors[((ClayGolemData)golem.data).ChargeLevel].color1);
-        body.material.SetColor("_SecondColor", levelColors[((ClayGolemData)golem.data).ChargeLevel].color2);
+        body.material.SetColor("_ColorSwapColor1", levelColors[((ClayGolemData)golem.data).ChargeLevel].color1);
+        body.material.SetColor("_ColorSwapColor2", levelColors[((ClayGolemData)golem.data).ChargeLevel].color2);
     }
 }
