@@ -62,6 +62,11 @@ public class Projectile : Entity
 
     protected IEnumerator Lifespan()
     {
+        // eternal projectile if lifespawn lower than 0
+        if (lifeTime < 0)
+        {
+            yield break;
+        }
         yield return new WaitForSeconds(lifeTime);
         Die();
     }

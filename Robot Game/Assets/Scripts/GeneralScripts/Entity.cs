@@ -10,7 +10,7 @@ public abstract class Entity : MonoBehaviour
 
     public int facingDirection { get; protected set; }
     public bool dead = false;
-    public bool stunned = false;
+    public float hitStunDuration = 0;
     public LayerMask whatIsEnemy;
 
     public Dictionary<EntityStatType, Stat> stats;
@@ -24,7 +24,7 @@ public abstract class Entity : MonoBehaviour
 
     public virtual void Update()
     {
-
+        HitstunTick();
     }
 
     public virtual void FixedUpdate()
@@ -93,6 +93,14 @@ public abstract class Entity : MonoBehaviour
         if (GetComponent<DropTableRoller>())
         {
             GetComponent<DropTableRoller>().RollDrop();
+        }
+    }
+
+    private void HitstunTick()
+    {
+        if (hitStunDuration > 0)
+        {
+            hitStunDuration -= Time.deltaTime;
         }
     }
 }

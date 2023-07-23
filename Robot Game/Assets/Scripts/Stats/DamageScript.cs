@@ -125,13 +125,6 @@ public static class DamageScript
     public static void KnockBack(Entity target, attackData attackData)
     {
         target.GetComponent<Rigidbody2D>().AddForce(attackData.knockback);
-        target.StartCoroutine(HitStunRoutine(target, attackData.hitStun));
-    }
-
-    private static IEnumerator HitStunRoutine(Entity target, float duration)
-    {
-        target.stunned = true;
-        yield return new WaitForSeconds(duration);
-        target.stunned = false;
+        target.hitStunDuration = attackData.hitStun;
     }
 }
