@@ -137,11 +137,11 @@ public class GolemEntity : MinionEntity
             var charge = ((ClayGolemData)data).ChargeLevel;
             ((ClayGolemData)data).ChargeLevel = 0;
             var v = rigBod.velocity;
-            v.y *= .3f;
+            v.y *= .1f;
             rigBod.velocity = v;
             ConstantForce2D force = gameObject.AddComponent<ConstantForce2D>();
-            force.relativeForce = new Vector2(((3 * (charge + 1)) + (stats[EntityStatType.MoveSpeed].Value + 1)) * facingDirection * 3, 10.1f);
-            var counter = charge * .4f + .8f;
+            force.relativeForce = new Vector2(((2 * (charge + 1)) + (stats[EntityStatType.MoveSpeed].Value + 1)) * facingDirection * 3, canJump? 0 : 30f);
+            var counter = charge * .4f + .6f;
             yield return new WaitForSeconds(.01f);
             while ((animator.GetCurrentAnimatorStateInfo(0).IsName("Tornado_Start") || animator.GetCurrentAnimatorStateInfo(0).IsName("Tornado_Active")) && counter > 0)
             {
@@ -158,7 +158,7 @@ public class GolemEntity : MinionEntity
     public void TornadoHit()
     {
         bufferedAction = null;
-        Vector2 knockback = new Vector2(100, 100); // replace this with a magnetic effect later that applies to the target and pulls them close for the following hits
+        Vector2 knockback = new Vector2(90, 90); // replace this with a magnetic effect later that applies to the target and pulls them close for the following hits
         DamageScript.Attack(new DamageScript.attackData(this, new DamageScript.damageData(stats[EntityStatType.AttackDamage].Value * .1f, DamageScript.damageType.physical), true, knockback, .1f), hitboxes, whatIsEnemy, this);
     }
 }

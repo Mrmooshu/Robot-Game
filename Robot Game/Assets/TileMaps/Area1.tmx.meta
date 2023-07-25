@@ -27,6 +27,7 @@ ScriptedImporter:
   - Could not find tile 14. Make sure the tilesets were successfully imported.
   - Could not find tile 9. Make sure the tilesets were successfully imported.
   - Could not find tile 10. Make sure the tilesets were successfully imported.
+  - Could not find tile 17. Make sure the tilesets were successfully imported.
   warnings: []
   missingSortingLayers: []
   missingLayers: []

@@ -23,7 +23,7 @@ public class EnemyEntity : CharacterEntity
     {
         brain = new BehaviourSelector(new List<BehaviourNode>
         {
-            new JumpBehaviour(this, 2, 2),
+            new JumpBehaviour(this),
             new WanderBehaviour(this)
         });
         base.CreateBrain();
