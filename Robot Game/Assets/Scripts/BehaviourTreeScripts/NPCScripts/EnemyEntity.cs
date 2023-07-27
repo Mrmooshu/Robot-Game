@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using BehaviourSystem;
 
 public class EnemyEntity : CharacterEntity
 {
@@ -23,24 +22,15 @@ public class EnemyEntity : CharacterEntity
     {
         brain = new BehaviourSelector(new List<BehaviourNode>
         {
-            new JumpBehaviour(this),
-            new WanderBehaviour(this)
+            new BehaviourSequence(new List<BehaviourNode>
+            {
+                new TargetPlayerBehaviour(this, 5),
+                new RandomJumpBehaviour(this),
+                new JumpBehaviour(this, 2)
+            }),
         });
+        brain.SetData("JumpDisabled", false);
+        brain.SetData("Target", null);
         base.CreateBrain();
     }
-
-    public override void JumpForward()
-    {
-        rigBod.AddForce(new Vector2(stats[EntityStatType.JumpForce].Value*facingDirection/2, stats[EntityStatType.JumpForce].Value), ForceMode2D.Impulse);
-        //animator.SetBool("Jumping", true);
-        StartCoroutine(JumpCooldown());
-
-    }
-
-    private IEnumerator JumpCooldown()
-    {
-        yield return new WaitForSeconds(1);
-        brain.ClearData("Jumping");
-    }
-
 }

@@ -1,12 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using BehaviourSystem;
 
 public abstract class CharacterEntity : Entity
 {
-    protected Rigidbody2D rigBod;
-    protected Animator animator;
+    public Rigidbody2D rigBod { get; protected set; }
+    public Animator animator{ get; protected set; }
     public Transform groundCheck;
     public LayerMask whatIsGround;
     protected float groundedRadius = .1f;
@@ -69,15 +68,6 @@ public abstract class CharacterEntity : Entity
 
         // running anim
         animator.SetFloat("Running", Mathf.Abs(movementDirection));
-    }
-
-    public virtual void JumpForward()
-    {
-        if (canJump)
-        {
-            canJump = false;
-            rigBod.velocity = new Vector2(rigBod.velocity.x, stats[EntityStatType.JumpForce].Value);
-        }
     }
 
     //Override this with an assignment to brain and call base

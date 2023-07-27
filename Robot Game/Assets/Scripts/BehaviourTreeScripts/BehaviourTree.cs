@@ -2,23 +2,20 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace BehaviourSystem
+public class BehaviourTree : MonoBehaviour
 {
-    public class BehaviourTree : MonoBehaviour
+    private BehaviourNode root = null;
+
+    protected void Start()
     {
-        private BehaviourNode root = null;
+        root = GetComponent<CharacterEntity>().brain;
+    }
 
-        protected void Start()
+    private void Update()
+    {
+        if (root != null)
         {
-            root = GetComponent<CharacterEntity>().brain;
-        }
-
-        private void Update()
-        {
-            if (root != null)
-            {
-                root.Evaluate();
-            }
+            root.Evaluate();
         }
     }
 }

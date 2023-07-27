@@ -140,7 +140,7 @@ public class GolemEntity : MinionEntity
             v.y *= .1f;
             rigBod.velocity = v;
             ConstantForce2D force = gameObject.AddComponent<ConstantForce2D>();
-            force.relativeForce = new Vector2(((2 * (charge + 1)) + (stats[EntityStatType.MoveSpeed].Value + 1)) * facingDirection * 3, canJump? 0 : 30f);
+            force.relativeForce = new Vector2(((2 * (charge + 1)) + (stats[EntityStatType.MoveSpeed].Value + 1)) * facingDirection * 3, canJump? 0 : 15f);
             var counter = charge * .4f + .6f;
             yield return new WaitForSeconds(.01f);
             while ((animator.GetCurrentAnimatorStateInfo(0).IsName("Tornado_Start") || animator.GetCurrentAnimatorStateInfo(0).IsName("Tornado_Active")) && counter > 0)
