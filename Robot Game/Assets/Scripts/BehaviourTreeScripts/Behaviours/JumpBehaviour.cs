@@ -16,7 +16,7 @@ public class JumpBehaviour : BehaviourNode
 
     public override NodeState Evaluate()
     {
-        if (!host.canJump || host.hitStunDuration > 0 || (bool)GetRoot().GetData("JumpDisabled"))
+        if (!host.canJump || !host.grounded || (bool)GetRoot().GetData("JumpDisabled"))
         {
             state = NodeState.FAILURE;
             return state;

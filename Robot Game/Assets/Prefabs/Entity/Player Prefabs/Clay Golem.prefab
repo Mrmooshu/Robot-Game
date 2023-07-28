@@ -473,9 +473,9 @@ MonoBehaviour:
   - type: 9
     value: 0
   - type: 10
-    value: 20
+    value: 5
   - type: 11
-    value: 20
+    value: 5
   - type: 2
     value: 100
   dead: 0

@@ -105,7 +105,7 @@ public class GolemEntity : MinionEntity
     public virtual void BasicAttackHit()
     {
         bufferedAction = null;
-        Vector2 knockback = new Vector2(100 * facingDirection, 100);
+        Vector2 knockback = new Vector2(10 * facingDirection, 100);
         if (!DamageScript.Attack(new DamageScript.attackData(this, new DamageScript.damageData(stats[EntityStatType.AttackDamage].Value, DamageScript.damageType.physical), true, knockback, .5f), hitboxes, whatIsEnemy, this)){
             if (data.skills["sandblast"] > 0)
             {
@@ -158,7 +158,7 @@ public class GolemEntity : MinionEntity
     public void TornadoHit()
     {
         bufferedAction = null;
-        Vector2 knockback = new Vector2(90, 90); // replace this with a magnetic effect later that applies to the target and pulls them close for the following hits
-        DamageScript.Attack(new DamageScript.attackData(this, new DamageScript.damageData(stats[EntityStatType.AttackDamage].Value * .1f, DamageScript.damageType.physical), true, knockback, .1f), hitboxes, whatIsEnemy, this);
+        Vector2 knockback = new Vector2(rigBod.velocity.x, 80); // replace this with a magnetic effect later that applies to the target and pulls them close for the following hits
+        DamageScript.Attack(new DamageScript.attackData(this, new DamageScript.damageData(stats[EntityStatType.AttackDamage].Value * .1f, DamageScript.damageType.physical), true, knockback, .5f), hitboxes, whatIsEnemy, this);
     }
 }

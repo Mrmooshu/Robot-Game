@@ -73,12 +73,12 @@ public static class DamageScript
         {
             if (damage.Item1 > 0)
             {
-                GameObject text = Object.Instantiate(UIManager.instance.uiPrefabs.LoadAsset<GameObject>("Damage Text"), target.transform);
+                GameObject text = Object.Instantiate(UIManager.instance.uiPrefabs.LoadAsset<GameObject>("Damage Text"));
                 text.GetComponentInChildren<TextMeshProUGUI>().text = damage.Item1 + "";
                 text.GetComponentInChildren<TextMeshProUGUI>().color = damage.Item2;
-                text.transform.SetParent(text.transform.parent.parent);
+                text.transform.position = target.transform.position;
                 text.transform.localScale = new Vector3(.02f, .02f, 1);
-                text.transform.position += new Vector3(0,.5f*damageDisplayCount,0);
+                text.transform.position += new Vector3(0, 1f + 1f*damageDisplayCount,0);
                 damageDisplayCount++;
             }
         }
@@ -118,12 +118,13 @@ public static class DamageScript
      */
     public static void Attack(attackData attackData, Entity target, Entity attacker)
     {
-        ApplyDamage(target.transform.GetComponent<EnemyEntity>(), attackData);
-        KnockBack(target.transform.GetComponent<EnemyEntity>(), attackData);
+        ApplyDamage(target, attackData);
+        KnockBack(target, attackData);
     }
 
     public static void KnockBack(Entity target, attackData attackData)
     {
+        target.GetComponent<Rigidbody2D>().velocity *= .2f;
         target.GetComponent<Rigidbody2D>().AddForce(attackData.knockback);
         target.hitStunDuration = attackData.hitStun;
     }

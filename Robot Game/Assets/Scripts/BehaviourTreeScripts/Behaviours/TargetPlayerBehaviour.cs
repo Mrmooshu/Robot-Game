@@ -19,13 +19,15 @@ public class TargetPlayerBehaviour : BehaviourNode
         if (GetRoot().GetData("Target") == null)
         {
             var hit = Physics2D.OverlapCircle(host.transform.position, range, host.whatIsEnemy);
-
-            GetRoot().SetData("Target", hit);
+            if (hit != null)
+            {
+                GetRoot().SetData("Target", hit.gameObject);
+            }
         }
         else
         {
             // remove target if they are outside of double the agro range
-            if (Vector2.Distance(((Collider2D)GetRoot().GetData("Target")).gameObject.transform.position, host.transform.position) > range*2)
+            if (Vector2.Distance(((GameObject)GetRoot().GetData("Target")).transform.position, host.transform.position) > range*2)
             {
                 GetRoot().SetData("Target", null);
             }
