@@ -467,7 +467,7 @@ MonoBehaviour:
   - type: 7
     value: 0
   - type: 13
-    value: 0
+    value: 500
   - type: 8
     value: 30
   - type: 9

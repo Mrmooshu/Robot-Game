@@ -16,7 +16,7 @@ public class JumpBehaviour : BehaviourNode
 
     public override NodeState Evaluate()
     {
-        if (!host.canJump || !host.grounded || (bool)GetRoot().GetData("JumpDisabled"))
+        if (!host.canJump || !host.animator.GetBool("Grounded") || (bool)GetRoot().GetData("JumpDisabled"))
         {
             state = NodeState.FAILURE;
             return state;
@@ -44,7 +44,7 @@ public class JumpBehaviour : BehaviourNode
     {
         host.movementDirection = host.facingDirection;
         yield return new WaitForSeconds(.1f);
-        while (!host.grounded)
+        while (!host.animator.GetBool("Grounded"))
         {
             yield return new WaitForSeconds(.01f);
         }

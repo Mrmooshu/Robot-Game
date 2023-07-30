@@ -105,12 +105,13 @@ public class GolemEntity : MinionEntity
     public virtual void BasicAttackHit()
     {
         bufferedAction = null;
-        Vector2 knockback = new Vector2(10 * facingDirection, 100);
-        if (!DamageScript.Attack(new DamageScript.attackData(this, new DamageScript.damageData(stats[EntityStatType.AttackDamage].Value, DamageScript.damageType.physical), true, knockback, .5f), hitboxes, whatIsEnemy, this)){
+        Vector2 knockback = new Vector2(30 * facingDirection,0);
+        Vector2 airknockback = new Vector2(50 * facingDirection, 50);
+        if (!DamageScript.Attack(new DamageScript.attackData(this, new DamageScript.damageData(stats[EntityStatType.AttackDamage].Value, DamageScript.damageType.physical), true, (knockback, airknockback), .5f), hitboxes, whatIsEnemy, this)){
             if (data.skills["sandblast"] > 0)
             {
                 Projectile projectile = Instantiate(sandblastPrefab, sandblastSpawn.position, transform.rotation).GetComponent<Projectile>();
-                projectile.Initialize(facingDirection, this, new DamageScript.attackData(this, new DamageScript.damageData(stats[EntityStatType.AttackDamage].Value * .1f + stats[EntityStatType.MagicDamage].Value, DamageScript.damageType.magic), false, Vector2.zero, .5f));
+                projectile.Initialize(facingDirection, this, new DamageScript.attackData(this, new DamageScript.damageData(stats[EntityStatType.AttackDamage].Value * .1f + stats[EntityStatType.MagicDamage].Value, DamageScript.damageType.magic), false, (Vector2.zero, Vector2.zero), .5f));
             }
 
         }
@@ -158,7 +159,7 @@ public class GolemEntity : MinionEntity
     public void TornadoHit()
     {
         bufferedAction = null;
-        Vector2 knockback = new Vector2(rigBod.velocity.x, 80); // replace this with a magnetic effect later that applies to the target and pulls them close for the following hits
-        DamageScript.Attack(new DamageScript.attackData(this, new DamageScript.damageData(stats[EntityStatType.AttackDamage].Value * .1f, DamageScript.damageType.physical), true, knockback, .5f), hitboxes, whatIsEnemy, this);
+        Vector2 knockback = new Vector2(facingDirection * (rigBod.velocity.x + 20), 40); // replace this with a magnetic effect later that applies to the target and pulls them close for the following hits
+        DamageScript.Attack(new DamageScript.attackData(this, new DamageScript.damageData(stats[EntityStatType.AttackDamage].Value * .1f, DamageScript.damageType.physical), true, (knockback, knockback), .5f), hitboxes, whatIsEnemy, this);
     }
 }

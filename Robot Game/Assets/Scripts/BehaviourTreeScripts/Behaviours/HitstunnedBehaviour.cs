@@ -13,7 +13,7 @@ public class HitstunnedBehaviour : BehaviourNode
 
     public override NodeState Evaluate()
     {
-        if (host.hitStunDuration <= 0)
+        if (host.animator.GetFloat("Hitstun") <= 0)
         {
             state = NodeState.SUCCESS;
             return state;

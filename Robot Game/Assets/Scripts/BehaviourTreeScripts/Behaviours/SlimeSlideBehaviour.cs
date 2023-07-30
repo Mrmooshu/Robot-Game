@@ -52,9 +52,10 @@ public class SlimeSlideBehaviour : BehaviourNode
         host.animator.SetTrigger("EndSlide");
         ConstantForce2D force = host.gameObject.AddComponent<ConstantForce2D>();
         force.relativeForce = new Vector2(host.facingDirection * speed,-.1f);
-        ((EnemyEntity)host).hitboxes.GetChild(0).gameObject.AddComponent<DamageCollider>().Initialize(new DamageScript.attackData(host, new DamageScript.damageData(host.stats[EntityStatType.AttackDamage].Value, DamageScript.damageType.physical), true, new Vector2(host.facingDirection * 10,10), .5f), host.whatIsEnemy, host);
-
-        while (!host.animator.GetCurrentAnimatorStateInfo(0).IsName("Slide_End"))
+        Vector2 knockback = new Vector2(host.facingDirection * 10, 10);
+        ((EnemyEntity)host).hitboxes.GetChild(0).gameObject.AddComponent<DamageCollider>().Initialize(new DamageScript.attackData(host, new DamageScript.damageData(host.stats[EntityStatType.AttackDamage].Value, DamageScript.damageType.physical), true, (knockback, knockback), .5f), host.whatIsEnemy, host);
+        yield return new WaitForSeconds(.01f);
+        while (host.animator.GetCurrentAnimatorStateInfo(0).IsName("Slide_Start") || host.animator.GetCurrentAnimatorStateInfo(0).IsName("Slide_Start"))
         {
             yield return new WaitForSeconds(.01f);
         }

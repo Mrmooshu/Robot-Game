@@ -4,8 +4,6 @@ using UnityEngine;
 
 public abstract class CharacterEntity : Entity
 {
-    public Rigidbody2D rigBod { get; protected set; }
-    public Animator animator{ get; protected set; }
     public Transform groundCheck;
     public LayerMask whatIsGround;
     protected float groundedRadius = .1f;
@@ -13,15 +11,13 @@ public abstract class CharacterEntity : Entity
     public float spawnX;
     public int maxDistanceFromSpawn = 0;
     public int movementDirection;
-    public bool grounded, canJump;
+    public bool canJump;
 
     public BehaviourNode brain;
 
     public override void Start()
     {
         base.Start();
-        rigBod = GetComponent<Rigidbody2D>();
-        animator = GetComponent<Animator>();
         spawnX = transform.position.x;
 
         CreateBrain();
@@ -30,6 +26,7 @@ public abstract class CharacterEntity : Entity
     public override void Update()
     {
         base.Update();
+        MovementChecks();
     }
 
     public override void FixedUpdate()
@@ -37,21 +34,21 @@ public abstract class CharacterEntity : Entity
         Movement();
     }
 
-    protected virtual void Movement()
+    protected virtual void MovementChecks()
     {
-        grounded = Physics2D.OverlapCircle(groundCheck.position, groundedRadius, whatIsGround);
+        animator.SetBool("Grounded", Physics2D.OverlapCircle(groundCheck.position, groundedRadius, whatIsGround));
 
         if (dead)
         {
             rigBod.velocity = Vector2.zero;
             return;
         }
-        if (hitStunDuration > 0)
+        if (animator.GetFloat("Hitstun") > 0)
         {
             return;
         }
 
-        if (grounded && rigBod.velocity.y <= 0)
+        if (animator.GetBool("Grounded") && rigBod.velocity.y <= 0)
         {
             canJump = true;
         }
@@ -60,14 +57,18 @@ public abstract class CharacterEntity : Entity
         {
             Flip();
         }
+
+        // running anim
+        animator.SetFloat("Running", Mathf.Abs(movementDirection));
+    }
+
+    protected virtual void Movement()
+    {
         float targetSpeed = movementDirection * stats[EntityStatType.MoveSpeed].Value;
         float speedDiff = targetSpeed - rigBod.velocity.x;
         float accelRate = (Mathf.Abs(targetSpeed) > 0.01f) ? stats[EntityStatType.MoveSpeed].Value * 1f : stats[EntityStatType.MoveSpeed].Value * 2;
         float movement = Mathf.Pow(Mathf.Abs(speedDiff) * accelRate, 1) * Mathf.Sign(speedDiff);
         rigBod.AddForce(movement * Vector2.right);
-
-        // running anim
-        animator.SetFloat("Running", Mathf.Abs(movementDirection));
     }
 
     //Override this with an assignment to brain and call base

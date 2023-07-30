@@ -25,8 +25,6 @@ public class MinionEntity : Entity
     public float baseAttackSpeed { get; protected set; } = 1f;
 
     //gameobject components
-    protected Rigidbody2D rigBod;
-    public Animator animator { get; protected set; }
     public Transform groundCheck;
 
     //other

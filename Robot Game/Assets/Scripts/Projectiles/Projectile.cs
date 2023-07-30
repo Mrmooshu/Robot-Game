@@ -9,7 +9,6 @@ public class Projectile : Entity
     [SerializeField] protected float lifeTime = 20;
     [SerializeField] protected Transform direction;
     [SerializeField] protected Transform visual;
-    [SerializeField] protected Animator animator;
     protected DamageScript.attackData attack;
 
     protected List<Entity> alreadyHit;
@@ -26,7 +25,6 @@ public class Projectile : Entity
 
     public override void Update()
     {
-        base.Update();
         // homing
         //direction.right = origin.transform.position - transform.position;
         //visual.right = origin.transform.position - transform.position;

@@ -27,19 +27,19 @@ public class EnemyEntity : CharacterEntity
             new HitstunnedBehaviour(this),
             new TargetPlayerBehaviour(this, 5),
             new FaceTargetBehaviour(this),
-            new ActionCooldownBehaviour(this, 2, "primaryActions"),
+            new ActionCooldownBehaviour(this, (1.1f,1.5f), "primaryActions"),
             new RandomBehaviour(new List<BehaviourNode>
             {
                 new BehaviourSequence(new List<BehaviourNode>
                 {
                     new LineSightTargetBehaviour(this, 5),
-                    new SlimeSlideBehaviour(this, 20, 5)
+                    new SlimeSlideBehaviour(this, 20, 4)
                 }),
 
                 new BehaviourSequence(new List<BehaviourNode>
                 {
                     new RandomJumpBehaviour(this),
-                    new JumpBehaviour(this, 2)
+                    new JumpBehaviour(this, 1)
                 }),
                 new BehaviourSequence(new List<BehaviourNode>
                 {

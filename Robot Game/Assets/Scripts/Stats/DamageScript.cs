@@ -8,7 +8,7 @@ public static class DamageScript
 {
     public enum damageType
     {
-        physical,magic
+        physical, magic
     }
 
     public struct damageData
@@ -28,15 +28,17 @@ public static class DamageScript
         public Entity attacker;
         public damageData damageData;
         public bool onHit;
-        public Vector2 knockback;
+        public Vector2 groundKnockback;
+        public Vector2 airKockback;
         public float hitStun;
 
-        public attackData(Entity attacker, damageData damageData, bool onHit, Vector2 knockback, float hitStun)
+        public attackData(Entity attacker, damageData damageData, bool onHit, (Vector2, Vector2) knockback, float hitStun)
         {
             this.attacker = attacker;
             this.damageData = damageData;
             this.onHit = onHit;
-            this.knockback = knockback;
+            this.groundKnockback = knockback.Item1;
+            this.airKockback = knockback.Item2;
             this.hitStun = hitStun;
         }
     }
@@ -69,7 +71,7 @@ public static class DamageScript
         }
         ((ResourceStat)target.stats[EntityStatType.Health]).CurrentValue -= (actualPhysicalDamage + actualMagicDamage);
         int damageDisplayCount = 0;
-        foreach ((int,Color) damage in new (int, Color)[]{(actualMagicDamage,Color.cyan), (actualPhysicalDamage, new Color(1,.74f,0)) })
+        foreach ((int, Color) damage in new (int, Color)[] { (actualMagicDamage, Color.cyan), (actualPhysicalDamage, new Color(1, .74f, 0)) })
         {
             if (damage.Item1 > 0)
             {
@@ -78,7 +80,7 @@ public static class DamageScript
                 text.GetComponentInChildren<TextMeshProUGUI>().color = damage.Item2;
                 text.transform.position = target.transform.position;
                 text.transform.localScale = new Vector3(.02f, .02f, 1);
-                text.transform.position += new Vector3(0, 1f + 1f*damageDisplayCount,0);
+                text.transform.position += new Vector3(0, 1f + 1f * damageDisplayCount, 0);
                 damageDisplayCount++;
             }
         }
@@ -124,8 +126,10 @@ public static class DamageScript
 
     public static void KnockBack(Entity target, attackData attackData)
     {
-        target.GetComponent<Rigidbody2D>().velocity *= .2f;
-        target.GetComponent<Rigidbody2D>().AddForce(attackData.knockback);
-        target.hitStunDuration = attackData.hitStun;
+        target.GetComponent<Rigidbody2D>().velocity *= .1f;
+        target.GetComponent<Rigidbody2D>().AddForce(target.animator.GetBool("Grounded") ? attackData.groundKnockback : attackData.airKockback);
+        target.animator.SetFloat("Hitstun", attackData.hitStun);
+        target.animator.SetTrigger("Hit");
+        UniversalHelperFunctions.DelayedAction(() => { target.animator.ResetTrigger("Hit"); }, .1f);
     }
 }

@@ -8,9 +8,11 @@ public abstract class Entity : MonoBehaviour
 
     [SerializeField]private List<EntitiyStatStruct> statListInspector;
 
+    public Rigidbody2D rigBod { get; protected set; }
+    public Animator animator { get; protected set; }
+
     public int facingDirection { get; protected set; }
     public bool dead = false;
-    public float hitStunDuration = 0;
     public LayerMask whatIsEnemy;
 
     public Dictionary<EntityStatType, Stat> stats;
@@ -19,6 +21,8 @@ public abstract class Entity : MonoBehaviour
     public virtual void Start()
     {
         facingDirection = (int)transform.localScale.x;
+        rigBod = GetComponent<Rigidbody2D>();
+        animator = GetComponent<Animator>();
         CreateStats();
     }
 
@@ -98,9 +102,9 @@ public abstract class Entity : MonoBehaviour
 
     private void HitstunTick()
     {
-        if (hitStunDuration > 0)
+        if (animator.GetFloat("Hitstun") > 0)
         {
-            hitStunDuration -= Time.deltaTime;
+            animator.SetFloat("Hitstun", animator.GetFloat("Hitstun") - Time.deltaTime);
         }
     }
 }

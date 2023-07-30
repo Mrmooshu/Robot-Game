@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2148194630155135575}
   - component: {fileID: 8580795566295267115}
-  - component: {fileID: 6481123124882781263}
   m_Layer: 0
   m_Name: Sprite
   m_TagString: Untagged
@@ -85,26 +84,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!95 &6481123124882781263
-Animator:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 385293774136621388}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: f16b634cdedbc8c42addc2c3ea553038, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
 --- !u!1 &1656874469506092724
 GameObject:
   m_ObjectHideFlags: 0
@@ -180,6 +159,7 @@ GameObject:
   - component: {fileID: 8688897834654211089}
   - component: {fileID: 152994011604735608}
   - component: {fileID: 2606546967062137865}
+  - component: {fileID: 5452113680692094047}
   m_Layer: 0
   m_Name: Base Projectile
   m_TagString: Untagged
@@ -247,15 +227,33 @@ MonoBehaviour:
   - type: 4
     value: 1
   dead: 0
-  stunned: 0
   whatIsEnemy:
     serializedVersion: 2
     m_Bits: 0
-  bufferedAction: 
   origin: {fileID: 0}
+  lifeTime: 20
   direction: {fileID: 3217284126321566917}
   visual: {fileID: 6801589533436197838}
-  animator: {fileID: 6481123124882781263}
+--- !u!95 &5452113680692094047
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4867089945131637909}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: f16b634cdedbc8c42addc2c3ea553038, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
 --- !u!1 &8532461127141304979
 GameObject:
   m_ObjectHideFlags: 0
