@@ -40,19 +40,14 @@ public class Projectile : Entity
 
     public virtual void OnTriggerEnter2D(Collider2D collision)
     {
-        //neat bitshift trick to compare layermask with layer
-        if (collision.GetComponent<Entity>() != null && (1 << collision.gameObject.layer & origin.whatIsEnemy) != 0 && !alreadyHit.Contains(collision.GetComponent<Entity>()))
+        if (collision.GetComponent<Entity>() != null && UniversalHelperFunctions.LayerMaskCompare(origin.whatIsEnemy, collision) && !alreadyHit.Contains(collision.GetComponent<Entity>()))
         {
             DamageScript.Attack(attack, collision.GetComponent<Entity>(), origin);
             alreadyHit.Add(collision.GetComponent<Entity>());
             Die();
         }
 
-        if (collision.gameObject.layer == LayerMask.NameToLayer("Enemies"))
-        {
-            Die();
-        }
-        else if (collision.gameObject.layer == LayerMask.NameToLayer("Ground"))
+        if (collision.gameObject.layer == LayerMask.NameToLayer("Ground"))
         {
             Die();
         }

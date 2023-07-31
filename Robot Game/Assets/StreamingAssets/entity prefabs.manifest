@@ -1,12 +1,12 @@
 ManifestFileVersion: 0
-CRC: 2890388809
+CRC: 273572144
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: d0d28c3f71c51f9f74c21a16edac07dd
+    Hash: f8de260042f796784777ce69803174a4
   TypeTreeHash:
     serializedVersion: 2
-    Hash: f30fbfc2ee827e41b694e0ac76ccde61
+    Hash: 58387e91ed6f04477532d7c121648dde
 HashAppended: 0
 ClassTypes:
 - Class: 1
@@ -61,6 +61,10 @@ ClassTypes:
   Script: {fileID: 11500000, guid: 16da4cbedc408114d9f1df26ae5ac682, type: 3}
 - Class: 115
   Script: {instanceID: 0}
+- Class: 198
+  Script: {instanceID: 0}
+- Class: 199
+  Script: {instanceID: 0}
 - Class: 210
   Script: {instanceID: 0}
 - Class: 212
@@ -99,5 +103,7 @@ SerializeReferenceClassIdentifiers:
 - AssemblyName: UnityEngine.UI
   ClassName: UnityEngine.UI.SpriteState
 Assets:
+- Assets/Prefabs/Entity/Projectlie Prefabs/Slime Core.prefab
 - Assets/Prefabs/Entity/Player Prefabs/Clay Golem.prefab
+- Assets/Prefabs/Slime Death.prefab
 Dependencies: []

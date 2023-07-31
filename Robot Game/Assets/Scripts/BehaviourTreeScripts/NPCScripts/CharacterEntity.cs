@@ -60,6 +60,7 @@ public abstract class CharacterEntity : Entity
 
         // running anim
         animator.SetFloat("Running", Mathf.Abs(movementDirection));
+        animator.SetFloat("Yvelocity", rigBod.velocity.y);
     }
 
     protected virtual void Movement()
@@ -75,5 +76,14 @@ public abstract class CharacterEntity : Entity
     protected virtual void CreateBrain()
     {
         gameObject.AddComponent<BehaviourTree>();
+    }
+
+    protected override void Die()
+    {
+        base.Die();
+        animator.SetTrigger("Die");
+        gameObject.layer = LayerMask.NameToLayer("Ignore Raycast");
+        rigBod.simulated = false;
+        enabled = false;
     }
 }

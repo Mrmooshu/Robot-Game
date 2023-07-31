@@ -2,21 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyEntity : CharacterEntity
+public class SlimeEnemy : CharacterEntity
 {
-    public enum Aggresion
-    {
-        passive, neutral, aggresive
-    }
-
-    public Aggresion aggresion;
     public Transform hitboxes;
 
-    protected override void Die()
+    public GameObject coreGo;
+
+    public override void Start()
     {
-        base.Die();
-        animator.SetTrigger("Die");
-        gameObject.layer = LayerMask.NameToLayer("Ignore Raycast");
+        base.Start();
+        SpawnCore();
     }
 
     protected override void CreateBrain()
@@ -32,8 +27,8 @@ public class EnemyEntity : CharacterEntity
             {
                 new BehaviourSequence(new List<BehaviourNode>
                 {
-                    new LineSightTargetBehaviour(this, 5),
-                    new SlimeSlideBehaviour(this, 20, 4)
+                    new LineSightTargetBehaviour(this, 4),
+                    new SlimeSlideBehaviour(this, 30, 4)
                 }),
 
                 new BehaviourSequence(new List<BehaviourNode>
@@ -55,5 +50,16 @@ public class EnemyEntity : CharacterEntity
         base.CreateBrain();
     }
 
+    private void SpawnCore()
+    {
+        GameObject core = Instantiate(GeneralManager.instance.entityPrefabs.LoadAsset<GameObject>("Slime Core"), coreGo.transform.position, new Quaternion(), coreGo.transform);
+        core.GetComponent<Projectile>().Initialize(facingDirection, this, new DamageScript.attackData(this, new DamageScript.damageData(stats[EntityStatType.AttackDamage].Value * .1f + stats[EntityStatType.MagicDamage].Value, DamageScript.damageType.magic), false, (Vector2.zero, Vector2.zero), .5f));
+    }
 
+    protected override void Die()
+    {
+        base.Die();
+        Instantiate(GeneralManager.instance.entityPrefabs.LoadAsset<GameObject>("Slime Death"), transform.position, new Quaternion());
+        Destroy(gameObject);
+    }
 }

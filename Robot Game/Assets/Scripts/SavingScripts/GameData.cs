@@ -40,8 +40,6 @@ public class GameData
         bankInventory.Add(new Item(Database.GetItemID("Pherium Warhammer"), 1));
         bankInventory.Add(new Item(Database.GetItemID("Rhodisium Warhammer"), 1));
         bankInventory.Add(new Item(Database.GetItemID("Lectonium Warhammer"), 1));
-        bankInventory.Add(new Item(Database.GetItemID("Test Dart"), 1));
-        bankInventory.Add(new Item(Database.GetItemID("Test Boomerang"), 1));
         bankInventory.Add(new Item(Database.GetItemID("Novium Pickaxe"), 1));
 
         activeMinions[0].SkillPoints += 70;

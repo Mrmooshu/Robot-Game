@@ -108,8 +108,8 @@ public static class DamageScript
 
         foreach (Collider2D enemy in Totalhits)
         {
-            ApplyDamage(enemy.transform.GetComponent<EnemyEntity>(), attackData);
-            KnockBack(enemy.transform.GetComponent<EnemyEntity>(), attackData);
+            ApplyDamage(enemy.transform.GetComponent<SlimeEnemy>(), attackData);
+            KnockBack(enemy.transform.GetComponent<SlimeEnemy>(), attackData);
         }
         //return it the attack hit any targets
         return Totalhits.Count() > 0;

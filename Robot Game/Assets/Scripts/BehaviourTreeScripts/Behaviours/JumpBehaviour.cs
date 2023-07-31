@@ -43,11 +43,14 @@ public class JumpBehaviour : BehaviourNode
     private IEnumerator JumpMovement()
     {
         host.movementDirection = host.facingDirection;
+        Vector2 knockback = new Vector2(host.facingDirection * 10, 10);
+        ((SlimeEnemy)host).hitboxes.GetChild(0).gameObject.AddComponent<DamageCollider>().Initialize(new DamageScript.attackData(host, new DamageScript.damageData(host.stats[EntityStatType.AttackDamage].Value, DamageScript.damageType.physical), true, (knockback, knockback), .5f), host.whatIsEnemy, host);
         yield return new WaitForSeconds(.1f);
         while (!host.animator.GetBool("Grounded"))
         {
             yield return new WaitForSeconds(.01f);
         }
         host.movementDirection = 0;
+        Object.Destroy(((SlimeEnemy)host).hitboxes.GetChild(0).gameObject.GetComponent<DamageCollider>());
     }
 }
