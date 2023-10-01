@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,27 +24,7 @@ public static class DamageScript
         }
     }
 
-    public struct attackData
-    {
-        public Entity attacker;
-        public damageData damageData;
-        public bool onHit;
-        public Vector2 groundKnockback;
-        public Vector2 airKockback;
-        public float hitStun;
-
-        public attackData(Entity attacker, damageData damageData, bool onHit, (Vector2, Vector2) knockback, float hitStun)
-        {
-            this.attacker = attacker;
-            this.damageData = damageData;
-            this.onHit = onHit;
-            this.groundKnockback = knockback.Item1;
-            this.airKockback = knockback.Item2;
-            this.hitStun = hitStun;
-        }
-    }
-
-    public static void ApplyDamage(Entity target, attackData attackData)
+    public static void ApplyDamage(Entity target, AttackData attackData)
     {
         //damage calculation
         int actualPhysicalDamage = 0;
@@ -75,7 +56,7 @@ public static class DamageScript
         {
             if (damage.Item1 > 0)
             {
-                GameObject text = Object.Instantiate(UIManager.instance.uiPrefabs.LoadAsset<GameObject>("Damage Text"));
+                GameObject text = UnityEngine.Object.Instantiate(UIManager.instance.uiPrefabs.LoadAsset<GameObject>("Damage Text"));
                 text.GetComponentInChildren<TextMeshProUGUI>().text = damage.Item1 + "";
                 text.GetComponentInChildren<TextMeshProUGUI>().color = damage.Item2;
                 text.transform.position = target.transform.position;
@@ -91,7 +72,7 @@ public static class DamageScript
     /*
      * checks collision before damaging targets that are hit
      */
-    public static bool Attack(attackData attackData, Transform hitboxParent, LayerMask targetMask, Entity attacker)
+    public static bool Attack(AttackData attackData, Transform hitboxParent)
     {
         List<Collider2D> Totalhits = new List<Collider2D>();
 
@@ -100,7 +81,7 @@ public static class DamageScript
         {
             if (collider.gameObject.activeInHierarchy)
             {
-                Collider2D[] hits = Physics2D.OverlapBoxAll(collider.transform.position, collider.size, 0, targetMask);
+                Collider2D[] hits = Physics2D.OverlapBoxAll(collider.transform.position, collider.size, 0, attackData.targetMask);
                 Totalhits.AddRange(hits);
             }
         }
@@ -118,13 +99,13 @@ public static class DamageScript
     /*
      * damages directly
      */
-    public static void Attack(attackData attackData, Entity target, Entity attacker)
+    public static void Attack(AttackData attackData, Entity target)
     {
         ApplyDamage(target, attackData);
         KnockBack(target, attackData);
     }
 
-    public static void KnockBack(Entity target, attackData attackData)
+    public static void KnockBack(Entity target, AttackData attackData)
     {
         target.GetComponent<Rigidbody2D>().velocity *= .1f;
         target.GetComponent<Rigidbody2D>().AddForce(target.animator.GetBool("Grounded") ? attackData.groundKnockback : attackData.airKockback);

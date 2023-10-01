@@ -9,18 +9,25 @@ public class Projectile : Entity
     [SerializeField] protected float lifeTime = 20;
     [SerializeField] protected Transform direction;
     [SerializeField] protected Transform visual;
-    protected DamageScript.attackData attack;
+    protected AttackData attack;
 
-    protected List<Entity> alreadyHit;
-
-    public void Initialize(int facingDirection, Entity origin, DamageScript.attackData attack)
+    public void Initialize(int facingDirection, Entity origin, AttackData attack)
     {
         transform.right *= facingDirection;
         this.origin = origin;
         this.attack = attack;
-        alreadyHit = new List<Entity>();
+        whatIsEnemy = origin.whatIsEnemy;
         CreateStats();
         StartCoroutine(Lifespan());
+    }
+
+    public override void Start()
+    {
+        rigBod = GetComponent<Rigidbody2D>();
+        animator = GetComponent<Animator>();
+        hitboxes.EnableAttack(attack);
+        attack.AddAction((() => { Die(); }, AttackData.effectOccurance.hit));
+        hitboxes.BeginAttack();
     }
 
     public override void Update()
@@ -40,13 +47,6 @@ public class Projectile : Entity
 
     public virtual void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.GetComponent<Entity>() != null && UniversalHelperFunctions.LayerMaskCompare(origin.whatIsEnemy, collision) && !alreadyHit.Contains(collision.GetComponent<Entity>()))
-        {
-            DamageScript.Attack(attack, collision.GetComponent<Entity>(), origin);
-            alreadyHit.Add(collision.GetComponent<Entity>());
-            Die();
-        }
-
         if (collision.gameObject.layer == LayerMask.NameToLayer("Ground"))
         {
             Die();

@@ -157,7 +157,7 @@ SpriteRenderer:
   m_SortingLayerID: 506174663
   m_SortingLayer: 3
   m_SortingOrder: 0
-  m_Sprite: {fileID: 1205224602988885405, guid: f50c5c607766c5c44a33d818be6b5233, type: 3}
+  m_Sprite: {fileID: -7218240477407982159, guid: 4fb49f523789f2f4b8956624cc00591b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -321,7 +321,7 @@ SpriteRenderer:
   m_SortingLayerID: 506174663
   m_SortingLayer: 3
   m_SortingOrder: 0
-  m_Sprite: {fileID: 2190662719515178903, guid: f50c5c607766c5c44a33d818be6b5233, type: 3}
+  m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -329,7 +329,7 @@ SpriteRenderer:
   m_Size: {x: 0.34375, y: 0.78125}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &2947402111217047421
@@ -478,6 +478,7 @@ MonoBehaviour:
     value: 5
   - type: 2
     value: 100
+  hitboxes: {fileID: 1639038510938098056}
   dead: 0
   whatIsEnemy:
     serializedVersion: 2
@@ -502,7 +503,6 @@ MonoBehaviour:
     _skillPoints: 0
   icon: {fileID: 3797438909279334143, guid: e300c380a49e2c84e9671463ad9884b1, type: 3}
   currentInteractable: {fileID: 0}
-  hitboxes: {fileID: 2426644850212123448}
   skillTree: {fileID: 52194782207523293, guid: d62f92d9bd3bfa54c991f51a6df19f47, type: 3}
   groundCheck: {fileID: 2653229882561976576}
   MoveLocked: 0
@@ -571,7 +571,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1303739445282741927}
   - component: {fileID: 7246696025758412364}
-  m_Layer: 7
+  - component: {fileID: 1358563367422949066}
+  m_Layer: 15
   m_Name: Hitbox3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -638,6 +639,18 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &1358563367422949066
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5315328911284462296}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca7b4a70979f2184d935b0c63ec364f3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5472859855504879286
 GameObject:
   m_ObjectHideFlags: 0
@@ -648,7 +661,8 @@ GameObject:
   m_Component:
   - component: {fileID: 836277396505350231}
   - component: {fileID: 6291505041929328193}
-  m_Layer: 7
+  - component: {fileID: 3818268746468627364}
+  m_Layer: 15
   m_Name: Hitbox2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -715,6 +729,18 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &3818268746468627364
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5472859855504879286}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca7b4a70979f2184d935b0c63ec364f3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5739863367139507203
 GameObject:
   m_ObjectHideFlags: 0
@@ -984,7 +1010,7 @@ SpriteRenderer:
   m_SortingLayerID: 506174663
   m_SortingLayer: 3
   m_SortingOrder: 0
-  m_Sprite: {fileID: 1751505740268269423, guid: f50c5c607766c5c44a33d818be6b5233, type: 3}
+  m_Sprite: {fileID: 3547674861413114331, guid: 4fb49f523789f2f4b8956624cc00591b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -1029,7 +1055,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2426644850212123448}
-  m_Layer: 7
+  - component: {fileID: 1639038510938098056}
+  m_Layer: 15
   m_Name: Hitboxes
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1054,6 +1081,18 @@ Transform:
   m_Father: {fileID: 2669152528609034008}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1639038510938098056
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7254525738330517405}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 22eec1f84d768fd49895cb865dbcde3c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7695138371694520279
 GameObject:
   m_ObjectHideFlags: 0
@@ -1064,7 +1103,8 @@ GameObject:
   m_Component:
   - component: {fileID: 6833246528058989586}
   - component: {fileID: 7001019675722594144}
-  m_Layer: 7
+  - component: {fileID: 6693930430562584774}
+  m_Layer: 15
   m_Name: Hitbox1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1131,6 +1171,18 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &6693930430562584774
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7695138371694520279}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca7b4a70979f2184d935b0c63ec364f3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7962304482261825219
 GameObject:
   m_ObjectHideFlags: 0

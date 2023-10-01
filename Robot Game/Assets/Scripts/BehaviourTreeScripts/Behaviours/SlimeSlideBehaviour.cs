@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static DamageScript;
 
 public class SlimeSlideBehaviour : BehaviourNode
 {
@@ -53,13 +54,12 @@ public class SlimeSlideBehaviour : BehaviourNode
         ConstantForce2D force = host.gameObject.AddComponent<ConstantForce2D>();
         force.relativeForce = new Vector2(host.facingDirection * speed,-.1f);
         Vector2 knockback = new Vector2(host.facingDirection * 10, 10);
-        ((SlimeEnemy)host).hitboxes.GetChild(0).gameObject.AddComponent<DamageCollider>().Initialize(new DamageScript.attackData(host, new DamageScript.damageData(host.stats[EntityStatType.AttackDamage].Value, DamageScript.damageType.physical), true, (knockback, knockback), .5f), host.whatIsEnemy, host);
+        host.hitboxes.EnableAttack(new AttackData(host, new damageData(host.stats[EntityStatType.AttackDamage].Value, damageType.physical), true, (knockback, knockback), .5f, host.whatIsEnemy));
         yield return new WaitForSeconds(.01f);
         while (host.animator.GetCurrentAnimatorStateInfo(0).IsName("Slide_Start") || host.animator.GetCurrentAnimatorStateInfo(0).IsName("Slide_Start"))
         {
             yield return new WaitForSeconds(.01f);
         }
         Object.Destroy(force);
-        Object.Destroy(((SlimeEnemy)host).hitboxes.GetChild(0).gameObject.GetComponent<DamageCollider>());
     }
 }

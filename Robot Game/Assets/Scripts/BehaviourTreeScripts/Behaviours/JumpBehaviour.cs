@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static DamageScript;
 
 public class JumpBehaviour : BehaviourNode
 {
@@ -28,7 +29,7 @@ public class JumpBehaviour : BehaviourNode
         //animator.SetBool("Jumping", true);
         GetRoot().ClearData("JumpArc");
         host.StartCoroutine(JumpCooldown());
-        host.StartCoroutine(JumpMovement());
+        JumpMovement();
         state = NodeState.SUCCESS;
         return state;
     }
@@ -40,17 +41,12 @@ public class JumpBehaviour : BehaviourNode
         GetRoot().SetData("JumpDisabled", false);
     }
 
-    private IEnumerator JumpMovement()
+    private void JumpMovement()
     {
         host.movementDirection = host.facingDirection;
         Vector2 knockback = new Vector2(host.facingDirection * 10, 10);
-        ((SlimeEnemy)host).hitboxes.GetChild(0).gameObject.AddComponent<DamageCollider>().Initialize(new DamageScript.attackData(host, new DamageScript.damageData(host.stats[EntityStatType.AttackDamage].Value, DamageScript.damageType.physical), true, (knockback, knockback), .5f), host.whatIsEnemy, host);
-        yield return new WaitForSeconds(.1f);
-        while (!host.animator.GetBool("Grounded"))
-        {
-            yield return new WaitForSeconds(.01f);
-        }
-        host.movementDirection = 0;
-        Object.Destroy(((SlimeEnemy)host).hitboxes.GetChild(0).gameObject.GetComponent<DamageCollider>());
+        var attack = host.hitboxes.EnableAttack(new AttackData(host, new damageData(host.stats[EntityStatType.AttackDamage].Value, damageType.physical), true, (knockback, knockback), .5f, host.whatIsEnemy));
+        attack.AddAction((() => { host.movementDirection = 0; }, AttackData.effectOccurance.end));
+        host.hitboxes.BeginAttack();
     }
 }

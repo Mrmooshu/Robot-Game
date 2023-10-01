@@ -124,6 +124,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6801589533436197838}
+  - component: {fileID: 7698134275030538313}
   m_Layer: 0
   m_Name: Visual
   m_TagString: Untagged
@@ -148,6 +149,18 @@ Transform:
   m_Father: {fileID: 8688897834654211089}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7698134275030538313
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2206349965124263711}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 22eec1f84d768fd49895cb865dbcde3c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4867089945131637909
 GameObject:
   m_ObjectHideFlags: 0
@@ -226,6 +239,7 @@ MonoBehaviour:
   statListInspector:
   - type: 4
     value: 1
+  hitboxes: {fileID: 7698134275030538313}
   dead: 0
   whatIsEnemy:
     serializedVersion: 2
@@ -265,6 +279,7 @@ GameObject:
   - component: {fileID: 1453685905611509890}
   - component: {fileID: 821825962375897901}
   - component: {fileID: 7809388523126714993}
+  - component: {fileID: 2322279865796783745}
   m_Layer: 0
   m_Name: Collider
   m_TagString: Untagged
@@ -367,3 +382,15 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.5
+--- !u!114 &2322279865796783745
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8532461127141304979}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca7b4a70979f2184d935b0c63ec364f3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

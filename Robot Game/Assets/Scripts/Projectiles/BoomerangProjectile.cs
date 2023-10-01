@@ -1,11 +1,19 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static DamageScript;
 
 public class BoomerangProjectile : Projectile
 {
     public float duration = 1;
     public float rotationSpeed = 450f;
+
+    public override void Start()
+    {
+        base.Start();
+        Vector2 knockback = new Vector2(100 * (duration <= 0 ? 1 : -1), 100);
+        hitboxes.EnableAttack(new AttackData(origin, new damageData(origin.stats[EntityStatType.AttackDamage].Value, damageType.physical), true, (knockback, knockback), .5f, whatIsEnemy));
+    }
 
     public override void Update()
     {
@@ -14,7 +22,7 @@ public class BoomerangProjectile : Projectile
         duration -= Time.deltaTime;
         if (prevDuration > 0 && duration <= 0)
         {
-            alreadyHit.Clear();
+            hitboxes.attack.Totalhits = new List<Entity>();
         }
 
         // homing
@@ -34,17 +42,5 @@ public class BoomerangProjectile : Projectile
         {
             Destroy(gameObject);
         }
-    }
-
-    public override void OnTriggerEnter2D(Collider2D collision)
-    {
-        //neat bitshift trick to compare layermask with layer
-        if (collision.GetComponent<Entity>() != null && (1 << collision.gameObject.layer & origin.whatIsEnemy) != 0 && !alreadyHit.Contains(collision.GetComponent<Entity>()))
-        {
-            Vector2 knockback = new Vector2(100 * (duration <= 0 ? 1 : -1), 100);
-            DamageScript.Attack(new DamageScript.attackData(origin, new DamageScript.damageData(origin.stats[EntityStatType.AttackDamage].Value, DamageScript.damageType.physical), true, (knockback, knockback), .5f), collision.GetComponent<Entity>(), origin);
-            alreadyHit.Add(collision.GetComponent<Entity>());
-        }
-
     }
 }

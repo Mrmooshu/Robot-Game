@@ -18,7 +18,6 @@ public class MinionEntity : Entity
     AnimatorOverrideController controller;
 
     //other
-    public Transform hitboxes;
 
     public GameObject skillTree;
 

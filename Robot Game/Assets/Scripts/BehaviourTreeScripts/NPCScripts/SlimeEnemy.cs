@@ -1,11 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static DamageScript;
 
 public class SlimeEnemy : CharacterEntity
 {
-    public Transform hitboxes;
-
     public GameObject coreGo;
 
     public override void Start()
@@ -22,7 +21,7 @@ public class SlimeEnemy : CharacterEntity
             new HitstunnedBehaviour(this),
             new TargetPlayerBehaviour(this, 5),
             new FaceTargetBehaviour(this),
-            new ActionCooldownBehaviour(this, (1.1f,1.5f), "primaryActions"),
+            new ActionCooldownBehaviour(this, (1.2f,1.6f), "primaryActions"),
             new RandomBehaviour(new List<BehaviourNode>
             {
                 new BehaviourSequence(new List<BehaviourNode>
@@ -52,8 +51,8 @@ public class SlimeEnemy : CharacterEntity
 
     private void SpawnCore()
     {
-        GameObject core = Instantiate(GeneralManager.instance.entityPrefabs.LoadAsset<GameObject>("Slime Core"), coreGo.transform.position, new Quaternion(), coreGo.transform);
-        core.GetComponent<Projectile>().Initialize(facingDirection, this, new DamageScript.attackData(this, new DamageScript.damageData(stats[EntityStatType.AttackDamage].Value * .1f + stats[EntityStatType.MagicDamage].Value, DamageScript.damageType.magic), false, (Vector2.zero, Vector2.zero), .5f));
+        //GameObject core = Instantiate(GeneralManager.instance.entityPrefabs.LoadAsset<GameObject>("Slime Core"), coreGo.transform.position, new Quaternion(), coreGo.transform);
+        //core.GetComponent<Projectile>().Initialize(facingDirection, this, new attackData(this, new damageData(stats[EntityStatType.AttackDamage].Value * .1f + stats[EntityStatType.MagicDamage].Value, damageType.magic), false, (Vector2.zero, Vector2.zero), .5f, whatIsEnemy));
     }
 
     protected override void Die()

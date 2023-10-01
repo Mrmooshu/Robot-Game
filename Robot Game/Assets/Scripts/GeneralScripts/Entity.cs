@@ -11,6 +11,8 @@ public abstract class Entity : MonoBehaviour
     public Rigidbody2D rigBod { get; protected set; }
     public Animator animator { get; protected set; }
 
+    public HitboxScript hitboxes;
+
     public int facingDirection { get; protected set; }
     public bool dead = false;
     public LayerMask whatIsEnemy;
