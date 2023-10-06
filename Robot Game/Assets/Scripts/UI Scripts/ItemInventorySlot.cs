@@ -3,10 +3,18 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class ItemInventorySlot : MonoBehaviour, IDropHandler, ISlot
+public class ItemInventorySlot : SlotDisplay<ItemData>
 {
     public int inventoryIndex;
-    public void OnDrop(PointerEventData eventData)
+
+    public ItemInventory inventory;
+
+    public override ref Item GetItem()
+    {
+        return ref inventory.inventory[inventoryIndex];
+    }
+
+    public override void OnDrop(PointerEventData eventData)
     {
         if (eventData.pointerDrag != null)
         {
@@ -14,10 +22,4 @@ public class ItemInventorySlot : MonoBehaviour, IDropHandler, ISlot
         }
     }
 
-    public void Swap(Transform inventorySlot)
-    {
-        ItemInventory.Move(inventorySlot.parent.parent.GetComponentInParent<ItemInventoryDisplay>().currentInventory, transform.parent.parent.GetComponentInParent<ItemInventoryDisplay>().currentInventory, inventorySlot.GetComponent<ItemInventorySlot>().inventoryIndex, inventoryIndex);
-        inventorySlot.parent.parent.GetComponentInParent<ItemInventoryDisplay>().RefreshInventory();
-        transform.parent.parent.GetComponentInParent<ItemInventoryDisplay>().RefreshInventory();
-    }
 }

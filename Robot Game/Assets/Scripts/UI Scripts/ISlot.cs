@@ -5,4 +5,6 @@ using UnityEngine;
 public interface ISlot
 {
     public void Swap(Transform slotTransform);
+
+    public void RemoveFromSlot();
 }

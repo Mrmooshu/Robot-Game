@@ -7,7 +7,6 @@ using UnityEngine.UI;
 
 public class RockInteractable : Interactable
 {
-    //TODO needt oupdate this so that it works for minions
     public override void PlayerInRange(MinionEntity playerEntitiy)
     {
         if (playerEntitiy.data == PlayerManager.instance.activeMinion && PlayerManager.instance.activeMinion.GetEntity() is GolemEntity)

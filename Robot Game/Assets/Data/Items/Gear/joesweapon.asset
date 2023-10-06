@@ -17,5 +17,8 @@ MonoBehaviour:
   itemDescription: joes nutcrusher
   stackable: 0
   sprite: {fileID: 21300000, guid: 415bfb9dabbe77440af89dc7aee1f76a, type: 3}
-  itemModifiers: []
+  itemModifiers:
+  - value: 20
+    bonusType: 0
+    statType: 8
   animation: {fileID: 0}

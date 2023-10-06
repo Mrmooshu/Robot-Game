@@ -20,4 +20,9 @@ public class PlayerInventorySlot : MonoBehaviour, IDropHandler, ISlot
         inventoryItem.GetComponentInParent<MinionInventoryDisplay>().RefreshInventory();
         transform.GetComponentInParent<MinionInventoryDisplay>().RefreshInventory();
     }
+
+    public void RemoveFromSlot()
+    {
+        //delete character
+    }
 }

@@ -50,6 +50,7 @@ public class ItemInventoryDisplay : InventoryDisplay
             GameObject slotInstance = Instantiate(slotPrefab, inventoryArea.transform);
             slotInstance.transform.localPosition = new Vector2((x * slotSize), (-y * slotSize));
             slotInstance.GetComponent<ItemInventorySlot>().inventoryIndex = i;
+            slotInstance.GetComponent<ItemInventorySlot>().inventory = currentInventory;
 
             x++;
 

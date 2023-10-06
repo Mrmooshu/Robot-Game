@@ -11,6 +11,8 @@ public class GameData
     public ItemInventory bankInventory;
     public List<QuestData> quests;
 
+    public SmithingData smithing;
+
     public void NewGameData()
     {
         universal = new UniversalPlayerData();
@@ -24,6 +26,8 @@ public class GameData
             quest.currentStep = 0;
             quest.questState = Quest.QuestState.inactive;
         }
+
+        smithing = new SmithingData();
 
         //testing pusposes stuff
 

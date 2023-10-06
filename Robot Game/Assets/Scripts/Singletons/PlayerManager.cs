@@ -22,6 +22,9 @@ public class PlayerManager : MonoBehaviour, IDataSave
     public MinionInventory minionInventory;
     public ItemInventory bankInventory;
 
+    public SmithingData smithing;
+
+
     public List<MinionEntity> minionEntities;
 
     public MinionData activeMinion;
@@ -185,6 +188,8 @@ public class PlayerManager : MonoBehaviour, IDataSave
         activeMinions = data.activeMinions;
         minionInventory = data.minionInventory;
         bankInventory = data.bankInventory;
+
+        smithing = data.smithing;
     }
 
     public void SaveData(ref GameData data)
@@ -193,5 +198,7 @@ public class PlayerManager : MonoBehaviour, IDataSave
         data.activeMinions = activeMinions;
         data.minionInventory = minionInventory;
         data.bankInventory = bankInventory;
+
+        data.smithing = smithing;
     }
 }
