@@ -2,8 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SmeltingInteractable : Interactable
+public class SmithingInteractable : Interactable
 {
+    public int smithIndex;
+
     public override void PlayerInRange(MinionEntity playerEntitiy)
     {
         if (playerEntitiy.data == PlayerManager.instance.activeMinion)
@@ -22,7 +24,9 @@ public class SmeltingInteractable : Interactable
         }
         else
         {
+            UIManager.CloseMainUi();
             GameObject.Find("UI Canvas/UI(Clone)/Skill Interfaces/Smithing Menu").SetActive(true);
+            PlayerManager.instance.smithing.currentStation = PlayerManager.instance.smithing.stations[smithIndex];
         }
     }
 }

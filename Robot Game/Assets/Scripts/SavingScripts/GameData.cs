@@ -45,6 +45,15 @@ public class GameData
         bankInventory.Add(new Item(Database.GetItemID("Rhodisium Warhammer"), 1));
         bankInventory.Add(new Item(Database.GetItemID("Lectonium Warhammer"), 1));
         bankInventory.Add(new Item(Database.GetItemID("Novium Pickaxe"), 1));
+        bankInventory.Add(new Item(Database.GetItemID("Coal"), 1));
+        bankInventory.Add(new Item(Database.GetItemID("Coal"), 1));
+        bankInventory.Add(new Item(Database.GetItemID("Coal"), 1));
+        bankInventory.Add(new Item(Database.GetItemID("Coal"), 1));
+        bankInventory.Add(new Item(Database.GetItemID("Coal"), 1));
+        bankInventory.Add(new Item(Database.GetItemID("Coppel Ore"), 100));
+        bankInventory.Add(new Item(Database.GetItemID("Novium Ore"), 20));
+        bankInventory.Add(new Item(Database.GetItemID("Iromite Ore"), 10));
+        bankInventory.Add(new Item(Database.GetItemID("Slythril Ore"), 5));
 
         activeMinions[0].SkillPoints += 70;
 

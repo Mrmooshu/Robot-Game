@@ -33,15 +33,15 @@ public abstract class BaseInventory<T>
         inventoryUpdated?.Invoke();
     }
 
-    public static void Move(BaseInventory<T> inventoryFrom, BaseInventory<T> inventoryTo, int index1, int index2)
+    public static void Move(BaseInventory<T> inventoryFrom, BaseInventory<T> inventoryTo, int indexFrom, int indexTo)
     {
-        if (inventoryFrom == inventoryTo && index1 == index2)
+        if (inventoryFrom == inventoryTo && indexFrom == indexTo)
         {
             return;
         }
-        T temp = inventoryTo.inventory[index2];
-        inventoryTo.inventory[index2] = inventoryFrom.inventory[index1];
-        inventoryFrom.inventory[index1] = temp;
+        T temp = inventoryTo.inventory[indexTo];
+        inventoryTo.inventory[indexTo] = inventoryFrom.inventory[indexFrom];
+        inventoryFrom.inventory[indexFrom] = temp;
         inventoryUpdated?.Invoke();
     }
 

@@ -65,6 +65,7 @@ public class UIManager : MonoBehaviour
         GameObject.Find("UI Canvas/UI(Clone)/SafePointMenu").SetActive(false);
         GameObject.Find("UI Canvas/UI(Clone)/MainPlayerMenu").SetActive(false);
         GameObject.Find("UI Canvas/UI(Clone)/SwapPlayerMenu").SetActive(false);
+        GameObject.Find("UI Canvas/UI(Clone)/Skill Interfaces/Smithing Menu").SetActive(false);
         GameObject.Find("UI Canvas/UI(Clone)").GetComponent<ToggleGroup>().SetAllTogglesOff();
     }
 }

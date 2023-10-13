@@ -14,7 +14,7 @@ public class PlayerInventorySlot : MonoBehaviour, IDropHandler, ISlot
         }
     }
 
-    public void Swap(Transform inventoryItem)
+    public void Swap(Transform inventoryItem, bool condition = true)
     {
         MinionInventory.Move(inventoryItem.GetComponentInParent<MinionInventoryDisplay>().currentInventory, transform.GetComponentInParent<MinionInventoryDisplay>().currentInventory, inventoryItem.parent.GetComponent<PlayerInventorySlot>().inventoryIndex, inventoryIndex);
         inventoryItem.GetComponentInParent<MinionInventoryDisplay>().RefreshInventory();

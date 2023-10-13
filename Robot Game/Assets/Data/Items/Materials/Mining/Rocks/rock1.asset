@@ -17,3 +17,4 @@ MonoBehaviour:
   itemDescription: the rock
   stackable: 1
   sprite: {fileID: -1017993028, guid: 5652b0ad6aa96f846b000545ad5e52ba, type: 3}
+  tags: 

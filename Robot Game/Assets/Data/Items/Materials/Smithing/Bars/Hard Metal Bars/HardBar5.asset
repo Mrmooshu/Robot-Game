@@ -12,8 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44441154caaf6f646a1af9709488568c, type: 3}
   m_Name: HardBar5
   m_EditorClassIdentifier: 
-  itemID: 47
+  itemID: 48
   itemName: Adzium Bar
   itemDescription: only good stuff can come of this
   stackable: 1
   sprite: {fileID: 1406739969, guid: e9f58172755238646bbf7ece85de3480, type: 3}
+  tags: 

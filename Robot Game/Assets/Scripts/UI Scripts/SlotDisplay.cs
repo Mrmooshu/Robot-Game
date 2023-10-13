@@ -4,8 +4,9 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using UnityEngine.EventSystems;
+using System.Linq;
 
-public abstract class SlotDisplay<T> : MonoBehaviour, IDropHandler, ISlot
+public abstract class SlotDisplay : MonoBehaviour, IDropHandler, ISlot
 {
     protected GameObject objectPrefab;
 
@@ -23,7 +24,7 @@ public abstract class SlotDisplay<T> : MonoBehaviour, IDropHandler, ISlot
 
     public virtual void OnDrop(PointerEventData eventData)
     {
-        if (eventData.pointerDrag != null)
+        if (eventData.pointerDrag != null && eventData.pointerDrag.GetComponent<InventoryItem>())
         {
             Swap(eventData.pointerDrag.transform.parent);
         }
@@ -39,7 +40,15 @@ public abstract class SlotDisplay<T> : MonoBehaviour, IDropHandler, ISlot
 
         foreach (Transform child in transform)
         {
-            if (child.GetComponent<InventoryItem>() != null)
+            var ItemObj = child.GetComponent<InventoryItem>();
+            if (ItemObj != null && item != null)
+            {
+                ItemObj.item = item;
+                ItemObj.Initialize();
+                StackCheck(ItemObj);
+                return;
+            }
+            else if(ItemObj != null)
             {
                 Destroy(child.gameObject);
             }
@@ -51,12 +60,18 @@ public abstract class SlotDisplay<T> : MonoBehaviour, IDropHandler, ISlot
             InventoryItem invenItem = itemInstance.GetComponent<InventoryItem>();
             invenItem.item = item;
             invenItem.transform.GetChild(0).GetComponent<Image>().sprite = Database.GetItem(item.itemID).sprite;
+            StackCheck(invenItem);
+        }
+
+        void StackCheck(InventoryItem invenItem)
+        {
             if (!Database.GetItem(invenItem.item.itemID).stackable)
             {
                 invenItem.transform.GetChild(1).gameObject.SetActive(false);
             }
             else
             {
+                invenItem.transform.GetChild(1).gameObject.SetActive(true);
                 invenItem.transform.GetChild(1).GetComponent<TextMeshProUGUI>().text = item.quanity.ToString();
             }
         }
@@ -71,7 +86,7 @@ public abstract class SlotDisplay<T> : MonoBehaviour, IDropHandler, ISlot
         RefreshSlot();
     }
 
-    public virtual void Swap(Transform inventorySlot)
+    public virtual void Swap(Transform inventorySlot, bool condition = true)
     {
         if (inventorySlot == transform)
         {
@@ -80,11 +95,11 @@ public abstract class SlotDisplay<T> : MonoBehaviour, IDropHandler, ISlot
 
         if (inventorySlot.GetComponentInChildren<InventoryItem>())
         {
-            if (Database.GetItem(inventorySlot.GetComponentInChildren<InventoryItem>().item.itemID) is T)
+            if (condition)
             {
                 //Unequip
                 if (GetItem() != null) {
-                    if (typeof(T).IsSubclassOf(typeof(Equipable)))
+                    if (Database.GetItem(GetItem().itemID).GetType().IsSubclassOf(typeof(Equipable)))
                     {
                         ((Equipable)Database.GetItem(GetItem().itemID)).Unequip();
                     }
@@ -94,7 +109,7 @@ public abstract class SlotDisplay<T> : MonoBehaviour, IDropHandler, ISlot
                 //Equip
                 if (GetItem() != null)
                 {
-                    if (typeof(T).IsSubclassOf(typeof(Equipable)))
+                    if (Database.GetItem(GetItem().itemID).GetType().IsSubclassOf(typeof(Equipable)))
                     {
                         ((Equipable)Database.GetItem(GetItem().itemID)).Equip(ref PlayerManager.instance.activeMinion.GetEntity().stats);
                     }

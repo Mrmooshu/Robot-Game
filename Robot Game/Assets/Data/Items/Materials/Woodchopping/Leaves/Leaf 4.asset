@@ -12,8 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44441154caaf6f646a1af9709488568c, type: 3}
   m_Name: Leaf 4
   m_EditorClassIdentifier: 
-  itemID: 40
+  itemID: 41
   itemName: default name
   itemDescription: default description
   stackable: 1
   sprite: {fileID: 1674047977, guid: 0091ca98ad4e66442b6565ed38f6f7bc, type: 3}
+  tags: 

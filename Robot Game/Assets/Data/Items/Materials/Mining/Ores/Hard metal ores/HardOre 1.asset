@@ -17,3 +17,4 @@ MonoBehaviour:
   itemDescription: ore for noobs
   stackable: 1
   sprite: {fileID: -1573161130, guid: 5652b0ad6aa96f846b000545ad5e52ba, type: 3}
+  tags: 01000000

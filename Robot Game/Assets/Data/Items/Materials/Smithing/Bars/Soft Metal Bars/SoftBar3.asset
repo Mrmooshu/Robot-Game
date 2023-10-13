@@ -12,8 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44441154caaf6f646a1af9709488568c, type: 3}
   m_Name: SoftBar3
   m_EditorClassIdentifier: 
-  itemID: 53
+  itemID: 54
   itemName: Silvur Bar
   itemDescription: no you can not spell it any other way
   stackable: 1
   sprite: {fileID: 1414942434, guid: e9f58172755238646bbf7ece85de3480, type: 3}
+  tags: 

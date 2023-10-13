@@ -12,8 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44441154caaf6f646a1af9709488568c, type: 3}
   m_Name: SoftBar1
   m_EditorClassIdentifier: 
-  itemID: 51
+  itemID: 52
   itemName: Coppel Bar
   itemDescription: fragile and common
   stackable: 1
   sprite: {fileID: -1807143261, guid: e9f58172755238646bbf7ece85de3480, type: 3}
+  tags: 

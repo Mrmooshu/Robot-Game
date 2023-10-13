@@ -34,42 +34,54 @@ public class ItemInventoryDisplay : InventoryDisplay
 
     protected override void CreateInventory()
     {
-        foreach (Transform child in inventoryArea.transform)
-        {
-            if (child.GetComponent<ItemInventorySlot>() != null)
-            {
-                Destroy(child.gameObject);
-            }
-        }
 
         int x = 0;
         int y = 0;
         float slotSize = 39f;
         for (int i = slotsPerPage * currentInventory.currentPage - slotsPerPage; i < currentInventory.GetSize() && i < slotsPerPage * currentInventory.currentPage; i++)
         {
-            GameObject slotInstance = Instantiate(slotPrefab, inventoryArea.transform);
-            slotInstance.transform.localPosition = new Vector2((x * slotSize), (-y * slotSize));
-            slotInstance.GetComponent<ItemInventorySlot>().inventoryIndex = i;
-            slotInstance.GetComponent<ItemInventorySlot>().inventory = currentInventory;
-
-            x++;
-
-            if (currentInventory.GetSlotByIndex(i) != null)
+            if (inventoryArea.transform.childCount -1 >= i)
             {
-                GameObject itemInstance = Instantiate(objectPrefab, slotInstance.transform);
-                InventoryItem invenItem = itemInstance.GetComponent<InventoryItem>();
-                invenItem.item = currentInventory.GetSlotByIndex(i);
-                invenItem.transform.GetChild(0).GetComponent<Image>().sprite = Database.GetItem(currentInventory.GetSlotByIndex(i).itemID).sprite;
-                if (!Database.GetItem(invenItem.item.itemID).stackable)
+                var child = inventoryArea.transform.GetChild(i);
+                if (child.GetComponentInChildren<InventoryItem>() != null)
                 {
-                    invenItem.transform.GetChild(1).gameObject.SetActive(false);
+                    if (currentInventory.GetSlotByIndex(i) == null)
+                    {
+                        Destroy(child.GetComponentInChildren<InventoryItem>().gameObject);
+                    }
+                    else
+                    {
+                        child.GetComponentInChildren<InventoryItem>().item = currentInventory.GetSlotByIndex(i);
+                        child.GetComponent<ItemInventorySlot>().RefreshSlot();
+                    }
                 }
-                else
+                else if (currentInventory.GetSlotByIndex(i) != null)
                 {
-                    invenItem.transform.GetChild(1).GetComponent<TextMeshProUGUI>().text = currentInventory.GetSlotByIndex(i).quanity.ToString();
+                    GameObject itemInstance = Instantiate(objectPrefab, inventoryArea.transform.GetChild(i).transform);
+                    InventoryItem invenItem = itemInstance.GetComponent<InventoryItem>();
+                    invenItem.item = currentInventory.GetSlotByIndex(i);
+                    invenItem.Initialize();
+                }
+
+            }
+            else
+            {
+                GameObject slotInstance = Instantiate(slotPrefab, inventoryArea.transform);
+                slotInstance.transform.localPosition = new Vector2((x * slotSize), (-y * slotSize));
+                slotInstance.GetComponent<ItemInventorySlot>().inventoryIndex = i;
+                slotInstance.GetComponent<ItemInventorySlot>().inventory = currentInventory;
+
+
+
+                if (currentInventory.GetSlotByIndex(i) != null)
+                {
+                    GameObject itemInstance = Instantiate(objectPrefab, slotInstance.transform);
+                    InventoryItem invenItem = itemInstance.GetComponent<InventoryItem>();
+                    invenItem.item = currentInventory.GetSlotByIndex(i);
+                    invenItem.Initialize();
                 }
             }
-
+            x++;
             if (x >= columns)
             {
                 x = 0;

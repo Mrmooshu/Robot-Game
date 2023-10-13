@@ -12,8 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44441154caaf6f646a1af9709488568c, type: 3}
   m_Name: SoftBar8
   m_EditorClassIdentifier: 
-  itemID: 58
+  itemID: 59
   itemName: Khanokite Bar
   itemDescription: keep away from face
   stackable: 1
   sprite: {fileID: -955767801, guid: e9f58172755238646bbf7ece85de3480, type: 3}
+  tags: 

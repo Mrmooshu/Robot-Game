@@ -12,10 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 27b223b09ca8cf243994b9d70fb18586, type: 3}
   m_Name: Warhammer 1
   m_EditorClassIdentifier: 
-  itemID: 68
+  itemID: 69
   itemName: Novium Warhammer
   itemDescription: default description
   stackable: 0
   sprite: {fileID: -998953949, guid: ea7d185658128e84fbf8242d62bc55b4, type: 3}
+  tags: 
   itemModifiers: []
   animation: {fileID: 0}

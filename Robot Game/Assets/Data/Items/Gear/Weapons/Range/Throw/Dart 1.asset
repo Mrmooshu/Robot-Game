@@ -12,11 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 90c4e7c5c1d8478479812568e4c32246, type: 3}
   m_Name: Dart 1
   m_EditorClassIdentifier: 
-  itemID: 77
+  itemID: 78
   itemName: Test Dart
   itemDescription: default description
   stackable: 0
   sprite: {fileID: 1028016929, guid: 9f8ac63f9da514e4bb0266f08bdc64e6, type: 3}
+  tags: 
   itemModifiers: []
   animation: {fileID: 0}
   projectilePrefab: {fileID: 4259154362121718386, guid: b5ced71ff67b9b244ae42ba7e181b7f4, type: 3}

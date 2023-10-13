@@ -300,6 +300,7 @@ GameObject:
   - component: {fileID: 959256510}
   - component: {fileID: 959256509}
   - component: {fileID: 959256508}
+  - component: {fileID: 959256516}
   m_Layer: 0
   m_Name: GameControl
   m_TagString: Untagged
@@ -333,7 +334,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fileName: gamedata
   useEncryption: 0
-  useNewFile: 0
+  useNewFile: 1
 --- !u!114 &959256510
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -396,6 +397,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a0ae6eaf811a6cf429784d576a319cf2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  universal:
+    upgradesList:
+    - name: ConnectionPowerCapacityUpgrade
+      state: 0
+    - name: HealthPassive
+      state: 0
+    abilityList:
+    - name: RoamingCancel
+      state: 0
+    - name: Tornado
+      state: 0
+    unlockedSafepoints: []
+  smithing:
+    currentStation:
+      furnaceFuel:
+        rid: -2
+      tasks: []
+      capacityLimit: 5
+    stations:
+    - furnaceFuel:
+        rid: -2
+      tasks: []
+      capacityLimit: 5
   inputActions: {fileID: -944628639613478452, guid: afe3e238f800e674eb5b90a2f8ecb3d8, type: 3}
   moveAction:
     m_Name: Move
@@ -408,22 +432,6 @@ MonoBehaviour:
     m_Flags: 0
   minionBlueprints:
   - {fileID: 2947402111217047421, guid: 37320e058249dd6438173e326299cd87, type: 3}
-  universal:
-    upgradesList:
-    - name: ConnectionPowerCapacityUpgrade
-      state: 0
-    - name: health passive
-      state: 0
-    - name: Health Passive
-      state: 0
-    abilityList:
-    - name: GolemTornado
-      state: 0
-    - name: Tornado
-      state: 0
-    - name: Roaming Cancel
-      state: 0
-    unlockedSafepoints: []
   activeMinions: []
   minionInventory:
     inventory: []
@@ -474,6 +482,7 @@ MonoBehaviour:
   effectDatabase: {fileID: 11400000, guid: bf181ab49fa878542a3f1e15b4297799, type: 2}
   questDatabase: {fileID: 11400000, guid: f7c2771e8800df744bf1855b3c0ec543, type: 2}
   activeDatabase: {fileID: 11400000, guid: 4083ce961b6fd8b46917e4d4b9fa00a1, type: 2}
+  smithingDatabase: {fileID: 11400000, guid: 94ae1f8e2c6b193499166ca97b07648b, type: 2}
 --- !u!4 &959256515
 Transform:
   m_ObjectHideFlags: 0
@@ -489,6 +498,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &959256516
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 959256507}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5483c0d1983529a43810ff30de59d7b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1037752074
 GameObject:
   m_ObjectHideFlags: 0

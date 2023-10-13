@@ -12,8 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44441154caaf6f646a1af9709488568c, type: 3}
   m_Name: Log 5
   m_EditorClassIdentifier: 
-  itemID: 35
+  itemID: 36
   itemName: wood
   itemDescription: default description
   stackable: 1
   sprite: {fileID: -1371806867, guid: 0091ca98ad4e66442b6565ed38f6f7bc, type: 3}
+  tags: 

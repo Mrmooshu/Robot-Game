@@ -59,4 +59,50 @@ public class ItemInventory : BaseInventory<Item>
         }
         return false;
     }
+
+    public static void Move(ItemInventory inventory, ref Item individual, int index)
+    {
+        if (individual == null || inventory.inventory[index] == null)
+        {
+            BaseInventory<Item>.Move(inventory, ref individual, index);
+            return;
+        }
+        else if (inventory.inventory[index].itemID == individual.itemID)
+        {
+            var value = inventory.inventory[index].quanity + individual.quanity;
+            if (value > inventory.stackLimit)
+            {
+                inventory.inventory[index].quanity = inventory.stackLimit;
+                individual.quanity = value - inventory.stackLimit;
+            }
+            else
+            {
+                individual.quanity = value;
+                inventory.inventory[index] = null;
+            }
+        }
+        BaseInventory<Item>.Move(inventory, ref individual, index);
+    }
+
+    public static void MoveUpToLimit(ItemInventory inventory, ref Item itemTo, int index, int limit)
+    {
+        if (itemTo == null)
+        {
+            itemTo = new Item(inventory.inventory[index].itemID, 0);
+        }
+
+        var itemFrom = inventory.inventory[index];
+        var total = itemTo.quanity + itemFrom.quanity;
+        if (total > limit)
+        {
+            itemTo.quanity = limit;
+            itemFrom.quanity = total - limit;
+        }
+        else
+        {
+            itemTo.quanity = total;
+            inventory.inventory[index] = null;
+        }
+        inventory.OnInventoryUpdated();
+    }
 }

@@ -12,8 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44441154caaf6f646a1af9709488568c, type: 3}
   m_Name: SoftBar4
   m_EditorClassIdentifier: 
-  itemID: 54
+  itemID: 55
   itemName: Golburr Bar
   itemDescription: not to be treated as a currency
   stackable: 1
   sprite: {fileID: 505623020, guid: e9f58172755238646bbf7ece85de3480, type: 3}
+  tags: 

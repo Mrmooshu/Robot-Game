@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class ItemInventorySlot : SlotDisplay<ItemData>
+public class ItemInventorySlot : SlotDisplay
 {
     public int inventoryIndex;
 

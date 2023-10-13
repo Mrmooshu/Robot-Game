@@ -12,10 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00e75d7354ef0b2438f2c0aa361d25ad, type: 3}
   m_Name: Pickaxe 2
   m_EditorClassIdentifier: 
-  itemID: 60
+  itemID: 61
   itemName: Iromite Pickaxe
   itemDescription: default description
   stackable: 0
   sprite: {fileID: 1735316995, guid: e9f58172755238646bbf7ece85de3480, type: 3}
+  tags: 
   itemModifiers: []
   animController: {fileID: 22100000, guid: a74002516f18b89419d1fca50382f71e, type: 2}

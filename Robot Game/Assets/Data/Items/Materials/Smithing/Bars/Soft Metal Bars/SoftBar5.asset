@@ -12,8 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44441154caaf6f646a1af9709488568c, type: 3}
   m_Name: SoftBar5
   m_EditorClassIdentifier: 
-  itemID: 55
+  itemID: 56
   itemName: Platrim Bar
   itemDescription: a bar above many others
   stackable: 1
   sprite: {fileID: 1094077964, guid: e9f58172755238646bbf7ece85de3480, type: 3}
+  tags: 

@@ -11,19 +11,18 @@ using UnityEngine.InputSystem;
 
 public class PlayerManager : MonoBehaviour, IDataSave
 {
+    public UniversalPlayerData universal;
+    public SmithingData smithing;
+
     public InputActionAsset inputActions;
     public InputAction moveAction;
 
     public List<GameObject> minionBlueprints;
 
     public static PlayerManager instance;
-    public UniversalPlayerData universal;
     public List<MinionData> activeMinions;
     public MinionInventory minionInventory;
     public ItemInventory bankInventory;
-
-    public SmithingData smithing;
-
 
     public List<MinionEntity> minionEntities;
 
@@ -40,10 +39,10 @@ public class PlayerManager : MonoBehaviour, IDataSave
             inputActions.FindActionMap("Player").FindAction(action).performed += PassInputToActivePlayer;
         }
 
-        universal.Initialize();
         if (instance == null)
         {
             instance = this;
+            universal.Initialize();
             SpawnMinions();
         }
     }
@@ -184,21 +183,19 @@ public class PlayerManager : MonoBehaviour, IDataSave
 
     public void LoadData(GameData data)
     {
-        universal = data.universal;
         activeMinions = data.activeMinions;
         minionInventory = data.minionInventory;
         bankInventory = data.bankInventory;
-
+        universal = data.universal;
         smithing = data.smithing;
     }
 
     public void SaveData(ref GameData data)
     {
-        data.universal = universal;
         data.activeMinions = activeMinions;
         data.minionInventory = minionInventory;
         data.bankInventory = bankInventory;
-
+        data.universal = universal;
         data.smithing = smithing;
     }
 }

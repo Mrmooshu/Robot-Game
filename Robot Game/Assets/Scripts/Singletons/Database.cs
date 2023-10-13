@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
+using static SmithingDatabase;
 
 public class Database : MonoBehaviour
 {
@@ -11,6 +12,9 @@ public class Database : MonoBehaviour
     public EffectDatabase effectDatabase;
     public QuestDatabase questDatabase;
     public ActiveAbilityDatabase activeDatabase;
+
+    //Skilling
+    public SmithingDatabase smithingDatabase;
 
     private void Awake()
     {
@@ -62,5 +66,11 @@ public class Database : MonoBehaviour
     public static ActiveAbilityData GetActiveAbility(string name)
     {
         return instance.activeDatabase.ActivesList.FirstOrDefault(i => i.InternalName == name);
+    }
+
+    //Skilling
+    public static smeltingRecipe GetSmeltingRecipe(int id)
+    {
+        return instance.smithingDatabase.smeltingList.FirstOrDefault(i => i.input.itemID == id);
     }
 }

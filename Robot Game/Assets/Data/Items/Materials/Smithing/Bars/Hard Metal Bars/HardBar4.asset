@@ -12,8 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44441154caaf6f646a1af9709488568c, type: 3}
   m_Name: HardBar4
   m_EditorClassIdentifier: 
-  itemID: 46
+  itemID: 47
   itemName: Myphrite Bar
   itemDescription: this bar goes out to the real ones
   stackable: 1
   sprite: {fileID: -608328772, guid: e9f58172755238646bbf7ece85de3480, type: 3}
+  tags: 

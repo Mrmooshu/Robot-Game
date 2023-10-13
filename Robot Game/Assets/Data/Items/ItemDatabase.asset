@@ -43,6 +43,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: d0e1683626d6a104ba8028ff5b0fa47a, type: 2}
   - {fileID: 11400000, guid: ccfae0b34f741f04383bb93229ab77be, type: 2}
   - {fileID: 11400000, guid: 5a46752dec30fda4eaf1b24bb3380cc7, type: 2}
+  - {fileID: 11400000, guid: 3db7064b5b13f454a932224858b9d9dc, type: 2}
   - {fileID: 11400000, guid: 5702999e6ae0e33419777dae95996ac7, type: 2}
   - {fileID: 11400000, guid: af6a570012af01741aadbfeacd5d6eb8, type: 2}
   - {fileID: 11400000, guid: 89ca6e637b4f6d2428b2c914ff9bf088, type: 2}
@@ -122,6 +123,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: d0e1683626d6a104ba8028ff5b0fa47a, type: 2}
   - {fileID: 11400000, guid: ccfae0b34f741f04383bb93229ab77be, type: 2}
   - {fileID: 11400000, guid: 5a46752dec30fda4eaf1b24bb3380cc7, type: 2}
+  - {fileID: 11400000, guid: 3db7064b5b13f454a932224858b9d9dc, type: 2}
   woodchoppingItemsList:
   - {fileID: 11400000, guid: 5702999e6ae0e33419777dae95996ac7, type: 2}
   - {fileID: 11400000, guid: af6a570012af01741aadbfeacd5d6eb8, type: 2}

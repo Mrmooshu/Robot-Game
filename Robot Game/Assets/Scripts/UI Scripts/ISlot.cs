@@ -4,7 +4,7 @@ using UnityEngine;
 
 public interface ISlot
 {
-    public void Swap(Transform slotTransform);
+    public void Swap(Transform slotTransform, bool condition = true);
 
     public void RemoveFromSlot();
 }

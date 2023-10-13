@@ -12,10 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00e75d7354ef0b2438f2c0aa361d25ad, type: 3}
   m_Name: Pickaxe 5
   m_EditorClassIdentifier: 
-  itemID: 63
+  itemID: 64
   itemName: default name
   itemDescription: default description
   stackable: 0
   sprite: {fileID: -1383560286, guid: e9f58172755238646bbf7ece85de3480, type: 3}
+  tags: 
   itemModifiers: []
   animController: {fileID: 22100000, guid: f4b1ab440aa4fdf4b879add2c75224cd, type: 2}

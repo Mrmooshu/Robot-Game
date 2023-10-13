@@ -12,8 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44441154caaf6f646a1af9709488568c, type: 3}
   m_Name: HardBar1
   m_EditorClassIdentifier: 
-  itemID: 43
+  itemID: 44
   itemName: Novium Bar
   itemDescription: its a novium bar, nuff said
   stackable: 1
   sprite: {fileID: 176614245, guid: e9f58172755238646bbf7ece85de3480, type: 3}
+  tags: 

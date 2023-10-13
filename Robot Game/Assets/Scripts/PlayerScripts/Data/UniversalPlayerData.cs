@@ -7,6 +7,7 @@ using UnityEngine;
 [System.Serializable]
 public class UniversalPlayerData : ISerializationCallbackReceiver
 {
+
     [System.Serializable]
     protected struct SavedData<T>
     {
