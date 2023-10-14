@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using System.Linq;
 
 public class ItemInventoryDisplay : InventoryDisplay
 {
@@ -34,15 +35,17 @@ public class ItemInventoryDisplay : InventoryDisplay
 
     protected override void CreateInventory()
     {
+        var existingSlots = inventoryArea.transform.GetComponentsInChildren<ItemInventorySlot>();
 
         int x = 0;
         int y = 0;
         float slotSize = 39f;
         for (int i = slotsPerPage * currentInventory.currentPage - slotsPerPage; i < currentInventory.GetSize() && i < slotsPerPage * currentInventory.currentPage; i++)
         {
-            if (inventoryArea.transform.childCount -1 >= i)
+            if (existingSlots.Any(x => x.inventoryIndex == i))
             {
-                var child = inventoryArea.transform.GetChild(i);
+                var child = existingSlots.FirstOrDefault(x => x.inventoryIndex == i);
+                child.GetComponent<ItemInventorySlot>().inventory = currentInventory;
                 if (child.GetComponentInChildren<InventoryItem>() != null)
                 {
                     if (currentInventory.GetSlotByIndex(i) == null)
@@ -62,7 +65,6 @@ public class ItemInventoryDisplay : InventoryDisplay
                     invenItem.item = currentInventory.GetSlotByIndex(i);
                     invenItem.Initialize();
                 }
-
             }
             else
             {
@@ -70,8 +72,6 @@ public class ItemInventoryDisplay : InventoryDisplay
                 slotInstance.transform.localPosition = new Vector2((x * slotSize), (-y * slotSize));
                 slotInstance.GetComponent<ItemInventorySlot>().inventoryIndex = i;
                 slotInstance.GetComponent<ItemInventorySlot>().inventory = currentInventory;
-
-
 
                 if (currentInventory.GetSlotByIndex(i) != null)
                 {

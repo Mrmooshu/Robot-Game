@@ -73,7 +73,15 @@ public class ItemInventory : BaseInventory<Item>
             if (value > inventory.stackLimit)
             {
                 inventory.inventory[index].quanity = inventory.stackLimit;
-                individual.quanity = value - inventory.stackLimit;
+                individual.quanity =  value - inventory.stackLimit;
+                if (individual.quanity <= 0)
+                {
+                    individual = null;
+                }
+                if (inventory.inventory[index].quanity <= 0)
+                {
+                    inventory.inventory[index] = null;
+                }
             }
             else
             {
