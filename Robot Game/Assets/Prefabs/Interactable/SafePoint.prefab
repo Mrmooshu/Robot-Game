@@ -144,6 +144,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd1a5a6b6f5489944a51d8fae8f51be7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  icon: {fileID: -1679593428941994992, guid: 905fd98c83ef31247b11c74f84275dd2, type: 3}
   locationName: default name
   teleportSpot: {fileID: 9078745717111379660}
 --- !u!1 &9078745717111379660

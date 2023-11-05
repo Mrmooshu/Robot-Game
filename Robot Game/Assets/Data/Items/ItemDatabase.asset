@@ -80,6 +80,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 71b6fdd4572140d41b48be6cfd440128, type: 2}
   - {fileID: 11400000, guid: 4d514715a4740db4e8e686086219b73b, type: 2}
   - {fileID: 11400000, guid: 4ad1105b8c838334ea6f51bb1015d2bf, type: 2}
+  - {fileID: 11400000, guid: 933ed7071f58af240ad29202fb220f3c, type: 2}
+  - {fileID: 11400000, guid: 597c77b2910d9c5479eefa908b8c116b, type: 2}
   - {fileID: 11400000, guid: 63e121ff7e07a0342bb9eb97ada1720e, type: 2}
   - {fileID: 11400000, guid: 9f0ec0882ff58e543b71d22dfcf09a48, type: 2}
   - {fileID: 11400000, guid: 447dfb5e4955eae48b80d3aafd34100e, type: 2}
@@ -89,7 +91,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 5e1a0b85e7e6fc64a8c4ac231237cab4, type: 2}
   - {fileID: 11400000, guid: 8d53556d0e6fe4448a3d4621b351489a, type: 2}
   - {fileID: 11400000, guid: 57e000abbc4a40349987720426220267, type: 2}
-  - {fileID: 11400000, guid: 77ca1db1fc6424143a484593297ae498, type: 2}
   - {fileID: 11400000, guid: 5dc4ef607162c074d936aecb875e19ab, type: 2}
   - {fileID: 11400000, guid: b64c983b95dd2774c8fecb9690a75fac, type: 2}
   miningItemsList:
@@ -164,6 +165,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 71b6fdd4572140d41b48be6cfd440128, type: 2}
   - {fileID: 11400000, guid: 4d514715a4740db4e8e686086219b73b, type: 2}
   - {fileID: 11400000, guid: 4ad1105b8c838334ea6f51bb1015d2bf, type: 2}
+  - {fileID: 11400000, guid: 933ed7071f58af240ad29202fb220f3c, type: 2}
+  - {fileID: 11400000, guid: 597c77b2910d9c5479eefa908b8c116b, type: 2}
   weaponItemsList:
   - {fileID: 11400000, guid: 63e121ff7e07a0342bb9eb97ada1720e, type: 2}
   - {fileID: 11400000, guid: 9f0ec0882ff58e543b71d22dfcf09a48, type: 2}
@@ -174,7 +177,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 5e1a0b85e7e6fc64a8c4ac231237cab4, type: 2}
   - {fileID: 11400000, guid: 8d53556d0e6fe4448a3d4621b351489a, type: 2}
   - {fileID: 11400000, guid: 57e000abbc4a40349987720426220267, type: 2}
-  - {fileID: 11400000, guid: 77ca1db1fc6424143a484593297ae498, type: 2}
   - {fileID: 11400000, guid: 5dc4ef607162c074d936aecb875e19ab, type: 2}
   - {fileID: 11400000, guid: b64c983b95dd2774c8fecb9690a75fac, type: 2}
   miscItemsList: []

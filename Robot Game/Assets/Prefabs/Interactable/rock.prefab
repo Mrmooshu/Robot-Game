@@ -97,6 +97,25 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
@@ -125,6 +144,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 454f2568aa7e7524790a4cce03f484b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  icon: {fileID: -1679593428941994992, guid: 905fd98c83ef31247b11c74f84275dd2, type: 3}
+  baseExp: 50
 --- !u!114 &6081524203735063338
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -6,7 +6,10 @@ using UnityEngine.Events;
 
 public class ActionButton : MonoBehaviour
 {
+    public Sprite defaultIcon;
     private Button button { get => GetComponent<Button>(); }
+
+    public GameObject iconGo;
 
     private void Start()
     {
@@ -19,24 +22,24 @@ public class ActionButton : MonoBehaviour
         button.onClick.RemoveAllListeners();
 
         // set sprites and action for button
-        SpriteState state = new SpriteState();
-        GetComponent<Image>().sprite = UIManager.instance.uiSprites.GetSprite("Action Buttons_1");
-        state.highlightedSprite = UIManager.instance.uiSprites.GetSprite("Action Buttons_0");
-        state.pressedSprite = UIManager.instance.uiSprites.GetSprite("Action Buttons_2");
-        button.spriteState = state;
+        //SpriteState state = new SpriteState();
+        iconGo.GetComponent<Image>().sprite = defaultIcon;
+        //state.highlightedSprite = UIManager.instance.uiSprites.GetSprite("Action Buttons_0");
+        //state.pressedSprite = UIManager.instance.uiSprites.GetSprite("Action Buttons_2");
+        //button.spriteState = state;
     }
 
-    public void SetCurrentButton(UnityAction action, Sprite buttonSprite, Sprite highlightedSprite, Sprite pressedSprite)
+    public void SetCurrentButton(UnityAction action, Sprite buttonSprite)
     {
         // clear any listners on this button
         button.onClick.RemoveAllListeners();
 
         // set sprites and action for button
-        SpriteState state = new SpriteState();
+        //SpriteState state = new SpriteState();
         button.onClick.AddListener(action);
-        GetComponent<Image>().sprite = buttonSprite;
-        state.highlightedSprite = highlightedSprite;
-        state.pressedSprite = pressedSprite;
-        button.spriteState = state;
+        iconGo.GetComponent<Image>().sprite = buttonSprite;
+        //state.highlightedSprite = highlightedSprite;
+        //state.pressedSprite = pressedSprite;
+        //button.spriteState = state;
     }
 }

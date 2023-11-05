@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 27b223b09ca8cf243994b9d70fb18586, type: 3}
   m_Name: Warhammer 4
   m_EditorClassIdentifier: 
-  itemID: 72
+  itemID: 74
   itemName: Myphrite Warhammer
   itemDescription: default description
   stackable: 0

@@ -8,7 +8,6 @@ public abstract class BaseInventory<T>
 {
     [SerializeReference] public T[] inventory;
     public int inventorySize;
-    public int currentPage = 1;
 
     public static event Action inventoryUpdated;
 

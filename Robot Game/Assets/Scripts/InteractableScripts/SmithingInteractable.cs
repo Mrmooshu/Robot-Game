@@ -10,23 +10,14 @@ public class SmithingInteractable : Interactable
     {
         if (playerEntitiy.data == PlayerManager.instance.activeMinion)
         {
-            UIManager.instance.actionButton.SetCurrentButton(SmeltAction, UIManager.instance.uiSprites.GetSprite("Action Buttons_4"),
-                UIManager.instance.uiSprites.GetSprite("Action Buttons_3"), UIManager.instance.uiSprites.GetSprite("Action Buttons_5"));
+            UIManager.instance.actionButton.SetCurrentButton(SmeltAction, icon);
             playerEntitiy.currentInteractable = this;
         }
     }
 
     private void SmeltAction()
     {
-        if (GameObject.Find("UI Canvas/UI(Clone)/Skill Interfaces/Smithing Menu").activeInHierarchy == true)
-        {
-            UIManager.CloseMainUi();
-        }
-        else
-        {
-            UIManager.CloseMainUi();
-            GameObject.Find("UI Canvas/UI(Clone)/Skill Interfaces/Smithing Menu").SetActive(true);
-            PlayerManager.instance.smithing.currentStation = PlayerManager.instance.smithing.stations[smithIndex];
-        }
+        RemoteMenuToggle.ToggleThis(RemoteMenuToggle.instance.smithingToggle);
+        PlayerManager.instance.smithing.currentStation = PlayerManager.instance.smithing.stations[smithIndex];
     }
 }

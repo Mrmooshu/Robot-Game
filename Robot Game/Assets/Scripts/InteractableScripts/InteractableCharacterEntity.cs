@@ -12,8 +12,7 @@ public class InteractableCharacter : Interactable
 
     public override void PlayerInRange(MinionEntity playerEntitiy)
     {
-        UIManager.instance.actionButton.SetCurrentButton(Interact, UIManager.instance.uiSprites.GetSprite("Action Buttons_7"),
-            UIManager.instance.uiSprites.GetSprite("Action Buttons_8"), UIManager.instance.uiSprites.GetSprite("Action Buttons_6"));
+        UIManager.instance.actionButton.SetCurrentButton(Interact, icon);
         playerEntitiy.currentInteractable = this;
     }
 

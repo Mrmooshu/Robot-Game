@@ -11,8 +11,7 @@ public class Door : Interactable
     {
         if (playerEntitiy.data == PlayerManager.instance.activeMinion)
         {
-            UIManager.instance.actionButton.SetCurrentButton(EnterAction, UIManager.instance.uiSprites.GetSprite("Action Buttons_4"),
-                UIManager.instance.uiSprites.GetSprite("Action Buttons_3"), UIManager.instance.uiSprites.GetSprite("Action Buttons_5"));
+            UIManager.instance.actionButton.SetCurrentButton(EnterAction, icon);
             playerEntitiy.currentInteractable = this;
         }
     }

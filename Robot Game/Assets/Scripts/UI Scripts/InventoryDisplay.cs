@@ -7,9 +7,8 @@ public abstract class InventoryDisplay : MonoBehaviour
     public GameObject slotPrefab;
     protected GameObject objectPrefab;
     public GameObject inventoryArea;
-    public GameObject pageNumber;
     public int columns = 5;
-    public int slotsPerPage = 25;
+    public int slotSize = 34;
 
     public virtual void RefreshInventory()
     {
@@ -20,10 +19,4 @@ public abstract class InventoryDisplay : MonoBehaviour
     protected abstract void CreateInventory();
 
     public abstract void UpdateCurrentInventory();
-
-    // used by page select arrows
-    public abstract void IncrementPage();
-
-    // used by page select arrows
-    public abstract void DecrementPage();
 }

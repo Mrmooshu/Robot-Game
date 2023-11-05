@@ -97,7 +97,7 @@ public class PlayerManager : MonoBehaviour, IDataSave
 
     public void SetActiveMinion(MinionData minion)
     {
-        if (activeMinion.GetEntity() != null)
+        if (activeMinion != null)
         {
             activeMinion.GetEntity().GetComponent<SortingGroup>().sortingOrder = 0;
         }

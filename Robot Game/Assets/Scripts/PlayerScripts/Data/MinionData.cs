@@ -5,8 +5,11 @@ using System.Linq;
 using UnityEngine;
 
 [System.Serializable]
-public class MinionData : ISerializationCallbackReceiver
+public abstract class MinionData : ISerializationCallbackReceiver
 {
+    private LevelData level;
+    public LevelData Level { get => level; private set { level = value; } }
+
     public enum Activity
     {
         Storage, Idle, Mining, Woodcutting, Fishing
@@ -41,11 +44,10 @@ public class MinionData : ISerializationCallbackReceiver
     }
 
     //Saved variables
+    public ClassFunction[] functions;
     public string lastSafePoint;
     public string variantName;
-    [SerializeReference] public Item tool;
-    [SerializeReference] public Item weapon;
-    public int level = 1;
+    [SerializeReference] public Item[] artifacts;
     public ItemInventory inventory;
     public active[] ActiveAbilities;
     public Vector3 savedPosition;
@@ -63,16 +65,14 @@ public class MinionData : ISerializationCallbackReceiver
 
     public static event Action skillPointsUpdated;
 
-    public MinionData(string variantName)
+    public MinionData()
     {
-        this.variantName = variantName;
-        CreateSkills(variantName);
-        inventory = new ItemInventory(20, 10);
-        ActiveAbilities = new active[6] { new active("",0) , new active("", 0) , new active("", 0) , new active("", 0) , new active("", 0) , new active("", 0) };
+        Create();
+        CreateSkills();
     }
 
 
-    public MinionEntity GetEntity()
+    public virtual MinionEntity GetEntity()
     {
         foreach (MinionEntity minion in PlayerManager.instance.minionEntities)
         {
@@ -84,12 +84,31 @@ public class MinionData : ISerializationCallbackReceiver
         return null;
     }
 
+    public bool HasFunction<T>()
+    {
+        return functions.Any(x => x is T);
+    }
+
+    public ClassFunction GetFunction<T>()
+    {
+        return functions.First(x => x is T);
+    }
+
     public Passive GetPassiveByName(string skillName)
     {
         return passives.FirstOrDefault(x => x.skillName == skillName);
     }
 
-    protected virtual void CreateSkills(string prefabName)
+    protected virtual void Create()
+    {
+        Level = new LevelData();
+        functions = new ClassFunction[5];
+        artifacts = new Item[6];
+        inventory = new ItemInventory(30, 10);
+        ActiveAbilities = new active[6] { new active("", 0), new active("", 0), new active("", 0), new active("", 0), new active("", 0), new active("", 0) };
+    }
+
+    protected virtual void CreateSkills()
     {
     }
 
@@ -99,6 +118,7 @@ public class MinionData : ISerializationCallbackReceiver
     }
 
 
+    //Serialiszation Functions
     public virtual void OnAfterDeserialize()
     {
         if (skillsList != null)

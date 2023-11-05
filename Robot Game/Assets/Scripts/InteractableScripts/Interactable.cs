@@ -1,11 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 [RequireComponent(typeof(BoxCollider2D))]
 
 public abstract class Interactable : MonoBehaviour
 {
+    public Sprite icon;
+
     private void Reset()
     {
         GetComponent<BoxCollider2D>().isTrigger = true;
@@ -42,5 +45,9 @@ public abstract class Interactable : MonoBehaviour
                 PlayerOutOfRange(collision.GetComponent<MinionEntity>());
             }
         }
+    }
+
+    public virtual void InteractAction(MinionData data)
+    {
     }
 }

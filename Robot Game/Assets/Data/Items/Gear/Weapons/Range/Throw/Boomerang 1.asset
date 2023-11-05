@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b2980fb43d6b29249b11186bd47d0747, type: 3}
   m_Name: Boomerang 1
   m_EditorClassIdentifier: 
-  itemID: 79
+  itemID: 80
   itemName: Test Boomerang
   itemDescription: default description
   stackable: 0
@@ -22,6 +22,6 @@ MonoBehaviour:
   - value: 5
     bonusType: 3
     statType: 8
-  animation: {fileID: 7400000, guid: abf4aa097a2cc3a49ad28cbcd3535c47, type: 2}
+  animation: {fileID: 0}
   projectilePrefab: {fileID: 311996050193231670, guid: a89a9e15d337a1c488b35ebb5e001912, type: 3}
   firePosition: {x: 1, y: 1}

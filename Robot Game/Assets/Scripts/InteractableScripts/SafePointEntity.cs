@@ -26,8 +26,7 @@ public class SafePointEntity : Interactable
     {
         if (playerEntitiy.data == PlayerManager.instance.activeMinion)
         {
-            UIManager.instance.actionButton.SetCurrentButton(SafeAction, UIManager.instance.uiSprites.GetSprite("Action Buttons_7"),
-                UIManager.instance.uiSprites.GetSprite("Action Buttons_8"), UIManager.instance.uiSprites.GetSprite("Action Buttons_6"));
+            UIManager.instance.actionButton.SetCurrentButton(SafeAction, icon);
             playerEntitiy.currentInteractable = this;
         }
         minionsInRangeToInteract.Add(playerEntitiy);
@@ -47,16 +46,7 @@ public class SafePointEntity : Interactable
 
     private void SafeAction()
     {
-        if (GameObject.Find("UI Canvas/UI(Clone)/SafePointMenu").activeInHierarchy == true)
-        {
-            UIManager.CloseMainUi();
-        }
-        else
-        {
-            GameObject.Find("UI Canvas/UI(Clone)/SafePointMenu").SetActive(true);
-            GameObject.Find("UI Canvas/UI(Clone)/MainPlayerMenu").SetActive(false);
-            GameObject.Find("UI Canvas/UI(Clone)/SwapPlayerMenu").SetActive(false);
-        }
+        RemoteMenuToggle.ToggleThis(RemoteMenuToggle.instance.safepointToggle);
     }
 
     //static methods

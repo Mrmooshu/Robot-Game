@@ -1,12 +1,12 @@
 ManifestFileVersion: 0
-CRC: 3480007946
+CRC: 748505741
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 46c2ea9f64a46e9f7a9fa1d875e4db61
+    Hash: ae0da3626f68201a99455d7057a276cc
   TypeTreeHash:
     serializedVersion: 2
-    Hash: 9c41d8853cdd784617b7f908a9068c3e
+    Hash: 52904ec3ef77b86d783e24c21359a081
 HashAppended: 0
 ClassTypes:
 - Class: 1
@@ -50,6 +50,8 @@ ClassTypes:
 - Class: 114
   Script: {fileID: 11500000, guid: 039a228d8d248284eb5793d8093aece8, type: 3}
 - Class: 114
+  Script: {fileID: 11500000, guid: d09ac760f27de62498627a91dacff5ad, type: 3}
+- Class: 114
   Script: {fileID: 11500000, guid: 16f49da84a8ffdb4fa59053ca4ffd57d, type: 3}
 - Class: 114
   Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
@@ -57,8 +59,6 @@ ClassTypes:
   Script: {fileID: 11500000, guid: 0ad8d76e54792bf4e85e765dde7e0b81, type: 3}
 - Class: 114
   Script: {fileID: 11500000, guid: a46f1c48b3b101c438835e3e5039bcf2, type: 3}
-- Class: 114
-  Script: {fileID: 11500000, guid: 0465b3de1e202ab409c428519497b4c9, type: 3}
 - Class: 114
   Script: {fileID: 11500000, guid: 099bd599b85a8c346a31a4cc820c63cf, type: 3}
 - Class: 114
@@ -70,13 +70,9 @@ ClassTypes:
 - Class: 114
   Script: {fileID: 11500000, guid: 852a1eb23b6e9ea4696c65c3b9a825d4, type: 3}
 - Class: 114
-  Script: {fileID: 11500000, guid: 1c325bb5815ed7245abe7b33f0a63eb6, type: 3}
-- Class: 114
   Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
 - Class: 114
   Script: {fileID: 11500000, guid: 9d08dbd05b2e8174b8285a630c9540fa, type: 3}
-- Class: 114
-  Script: {fileID: 11500000, guid: e71c72beb9d30d54bab969582508132e, type: 3}
 - Class: 114
   Script: {fileID: 11500000, guid: c91c854ae86352e4f8893a00aabe846a, type: 3}
 - Class: 114
@@ -94,6 +90,8 @@ ClassTypes:
 - Class: 114
   Script: {fileID: 11500000, guid: b196bea33713d754f90f0c8c6f254f65, type: 3}
 - Class: 114
+  Script: {fileID: 11500000, guid: d4a3bd8c7c6c2504bb29880c9bfca763, type: 3}
+- Class: 114
   Script: {fileID: 11500000, guid: 2fafe2cfe61f6974895a912c3755e8f1, type: 3}
 - Class: 114
   Script: {fileID: 11500000, guid: 3245ec927659c4140ac4f8d17403cc18, type: 3}
@@ -106,8 +104,6 @@ ClassTypes:
 - Class: 114
   Script: {fileID: 11500000, guid: 31a19414c41e5ae4aae2af33fee712f6, type: 3}
 - Class: 114
-  Script: {fileID: 11500000, guid: bb9e0cf60a8646a4995807d633e7dc49, type: 3}
-- Class: 114
   Script: {fileID: 11500000, guid: f3bb006b37382a54d8375fac98e54c07, type: 3}
 - Class: 114
   Script: {fileID: 11500000, guid: d2ac78b33d801d9448b1551c1438067b, type: 3}
@@ -118,7 +114,13 @@ ClassTypes:
 - Class: 114
   Script: {fileID: 11500000, guid: 46dea495b500d304d82fff4cf2f327e4, type: 3}
 - Class: 114
+  Script: {fileID: 11500000, guid: cf71dcd4756e61a4b93edd80094e832a, type: 3}
+- Class: 114
   Script: {fileID: 11500000, guid: 0a0773bf4e82ec54dae5cbd6595218f7, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 3cb72aebb397f5e4580d4b9ee15f5799, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 60424530e786a8e47bb11684d72e8525, type: 3}
 - Class: 115
   Script: {instanceID: 0}
 - Class: 128
@@ -133,8 +135,6 @@ ClassTypes:
   Script: {instanceID: 0}
 - Class: 225
   Script: {instanceID: 0}
-- Class: 687078895
-  Script: {instanceID: 0}
 SerializeReferenceClassIdentifiers:
 - AssemblyName: Assembly-CSharp
   ClassName: EntityStatType
@@ -143,9 +143,9 @@ SerializeReferenceClassIdentifiers:
 - AssemblyName: Assembly-CSharp
   ClassName: ItemInventory
 - AssemblyName: Assembly-CSharp
-  ClassName: MinionData
-- AssemblyName: Assembly-CSharp
   ClassName: MinionInventory
+- AssemblyName: Assembly-CSharp
+  ClassName: SmithingData/SmithingStation/SmithTask
 - AssemblyName: Unity.TextMeshPro
   ClassName: TMPro.FaceInfo_Legacy
 - AssemblyName: Unity.TextMeshPro
@@ -202,7 +202,7 @@ Assets:
 - Assets/Prefabs/UI/InventoryUI/MinionInventoryUI/InventoryPlayer.prefab
 - Assets/Prefabs/UI/QuestUI/QuestListOption.prefab
 - Assets/Prefabs/UI/Misc Ui/Damage Text.prefab
-- Assets/Prefabs/UI/InventoryUI/ItemUI/ItemSlotBlue.prefab
+- Assets/Prefabs/UI/InventoryUI/ItemUI/ItemSlot.prefab
 - Assets/Prefabs/UI/InventoryUI/ItemUI/ItemSlotGreen.prefab
 - Assets/Prefabs/UI/EffectUI/EffectObject.prefab
 - Assets/Prefabs/UI/InventoryUI/ItemUI/ItemSlotOrange.prefab
@@ -213,7 +213,6 @@ Assets:
 - Assets/Prefabs/UI/InventoryUI/MinionInventoryUI/PlayerSlot.prefab
 - Assets/Prefabs/UI/QuestUI/ItemRequirementDisplay.prefab
 - Assets/Prefabs/UI/UI.prefab
-- Assets/Prefabs/UI/InventoryUI/ItemUI/ItemSlot.prefab
 Dependencies:
 - C:/Users/Liam O'Malley/Documents/GitHub/Robot-Game/Robot Game/Assets/StreamingAssets/general
   prefabs

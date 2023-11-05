@@ -10,13 +10,13 @@ public class ActiveAbilityIcon : UIDraggable
     public string activeAbility;
     public bool onAbilityBar = false;
 
-    private MinionData am;
-    private MinionEntity ame;
+    private MinionData activeMinion;
+    private MinionEntity activeMinionEntity;
 
     private void Start()
     {
-        am = PlayerManager.instance.activeMinion;
-        ame = am.GetEntity();
+        activeMinion = PlayerManager.instance.activeMinion;
+        activeMinionEntity = activeMinion.GetEntity();
 
         if (onAbilityBar)
         {
@@ -33,6 +33,11 @@ public class ActiveAbilityIcon : UIDraggable
         //TODO
         // add examine functionality for offbar
         // add activate functionality for onbar
+        if (!onAbilityBar)
+        {
+            ActiveAbilityDisplay.instance.selected = this;
+            ActiveAbilityDisplay.instance.RefreshInfoWindow();
+        }
     }
 
     public void Activate()
@@ -43,8 +48,8 @@ public class ActiveAbilityIcon : UIDraggable
         if (ability.name != "" && ability.cooldown <= 0)
         {
             TryToAdvanceStage();
-            ame.CalculateASForAnimator();
-            ame.SendMessage(ability.name, this);
+            activeMinionEntity.CalculateASForAnimator();
+            activeMinionEntity.SendMessage(ability.name, this);
         }
     }
 
@@ -69,7 +74,7 @@ public class ActiveAbilityIcon : UIDraggable
 
     public ref MinionData.active GetActive()
     {
-        return ref am.ActiveAbilities[Array.FindIndex(PlayerManager.instance.activeMinion.ActiveAbilities, x => x.name == activeAbility)];
+        return ref activeMinion.ActiveAbilities[Array.FindIndex(PlayerManager.instance.activeMinion.ActiveAbilities, x => x.name == activeAbility)];
     }
 
     public void RefreshOnBar()

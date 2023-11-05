@@ -7,6 +7,6 @@ public class CanvasScaleScript : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
-        GetComponent<Canvas>().scaleFactor = Screen.width/640;
+        //GetComponent<Canvas>().scaleFactor = Screen.width/640;
     }
 }

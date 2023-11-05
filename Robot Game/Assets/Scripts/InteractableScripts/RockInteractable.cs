@@ -7,22 +7,32 @@ using UnityEngine.UI;
 
 public class RockInteractable : Interactable
 {
+    public int baseExp = 1;
+
     public override void PlayerInRange(MinionEntity playerEntitiy)
     {
-        if (playerEntitiy.data == PlayerManager.instance.activeMinion && PlayerManager.instance.activeMinion.GetEntity() is GolemEntity)
+        if (playerEntitiy.data == PlayerManager.instance.activeMinion && PlayerManager.instance.activeMinion.HasFunction<MiningFunction>())
         {
-            UIManager.instance.actionButton.SetCurrentButton(MineAction, UIManager.instance.uiSprites.GetSprite("Action Buttons_4"),
-                UIManager.instance.uiSprites.GetSprite("Action Buttons_3"), UIManager.instance.uiSprites.GetSprite("Action Buttons_5"));
+            UIManager.instance.actionButton.SetCurrentButton(MineAction, icon);
             playerEntitiy.currentInteractable = this;
         }
     }
     private void MineAction()
     {
-        ((GolemEntity)(PlayerManager.instance.activeMinion.GetEntity())).ToggleMining();
+        ((MiningFunction)PlayerManager.instance.activeMinion.GetFunction<MiningFunction>()).StartMining();
     }
 
     public void RollDrop()
     {
         GetComponent<DropTableRoller>().RollDrop(100,150);
+    }
+
+    public override void InteractAction(MinionData data)
+    {
+        if (data.HasFunction<MiningFunction>())
+        {
+            data.GetFunction<MiningFunction>().level.AddExp(baseExp);
+            GetComponent<DropTableRoller>().RollDrop();
+        }
     }
 }

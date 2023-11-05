@@ -5,9 +5,9 @@ using System.Linq;
 using System;
 using UnityEngine.InputSystem;
 
-public class MinionEntity : Entity
+public abstract class MinionEntity : Entity
 {
-    public MinionData data;
+    public MinionData data { get; protected set; }
 
     public Sprite icon;
 
@@ -198,7 +198,6 @@ public class MinionEntity : Entity
     }
 
     //used to buffer actions
-
     protected virtual bool AttemptAction(Action action = null)
     {
         //If there is no buffered action
@@ -212,11 +211,6 @@ public class MinionEntity : Entity
             bufferedAction = action;
             return false;
         }
-    }
-
-    public virtual void ToolAction()
-    {
-
     }
 
     protected override void CreateStats()
@@ -240,7 +234,7 @@ public class MinionEntity : Entity
 
     protected void EquipItemsFromData()
     {
-        foreach (Item item in new Item[] { data.weapon, data.tool})
+        foreach (Item item in new Item[] {}.Concat(data.artifacts).Concat(data.functions.Select(x => x == null ? null : x.equipItem).ToList()))
         {
             if (item != null)
             {
@@ -274,6 +268,18 @@ public class MinionEntity : Entity
             {
                 data.ActiveAbilities[i].cooldown = 0;
             }
+        }
+    }
+
+    public void InteractAction()
+    {
+        if (currentInteractable != null)
+        {
+            currentInteractable.InteractAction(data);
+        }
+        else
+        {
+            animator.Play("Idle",0);
         }
     }
 

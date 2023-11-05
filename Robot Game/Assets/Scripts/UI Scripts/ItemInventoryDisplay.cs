@@ -39,8 +39,7 @@ public class ItemInventoryDisplay : InventoryDisplay
 
         int x = 0;
         int y = 0;
-        float slotSize = 39f;
-        for (int i = slotsPerPage * currentInventory.currentPage - slotsPerPage; i < currentInventory.GetSize() && i < slotsPerPage * currentInventory.currentPage; i++)
+        for (int i = 0; i < currentInventory.GetSize(); i++)
         {
             if (existingSlots.Any(x => x.inventoryIndex == i))
             {
@@ -87,42 +86,7 @@ public class ItemInventoryDisplay : InventoryDisplay
                 x = 0;
                 y++;
             }
-            pageNumber.GetComponent<TextMeshProUGUI>().text = "" + currentInventory.currentPage;
         }
-    }
-
-    public override void IncrementPage()
-    {
-        UpdateCurrentInventory();
-        if (currentInventory.currentPage * slotsPerPage < currentInventory.inventorySize)
-        {
-            currentInventory.currentPage++;
-        }
-
-        else
-        {
-            currentInventory.currentPage = 1;
-        }
-        RefreshInventory();
-    }
-
-    public override void DecrementPage()
-    {
-        UpdateCurrentInventory();
-        if (currentInventory.currentPage <= 1)
-        {
-            int lastPage = currentInventory.inventorySize / slotsPerPage;
-            if (currentInventory.inventorySize % slotsPerPage != 0)
-            {
-                lastPage++;
-            }
-            currentInventory.currentPage = lastPage;
-        }
-        else
-        {
-            currentInventory.currentPage--;
-        }
-        RefreshInventory();
     }
 
     public override void UpdateCurrentInventory()

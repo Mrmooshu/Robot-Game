@@ -1,12 +1,12 @@
 ManifestFileVersion: 0
-CRC: 937571431
+CRC: 2120850867
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 6b9e796c473ed48a1a8abc78bb09b5fa
+    Hash: 6fb48089db6496ab4c386362aa5d5d50
   TypeTreeHash:
     serializedVersion: 2
-    Hash: 051d8e70ea877995407e50c78f2c22e6
+    Hash: a43762d5907f9bccada36e63778d2de3
 HashAppended: 0
 ClassTypes:
 - Class: 1
@@ -48,6 +48,8 @@ ClassTypes:
 - Class: 114
   Script: {fileID: 11500000, guid: fec04a0326f576943b029ce45d43fcf7, type: 3}
 - Class: 114
+  Script: {fileID: 11500000, guid: 0d6d3f180c31b17459540c8137c9fa9e, type: 3}
+- Class: 114
   Script: {fileID: 11500000, guid: 51a3e6be9b8b3ac49a02f8c96412caf3, type: 3}
 - Class: 114
   Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
@@ -59,6 +61,8 @@ ClassTypes:
   Script: {fileID: 11500000, guid: 3245ec927659c4140ac4f8d17403cc18, type: 3}
 - Class: 114
   Script: {fileID: 11500000, guid: 3768290912663824baa5c9fa59a5a8b0, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: d4e1bb5eae78e9946b7e19d5f8cfcaac, type: 3}
 - Class: 114
   Script: {fileID: 11500000, guid: 16da4cbedc408114d9f1df26ae5ac682, type: 3}
 - Class: 114
@@ -87,10 +91,6 @@ SerializeReferenceClassIdentifiers:
 - AssemblyName: Assembly-CSharp
   ClassName: GolemEyeLevel/colorStruct
 - AssemblyName: Assembly-CSharp
-  ClassName: ItemInventory
-- AssemblyName: Assembly-CSharp
-  ClassName: MinionData
-- AssemblyName: Assembly-CSharp
   ClassName: SkillTreeUpgrade/requiredSkill
 - AssemblyName: UnityEngine.CoreModule
   ClassName: UnityEngine.Events.PersistentCallGroup
@@ -109,5 +109,7 @@ SerializeReferenceClassIdentifiers:
 Assets:
 - Assets/Prefabs/Entity/Projectlie Prefabs/Slime Core.prefab
 - Assets/Prefabs/Entity/Player Prefabs/Clay Golem.prefab
+- Assets/Prefabs/Entity/Player Prefabs/Magma Titan.prefab
+- Assets/Prefabs/Entity/Player Prefabs/Wood Sentinel.prefab
 - Assets/Prefabs/Slime Death.prefab
 Dependencies: []

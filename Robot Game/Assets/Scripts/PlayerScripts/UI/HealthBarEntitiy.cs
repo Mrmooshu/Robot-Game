@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class HealthBarEntitiy : HealthBar
+public class HealthBarEntitiy : PercentDisplayBar
 {
     public Entity entity;
 
@@ -12,13 +12,13 @@ public class HealthBarEntitiy : HealthBar
         if (entity == null)
         {
             entity = GetComponentInParent<Entity>();
+            Inititalize(() => ((ResourceStat)entity.stats[EntityStatType.Health]).CurrentValue, () => ((ResourceStat)entity.stats[EntityStatType.Health]).Value);
         }
     }
 
-    void Update()
+    protected override void Update()
     {
-        healthBar.fillAmount = ((ResourceStat)entity.stats[EntityStatType.Health]).CurrentValue / ((ResourceStat)entity.stats[EntityStatType.Health]).Value;
-        text.text = (int)((ResourceStat)entity.stats[EntityStatType.Health]).CurrentValue + "/" + (int)((ResourceStat)entity.stats[EntityStatType.Health]).Value;
+        base.Update();
         if (entity.facingDirection < 0)
         {
             transform.localScale = new Vector3(-1,1,1);

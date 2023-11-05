@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 27b223b09ca8cf243994b9d70fb18586, type: 3}
   m_Name: joesweapon
   m_EditorClassIdentifier: 
-  itemID: 68
+  itemID: 70
   itemName: joes weapon
   itemDescription: joes nutcrusher
   stackable: 0

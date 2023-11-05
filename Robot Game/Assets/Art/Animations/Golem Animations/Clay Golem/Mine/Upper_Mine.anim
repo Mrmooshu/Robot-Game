@@ -835,7 +835,7 @@ AnimationClip:
   m_HasMotionFloatCurves: 0
   m_Events:
   - time: 0.375
-    functionName: ToolAction
+    functionName: InteractAction
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0

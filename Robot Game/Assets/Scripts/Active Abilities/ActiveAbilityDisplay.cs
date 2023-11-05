@@ -1,13 +1,29 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class ActiveAbilityDisplay : ToggleGroup
 {
     public GameObject ActiveAbilityPrefab;
+    public TextMeshProUGUI activeNameText;
+    public TextMeshProUGUI activeDescriptionText;
     public Toggle GeneralToggle;
     public Toggle CurrentToggle;
+
+    public static ActiveAbilityDisplay instance;
+
+    public ActiveAbilityIcon selected;
+
+    protected override void Awake()
+    {
+        base.Awake();
+        if (instance == null)
+        {
+            instance = this;
+        }
+    }
 
     protected override void Start()
     {
@@ -26,6 +42,7 @@ public class ActiveAbilityDisplay : ToggleGroup
     public virtual void RefreshList()
     {
         CreateList();
+        RefreshInfoWindow();
     }
 
     protected void CreateList()
@@ -57,6 +74,27 @@ public class ActiveAbilityDisplay : ToggleGroup
                     y++;
                 }
             }
+        }
+    }
+
+    protected override void OnEnable()
+    {
+        RefreshInfoWindow();
+    }
+
+    public void RefreshInfoWindow()
+    {
+        if (selected != null)
+        {
+            activeNameText.enabled = true;
+            activeDescriptionText.enabled = true;
+            activeNameText.text = Database.GetActiveAbility(selected.activeAbility).name;
+            activeDescriptionText.text = Database.GetActiveAbility(selected.activeAbility).Description;
+        }
+        else
+        {
+            activeNameText.enabled = false;
+            activeDescriptionText.enabled = false;
         }
     }
 }

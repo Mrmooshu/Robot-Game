@@ -16,7 +16,7 @@ public class GameData
     public void NewGameData()
     {
         universal = new UniversalPlayerData();
-        activeMinions = new List<MinionData> { new ClayGolemData("Clay Golem"), new ClayGolemData("Clay Golem") };
+        activeMinions = new List<MinionData> { new ClayGolemData(), new ClayGolemData()};
         minionInventory = new MinionInventory(10);
         bankInventory = new ItemInventory(48);
         quests = new List<QuestData>();
@@ -31,12 +31,8 @@ public class GameData
 
         //testing pusposes stuff
 
-        minionInventory.inventory[0] = new ClayGolemData("Clay Golem");
-        minionInventory.inventory[1] = new ClayGolemData("Clay Golem");
-        minionInventory.inventory[2] = new ClayGolemData("Clay Golem");
-
-        minionInventory.inventory[0].tool = new Item(Database.GetItemID("Novium Pickaxe"), 1);
-        minionInventory.inventory[1].tool = new Item(Database.GetItemID("Iromite Pickaxe"), 1);
+        minionInventory.inventory[0] = new ClayGolemData();
+        minionInventory.inventory[1] = new ClayGolemData();
 
         bankInventory.Add(new Item(Database.GetItemID("Slythril Warhammer"), 1));
         bankInventory.Add(new Item(Database.GetItemID("Myphrite Warhammer"), 1));
