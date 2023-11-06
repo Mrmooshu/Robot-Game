@@ -6,8 +6,6 @@ public class MiningFunction : ClassFunction
 {
     public MiningFunction(MinionData host) : base(host)
     {
-        level = new LevelData();
-        equipItem = null;
         itemType = typeof(Pickaxe);
         name = "Mining";
     }

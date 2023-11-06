@@ -16,6 +16,8 @@ public abstract class ClassFunction
 
     public ClassFunction(MinionData host)
     {
+        equipItem = null;
+        level = new LevelData(host);
         this.host = host;
     }
 

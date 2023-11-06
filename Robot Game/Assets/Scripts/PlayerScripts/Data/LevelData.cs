@@ -7,13 +7,16 @@ public class LevelData
 {
     public static event Action levelup;
 
+    private MinionData data;
+
     public int level { get; private set; }
     public float exp { get; private set; }
 
-    public LevelData()
+    public LevelData(MinionData data = null)
     {
         level = 1;
         exp = 0;
+        this.data = data;
     }
 
     public void AddExp(float xp)
@@ -23,6 +26,11 @@ public class LevelData
         {
             level++;
             levelup.Invoke();
+        }
+        // 10% of function exp is gained as main exp
+        if (data != null)
+        {
+            data.Level.AddExp(xp * .1f);
         }
     }
 

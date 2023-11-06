@@ -19,6 +19,5 @@ MonoBehaviour:
   sprite: {fileID: 1028016929, guid: 9f8ac63f9da514e4bb0266f08bdc64e6, type: 3}
   tags: 
   itemModifiers: []
-  animation: {fileID: 0}
   projectilePrefab: {fileID: 4259154362121718386, guid: b5ced71ff67b9b244ae42ba7e181b7f4, type: 3}
   firePosition: {x: 1, y: -0.5}

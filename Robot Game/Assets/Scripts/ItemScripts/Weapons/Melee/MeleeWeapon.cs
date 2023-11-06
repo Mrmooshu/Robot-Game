@@ -3,7 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class MeleeWeapon : Artifact
+public abstract class MeleeWeapon : Weapon
 {
-
+    [Header("Artifact Properties")]
+    public Sprite[] sprites;
 }

@@ -19,4 +19,4 @@ MonoBehaviour:
   sprite: {fileID: -998953949, guid: ea7d185658128e84fbf8242d62bc55b4, type: 3}
   tags: 
   itemModifiers: []
-  animation: {fileID: 0}
+  sprites: []

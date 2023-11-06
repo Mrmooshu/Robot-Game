@@ -18,7 +18,7 @@ public class FunctionInventorySlot : SlotDisplay
     {
         if (inventorySlot.GetComponentInChildren<InventoryItem>())
         {
-            base.Swap(inventorySlot, Database.GetItem(inventorySlot.GetComponentInChildren<InventoryItem>().item.itemID).GetType().Equals(PlayerManager.instance.activeMinion.functions[functionSlotIndex].itemType));
+            base.Swap(inventorySlot, Database.GetItem(inventorySlot.GetComponentInChildren<InventoryItem>().item.itemID).GetType().IsSubclassOf(PlayerManager.instance.activeMinion.functions[functionSlotIndex].itemType) || Database.GetItem(inventorySlot.GetComponentInChildren<InventoryItem>().item.itemID).GetType().Equals(PlayerManager.instance.activeMinion.functions[functionSlotIndex].itemType));
         }
         else
         {
