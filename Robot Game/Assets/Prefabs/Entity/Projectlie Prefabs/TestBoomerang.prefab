@@ -365,20 +365,35 @@ MonoBehaviour:
   statListInspector:
   - type: 4
     value: 1
+  hitboxes: {fileID: 3245487930060418026}
   dead: 0
-  stunned: 0
   whatIsEnemy:
     serializedVersion: 2
     m_Bits: 0
-  bufferedAction: 
   origin: {fileID: 0}
-  direction: {fileID: 0}
-  visual: {fileID: 0}
-  animator: {fileID: 0}
+  lifeTime: 20
+  direction: {fileID: 7744248077376264038}
+  visual: {fileID: 1854101928777042029}
   duration: 1
   rotationSpeed: 450
 --- !u!4 &1854101928777042029 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6801589533436197838, guid: 993e2b6dbe6df2b48a1085ddcce2c06e, type: 3}
+  m_PrefabInstance: {fileID: 5178873788336829347}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &3245487930060418026 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7698134275030538313, guid: 993e2b6dbe6df2b48a1085ddcce2c06e, type: 3}
+  m_PrefabInstance: {fileID: 5178873788336829347}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 22eec1f84d768fd49895cb865dbcde3c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &7744248077376264038 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3217284126321566917, guid: 993e2b6dbe6df2b48a1085ddcce2c06e, type: 3}
   m_PrefabInstance: {fileID: 5178873788336829347}
   m_PrefabAsset: {fileID: 0}

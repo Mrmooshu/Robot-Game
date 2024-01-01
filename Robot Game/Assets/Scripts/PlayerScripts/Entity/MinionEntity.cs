@@ -141,7 +141,18 @@ public abstract class MinionEntity : Entity
                 break;
             case "basic attack":
                 animator.SetFloat("AttackSpeedModifier", baseAttackSpeed * (1 + stats[EntityStatType.AttackSpeedBonus].Value / 100));
-                Invoke("BasicAttack", 0);
+                switch (data.style)
+                {
+                    case MinionData.CombatStyle.Melee:
+                        MeleeBasic();
+                        break;
+                    case MinionData.CombatStyle.Range:
+                        RangeBasic();
+                        break;
+                    case MinionData.CombatStyle.Magic:
+                        MagicBasic();
+                        break;
+                }
                 break;
             case "ability 1":
                 ActivateAbility(0);
@@ -282,6 +293,12 @@ public abstract class MinionEntity : Entity
             animator.Play("Idle",0);
         }
     }
+
+    public abstract void MeleeBasic();
+
+    public abstract void RangeBasic();
+
+    public abstract void MagicBasic();
 
     /*
     public void OnDrawGizmos()

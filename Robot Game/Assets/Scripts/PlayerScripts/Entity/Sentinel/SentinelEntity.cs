@@ -7,4 +7,19 @@ using static DamageScript;
 public class SentinelEntity : MinionEntity
 {
     new public WoodSentinelData data { get { return (WoodSentinelData)base.data; } private set { base.data = value; } }
+
+    public override void MagicBasic()
+    {
+        throw new System.NotImplementedException();
+    }
+
+    public override void MeleeBasic()
+    {
+        throw new System.NotImplementedException();
+    }
+
+    public override void RangeBasic()
+    {
+        throw new System.NotImplementedException();
+    }
 }

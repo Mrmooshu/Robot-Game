@@ -9,7 +9,8 @@ public class GolemEntity : MinionEntity
     new public ClayGolemData data { get { return (ClayGolemData)base.data; } private set { base.data = value; } }
 
     [SerializeField] private GameObject sandblastPrefab;
-    [SerializeField] private Transform sandblastSpawn;
+    [SerializeField] private GameObject rangeBasicPrefab;
+    [SerializeField] private Transform projectileSpawn;
 
     public void IncrementCharge()
     {
@@ -19,17 +20,40 @@ public class GolemEntity : MinionEntity
         }
     }
 
-    public virtual void BasicAttack()
+    public override void MeleeBasic()
     {
-        //If first punch is in action then buffer a second punch
-        if (animator.GetCurrentAnimatorStateInfo(0).IsName("Basic_Punch_First"))
+        //If second punch is in action then buffer a third punch
+        if (animator.GetCurrentAnimatorStateInfo(0).IsName("Melee_Basic_Second"))
         {
-            AttemptAction(() => { animator.Play("Basic_Punch_Second", 0); });
+            AttemptAction(() => { animator.Play("Melee_Basic_Third", 0); });
+        }
+        //If first punch is in action then buffer a second punch
+        else if (animator.GetCurrentAnimatorStateInfo(0).IsName("Melee_Basic_First"))
+        {
+            AttemptAction(() => { animator.Play("Melee_Basic_Second", 0); });
         }
         else
         {
-            AttemptAction(() => { animator.Play("Basic_Punch_First", 0); });
+            AttemptAction(() => { animator.Play("Melee_Basic_First", 0); });
         }
+    }
+
+    public override void RangeBasic()
+    {
+        //If first punch is in action then buffer a second punch
+        if (animator.GetCurrentAnimatorStateInfo(0).IsName("Range_Basic_First"))
+        {
+            AttemptAction(() => { animator.Play("Range_Basic_Second", 0); });
+        }
+        else
+        {
+            AttemptAction(() => { animator.Play("Range_Basic_First", 0); });
+        }
+    }
+
+    public override void MagicBasic()
+    {
+        throw new System.NotImplementedException();
     }
 
     // functions for all unique golem attacks
@@ -47,13 +71,20 @@ public class GolemEntity : MinionEntity
         {
             if (!attack.hit && data.skills["sandblast"] > 0)
             {
-                Projectile projectile = Instantiate(sandblastPrefab, sandblastSpawn.position, transform.rotation).GetComponent<Projectile>();
+                Projectile projectile = Instantiate(sandblastPrefab, projectileSpawn.position, transform.rotation).GetComponent<Projectile>();
                 projectile.Initialize(facingDirection, this, new AttackData(this, new damageData(4 * data.skills["sandblast"] + stats[EntityStatType.AttackDamage].Value * .1f + stats[EntityStatType.MagicDamage].Value, damageType.magic), false, (Vector2.zero, Vector2.zero), .5f, whatIsEnemy));
                 // (4 per level + 10% ad + 100% ap) magic damage
             }
         }
 
         //rigBod.AddForce(new Vector2(stats[StatType.MoveSpeed].Value * facingDirection, 1.2f), ForceMode2D.Impulse);
+    }
+
+    public virtual void BasicRangeHit(float side)
+    {
+        Projectile projectile = Instantiate(rangeBasicPrefab, projectileSpawn.position, transform.rotation).GetComponent<Projectile>();
+        projectile.Initialize(facingDirection, this, new AttackData(this, new damageData(10, damageType.magic), false, (Vector2.zero, Vector2.zero), .5f, whatIsEnemy));
+        // add damage formula here
     }
 
     public void Tornado(ActiveAbilityIcon active)

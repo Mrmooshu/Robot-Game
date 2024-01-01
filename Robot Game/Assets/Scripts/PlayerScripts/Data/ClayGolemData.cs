@@ -14,7 +14,7 @@ public class ClayGolemData : MinionData
     {
         base.Create();
         functions[0] = new MiningFunction(this);
-        functions[1] = new MeleeFunction(this);
+        functions[1] = new RangeFunction(this);
         variantName = "Clay Golem";
         ChargeLevel = 0;
     }

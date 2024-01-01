@@ -8,5 +8,9 @@ public class MeleeFunction : ClassFunction
     {
         itemType = typeof(MeleeWeapon);
         name = "Melee";
+        if (host.style == MinionData.CombatStyle.None)
+        {
+            host.style = MinionData.CombatStyle.Melee;
+        }
     }
 }

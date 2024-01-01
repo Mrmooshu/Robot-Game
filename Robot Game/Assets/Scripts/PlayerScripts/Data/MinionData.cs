@@ -15,6 +15,11 @@ public abstract class MinionData : ISerializationCallbackReceiver
         Storage, Idle, Mining, Woodcutting, Fishing
     }
 
+    public enum CombatStyle
+    {
+        None,Melee,Range,Magic
+    }
+
     [System.Serializable]
     protected struct skill
     {
@@ -52,6 +57,7 @@ public abstract class MinionData : ISerializationCallbackReceiver
     public active[] ActiveAbilities;
     public Vector3 savedPosition;
     public Activity activity = Activity.Storage;
+    public CombatStyle style = CombatStyle.None;
     // used to save skills as a list in json
     [SerializeField] private List<skill> skillsList;
     [SerializeField] private int _skillPoints;

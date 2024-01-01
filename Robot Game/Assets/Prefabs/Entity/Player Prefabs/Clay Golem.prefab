@@ -157,7 +157,7 @@ SpriteRenderer:
   m_SortingLayerID: 506174663
   m_SortingLayer: 3
   m_SortingOrder: 0
-  m_Sprite: {fileID: -7218240477407982159, guid: 4fb49f523789f2f4b8956624cc00591b, type: 3}
+  m_Sprite: {fileID: -5595173110719673328, guid: f06650428e42d4c48984ed8ae0a5394c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -321,15 +321,15 @@ SpriteRenderer:
   m_SortingLayerID: 506174663
   m_SortingLayer: 3
   m_SortingOrder: 0
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 410431823679281966, guid: f06650428e42d4c48984ed8ae0a5394c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.34375, y: 0.78125}
+  m_Size: {x: 0.78125, y: 0.40625}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &2947402111217047421
@@ -483,24 +483,6 @@ MonoBehaviour:
   whatIsEnemy:
     serializedVersion: 2
     m_Bits: 256
-  data:
-    lastSafePoint: 
-    variantName: 
-    tool:
-      rid: -2
-    weapon:
-      rid: -2
-    level: 0
-    inventory:
-      inventory: []
-      inventorySize: 0
-      currentPage: 0
-      stackLimit: 0
-    ActiveAbilities: []
-    savedPosition: {x: 0, y: 0, z: 0}
-    activity: 0
-    skillsList: []
-    _skillPoints: 0
   icon: {fileID: 3797438909279334143, guid: e300c380a49e2c84e9671463ad9884b1, type: 3}
   currentInteractable: {fileID: 0}
   skillTree: {fileID: 52194782207523293, guid: d62f92d9bd3bfa54c991f51a6df19f47, type: 3}
@@ -511,12 +493,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   sandblastPrefab: {fileID: 1411473070836644815, guid: 25df9f619fd8306499fc4b731611d9a0, type: 3}
-  sandblastSpawn: {fileID: 9029728899028962331}
-  references:
-    version: 2
-    RefIds:
-    - rid: -2
-      type: {class: , ns: , asm: }
+  rangeBasicPrefab: {fileID: 1403646728384203432, guid: 1685c3bcba79d204cbf1284e4d3f6cd7, type: 3}
+  projectileSpawn: {fileID: 9029728899028962331}
 --- !u!95 &1817154297190067104
 Animator:
   serializedVersion: 5
@@ -1010,7 +988,7 @@ SpriteRenderer:
   m_SortingLayerID: 506174663
   m_SortingLayer: 3
   m_SortingOrder: 0
-  m_Sprite: {fileID: 3547674861413114331, guid: 4fb49f523789f2f4b8956624cc00591b, type: 3}
+  m_Sprite: {fileID: -2343403142754163644, guid: f06650428e42d4c48984ed8ae0a5394c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -1193,7 +1171,7 @@ GameObject:
   m_Component:
   - component: {fileID: 9029728899028962331}
   m_Layer: 7
-  m_Name: Sandblast Spawn
+  m_Name: Projectile Spawn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1207,7 +1185,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7962304482261825219}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0.6, y: 0.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

@@ -17,14 +17,15 @@ public class Projectile : Entity
         this.origin = origin;
         this.attack = attack;
         whatIsEnemy = origin.whatIsEnemy;
+        rigBod = GetComponent<Rigidbody2D>();
+        animator = GetComponent<Animator>();
         CreateStats();
         StartCoroutine(Lifespan());
     }
 
     public override void Start()
     {
-        rigBod = GetComponent<Rigidbody2D>();
-        animator = GetComponent<Animator>();
+
         hitboxes.EnableAttack(attack);
         attack.AddAction((() => { Die(); }, AttackData.effectOccurance.hit));
         hitboxes.BeginAttack();

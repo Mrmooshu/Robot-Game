@@ -1,0 +1,13 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!221 &22100000
+AnimatorOverrideController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: ClayGolemRangeAnimator
+  m_Controller: {fileID: 9100000, guid: 9568602173aea534ca046d01257d5bd3, type: 2}
+  m_Clips:
+  - m_OriginalClip: {fileID: 7400000, guid: 518e8e422aee1cb4cb9ac4811bbf8523, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 11ccd171079456d4388977b7bfaeb40d, type: 2}
