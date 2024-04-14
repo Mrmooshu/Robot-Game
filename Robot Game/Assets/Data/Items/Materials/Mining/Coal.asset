@@ -17,4 +17,6 @@ MonoBehaviour:
   itemDescription: used for smelting ores
   stackable: 1
   sprite: {fileID: -1442657817, guid: eb1697e387200144298f70ef0c322e3e, type: 3}
+  mass: 1
+  gravity: 1
   tags: 00000000

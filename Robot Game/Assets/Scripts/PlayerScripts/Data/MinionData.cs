@@ -21,19 +21,6 @@ public abstract class MinionData : ISerializationCallbackReceiver
     }
 
     [System.Serializable]
-    protected struct skill
-    {
-        public string name;
-        public int level;
-
-        public skill(string name, int level)
-        {
-            this.name = name;
-            this.level = level;
-        }
-    }
-
-    [System.Serializable]
     public struct active
     {
         public string name;
@@ -59,7 +46,7 @@ public abstract class MinionData : ISerializationCallbackReceiver
     public Activity activity = Activity.Storage;
     public CombatStyle style = CombatStyle.None;
     // used to save skills as a list in json
-    [SerializeField] private List<skill> skillsList;
+    [SerializeField] private List<SkillData> skillsList;
     [SerializeField] private int _skillPoints;
     public int SkillPoints { get { return _skillPoints; } set { _skillPoints = value; skillPointsUpdated?.Invoke(); } }
 
@@ -108,6 +95,7 @@ public abstract class MinionData : ISerializationCallbackReceiver
     protected virtual void Create()
     {
         Level = new LevelData();
+        skills = new Dictionary<string, int>();
         functions = new ClassFunction[5];
         artifacts = new Item[6];
         inventory = new ItemInventory(30, 10);
@@ -145,7 +133,7 @@ public abstract class MinionData : ISerializationCallbackReceiver
             }
             if (skills != null)
             {
-                skillsList = skills.Select(x => new skill(x.Key, x.Value)).ToList();
+                skillsList = skills.Select(x => new SkillData(x.Key, x.Value)).ToList();
             }
         }
         catch (Exception)

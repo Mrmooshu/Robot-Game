@@ -80,6 +80,10 @@ public class QuestInfoDisplay : MonoBehaviour
 
     public void RefreshItemQuanity()
     {
+        if (QuestListDisplay.selectedQuest == null)
+        {
+            return;
+        }
         if (QuestListDisplay.selectedQuest.GetCurrentStep() == null)
         {
             return;

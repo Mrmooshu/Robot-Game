@@ -16,7 +16,7 @@ public class RandomJumpBehaviour : BehaviourNode
 
         if (host.canJump && !(bool)GetRoot().GetData("JumpDisabled"))
         {
-            float jumpPower = Random.Range(host.stats[EntityStatType.JumpForce].Value * .5f, host.stats[EntityStatType.JumpForce].Value);
+            float jumpPower = Random.Range(host.stats[EntityStatType.jumpforce].Value * .5f, host.stats[EntityStatType.jumpforce].Value);
             GetRoot().SetData("JumpArc", new Vector2(host.facingDirection * jumpPower / 2, jumpPower));
             state = NodeState.SUCCESS;
             return state;

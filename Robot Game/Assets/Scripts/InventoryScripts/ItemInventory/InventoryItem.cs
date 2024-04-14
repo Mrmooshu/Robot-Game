@@ -24,6 +24,7 @@ public class InventoryItem : UIDraggable
 
     public override void OnPointerDown(PointerEventData eventData)
     {
+        base.OnPointerDown(eventData);
         //TODO
         // add examine functionality
     }

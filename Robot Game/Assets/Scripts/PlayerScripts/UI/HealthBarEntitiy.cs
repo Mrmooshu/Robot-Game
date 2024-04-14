@@ -12,7 +12,7 @@ public class HealthBarEntitiy : PercentDisplayBar
         if (entity == null)
         {
             entity = GetComponentInParent<Entity>();
-            Inititalize(() => ((ResourceStat)entity.stats[EntityStatType.Health]).CurrentValue, () => ((ResourceStat)entity.stats[EntityStatType.Health]).Value);
+            Inititalize(() => ((ResourceStat)entity.stats[EntityStatType.health]).CurrentValue, () => ((ResourceStat)entity.stats[EntityStatType.health]).Value);
         }
     }
 

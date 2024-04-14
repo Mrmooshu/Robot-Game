@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.InputSystem;
 
 public abstract class UIDraggable : MonoBehaviour, IDragHandler, IEndDragHandler, IPointerDownHandler
 {
@@ -12,7 +13,9 @@ public abstract class UIDraggable : MonoBehaviour, IDragHandler, IEndDragHandler
     {
         if (draggable)
         {
-            transform.position = eventData.position;
+            Vector3 output = Vector2.zero;
+            RectTransformUtility.ScreenPointToWorldPointInRectangle(canvas.GetComponent<RectTransform>(), eventData.position, Camera.main, out output);
+            transform.position = output;
             canvasGroup.alpha = .5f;
             canvasGroup.blocksRaycasts = false;
             canvas.sortingOrder = 15;
@@ -30,5 +33,7 @@ public abstract class UIDraggable : MonoBehaviour, IDragHandler, IEndDragHandler
         }
     }
 
-    public abstract void OnPointerDown(PointerEventData eventData);
+    public virtual void OnPointerDown(PointerEventData eventData)
+    {
+    }
 }

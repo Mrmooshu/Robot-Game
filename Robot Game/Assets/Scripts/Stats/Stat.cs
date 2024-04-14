@@ -7,13 +7,22 @@ using UnityEngine;
 [Serializable]
 public enum EntityStatType
 {
-    Health,HealthRegen,Mana,ManaRegen,MoveSpeed, MoveAcceleration,JumpForce,Placeholderstat,AttackDamage,MagicDamage,AttackDefense,MagicDefense,CritChance,AttackSpeedBonus
+    health,healthregen,mana,manaregen,
+    movespeed,moveacceleration,jumpforce,
+    damagepower,critchance,attackspeedbonus,
+    meleepower,meleedefense,
+    magicpower,magicdefense,
+    rangepower,rangedefense,
+    miningpower,
+    woodcuttingpower,
+    fishingpower,
+
 }
 
 [Serializable]
 public struct EntitiyStatStruct
 {
-    public EntityStatType type;
+    public string type;
     public float value;
 }
 

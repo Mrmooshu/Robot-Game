@@ -143,7 +143,6 @@ MonoBehaviour:
   draggable: 1
   activeAbility: 
   onAbilityBar: 0
-  CooldownPrefab: {fileID: 1132593695071212763, guid: c4472346584709c4b84eff171ec7c3a5, type: 3}
 --- !u!225 &6495030296508651311
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -175,7 +174,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
-  m_SortingLayerID: 0
+  m_SortingLayerID: -1747281215
   m_SortingOrder: 14
   m_TargetDisplay: 0
 --- !u!114 &7234645325352860649

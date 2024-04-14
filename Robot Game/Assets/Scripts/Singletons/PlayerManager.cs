@@ -13,6 +13,7 @@ public class PlayerManager : MonoBehaviour, IDataSave
 {
     public UniversalPlayerData universal;
     public SmithingData smithing;
+    public FarmingData farming;
 
     public InputActionAsset inputActions;
     public InputAction moveAction;
@@ -188,6 +189,7 @@ public class PlayerManager : MonoBehaviour, IDataSave
         bankInventory = data.bankInventory;
         universal = data.universal;
         smithing = data.smithing;
+        farming = data.farming;
     }
 
     public void SaveData(ref GameData data)
@@ -197,5 +199,6 @@ public class PlayerManager : MonoBehaviour, IDataSave
         data.bankInventory = bankInventory;
         data.universal = universal;
         data.smithing = smithing;
+        data.farming = farming;
     }
 }

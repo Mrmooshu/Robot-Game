@@ -9,7 +9,7 @@ public static class DamageScript
 {
     public enum damageType
     {
-        physical, magic
+        melee, range, magic
     }
 
     public struct damageData
@@ -29,6 +29,7 @@ public static class DamageScript
         //damage calculation
         int actualPhysicalDamage = 0;
         int actualMagicDamage = 0;
+        int actualRangeDamage = 0;
         List<damageData> damageSources = new List<damageData>();
         damageSources.Add(attackData.damageData);
         if (attackData.onHit && attackData.attacker is MinionEntity)
@@ -40,19 +41,27 @@ public static class DamageScript
         }
         foreach (damageData damage in damageSources)
         {
-            if (damage.type is damageType.physical)
+            if (damage.type is damageType.melee)
             {
-                actualPhysicalDamage += Mathf.CeilToInt(damage.damage * (100 / (100 + target.stats[EntityStatType.AttackDefense].Value)));
+                actualPhysicalDamage += CalculateDamage(EntityStatType.meleepower, EntityStatType.meleedefense);
             }
             else if (damage.type is damageType.magic)
             {
-                actualMagicDamage += Mathf.CeilToInt(damage.damage * (100 / (100 + target.stats[EntityStatType.MagicDefense].Value)));
+                actualMagicDamage += CalculateDamage(EntityStatType.magicpower, EntityStatType.magicdefense);
+            }
+            else if (damage.type is damageType.range)
+            {
+                actualRangeDamage += CalculateDamage(EntityStatType.rangepower, EntityStatType.rangedefense);
             }
 
+            int CalculateDamage(EntityStatType damageMod, EntityStatType defence)
+            {
+                return Mathf.CeilToInt(damage.damage * (attackData.attacker.stats.ContainsKey(damageMod) ? attackData.attacker.stats[damageMod].Value : 1) * (100 / (100 + target.stats[defence].Value)));
+            }
         }
-        ((ResourceStat)target.stats[EntityStatType.Health]).CurrentValue -= (actualPhysicalDamage + actualMagicDamage);
+        ((ResourceStat)target.stats[EntityStatType.health]).CurrentValue -= (actualPhysicalDamage + actualMagicDamage + actualRangeDamage);
         int damageDisplayCount = 0;
-        foreach ((int, Color) damage in new (int, Color)[] { (actualMagicDamage, Color.cyan), (actualPhysicalDamage, new Color(1, .74f, 0)) })
+        foreach ((int, Color) damage in new (int, Color)[] { (actualMagicDamage, Color.cyan), (actualPhysicalDamage, new Color(1, .74f, 0)), (actualRangeDamage, Color.green) })
         {
             if (damage.Item1 > 0)
             {

@@ -22,6 +22,10 @@ public class ItemObject : MonoBehaviour
     public void SetItem(Item item)
     {
         this.item = item;
-        GetComponent<SpriteRenderer>().sprite = Database.GetItem(item.itemID).sprite;
+        var itemdata = Database.GetItem(item.itemID);
+        var rig = GetComponent<Rigidbody2D>();
+        GetComponent<SpriteRenderer>().sprite = itemdata.sprite;
+        rig.mass = itemdata.mass;
+        rig.gravityScale = itemdata.gravity;
     }
 }

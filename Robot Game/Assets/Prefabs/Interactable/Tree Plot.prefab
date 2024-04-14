@@ -1,5 +1,36 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &674570652970776305
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6612493021497603571}
+  m_Layer: 12
+  m_Name: Slot
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6612493021497603571
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 674570652970776305}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.18, z: 0.01}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6081524203735063340}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6081524203735063343
 GameObject:
   m_ObjectHideFlags: 0
@@ -11,10 +42,9 @@ GameObject:
   - component: {fileID: 6081524203735063340}
   - component: {fileID: 6081524203735063341}
   - component: {fileID: 6081524203735063342}
-  - component: {fileID: 9117135057298156058}
-  - component: {fileID: 6081524203735063338}
+  - component: {fileID: 851191760968323728}
   m_Layer: 12
-  m_Name: Tree
+  m_Name: Tree Plot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -28,10 +58,11 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6081524203735063343}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3, y: -0.5, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 6612493021497603571}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -76,8 +107,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 5
-  m_Sprite: {fileID: 21300000, guid: 6e6724d91b0df034b9130b349ff00291, type: 3}
-  m_Color: {r: 0, g: 1, b: 0.18588209, a: 1}
+  m_Sprite: {fileID: 1554256849108499696, guid: 540b8293d9c26044797d676aa93a128a, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -119,20 +150,20 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.0014541149, y: -0.47740322}
+  m_Offset: {x: 0, y: 0.02}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
+    pivot: {x: 0.5, y: 0}
+    oldSize: {x: 2.5, y: 0.5625}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.4, y: 0.05017245}
+  m_Size: {x: 2.1, y: 0.05}
   m_EdgeRadius: 0
---- !u!114 &9117135057298156058
+--- !u!114 &851191760968323728
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -141,26 +172,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 6081524203735063343}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 272f0ead94f7e434482fb28da3fbb213, type: 3}
+  m_Script: {fileID: 11500000, guid: 73b566c3b3fa6d7489dd754216af465f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  icon: {fileID: -1679593428941994992, guid: 905fd98c83ef31247b11c74f84275dd2, type: 3}
---- !u!114 &6081524203735063338
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6081524203735063343}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b834854326f05a7448cf09a846dc89eb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Tables:
-  - table: {fileID: 11400000, guid: 2440a6277daa90e45ad2465b2740748d, type: 2}
-    chance: 4
-  - table: {fileID: 11400000, guid: 1797ee7b6669cb943b384c78633a8cb9, type: 2}
-    chance: 8
-  - table: {fileID: 11400000, guid: b63362b0dd35cc04da1be0e71e5eda94, type: 2}
-    chance: 32
+  icon: {fileID: -1694507009, guid: 0459fad35e87fa6498fa07f64b87c94d, type: 3}
+  slot: {fileID: 674570652970776305}
+  plotname: defaultplotname
+  type: 0

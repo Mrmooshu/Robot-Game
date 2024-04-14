@@ -23,7 +23,7 @@ public class HealthRegenPassive : Passive
     {
         while (entities[0] != null)
         {
-            ((ResourceStat)(entities[0]).stats[EntityStatType.Health]).CurrentValue += (entities[0]).stats[EntityStatType.HealthRegen].Value * 0.1f;
+            ((ResourceStat)(entities[0]).stats[EntityStatType.health]).CurrentValue += (entities[0]).stats[EntityStatType.healthregen].Value * 0.1f;
             yield return new WaitForSeconds(0.1f);
         }
     }

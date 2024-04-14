@@ -4,5 +4,5 @@ using UnityEngine;
 
 public class SmithingFunction : ClassFunction
 {
-    public SmithingFunction(MinionData host) : base(host) { }
+    public SmithingFunction(MinionData host) : base(host,"Smithing") { }
 }

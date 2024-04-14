@@ -5,7 +5,6 @@ using UnityEngine.EventSystems;
 
 public class DropSlot : MonoBehaviour, IDropHandler
 {
-    public GameObject itemPrefab;
     public void OnDrop(PointerEventData eventData)
     {
         if (eventData.pointerDrag.GetComponent<InventoryItem>())

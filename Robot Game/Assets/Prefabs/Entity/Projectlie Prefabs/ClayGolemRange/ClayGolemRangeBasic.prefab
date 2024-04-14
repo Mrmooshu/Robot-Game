@@ -25,6 +25,10 @@ PrefabInstance:
       value: 0.22
       objectReference: {fileID: 0}
     - target: {fileID: 2606546967062137865, guid: 993e2b6dbe6df2b48a1085ddcce2c06e, type: 3}
+      propertyPath: statListInspector.Array.data[0].type
+      value: movespeed
+      objectReference: {fileID: 0}
+    - target: {fileID: 2606546967062137865, guid: 993e2b6dbe6df2b48a1085ddcce2c06e, type: 3}
       propertyPath: statListInspector.Array.data[0].value
       value: 10
       objectReference: {fileID: 0}

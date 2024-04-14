@@ -1,12 +1,12 @@
 ManifestFileVersion: 0
-CRC: 3194667579
+CRC: 1522132191
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 5c0567b5952c101ab4ded2c10c81e11f
+    Hash: e51afad71d68d094b14f0c066754f617
   TypeTreeHash:
     serializedVersion: 2
-    Hash: a43762d5907f9bccada36e63778d2de3
+    Hash: 199e0d010db05752ea031c9fa07e75b9
 HashAppended: 0
 ClassTypes:
 - Class: 1
@@ -66,6 +66,8 @@ ClassTypes:
 - Class: 114
   Script: {fileID: 11500000, guid: 16da4cbedc408114d9f1df26ae5ac682, type: 3}
 - Class: 114
+  Script: {fileID: 11500000, guid: 1bbfd909c740e3c48867f89c27f182ca, type: 3}
+- Class: 114
   Script: {fileID: 11500000, guid: 22eec1f84d768fd49895cb865dbcde3c, type: 3}
 - Class: 115
   Script: {instanceID: 0}
@@ -79,6 +81,8 @@ ClassTypes:
   Script: {instanceID: 0}
 - Class: 213
   Script: {instanceID: 0}
+- Class: 221
+  Script: {instanceID: 0}
 - Class: 222
   Script: {instanceID: 0}
 - Class: 224
@@ -86,8 +90,6 @@ ClassTypes:
 SerializeReferenceClassIdentifiers:
 - AssemblyName: Assembly-CSharp
   ClassName: EntitiyStatStruct
-- AssemblyName: Assembly-CSharp
-  ClassName: EntityStatType
 - AssemblyName: Assembly-CSharp
   ClassName: GolemEyeLevel/colorStruct
 - AssemblyName: Assembly-CSharp

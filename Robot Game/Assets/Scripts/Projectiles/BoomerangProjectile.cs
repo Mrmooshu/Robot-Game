@@ -12,7 +12,7 @@ public class BoomerangProjectile : Projectile
     {
         base.Start();
         Vector2 knockback = new Vector2(100 * (duration <= 0 ? 1 : -1), 100);
-        hitboxes.EnableAttack(new AttackData(origin, new damageData(origin.stats[EntityStatType.AttackDamage].Value, damageType.physical), true, (knockback, knockback), .5f, whatIsEnemy));
+        hitboxes.EnableAttack(new AttackData(origin, new damageData(origin.stats[EntityStatType.meleepower].Value, damageType.melee), true, (knockback, knockback), .5f, whatIsEnemy));
     }
 
     public override void Update()
@@ -32,7 +32,7 @@ public class BoomerangProjectile : Projectile
         }
 
         // movement
-        transform.position += direction.right * (stats[EntityStatType.MoveSpeed].Value + (Mathf.Abs(duration)*10)) * Time.deltaTime;
+        transform.position += direction.right * (stats[EntityStatType.movespeed].Value + (Mathf.Abs(duration)*10)) * Time.deltaTime;
 
         // rotate boomerang
         visual.Rotate(0,0,-rotationSpeed * Time.deltaTime);

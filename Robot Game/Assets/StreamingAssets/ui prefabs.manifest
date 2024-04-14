@@ -1,12 +1,12 @@
 ManifestFileVersion: 0
-CRC: 3512563090
+CRC: 2235091532
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 67da98c9bcbc27c20bd55465b177f1c5
+    Hash: e2635381f225522254ea5827e84a4b81
   TypeTreeHash:
     serializedVersion: 2
-    Hash: c8ea3b1ee1946709592e5574b6ba27e9
+    Hash: f022567be665c75585236adb0d24bcc0
 HashAppended: 0
 ClassTypes:
 - Class: 1
@@ -15,7 +15,13 @@ ClassTypes:
   Script: {instanceID: 0}
 - Class: 21
   Script: {instanceID: 0}
+- Class: 23
+  Script: {instanceID: 0}
 - Class: 28
+  Script: {instanceID: 0}
+- Class: 33
+  Script: {instanceID: 0}
+- Class: 43
   Script: {instanceID: 0}
 - Class: 48
   Script: {instanceID: 0}
@@ -66,6 +72,8 @@ ClassTypes:
 - Class: 114
   Script: {fileID: 11500000, guid: 099bd599b85a8c346a31a4cc820c63cf, type: 3}
 - Class: 114
+  Script: {fileID: 11500000, guid: de32bb5cd53ee6c4c837e8687e75ab90, type: 3}
+- Class: 114
   Script: {fileID: 11500000, guid: 89ff4bdac19dcdd418ec8f09f6910b6e, type: 3}
 - Class: 114
   Script: {fileID: 11500000, guid: 30649d3a9faa99c48a7b1166b86bf2a0, type: 3}
@@ -79,6 +87,8 @@ ClassTypes:
   Script: {fileID: 11500000, guid: 72d7aed95b36b164f8cfc668b7c2e4c0, type: 3}
 - Class: 114
   Script: {fileID: 11500000, guid: 9d08dbd05b2e8174b8285a630c9540fa, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 733716decb9c8884eaa3bf0f127c0458, type: 3}
 - Class: 114
   Script: {fileID: 11500000, guid: c91c854ae86352e4f8893a00aabe846a, type: 3}
 - Class: 114
@@ -106,6 +116,8 @@ ClassTypes:
 - Class: 114
   Script: {fileID: 11500000, guid: 7b3e165666efcca41b141805a690b834, type: 3}
 - Class: 114
+  Script: {fileID: 11500000, guid: 3768290912663824baa5c9fa59a5a8b0, type: 3}
+- Class: 114
   Script: {fileID: 11500000, guid: 768c30809a4048645a895fe84ef9a559, type: 3}
 - Class: 114
   Script: {fileID: 11500000, guid: f3bb006b37382a54d8375fac98e54c07, type: 3}
@@ -128,6 +140,8 @@ ClassTypes:
 - Class: 115
   Script: {instanceID: 0}
 - Class: 128
+  Script: {instanceID: 0}
+- Class: 135
   Script: {instanceID: 0}
 - Class: 213
   Script: {instanceID: 0}
@@ -217,6 +231,4 @@ Assets:
 - Assets/Prefabs/UI/InventoryUI/MinionInventoryUI/PlayerSlot.prefab
 - Assets/Prefabs/UI/QuestUI/ItemRequirementDisplay.prefab
 - Assets/Prefabs/UI/UI.prefab
-Dependencies:
-- C:/Users/Liam O'Malley/Documents/GitHub/Robot-Game/Robot Game/Assets/StreamingAssets/general
-  prefabs
+Dependencies: []

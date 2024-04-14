@@ -12,11 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b444a7bb6e013a445a80d8d8761645ea, type: 3}
   m_Name: Test Hammer
   m_EditorClassIdentifier: 
-  itemID: 69
+  itemID: 70
   itemName: Test Hammer
   itemDescription: default description
   stackable: 0
   sprite: {fileID: 911630508, guid: e9f58172755238646bbf7ece85de3480, type: 3}
+  mass: 1
+  gravity: 1
   tags: 
   itemModifiers: []
   animController: {fileID: 0}

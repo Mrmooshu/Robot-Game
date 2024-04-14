@@ -17,4 +17,6 @@ MonoBehaviour:
   itemDescription: only good stuff can come of this
   stackable: 1
   sprite: {fileID: 1406739969, guid: e9f58172755238646bbf7ece85de3480, type: 3}
+  mass: 1
+  gravity: 1
   tags: 

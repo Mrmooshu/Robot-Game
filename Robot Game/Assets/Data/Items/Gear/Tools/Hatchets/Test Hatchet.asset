@@ -12,11 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 135441c06f0907d4b843ab4b190f2c2a, type: 3}
   m_Name: Test Hatchet
   m_EditorClassIdentifier: 
-  itemID: 68
+  itemID: 69
   itemName: Test Hatchet
   itemDescription: default description
   stackable: 0
-  sprite: {fileID: -1418184763, guid: e9f58172755238646bbf7ece85de3480, type: 3}
+  sprite: {fileID: 1802876481, guid: 9f8ac63f9da514e4bb0266f08bdc64e6, type: 3}
+  mass: 1
+  gravity: 1
   tags: 
   itemModifiers: []
   animController: {fileID: 0}

@@ -63,7 +63,7 @@ public class GolemEntity : MinionEntity
         bufferedAction = null;
         Vector2 knockback = new Vector2(30 * facingDirection,0);
         Vector2 airknockback = new Vector2(50 * facingDirection, 50);
-        var attack = hitboxes.EnableAttack(new AttackData(this, new damageData(stats[EntityStatType.AttackDamage].Value, damageType.physical), true, (knockback, airknockback), .5f, whatIsEnemy));
+        var attack = hitboxes.EnableAttack(new AttackData(this, new damageData(stats[EntityStatType.damagepower].Value, damageType.melee), true, (knockback, airknockback), .5f, whatIsEnemy));
         attack.AddAction((() => { SandblastAttack(attack); }, AttackData.effectOccurance.end));
         hitboxes.BeginAttack();
 
@@ -72,8 +72,8 @@ public class GolemEntity : MinionEntity
             if (!attack.hit && data.skills["sandblast"] > 0)
             {
                 Projectile projectile = Instantiate(sandblastPrefab, projectileSpawn.position, transform.rotation).GetComponent<Projectile>();
-                projectile.Initialize(facingDirection, this, new AttackData(this, new damageData(4 * data.skills["sandblast"] + stats[EntityStatType.AttackDamage].Value * .1f + stats[EntityStatType.MagicDamage].Value, damageType.magic), false, (Vector2.zero, Vector2.zero), .5f, whatIsEnemy));
-                // (4 per level + 10% ad + 100% ap) magic damage
+                projectile.Initialize(facingDirection, this, new AttackData(this, new damageData(stats[EntityStatType.damagepower].Value * .1f * data.skills["sandblast"] + stats[EntityStatType.damagepower].Value * .5f, damageType.magic), false, (Vector2.zero, Vector2.zero), .5f, whatIsEnemy));
+                // (50% damage + 10% per level)
             }
         }
 
@@ -82,8 +82,10 @@ public class GolemEntity : MinionEntity
 
     public virtual void BasicRangeHit(float side)
     {
+        Vector2 knockback = new Vector2(60 * facingDirection, 80);
+        Vector2 airknockback = new Vector2(80 * facingDirection, 120);
         Projectile projectile = Instantiate(rangeBasicPrefab, projectileSpawn.position, transform.rotation).GetComponent<Projectile>();
-        projectile.Initialize(facingDirection, this, new AttackData(this, new damageData(10, damageType.magic), false, (Vector2.zero, Vector2.zero), .5f, whatIsEnemy));
+        projectile.Initialize(facingDirection, this, new AttackData(this, new damageData(stats[EntityStatType.damagepower].Value, damageType.range), false, (knockback, airknockback), .5f, whatIsEnemy));
         // add damage formula here
     }
 
@@ -110,7 +112,7 @@ public class GolemEntity : MinionEntity
             v.y *= .1f;
             rigBod.velocity = v;
             ConstantForce2D force = gameObject.AddComponent<ConstantForce2D>();
-            force.relativeForce = new Vector2(((2 * (charge + 1)) + (stats[EntityStatType.MoveSpeed].Value + 1)) * facingDirection * 3, canJump? 0 : 15f);
+            force.relativeForce = new Vector2(((2 * (charge + 1)) + (stats[EntityStatType.movespeed].Value + 1)) * facingDirection * 3, canJump? 0 : 15f);
             var counter = charge * .4f + .6f;
             yield return new WaitForSeconds(.01f);
             while ((animator.GetCurrentAnimatorStateInfo(0).IsName("Tornado_Start") || animator.GetCurrentAnimatorStateInfo(0).IsName("Tornado_Active")) && counter > 0)
@@ -129,7 +131,7 @@ public class GolemEntity : MinionEntity
     {
         bufferedAction = null;
         Vector2 knockback = new Vector2(facingDirection * (rigBod.velocity.x + 20), 40); // replace this with a magnetic effect later that applies to the target and pulls them close for the following hits
-        hitboxes.EnableAttack(new AttackData(this, new damageData(stats[EntityStatType.AttackDamage].Value * .1f, damageType.physical), true, (knockback, knockback), .5f, whatIsEnemy));
+        hitboxes.EnableAttack(new AttackData(this, new damageData(stats[EntityStatType.damagepower].Value * .1f, damageType.melee), true, (knockback, knockback), .5f, whatIsEnemy));
         hitboxes.BeginAttack();
     }
 }

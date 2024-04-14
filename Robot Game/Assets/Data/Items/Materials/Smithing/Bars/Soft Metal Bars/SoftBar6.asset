@@ -17,4 +17,6 @@ MonoBehaviour:
   itemDescription: not edible, seriously
   stackable: 1
   sprite: {fileID: -305664848, guid: e9f58172755238646bbf7ece85de3480, type: 3}
+  mass: 1
+  gravity: 1
   tags: 

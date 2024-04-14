@@ -279,24 +279,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   statListInspector:
-  - type: 0
+  - type: health
     value: 200
-  - type: 4
+  - type: movespeed
     value: 2
-  - type: 5
-    value: 2
-  - type: 6
+  - type: jumpforce
     value: 5
-  - type: 8
+  - type: damagepower
     value: 5
-  - type: 9
-    value: 0
-  - type: 10
+  - type: meleedefense
+    value: 40
+  - type: magicdefense
     value: 5
-  - type: 11
-    value: 0
-  - type: 12
-    value: 0
+  - type: rangedefense
+    value: 20
   hitboxes: {fileID: 7720369175855546243}
   dead: 0
   whatIsEnemy:

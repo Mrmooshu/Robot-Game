@@ -11,6 +11,7 @@ public class ItemDatabase : ScriptableObject
     public List<ItemData> woodchoppingItemsList;
     public List<ItemData> fishingItemsList;
     public List<ItemData> smithingItemsList;
+    public List<ItemData> farmingItemsList;
     public List<ItemData> toolItemsList;
     public List<ItemData> weaponItemsList;
     public List<ItemData> miscItemsList;
@@ -22,6 +23,7 @@ public class ItemDatabase : ScriptableObject
         itemsList.AddRange(woodchoppingItemsList);
         itemsList.AddRange(fishingItemsList);
         itemsList.AddRange(smithingItemsList);
+        itemsList.AddRange(farmingItemsList);
         itemsList.AddRange(toolItemsList);
         itemsList.AddRange(weaponItemsList);
         itemsList.AddRange(miscItemsList);

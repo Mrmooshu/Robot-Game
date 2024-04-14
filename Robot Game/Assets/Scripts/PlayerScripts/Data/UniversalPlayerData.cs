@@ -12,12 +12,12 @@ public class UniversalPlayerData : ISerializationCallbackReceiver
     protected struct SavedData<T>
     {
         public string name;
-        public T state;
+        public T data;
 
-        public SavedData(string name, T state)
+        public SavedData(string name, T data)
         {
             this.name = name;
-            this.state = state;
+            this.data = data;
         }
     }
 
@@ -114,7 +114,7 @@ public class UniversalPlayerData : ISerializationCallbackReceiver
     public void InitializePassives()
     {
         minionPassives = new List<Passive>();
-        minionPassives.Add(new PassiveStat("HealthPassive", new List<Entity> { }, StatModType.Base, EntityStatType.Health, 1));
+        minionPassives.Add(new PassiveStat("HealthPassive", new List<Entity> { }, StatModType.Base, EntityStatType.health, 1));
     }
 
     public void AddMinionPassives(MinionEntity minion)
@@ -137,11 +137,11 @@ public class UniversalPlayerData : ISerializationCallbackReceiver
     {
         if (upgradesList != null)
         {
-            upgrades = upgradesList.ToDictionary(x => x.name, x => x.state);
+            upgrades = upgradesList.ToDictionary(x => x.name, x => x.data);
         }
         if (abilityList != null)
         {
-            abilities = abilityList.ToDictionary(x => x.name, x => x.state);
+            abilities = abilityList.ToDictionary(x => x.name, x => x.data);
         }
     }
 

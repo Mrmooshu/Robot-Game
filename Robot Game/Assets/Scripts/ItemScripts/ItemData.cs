@@ -15,5 +15,7 @@ public class ItemData : ScriptableObject
     public string itemDescription = "default description";
     public bool stackable = true;
     public Sprite sprite;
+    public float mass = 1;
+    public float gravity = 1;
     public ItemTags[] tags;
 }

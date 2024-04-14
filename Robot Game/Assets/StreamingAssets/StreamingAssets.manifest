@@ -1,11 +1,10 @@
 ManifestFileVersion: 0
-CRC: 1630757441
+CRC: 1525080146
 AssetBundleManifest:
   AssetBundleInfos:
     Info_0:
       Name: ui prefabs
-      Dependencies:
-        Dependency_0: general prefabs
+      Dependencies: {}
     Info_1:
       Name: general prefabs
       Dependencies: {}

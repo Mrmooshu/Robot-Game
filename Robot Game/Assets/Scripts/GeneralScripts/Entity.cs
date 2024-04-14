@@ -69,25 +69,25 @@ public abstract class Entity : MonoBehaviour
 
         foreach (EntitiyStatStruct stat in statListInspector)
         {
-            if (stat.type == EntityStatType.Health || stat.type == EntityStatType.Mana)
+            if (stat.type == EntityStatType.health.ToString() || stat.type == EntityStatType.mana.ToString())
             {
-                stats.Add(stat.type, new ResourceStat(stat.value));
+                stats.Add((EntityStatType)Enum.Parse(typeof(EntityStatType), stat.type.ToLower()), new ResourceStat(stat.value));
             }
             else
             {
-                stats.Add(stat.type, new Stat(stat.value));
+                stats.Add((EntityStatType)Enum.Parse(typeof(EntityStatType), stat.type.ToLower()), new Stat(stat.value));
             }
         }
 
-        if (stats.ContainsKey(EntityStatType.Health))
+        if (stats.ContainsKey(EntityStatType.health))
         {
-            ((ResourceStat)stats[EntityStatType.Health]).currentValueUpdated += CheckToDie;
+            ((ResourceStat)stats[EntityStatType.health]).currentValueUpdated += CheckToDie;
         }
     }
 
     private void CheckToDie()
     {
-        if (((ResourceStat)stats[EntityStatType.Health]).CurrentValue <= 0)
+        if (((ResourceStat)stats[EntityStatType.health]).CurrentValue <= 0)
         {
             Die();
         }

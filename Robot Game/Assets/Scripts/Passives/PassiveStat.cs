@@ -15,7 +15,7 @@ public class PassiveStat : Passive
     public PassiveStat(string name, Entity host, StatModType mathType, EntityStatType statType, float perLevel)
     {
         type = passiveType.single;
-        skillName = name;
+        skillName = name.ToLower();
         entity = host;
         entities = new List<Entity> { };
         this.mathType = mathType;

@@ -11,6 +11,8 @@ public abstract class MinionEntity : Entity
 
     public Sprite icon;
 
+    public SpriteRenderer weapon;
+
     public List<OnHitPassive> onHitPassives;
 
     public Interactable currentInteractable;
@@ -49,6 +51,7 @@ public abstract class MinionEntity : Entity
         animator = GetComponent<Animator>();
         CreateStats();
         data.InitializePassives();
+        data.functions.Where(x => x != null).ToList().ForEach(x => x.InitializePassives());
         controller = new AnimatorOverrideController(animator.runtimeAnimatorController);
         animator.runtimeAnimatorController = controller;
         EquipItemsFromData();
@@ -120,9 +123,9 @@ public abstract class MinionEntity : Entity
         }
 
         // movement
-        float targetSpeed = movementInputDirection * stats[EntityStatType.MoveSpeed].Value;
+        float targetSpeed = movementInputDirection * stats[EntityStatType.movespeed].Value;
         float speedDiff = targetSpeed - rigBod.velocity.x;
-        float accelRate = (Mathf.Abs(targetSpeed) > 0.01f) ? stats[EntityStatType.MoveAcceleration].Value : stats[EntityStatType.MoveAcceleration].Value * 3;
+        float accelRate = (Mathf.Abs(targetSpeed) > 0.01f) ? stats[EntityStatType.moveacceleration].Value : stats[EntityStatType.moveacceleration].Value * 3;
         float movement = Mathf.Pow(Mathf.Abs(speedDiff) * accelRate, 1) * Mathf.Sign(speedDiff);
         rigBod.AddForce(movement * Vector2.right);
 
@@ -140,7 +143,7 @@ public abstract class MinionEntity : Entity
                 Jump();
                 break;
             case "basic attack":
-                animator.SetFloat("AttackSpeedModifier", baseAttackSpeed * (1 + stats[EntityStatType.AttackSpeedBonus].Value / 100));
+                animator.SetFloat("AttackSpeedModifier", baseAttackSpeed * (1 + stats[EntityStatType.attackspeedbonus].Value / 100));
                 switch (data.style)
                 {
                     case MinionData.CombatStyle.Melee:
@@ -190,7 +193,7 @@ public abstract class MinionEntity : Entity
         if (canJump && !JumpLocked)
         {
             canJump = false;
-            rigBod.AddForce(Vector2.up * stats[EntityStatType.JumpForce].Value, ForceMode2D.Impulse);
+            rigBod.AddForce(Vector2.up * stats[EntityStatType.jumpforce].Value, ForceMode2D.Impulse);
             animator.SetBool("Jumping", true);
         }
     }
@@ -227,6 +230,14 @@ public abstract class MinionEntity : Entity
     protected override void CreateStats()
     {
         base.CreateStats();
+        foreach (ClassFunction function in data.functions)
+        {
+            if (function != null)
+            {
+                function.AddStats();
+            }
+
+        }
         // add listeners
         //stats[EntityStatType.Gravity].statUpdated += () => { rigBod.gravityScale = stats[EntityStatType.Gravity].Value; };
         //stats[EntityStatType.Gravity].Recalculate();
@@ -256,7 +267,7 @@ public abstract class MinionEntity : Entity
 
     public void CalculateASForAnimator()
     {
-        animator.SetFloat("AttackSpeedModifier", baseAttackSpeed * (1 + stats[EntityStatType.AttackSpeedBonus].Value / 100));
+        animator.SetFloat("AttackSpeedModifier", baseAttackSpeed * (1 + stats[EntityStatType.attackspeedbonus].Value / 100));
     }
 
     protected void StartActiveCooldown(ActiveAbilityIcon active)

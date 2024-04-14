@@ -65,9 +65,9 @@ public abstract class CharacterEntity : Entity
 
     protected virtual void Movement()
     {
-        float targetSpeed = movementDirection * stats[EntityStatType.MoveSpeed].Value;
+        float targetSpeed = movementDirection * stats[EntityStatType.movespeed].Value;
         float speedDiff = targetSpeed - rigBod.velocity.x;
-        float accelRate = (Mathf.Abs(targetSpeed) > 0.01f) ? stats[EntityStatType.MoveSpeed].Value * 1f : stats[EntityStatType.MoveSpeed].Value * 2;
+        float accelRate = (Mathf.Abs(targetSpeed) > 0.01f) ? stats[EntityStatType.movespeed].Value * 1f : stats[EntityStatType.movespeed].Value * 2;
         float movement = Mathf.Pow(Mathf.Abs(speedDiff) * accelRate, 1) * Mathf.Sign(speedDiff);
         rigBod.AddForce(movement * Vector2.right);
     }

@@ -12,11 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00e75d7354ef0b2438f2c0aa361d25ad, type: 3}
   m_Name: Pickaxe 1
   m_EditorClassIdentifier: 
-  itemID: 60
+  itemID: 61
   itemName: Novium Pickaxe
   itemDescription: default description
   stackable: 0
   sprite: {fileID: -1418184763, guid: e9f58172755238646bbf7ece85de3480, type: 3}
+  mass: 1
+  gravity: 1
   tags: 
   itemModifiers: []
   animController: {fileID: 0}

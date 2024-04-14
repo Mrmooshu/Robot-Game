@@ -35,8 +35,8 @@ public class MagmaTitanData : MinionData
         var host = GetEntity();
         passives = new List<Passive>();
         passives.Add(new HealthRegenPassive(host));
-        passives.Add(new PassiveStat("health passive", host, StatModType.Base, EntityStatType.Health, 5));
-        passives.Add(new PassiveStat("mana passive", host, StatModType.Base, EntityStatType.Mana, 5));
+        passives.Add(new PassiveStat("health passive", host, StatModType.Base, EntityStatType.health, 5));
+        passives.Add(new PassiveStat("mana passive", host, StatModType.Base, EntityStatType.mana, 5));
     }
 
     new public MagmaTitanEntity GetEntity()

@@ -157,7 +157,7 @@ SpriteRenderer:
   m_SortingLayerID: 506174663
   m_SortingLayer: 3
   m_SortingOrder: 0
-  m_Sprite: {fileID: -5595173110719673328, guid: f06650428e42d4c48984ed8ae0a5394c, type: 3}
+  m_Sprite: {fileID: 1205224602988885405, guid: f50c5c607766c5c44a33d818be6b5233, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -321,7 +321,7 @@ SpriteRenderer:
   m_SortingLayerID: 506174663
   m_SortingLayer: 3
   m_SortingOrder: 0
-  m_Sprite: {fileID: 410431823679281966, guid: f06650428e42d4c48984ed8ae0a5394c, type: 3}
+  m_Sprite: {fileID: 2190662719515178903, guid: f50c5c607766c5c44a33d818be6b5233, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -454,36 +454,33 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   statListInspector:
-  - type: 0
+  - type: health
     value: 100
-  - type: 1
+  - type: healthregen
     value: 1
-  - type: 4
+  - type: movespeed
     value: 6
-  - type: 5
+  - type: moveacceleration
     value: 2
-  - type: 6
+  - type: jumpforce
     value: 5
-  - type: 7
-    value: 0
-  - type: 13
-    value: 0
-  - type: 8
-    value: 30
-  - type: 9
-    value: 0
-  - type: 10
+  - type: meleedefense
     value: 5
-  - type: 11
+  - type: magicdefense
     value: 5
-  - type: 2
-    value: 100
+  - type: rangedefense
+    value: 5
+  - type: attackspeedbonus
+    value: 0
+  - type: damagepower
+    value: 5
   hitboxes: {fileID: 1639038510938098056}
   dead: 0
   whatIsEnemy:
     serializedVersion: 2
     m_Bits: 256
   icon: {fileID: 3797438909279334143, guid: e300c380a49e2c84e9671463ad9884b1, type: 3}
+  weapon: {fileID: 6120504479325038783}
   currentInteractable: {fileID: 0}
   skillTree: {fileID: 52194782207523293, guid: d62f92d9bd3bfa54c991f51a6df19f47, type: 3}
   groundCheck: {fileID: 2653229882561976576}
@@ -815,7 +812,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4255677970119823883
 Transform:
   m_ObjectHideFlags: 0
@@ -988,7 +985,7 @@ SpriteRenderer:
   m_SortingLayerID: 506174663
   m_SortingLayer: 3
   m_SortingOrder: 0
-  m_Sprite: {fileID: -2343403142754163644, guid: f06650428e42d4c48984ed8ae0a5394c, type: 3}
+  m_Sprite: {fileID: 1751505740268269423, guid: f50c5c607766c5c44a33d818be6b5233, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

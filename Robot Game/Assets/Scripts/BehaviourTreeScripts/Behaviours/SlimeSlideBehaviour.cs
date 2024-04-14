@@ -54,7 +54,7 @@ public class SlimeSlideBehaviour : BehaviourNode
         ConstantForce2D force = host.gameObject.AddComponent<ConstantForce2D>();
         force.relativeForce = new Vector2(host.facingDirection * speed,-.1f);
         Vector2 knockback = new Vector2(host.facingDirection * 10, 10);
-        host.hitboxes.EnableAttack(new AttackData(host, new damageData(host.stats[EntityStatType.AttackDamage].Value, damageType.physical), true, (knockback, knockback), .5f, host.whatIsEnemy));
+        host.hitboxes.EnableAttack(new AttackData(host, new damageData(host.stats[EntityStatType.damagepower].Value, damageType.melee), true, (knockback, knockback), .5f, host.whatIsEnemy));
         yield return new WaitForSeconds(.01f);
         while (host.animator.GetCurrentAnimatorStateInfo(0).IsName("Slide_Start") || host.animator.GetCurrentAnimatorStateInfo(0).IsName("Slide_Start"))
         {

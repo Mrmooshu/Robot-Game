@@ -17,4 +17,6 @@ MonoBehaviour:
   itemDescription: strudy and craftable
   stackable: 1
   sprite: {fileID: 1070095014, guid: e9f58172755238646bbf7ece85de3480, type: 3}
+  mass: 1
+  gravity: 1
   tags: 

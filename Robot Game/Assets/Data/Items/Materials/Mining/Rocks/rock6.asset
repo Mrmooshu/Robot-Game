@@ -17,4 +17,6 @@ MonoBehaviour:
   itemDescription: default description
   stackable: 1
   sprite: {fileID: 164515833, guid: 5652b0ad6aa96f846b000545ad5e52ba, type: 3}
+  mass: 1
+  gravity: 1
   tags: 

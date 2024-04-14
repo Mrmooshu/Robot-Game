@@ -4,9 +4,10 @@ using UnityEngine;
 
 public class WoodcuttingFunction : ClassFunction
 {
-    public WoodcuttingFunction(MinionData host) : base(host)
+    public WoodcuttingFunction(MinionData host) : base(host,"Woodcutting")
     {
         itemType = typeof(Hatchet);
+        uniquestats = new List<(EntityStatType, int)> { (EntityStatType.woodcuttingpower, 1) };
     }
 
     public void StartChopping()
@@ -18,7 +19,8 @@ public class WoodcuttingFunction : ClassFunction
             if (Database.GetItem(equipItem.itemID) is Hatchet)
             {
                 entity.rigBod.velocity = Vector2.zero;
-                entity.animator.SetBool("Chopping", true);
+                entity.animator.Play("Chop", 0);
+                entity.weapon.sprite = Database.GetItem(equipItem.itemID).sprite;
                 return;
             }
             else

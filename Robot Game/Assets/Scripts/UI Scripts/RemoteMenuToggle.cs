@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class RemoteMenuToggle : MonoBehaviour
 {
     public Toggle smithingToggle;
+    public Toggle farmingToggle;
     public Toggle closeToggle;
     public Toggle safepointToggle;
 

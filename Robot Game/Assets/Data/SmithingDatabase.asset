@@ -13,51 +13,19 @@ MonoBehaviour:
   m_Name: SmithingDatabase
   m_EditorClassIdentifier: 
   smeltingList:
-  - input: {fileID: 11400000, guid: f20f0cc994a7bd3489ae567e13a8d1fc, type: 2}
-    output: {fileID: 11400000, guid: 338773ba6d14b7543976baf0e127438f, type: 2}
-    progress: 10
-  - input: {fileID: 11400000, guid: 054219649fe47a44898201d9fbc18b62, type: 2}
-    output: {fileID: 11400000, guid: 6e36309ae66092447a57f889b134dc04, type: 2}
-    progress: 30
-  - input: {fileID: 11400000, guid: b72dfa065404d5f44ae52bc0f2f38122, type: 2}
-    output: {fileID: 11400000, guid: 917758d6c5859b0448b4f03685a9ca89, type: 2}
-    progress: 60
-  - input: {fileID: 11400000, guid: 127c6c6730aa5514e93fcca674c803aa, type: 2}
-    output: {fileID: 11400000, guid: 0745c5b37715ea5429e59ad0b88332a9, type: 2}
-    progress: 100
-  - input: {fileID: 11400000, guid: fc05cd95182a22a438c1303b5a7915df, type: 2}
-    output: {fileID: 11400000, guid: b47bd9d0bef79bd45bd0a2b7a9c198c3, type: 2}
-    progress: 150
-  - input: {fileID: 11400000, guid: 4351fabab31cebf40bc8144d80c6bb27, type: 2}
-    output: {fileID: 11400000, guid: 029be3f14afdb8d4690d29c1527451a3, type: 2}
-    progress: 210
-  - input: {fileID: 11400000, guid: cbe48c6e2bab3fd4ea15884029766395, type: 2}
-    output: {fileID: 11400000, guid: f47eb5e886a6d9d4e9124e0efa4e41b1, type: 2}
-    progress: 280
-  - input: {fileID: 11400000, guid: 628c52c4ce5398a44a260d946ff105c4, type: 2}
-    output: {fileID: 11400000, guid: 515fadccd182e4544a439b723e336c03, type: 2}
-    progress: 370
-  - input: {fileID: 11400000, guid: 1ab392984f751384391558fed7c0f1bd, type: 2}
-    output: {fileID: 11400000, guid: 98357c838d2cd30469dbabfaba69583e, type: 2}
-    progress: 10
-  - input: {fileID: 11400000, guid: 441a980b6e172144f866969f537b6612, type: 2}
-    output: {fileID: 11400000, guid: a58c731f2eedb0944892f69dc052c1fe, type: 2}
-    progress: 30
-  - input: {fileID: 11400000, guid: 94b0f1c271c028845b2e5a3ddde30d20, type: 2}
-    output: {fileID: 11400000, guid: c7eaa13bbfbf60a41a86a61ff8e1d2a6, type: 2}
-    progress: 60
-  - input: {fileID: 11400000, guid: 94cb61b6eb2a90941b219ed3ad6b5db7, type: 2}
-    output: {fileID: 11400000, guid: 61906123168176f44a3bf86f5b8e1f1a, type: 2}
-    progress: 100
-  - input: {fileID: 11400000, guid: b9195ee4f71e6aa4a9197f04ac3adbd7, type: 2}
-    output: {fileID: 11400000, guid: e1d2267187209094e9e4302bdbfa3618, type: 2}
-    progress: 150
-  - input: {fileID: 11400000, guid: d04fbe6b7e941544fa06660615396269, type: 2}
-    output: {fileID: 11400000, guid: a9a917992fd5a144da75bb8517e7cefc, type: 2}
-    progress: 210
-  - input: {fileID: 11400000, guid: abd136583672c014aa30110c0a987af8, type: 2}
-    output: {fileID: 11400000, guid: d5cd75e212f16194c9799efe68da2d50, type: 2}
-    progress: 280
-  - input: {fileID: 11400000, guid: 8cad577f36980374aac92e257431532b, type: 2}
-    output: {fileID: 11400000, guid: fab17831a8bc2d741843de96a0a5b6fa, type: 2}
-    progress: 370
+  - {input: {fileID: 11400000, guid: f20f0cc994a7bd3489ae567e13a8d1fc, type: 2}, output: {fileID: 11400000, guid: 338773ba6d14b7543976baf0e127438f, type: 2}, progress: 10}
+  - {input: {fileID: 11400000, guid: 054219649fe47a44898201d9fbc18b62, type: 2}, output: {fileID: 11400000, guid: 6e36309ae66092447a57f889b134dc04, type: 2}, progress: 30}
+  - {input: {fileID: 11400000, guid: b72dfa065404d5f44ae52bc0f2f38122, type: 2}, output: {fileID: 11400000, guid: 917758d6c5859b0448b4f03685a9ca89, type: 2}, progress: 60}
+  - {input: {fileID: 11400000, guid: 127c6c6730aa5514e93fcca674c803aa, type: 2}, output: {fileID: 11400000, guid: 0745c5b37715ea5429e59ad0b88332a9, type: 2}, progress: 100}
+  - {input: {fileID: 11400000, guid: fc05cd95182a22a438c1303b5a7915df, type: 2}, output: {fileID: 11400000, guid: b47bd9d0bef79bd45bd0a2b7a9c198c3, type: 2}, progress: 150}
+  - {input: {fileID: 11400000, guid: 4351fabab31cebf40bc8144d80c6bb27, type: 2}, output: {fileID: 11400000, guid: 029be3f14afdb8d4690d29c1527451a3, type: 2}, progress: 210}
+  - {input: {fileID: 11400000, guid: cbe48c6e2bab3fd4ea15884029766395, type: 2}, output: {fileID: 11400000, guid: f47eb5e886a6d9d4e9124e0efa4e41b1, type: 2}, progress: 280}
+  - {input: {fileID: 11400000, guid: 628c52c4ce5398a44a260d946ff105c4, type: 2}, output: {fileID: 11400000, guid: 515fadccd182e4544a439b723e336c03, type: 2}, progress: 370}
+  - {input: {fileID: 11400000, guid: 1ab392984f751384391558fed7c0f1bd, type: 2}, output: {fileID: 11400000, guid: 98357c838d2cd30469dbabfaba69583e, type: 2}, progress: 10}
+  - {input: {fileID: 11400000, guid: 441a980b6e172144f866969f537b6612, type: 2}, output: {fileID: 11400000, guid: a58c731f2eedb0944892f69dc052c1fe, type: 2}, progress: 30}
+  - {input: {fileID: 11400000, guid: 94b0f1c271c028845b2e5a3ddde30d20, type: 2}, output: {fileID: 11400000, guid: c7eaa13bbfbf60a41a86a61ff8e1d2a6, type: 2}, progress: 60}
+  - {input: {fileID: 11400000, guid: 94cb61b6eb2a90941b219ed3ad6b5db7, type: 2}, output: {fileID: 11400000, guid: 61906123168176f44a3bf86f5b8e1f1a, type: 2}, progress: 100}
+  - {input: {fileID: 11400000, guid: b9195ee4f71e6aa4a9197f04ac3adbd7, type: 2}, output: {fileID: 11400000, guid: e1d2267187209094e9e4302bdbfa3618, type: 2}, progress: 150}
+  - {input: {fileID: 11400000, guid: d04fbe6b7e941544fa06660615396269, type: 2}, output: {fileID: 11400000, guid: a9a917992fd5a144da75bb8517e7cefc, type: 2}, progress: 210}
+  - {input: {fileID: 11400000, guid: abd136583672c014aa30110c0a987af8, type: 2}, output: {fileID: 11400000, guid: d5cd75e212f16194c9799efe68da2d50, type: 2}, progress: 280}
+  - {input: {fileID: 11400000, guid: 8cad577f36980374aac92e257431532b, type: 2}, output: {fileID: 11400000, guid: fab17831a8bc2d741843de96a0a5b6fa, type: 2}, progress: 370}

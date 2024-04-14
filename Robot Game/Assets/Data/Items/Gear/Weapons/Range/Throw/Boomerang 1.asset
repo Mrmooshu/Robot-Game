@@ -12,11 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b2980fb43d6b29249b11186bd47d0747, type: 3}
   m_Name: Boomerang 1
   m_EditorClassIdentifier: 
-  itemID: 80
+  itemID: 81
   itemName: Test Boomerang
   itemDescription: default description
   stackable: 0
   sprite: {fileID: 1389260501, guid: 9f8ac63f9da514e4bb0266f08bdc64e6, type: 3}
+  mass: 1
+  gravity: 1
   tags: 
   itemModifiers:
   - value: 5

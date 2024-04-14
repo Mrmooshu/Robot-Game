@@ -24,7 +24,7 @@ public class RockInteractable : Interactable
 
     public void RollDrop()
     {
-        GetComponent<DropTableRoller>().RollDrop(100,150);
+        GetComponent<DropTableRoller>().RollDrop(100, 150);
     }
 
     public override void InteractAction(MinionData data)

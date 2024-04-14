@@ -12,6 +12,7 @@ public class GameData
     public List<QuestData> quests;
 
     public SmithingData smithing;
+    public FarmingData farming;
 
     public void NewGameData()
     {
@@ -28,6 +29,7 @@ public class GameData
         }
 
         smithing = new SmithingData();
+        farming = new FarmingData();
 
         //testing pusposes stuff
 
@@ -54,6 +56,8 @@ public class GameData
         activeMinions[0].SkillPoints += 70;
 
         activeMinions[0].inventory.inventory[0] = new Item(Database.GetItemID("Novium Pickaxe"), 1);
+        activeMinions[0].inventory.inventory[1] = new Item(Database.GetItemID("Test Hatchet"), 1);
+        activeMinions[0].inventory.inventory[2] = new Item(Database.GetItemID("seed 1"), 1);
 
         activeMinions[1].inventory.inventory[0] = new Item(Database.GetItemID("Iromite Pickaxe"), 1);
 

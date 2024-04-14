@@ -141,28 +141,6 @@ MonoBehaviour:
   canvasGroup: {fileID: 6806001868279542687}
   canvas: {fileID: 7867251784415817357}
   draggable: 1
-  unit:
-    lastSafePoint: 
-    variantName: 
-    tool:
-      rid: -2
-    weapon:
-      rid: -2
-    level: 0
-    inventory:
-      inventory: []
-      inventorySize: 0
-      currentPage: 0
-      stackLimit: 0
-    savedPosition: {x: 0, y: 0, z: 0}
-    activity: 0
-    skillsList: []
-    _skillPoints: 0
-  references:
-    version: 2
-    RefIds:
-    - rid: -2
-      type: {class: , ns: , asm: }
 --- !u!225 &6806001868279542687
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -194,7 +172,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 0
   m_UpdateRectTransformForStandalone: 0
-  m_SortingLayerID: 0
+  m_SortingLayerID: -1747281215
   m_SortingOrder: 14
   m_TargetDisplay: 0
 --- !u!114 &8282932831589713854

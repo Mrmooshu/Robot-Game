@@ -45,7 +45,7 @@ public class JumpBehaviour : BehaviourNode
     {
         host.movementDirection = host.facingDirection;
         Vector2 knockback = new Vector2(host.facingDirection * 10, 10);
-        var attack = host.hitboxes.EnableAttack(new AttackData(host, new damageData(host.stats[EntityStatType.AttackDamage].Value, damageType.physical), true, (knockback, knockback), .5f, host.whatIsEnemy));
+        var attack = host.hitboxes.EnableAttack(new AttackData(host, new damageData(host.stats[EntityStatType.damagepower].Value, damageType.melee), true, (knockback, knockback), .5f, host.whatIsEnemy));
         attack.AddAction((() => { host.movementDirection = 0; }, AttackData.effectOccurance.end));
         host.hitboxes.BeginAttack();
     }
