@@ -14,6 +14,8 @@ public class GameData
     public SmithingData smithing;
     public FarmingData farming;
 
+    public DayNight.TimeData time;
+
     public void NewGameData()
     {
         universal = new UniversalPlayerData();
@@ -30,6 +32,8 @@ public class GameData
 
         smithing = new SmithingData();
         farming = new FarmingData();
+
+        time = new DayNight.TimeData();
 
         //testing pusposes stuff
 

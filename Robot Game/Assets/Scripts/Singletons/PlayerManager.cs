@@ -14,6 +14,7 @@ public class PlayerManager : MonoBehaviour, IDataSave
     public UniversalPlayerData universal;
     public SmithingData smithing;
     public FarmingData farming;
+    public DayNight.TimeData time;
 
     public InputActionAsset inputActions;
     public InputAction moveAction;
@@ -190,6 +191,7 @@ public class PlayerManager : MonoBehaviour, IDataSave
         universal = data.universal;
         smithing = data.smithing;
         farming = data.farming;
+        time = data.time;
     }
 
     public void SaveData(ref GameData data)
@@ -200,5 +202,6 @@ public class PlayerManager : MonoBehaviour, IDataSave
         data.universal = universal;
         data.smithing = smithing;
         data.farming = farming;
+        data.time = time;
     }
 }

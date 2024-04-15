@@ -7,22 +7,10 @@ using System;
 [System.Serializable]
 public class FarmingData : ISerializationCallbackReceiver
 {
-    [System.Serializable]
-    protected struct SavedData<T>
-    {
-        public string name;
-        public T data;
-
-        public SavedData(string name, T data)
-        {
-            this.name = name;
-            this.data = data;
-        }
-    }
     
     public Dictionary<string, PlotData> plots;
 
-    [SerializeField]private List<SavedData<PlotData>> plotlist;
+    [SerializeField]private List<UniversalHelperFunctions.SavedData<PlotData>> plotlist;
 
     [NonSerialized]public PlotData currentPlot;
 
@@ -68,7 +56,7 @@ public class FarmingData : ISerializationCallbackReceiver
         {
             if (plots != null)
             {
-                plotlist = plots.Select(x => new SavedData<PlotData>(x.Key, x.Value)).ToList();
+                plotlist = plots.Select(x => new UniversalHelperFunctions.SavedData<PlotData>(x.Key, x.Value)).ToList();
             }
         }
         catch (Exception)

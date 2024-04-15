@@ -7,24 +7,10 @@ using UnityEngine;
 [System.Serializable]
 public class UniversalPlayerData : ISerializationCallbackReceiver
 {
-
-    [System.Serializable]
-    protected struct SavedData<T>
-    {
-        public string name;
-        public T data;
-
-        public SavedData(string name, T data)
-        {
-            this.name = name;
-            this.data = data;
-        }
-    }
-
-    [SerializeField] private List<SavedData<int>> upgradesList;
+    [SerializeField] private List<UniversalHelperFunctions.SavedData<int>> upgradesList;
     public Dictionary<string, int> upgrades { get; private set; }
 
-    [SerializeField] private List<SavedData<bool>> abilityList;
+    [SerializeField] private List<UniversalHelperFunctions.SavedData<bool>> abilityList;
     public Dictionary<string, bool> abilities { get; private set; }
 
     [NonSerialized] static private List<Passive> passives;
@@ -151,7 +137,7 @@ public class UniversalPlayerData : ISerializationCallbackReceiver
         {
             if (upgrades != null)
             {
-                upgradesList = upgrades.Select(x => new SavedData<int>(x.Key, x.Value)).ToList();
+                upgradesList = upgrades.Select(x => new UniversalHelperFunctions.SavedData<int>(x.Key, x.Value)).ToList();
             }
         }
         catch (Exception)
@@ -162,7 +148,7 @@ public class UniversalPlayerData : ISerializationCallbackReceiver
         {
             if (abilities != null)
             {
-                abilityList = abilities.Select(x => new SavedData<bool>(x.Key, x.Value)).ToList();
+                abilityList = abilities.Select(x => new UniversalHelperFunctions.SavedData<bool>(x.Key, x.Value)).ToList();
             }
         }
         catch (Exception)
