@@ -19,6 +19,9 @@ public class DayNight : MonoBehaviour
     public GameObject sunpos;
     public GameObject moon;
     public GameObject moonpos;
+    public GameObject stars;
+    public SpriteRenderer starfadecover;
+    public Color fadeout;
     public Light2D outdoorLight;
     public Color dawn;
     public Color day;
@@ -55,31 +58,46 @@ public class DayNight : MonoBehaviour
             MoonCheck();
         }
 
-        if (data.currentTime >= DAYLENGTH * .90f)
+        if (data.currentTime >= DAYLENGTH * .95f)
         {
-            lightcontrol((data.currentTime - (DAYLENGTH * .90f)) / (DAYLENGTH * .10f), night, dawn, .5f, .8f);
+            lightcontrol((data.currentTime - (DAYLENGTH * .95f)) / (DAYLENGTH * .10f), night, dawn, .5f, .8f);
         }
-        else if (data.currentTime >= DAYLENGTH * .55f)
+        else if (data.currentTime >= DAYLENGTH * .50f)
         {
-            lightcontrol((data.currentTime - (DAYLENGTH * .55f)) / (DAYLENGTH * .10f), dusk, night, .7f, .5f);
+            lightcontrol((data.currentTime - (DAYLENGTH * .50f)) / (DAYLENGTH * .10f), dusk, night, .7f, .5f);
         }
         else if (data.currentTime >= DAYLENGTH * .40f)
         {
             lightcontrol((data.currentTime - (DAYLENGTH * .40f)) / (DAYLENGTH * .10f), day, dusk, 1f, .7f);
+            stars.gameObject.SetActive(true);
         }
         else if (data.currentTime >= DAYLENGTH * .05f)
         {
             lightcontrol((data.currentTime - (DAYLENGTH * .05f))  / (DAYLENGTH * .10f), dawn, day, .8f, 1f);
+            stars.gameObject.SetActive(false);
         }
         else if (data.currentTime < DAYLENGTH * .05f)
         {
-            lightcontrol(1, dawn, dawn, .8f, .8f);
+            lightcontrol((data.currentTime + (DAYLENGTH * .05f)) / (DAYLENGTH * .10f), night, dawn, .5f, .8f);
         }
         void lightcontrol(float time, Color colorFrom, Color colorTo, float brighnessFrom, float brightnessTo)
         {
             sky.color = Color.Lerp(colorFrom, colorTo, time);
             outdoorLight.color = Color.Lerp(colorFrom, colorTo, time);
             outdoorLight.intensity = Mathf.Lerp(brighnessFrom, brightnessTo, time);
+            if (colorFrom == day)
+            {
+                starfadecover.color = Color.Lerp(sky.color, fadeout, time);
+            }
+            else if (colorFrom == night)
+            {
+                starfadecover.color = Color.Lerp(fadeout, sky.color, time);
+            }
+            else
+            {
+                starfadecover.color = fadeout;
+            }
+
         }
     }
 
