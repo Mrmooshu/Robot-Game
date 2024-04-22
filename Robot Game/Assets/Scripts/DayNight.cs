@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering.Universal;
 
 public class DayNight : MonoBehaviour
 {
@@ -13,9 +14,19 @@ public class DayNight : MonoBehaviour
     }
 
     private TimeData data;
+    public SpriteRenderer sky;
     public GameObject sun;
+    public GameObject sunpos;
     public GameObject moon;
-    private const int DAYLENGTH = 3600;
+    public GameObject moonpos;
+    public Light2D outdoorLight;
+    public Color dawn;
+    public Color day;
+    public Color dusk;
+    public Color night;
+    public Color inside;
+    public bool outdoors = true;
+    private const int DAYLENGTH = 36;
 
     // Start is called before the first frame update
     void Start()
@@ -27,14 +38,48 @@ public class DayNight : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (!outdoors)
+        {
+            outdoorLight.color = inside;
+            outdoorLight.intensity = 1;
+            return;
+        }
         data.currentTime += Time.deltaTime;
-        transform.rotation = Quaternion.Euler(0, 0, data.currentTime/DAYLENGTH*360);
-        //transform.Rotate(0,0, Time.deltaTime/ DAYLENGTH * 360);
+        transform.rotation = Quaternion.Euler(0, 0, -90 + data.currentTime/DAYLENGTH*360);
+        moon.transform.position = moonpos.transform.position;
+        sun.transform.position = sunpos.transform.position;
         if (data.currentTime > DAYLENGTH)
         {
             data.currentTime -= DAYLENGTH;
             data.dayspassed++;
             MoonCheck();
+        }
+
+        if (data.currentTime >= DAYLENGTH * .90f)
+        {
+            lightcontrol((data.currentTime - (DAYLENGTH * .90f)) / (DAYLENGTH * .10f), night, dawn, .5f, .8f);
+        }
+        else if (data.currentTime >= DAYLENGTH * .55f)
+        {
+            lightcontrol((data.currentTime - (DAYLENGTH * .55f)) / (DAYLENGTH * .10f), dusk, night, .7f, .5f);
+        }
+        else if (data.currentTime >= DAYLENGTH * .40f)
+        {
+            lightcontrol((data.currentTime - (DAYLENGTH * .40f)) / (DAYLENGTH * .10f), day, dusk, 1f, .7f);
+        }
+        else if (data.currentTime >= DAYLENGTH * .05f)
+        {
+            lightcontrol((data.currentTime - (DAYLENGTH * .05f))  / (DAYLENGTH * .10f), dawn, day, .8f, 1f);
+        }
+        else if (data.currentTime < DAYLENGTH * .05f)
+        {
+            lightcontrol(1, dawn, dawn, .8f, .8f);
+        }
+        void lightcontrol(float time, Color colorFrom, Color colorTo, float brighnessFrom, float brightnessTo)
+        {
+            sky.color = Color.Lerp(colorFrom, colorTo, time);
+            outdoorLight.color = Color.Lerp(colorFrom, colorTo, time);
+            outdoorLight.intensity = Mathf.Lerp(brighnessFrom, brightnessTo, time);
         }
     }
 
