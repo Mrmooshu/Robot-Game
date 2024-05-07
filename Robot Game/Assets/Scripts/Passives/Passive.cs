@@ -4,22 +4,21 @@ using UnityEngine;
 
 public abstract class Passive
 {
-    protected enum passiveType
+    protected MinionEntity host;
+
+    public string passiveName;
+
+    public virtual void ChangeEntity(MinionEntity entity)
     {
-        single, multiple
+        if (entity != null)
+        {
+            host = entity;
+        }
     }
 
-    protected Entity entity;
-    protected List<Entity> entities;
-
-    protected passiveType type;
-
-    public string skillName;
-
-
-    public abstract void Refresh();
-
-    public abstract void AddEntity(Entity entity);
-
-    public abstract void RemoveEntity(Entity entity);
+    public virtual void RemoveEntity()
+    {
+        host.passives.Remove(this);
+        host = null;
+    }
 }

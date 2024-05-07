@@ -8,6 +8,6 @@ public class PlayerClassExpBar : PercentDisplayBar
     public override void Start()
     {
         base.Start();
-        Inititalize(() => { return level.exp - LevelData.GetExpForNextLevel(level.level - 1); }, () => { return LevelData.GetExpForNextLevel(level.level) - LevelData.GetExpForNextLevel(level.level - 1); });
+        Inititalize(() => { return level.Exp - LevelData.GetExpForNextLevel(level.Level - 1); }, () => { return LevelData.GetExpForNextLevel(level.Level) - LevelData.GetExpForNextLevel(level.Level - 1); });
     }
 }

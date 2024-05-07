@@ -36,6 +36,6 @@ public class UIManager : MonoBehaviour
 
     public static void CloseMainUi()
     {
-        RemoteMenuToggle.ToggleThis(RemoteMenuToggle.instance.closeToggle);
+        RemoteMenuToggle.ToggleThis("CloseToggle");
     }
 }

@@ -1,73 +1,40 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class PassiveStat : Passive
 {
-    protected StatMod modifier;
+    private StatMod.StatFormula formula;
 
-    public float perLevel;
+    protected StatMod modifier;
 
     private StatModType mathType;
 
     private EntityStatType statType;
 
-    public PassiveStat(string name, Entity host, StatModType mathType, EntityStatType statType, float perLevel)
+    public PassiveStat(string name, StatModType mathType, EntityStatType statType, StatMod.StatFormula formula, MinionEntity host = null)
     {
-        type = passiveType.single;
-        skillName = name.ToLower();
-        entity = host;
-        entities = new List<Entity> { };
+        passiveName = name.ToLower();
         this.mathType = mathType;
         this.statType = statType;
-        this.perLevel = perLevel;
-        modifier = new StatMod(StatFormula(), mathType, statType);
-        AddEntity(host);
-    }
-
-    public PassiveStat(string name, List<Entity> hosts, StatModType mathType, EntityStatType statType, float perLevel)
-    {
-        type = passiveType.multiple;
-        skillName = name;
-        entities = new List<Entity> { };
-        this.mathType = mathType;
-        this.statType = statType;
-        this.perLevel = perLevel;
-        modifier = new StatMod(StatFormula(), mathType, statType);
-        foreach (Entity host in hosts)
+        this.formula = formula;
+        modifier = new StatMod(formula, mathType, statType);
+        if (host != null)
         {
-            AddEntity(host);
+            ChangeEntity(host);
         }
     }
 
-    public override void Refresh()
+    public override void ChangeEntity(MinionEntity entity)
     {
-        modifier.Value = StatFormula();
+        base.ChangeEntity(entity);
+        host.stats[statType].AddModifier(modifier);
     }
 
-    protected float StatFormula()
+    public override void RemoveEntity()
     {
-        if (type is passiveType.single)
-        {
-            return ((MinionEntity)entity).data.skills[skillName] * perLevel;
-        }
-        else if(type is passiveType.multiple)
-        {
-            return PlayerManager.instance.universal.upgrades[skillName] * perLevel;
-        }
-        return 0;
-
-    }
-
-    public override void AddEntity(Entity entity)
-    {
-        entities.Add(entity);
-        entity.stats[statType].AddModifier(modifier);
-    }
-
-    public override void RemoveEntity(Entity entity)
-    {
-        entities.Remove(entity);
-        entity.stats[statType].RemoveModifier(modifier);
+        host.stats[statType].RemoveModifier(modifier);
+        base.RemoveEntity();
     }
 }

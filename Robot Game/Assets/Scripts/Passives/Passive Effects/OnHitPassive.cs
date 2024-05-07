@@ -9,37 +9,14 @@ public class OnHitPassive : Passive
 
     protected OnHitEffect onHit;
 
-    public OnHitPassive(string name, Entity host, OnHitEffect onHitEffect)
+    public OnHitPassive(string name, OnHitEffect onHitEffect, MinionEntity host = null)
     {
-        type = passiveType.single;
-        skillName = name;
-        entity = host;
-        entities = new List<Entity> { };
+        passiveName = name;
         onHit = onHitEffect;
-        if (host is MinionEntity)
+        if (host != null)
         {
-            AddEntity(host);
+            ChangeEntity(host);
         }
-    }
-
-    public OnHitPassive(string name, List<Entity> hosts, OnHitEffect onHitEffect)
-    {
-        type = passiveType.multiple;
-        skillName = name;
-        entities = new List<Entity> { };
-        onHit = onHitEffect;
-        foreach (Entity host in hosts)
-        {
-            if (host is MinionEntity)
-            {
-                AddEntity(host);
-            }
-        }
-
-    }
-
-    public override void Refresh()
-    {
     }
 
     public DamageScript.damageData OnHit(Entity target)
@@ -47,22 +24,16 @@ public class OnHitPassive : Passive
         return onHit(target);
     }
 
-    public override void AddEntity(Entity entity)
+    public override void ChangeEntity(MinionEntity entity)
     {
-        entities.Add(entity);
-        if (entity is MinionEntity)
-        {
-            ((MinionEntity)entity).onHitPassives.Add(this);
-        }
+        base.ChangeEntity(entity);
+        entity.onHitPassives.Add(this);
 
     }
 
-    public override void RemoveEntity(Entity entity)
+    public override void RemoveEntity()
     {
-        entities.Remove(entity);
-        if (entity is MinionEntity)
-        {
-            ((MinionEntity)entity).onHitPassives.Remove(this);
-        }
+        host.onHitPassives.Remove(this);
+        base.RemoveEntity();
     }
 }

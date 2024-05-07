@@ -27,5 +27,7 @@ public class ItemObject : MonoBehaviour
         GetComponent<SpriteRenderer>().sprite = itemdata.sprite;
         rig.mass = itemdata.mass;
         rig.gravityScale = itemdata.gravity;
+        var sizescale = (int)Database.GetItem(item.itemID).size;
+        transform.localScale = new Vector3(0.25f * sizescale, 0.25f * sizescale, 1);
     }
 }

@@ -32,7 +32,7 @@ public class InteractableFarmingPlot : Interactable
 
     private void Action()
     {
-        RemoteMenuToggle.ToggleThis(RemoteMenuToggle.instance.farmingToggle);
+        RemoteMenuToggle.ToggleThis("FarmingToggle");
         PlayerManager.instance.farming.currentPlot = PlayerManager.instance.farming.plots[plotname];
     }
 

@@ -7,6 +7,20 @@ using UnityEngine;
 [System.Serializable]
 public class UniversalPlayerData : ISerializationCallbackReceiver
 {
+    public struct minionunlock
+    {
+        public Type minionType;
+        public bool unlocked;
+        public string name;
+
+        public minionunlock(Type type, string name, bool unlocked = false)
+        {
+            minionType = type;
+            this.unlocked = unlocked;
+            this.name = name;
+        }
+    }
+
     [SerializeField] private List<UniversalHelperFunctions.SavedData<int>> upgradesList;
     public Dictionary<string, int> upgrades { get; private set; }
 
@@ -14,8 +28,6 @@ public class UniversalPlayerData : ISerializationCallbackReceiver
     public Dictionary<string, bool> abilities { get; private set; }
 
     [NonSerialized] static private List<Passive> passives;
-
-    [NonSerialized] static private List<Passive> minionPassives;
 
     //dynamic data
     public float ConnectionPowerCapacity { get { return
@@ -27,10 +39,7 @@ public class UniversalPlayerData : ISerializationCallbackReceiver
     // saved data
     public List<string> unlockedSafepoints = new List<string>();
 
-
-
-
-
+    public List<minionunlock> minionsUnlocked;
 
     public UniversalPlayerData()
     {
@@ -41,6 +50,12 @@ public class UniversalPlayerData : ISerializationCallbackReceiver
     {
         CreateUpgrades();
         CreateAbilities();
+        minionsUnlocked = new List<minionunlock>
+        {
+            new minionunlock(typeof(ClayGolemData), "Clay Golem"),
+            new minionunlock(typeof(WoodSentinelData), "Wood Sentinel"),
+            new minionunlock(typeof(MagmaTitanData), "Magma Titan")
+        };
     }
 
 
@@ -97,26 +112,9 @@ public class UniversalPlayerData : ISerializationCallbackReceiver
         }
     }
 
-    public void InitializePassives()
-    {
-        minionPassives = new List<Passive>();
-        minionPassives.Add(new PassiveStat("HealthPassive", new List<Entity> { }, StatModType.Base, EntityStatType.health, 1));
-    }
-
     public void AddMinionPassives(MinionEntity minion)
     {
-        foreach (Passive passive in minionPassives)
-        {
-            passive.AddEntity(minion);
-        }
-    }
-
-    public void RemoveMinionPassives(MinionEntity minion)
-    {
-        foreach (Passive passive in minionPassives)
-        {
-            passive.RemoveEntity(minion);
-        }
+        RebirthPassives(minion);
     }
 
     public void OnAfterDeserialize()
@@ -162,7 +160,11 @@ public class UniversalPlayerData : ISerializationCallbackReceiver
     private List<string> upgradeNames = new List<string>()
     {
         "ConnectionPowerCapacityUpgrade",
-        "HealthPassive"
+        "HealthPassive",
+        // highest level rebirthed for class
+        "Clay Golem RebirthLevel",
+        "Wood Sentinel RebirthLevel",
+        "Magma Titan RebirthLevel"
 
 
 
@@ -177,4 +179,58 @@ public class UniversalPlayerData : ISerializationCallbackReceiver
         // more go here
 
     };
+
+    private void RebirthPassives(MinionEntity entity)
+    {
+        //Clay Golem
+        AssignPassives(new List<(Passive, (Type, int))>
+        {
+        (new PassiveStat("ClayGolemRebirthLevel10", StatModType.Additive, EntityStatType.health, () => 5), (typeof(MinionData), ClayGolemRebirthInfo[0].unlock)),
+        (new PassiveStat("ClayGolemRebirthLevel20", StatModType.Flat, EntityStatType.damagepower, () => entity.stats[EntityStatType.health].Value * .01f), (typeof(GolemData), ClayGolemRebirthInfo[1].unlock))
+        }, "ClayGolemRebirthLevel");
+
+
+
+
+
+
+
+
+
+
+        void AssignPassives(List<(Passive, (Type, int))> passives, string upgrade)
+        {
+            foreach ((Passive, (Type, int)) passive in passives)
+            {
+                if (entity.GetType().IsAssignableFrom(passive.Item2.Item1) && upgrades[upgrade] >= passive.Item2.Item2)
+                {
+                    passive.Item1.ChangeEntity(entity);
+                }
+            }
+        }
+    }
+
+    private RebirthInfo[] ClayGolemRebirthInfo
+    {
+        get
+        {
+            return new RebirthInfo[]{
+                new RebirthInfo("All units gain 5% incresed health", 10),
+                new RebirthInfo("Golems gain 1% max health as damage", 20)
+            };
+        }
+    }
+
+    public struct RebirthInfo
+    {
+        public string description;
+        public int unlock;
+
+        public RebirthInfo(string d, int u)
+        {
+            description = d;
+            unlock = u;
+        }
+    }
+
 }

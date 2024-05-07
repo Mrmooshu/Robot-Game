@@ -6,70 +6,52 @@ using UnityEngine;
 using UnityEngine.UI;
 using System.Linq;
 
-public class QuestListDisplay : ToggleGroup
+public class QuestListDisplay : SelectableMenu<Quest>
 {
     public static QuestListDisplay instance;
 
-    public GameObject questPrefab;
-    public Toggle InactiveToggle;
-    public Toggle ActiveToggle;
-    public Toggle CompleteToggle;
-    public static Quest selectedQuest;
-    public GameObject questInfoGo;
-    public bool Filtered { get { return new List<bool>(){ InactiveToggle.isOn, ActiveToggle.isOn, CompleteToggle.isOn}.Any(x => x == true); } }
+    private Transform infoTransform;
 
     protected override void Start()
     {
-        base.Start();
         if (instance == null)
         {
             instance = this;
         }
-        InactiveToggle.onValueChanged.AddListener(delegate { instance.RefreshList(); });
-        ActiveToggle.onValueChanged.AddListener(delegate { instance.RefreshList(); });
-        CompleteToggle.onValueChanged.AddListener(delegate { instance.RefreshList(); });
-        RefreshList();
+        base.Start();
+        infoTransform = infoObject.transform;
+        Quest.questStepUpdated += RefreshInfo;
+        ItemInventory.inventoryUpdated += RefreshItemQuanity;
+        PlayerManager.instance.minionChanged += RefreshItemQuanity;
     }
 
     protected override void OnDestroy()
     {
-        InactiveToggle.onValueChanged.RemoveAllListeners();
-        ActiveToggle.onValueChanged.RemoveAllListeners();
-        CompleteToggle.onValueChanged.RemoveAllListeners();
+        base.OnDestroy();
+        Quest.questStepUpdated -= RefreshInfo;
+        ItemInventory.inventoryUpdated -= RefreshItemQuanity;
+        PlayerManager.instance.minionChanged -= RefreshItemQuanity;
     }
 
-    protected override void OnDisable()
+    public override void RefreshList()
     {
-        SetAllTogglesOff();
-    }
+        base.RefreshList();
 
-    public virtual void RefreshList()
-    {
-        CreateList();
-    }
-
-    protected void CreateList()
-    {
-        foreach (Transform child in transform)
-        {
-            Destroy(child.gameObject);
-        }
-
-        if (InactiveToggle.isOn || !Filtered)
+        if (toggles[0].isOn || !Filtered)
         {
             foreach (Quest quest in QuestManager.instance.inactiveQuests)
             {
                 CreateQuestOption(quest, new Color(255, 0, 0));
             }
         }
-        if (ActiveToggle.isOn || !Filtered)
+        if (toggles[1].isOn || !Filtered)
         {
             foreach (Quest quest in QuestManager.instance.activeQuests)
             {
                 CreateQuestOption(quest, new Color(255, 255, 0));
             }
         }
-        if (CompleteToggle.isOn || !Filtered)
+        if (toggles[2].isOn || !Filtered)
         {
             foreach (Quest quest in QuestManager.instance.completeQuests)
             {
@@ -79,11 +61,72 @@ public class QuestListDisplay : ToggleGroup
 
         void CreateQuestOption(Quest quest, Color color)
         {
-            GameObject questOption = Instantiate(questPrefab, transform);
+            GameObject questOption = Instantiate(selectPrefab, transform);
             questOption.GetComponent<TextMeshProUGUI>().color = color;
             questOption.GetComponent<TextMeshProUGUI>().text = quest.info.questName;
             questOption.GetComponent<QuestListOption>().quest = quest;
             questOption.GetComponent<Toggle>().group = this;
+        }
+    }
+
+    public override void RefreshInfo()
+    {
+        base.RefreshInfo();
+        if (CurrentSelected != null)
+        {
+            foreach (Transform child in infoObject.transform.Find("Objectives Panel").Find("Requirements Start"))
+            {
+                Destroy(child.gameObject);
+            }
+
+            switch (CurrentSelected.questState)
+            {
+                case Quest.QuestState.inactive:
+                    infoTransform.Find("Info Text").GetComponent<TextMeshProUGUI>().text = CurrentSelected.info.questStartInfo;
+                    break;
+                case Quest.QuestState.active:
+                    infoTransform.Find("Info Text").GetComponent<TextMeshProUGUI>().text = CurrentSelected.GetCurrentStep().info;
+                    break;
+                case Quest.QuestState.completed:
+                    infoTransform.Find("Info Text").GetComponent<TextMeshProUGUI>().text = CurrentSelected.info.questPostInfo;
+                    break;
+            }
+            if (CurrentSelected.GetCurrentStep() == null)
+            {
+                return;
+            }
+
+            if (CurrentSelected.GetCurrentStep() is HaveItemsStep)
+            {
+                int counter = 0;
+                foreach (HaveItemsStep.RequiredItem item in ((HaveItemsStep)CurrentSelected.GetCurrentStep()).requiredItems)
+                {
+                    GameObject itemDisplay = Instantiate(UIManager.instance.uiPrefabs.LoadAsset<GameObject>("ItemRequirementDisplay"), infoTransform.Find("Objectives Panel").Find("Requirements Start"));
+                    itemDisplay.transform.localPosition = new Vector2(itemDisplay.transform.localPosition.x, itemDisplay.transform.localPosition.y + counter * -16);
+                    itemDisplay.GetComponent<Image>().sprite = item.requiredItem.sprite;
+                    itemDisplay.transform.Find("Quanity Requirement Text").GetComponent<TextMeshProUGUI>().text = PlayerManager.CheckCurrentInventoryForItem(item.requiredItem.itemID) + "/" + item.requiredItemQuanity;
+                    counter++;
+                }
+            }
+        }
+    }
+
+    public void RefreshItemQuanity()
+    {
+        if (CurrentSelected == null)
+        {
+            return;
+        }
+        if (CurrentSelected.GetCurrentStep() == null)
+        {
+            return;
+        }
+        int counter = 0;
+        foreach (HaveItemsStep.RequiredItem item in ((HaveItemsStep)CurrentSelected.GetCurrentStep()).requiredItems)
+        {
+            Transform itemDisplay = infoTransform.Find("Objectives Panel").Find("Requirements Start").GetChild(counter);
+            itemDisplay.transform.Find("Quanity Requirement Text").GetComponent<TextMeshProUGUI>().text = PlayerManager.CheckCurrentInventoryForItem(item.requiredItem.itemID) + "/" + item.requiredItemQuanity;
+            counter++;
         }
     }
 }

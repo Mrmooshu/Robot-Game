@@ -1,7 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
+[System.Serializable]
 public abstract class ClassFunction
 {
     // number of skills each function has
@@ -11,13 +13,13 @@ public abstract class ClassFunction
 
     public string name;
 
-    protected List<(EntityStatType, int)> uniquestats;
+    protected abstract List<(EntityStatType, int)> uniquestats { get; }
 
-    public LevelData level { get; protected set; }
+    public LevelData level;
 
-    public Item equipItem;
+    [SerializeReference] public Item equipItem;
 
-    public System.Type itemType;
+    public abstract Type itemType { get; }
 
     public ClassFunction(MinionData host, string name)
     {
@@ -32,6 +34,7 @@ public abstract class ClassFunction
     {
         Deinitialize();
         host = newHost;
+        level.data = host;
         Initialize();
     }
 
@@ -40,13 +43,25 @@ public abstract class ClassFunction
     {
         for (int i = 1; i <= FUNCTIONSSKILLCOUNT; i++)
         {
-            host.skills.Add($"{name.ToLower()}skill {i}", 0);
+            var key = $"{name.ToLower()}skill {i}";
+            if (!host.skills.ContainsKey(key))
+            {
+                host.skills.Add(key, 0);
+            }
         }
     }
 
     //removes skills in hosts skill dictionary
     private void Deinitialize()
     {
+        if (host == null)
+        {
+            return;
+        }
+        if (host.GetEntity() == null)
+        {
+            return;
+        }
         foreach ((EntityStatType, int) stat in uniquestats)
         {
             host.GetEntity().stats.Remove(stat.Item1);

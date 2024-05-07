@@ -9,6 +9,11 @@ public class ItemData : ScriptableObject
         Fuel,Smeltable
     }
 
+    public enum ItemSize
+    {
+        small = 1,medium = 2,large = 4
+    }
+
     [Header("Item Properties")]
     public int itemID;
     public string itemName = "default name";
@@ -17,5 +22,6 @@ public class ItemData : ScriptableObject
     public Sprite sprite;
     public float mass = 1;
     public float gravity = 1;
+    public ItemSize size = ItemSize.medium;
     public ItemTags[] tags;
 }

@@ -2,13 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using System.Linq;
 
 public class RemoteMenuToggle : MonoBehaviour
 {
-    public Toggle smithingToggle;
-    public Toggle farmingToggle;
-    public Toggle closeToggle;
-    public Toggle safepointToggle;
+    public Toggle[] toggles;
 
     public static RemoteMenuToggle instance;
 
@@ -20,8 +18,9 @@ public class RemoteMenuToggle : MonoBehaviour
         }
     }
 
-    public static void ToggleThis(Toggle toggle)
+    public static void ToggleThis(string togglename)
     {
+        Toggle  toggle = instance.toggles.ToList().Find(x => x.name.ToLower() == togglename.ToLower());
         toggle.isOn = !toggle.isOn;
     }
 }

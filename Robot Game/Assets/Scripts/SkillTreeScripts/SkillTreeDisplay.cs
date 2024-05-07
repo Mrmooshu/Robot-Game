@@ -91,7 +91,6 @@ public class SkillTreeDisplay : MonoBehaviour
             {
                 minion.skills[selectedSkill.skillName]++;
                 minion.SkillPoints--;
-                minion.GetPassiveByName(selectedSkill.skillName).Refresh();
             }
         }
     }

@@ -1,19 +1,22 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class MiningFunction : ClassFunction
 {
+    public override Type itemType { get { return typeof(Pickaxe); } }
+
+    protected override List<(EntityStatType, int)> uniquestats { get { return new List<(EntityStatType, int)> { (EntityStatType.miningpower, 1) }; } }
+
     public MiningFunction(MinionData host) : base(host,"Mining")
     {
-        itemType = typeof(Pickaxe);
-        uniquestats = new List<(EntityStatType, int)> { (EntityStatType.miningpower, 1) };
     }
 
     public override void InitializePassives()
     {
         var entity = host.GetEntity();
-        host.passives.Add(new PassiveStat("miningskill 1", entity, StatModType.Base, EntityStatType.miningpower, 1f * (level.level + host.Level.level)));
+        host.GetEntity().passives.Add(new PassiveStat("miningskill 1", StatModType.Base, EntityStatType.miningpower, () => 1f * (level.Level + host.Level.Level), host : entity));
         // 1 mining power per the sum of class level and mining level
     }
 

@@ -39,13 +39,13 @@ public class FunctionDisplay : MonoBehaviour
         SetOn(true);
         var function = PlayerManager.instance.activeMinion.functions[functionslotindex];
         title.text = function.name;
-        level.text = "Lvl:" + function.level.level.ToString();
+        level.text = "Lvl:" + function.level.Level.ToString();
         if (!bar.GetComponent<PercentDisplayBar>())
         {
             bar.AddComponent<PercentDisplayBar>();
         }
         var percentbar = bar.GetComponent<PercentDisplayBar>();
-        percentbar.Inititalize(() => { return function.level.exp - LevelData.GetExpForNextLevel(function.level.level-1); },() => { return LevelData.GetExpForNextLevel(function.level.level) - LevelData.GetExpForNextLevel(function.level.level-1); });
+        percentbar.Inititalize(() => { return function.level.Exp - LevelData.GetExpForNextLevel(function.level.Level-1); },() => { return LevelData.GetExpForNextLevel(function.level.Level) - LevelData.GetExpForNextLevel(function.level.Level-1); });
         slot.functionSlotIndex = functionslotindex;
 
 

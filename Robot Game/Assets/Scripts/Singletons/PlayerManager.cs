@@ -8,6 +8,7 @@ using UnityEngine.SceneManagement;
 using System.Linq;
 using UnityEngine.Rendering;
 using UnityEngine.InputSystem;
+using System.IO;
 
 public class PlayerManager : MonoBehaviour, IDataSave
 {
@@ -19,11 +20,8 @@ public class PlayerManager : MonoBehaviour, IDataSave
     public InputActionAsset inputActions;
     public InputAction moveAction;
 
-    public List<GameObject> minionBlueprints;
-
     public static PlayerManager instance;
     public List<MinionData> activeMinions;
-    public MinionInventory minionInventory;
     public ItemInventory bankInventory;
 
     public List<MinionEntity> minionEntities;
@@ -36,7 +34,7 @@ public class PlayerManager : MonoBehaviour, IDataSave
     {
         moveAction = inputActions.FindActionMap("Player").FindAction("Move");
 
-        foreach (string action in new []{"Jump","Basic Attack","Ability 1","Ability 2", "Ability 3" , "Ability 4" , "Ability 5" , "Ability 6" })
+        foreach (string action in new []{"Jump","Basic Attack","Ability 1","Ability 2", "Ability 3" , "Ability 4" , "Ability 5" , "Ability 6", "Test" })
         {
             inputActions.FindActionMap("Player").FindAction(action).performed += PassInputToActivePlayer;
         }
@@ -50,7 +48,6 @@ public class PlayerManager : MonoBehaviour, IDataSave
     }
     public void SpawnMinions()
     {
-        universal.InitializePassives();
         foreach (MinionData core in activeMinions)
         {
             if (core != null)
@@ -65,7 +62,7 @@ public class PlayerManager : MonoBehaviour, IDataSave
     {
         GameObject newMinion;
         //newMinion = Instantiate(GeneralManager.instance.entityPrefabs.LoadAsset<GameObject>(minion.variantName));
-        newMinion = Instantiate(minionBlueprints.Where(x => x.name == minion.variantName).Single());
+        newMinion = Instantiate(minion.Blueprint);
         MinionEntity minionEntity = newMinion.GetComponent<MinionEntity>();
         minionEntities.Add(minionEntity);
         minionEntity.Initialize(minion);
@@ -75,20 +72,12 @@ public class PlayerManager : MonoBehaviour, IDataSave
         minionChanged?.Invoke();
     }
 
-    public void StoreMinion(MinionData minion)
-    {
-        minion.activity = MinionData.Activity.Storage;
-        DespawnMinion(minion);
-    }
-
     public void DespawnMinion(MinionData minion)
     {
         var entity = minion.GetEntity();
-        universal.RemoveMinionPassives(minion.GetEntity());
         minion.savedPosition = minion.GetEntity().transform.position;
         minionEntities.Remove(minion.GetEntity());
         Destroy(entity.gameObject);
-        minionChanged?.Invoke();
     }
 
     public void RespawnMinion(MinionData minion)
@@ -107,6 +96,24 @@ public class PlayerManager : MonoBehaviour, IDataSave
         activeMinion.GetEntity().GetComponent<SortingGroup>().sortingOrder = 1;
         ControlThisMinion(minion.GetEntity());
         minionChanged?.Invoke();
+    }
+
+    public void ChangeMinionType(MinionData minion, System.Type type)
+    {
+        if (type.IsSubclassOf(typeof(MinionData)))
+        {
+            DespawnMinion(minion);
+            var newdata = (MinionData)Activator.CreateInstance(type, minion);
+            activeMinions[activeMinions.IndexOf(minion)] = newdata;
+            activeMinion = newdata;
+            SpawnMinion(newdata);
+            SetActiveMinion(newdata);
+            Debug.Log($"minion type has been changed to {type.Name}");
+        }
+        else
+        {
+            Debug.Log("wrong type for miniondata change");
+        }
     }
 
     private void ControlThisMinion(MinionEntity player)
@@ -186,7 +193,6 @@ public class PlayerManager : MonoBehaviour, IDataSave
     public void LoadData(GameData data)
     {
         activeMinions = data.activeMinions;
-        minionInventory = data.minionInventory;
         bankInventory = data.bankInventory;
         universal = data.universal;
         smithing = data.smithing;
@@ -197,7 +203,6 @@ public class PlayerManager : MonoBehaviour, IDataSave
     public void SaveData(ref GameData data)
     {
         data.activeMinions = activeMinions;
-        data.minionInventory = minionInventory;
         data.bankInventory = bankInventory;
         data.universal = universal;
         data.smithing = smithing;

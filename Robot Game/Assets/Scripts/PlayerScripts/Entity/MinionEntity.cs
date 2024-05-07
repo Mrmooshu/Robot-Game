@@ -13,6 +13,8 @@ public abstract class MinionEntity : Entity
 
     public SpriteRenderer weapon;
 
+    [NonSerialized] public List<Passive> passives;
+
     public List<OnHitPassive> onHitPassives;
 
     public Interactable currentInteractable;
@@ -50,7 +52,7 @@ public abstract class MinionEntity : Entity
         rigBod = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         CreateStats();
-        data.InitializePassives();
+        InitializePassives();
         data.functions.Where(x => x != null).ToList().ForEach(x => x.InitializePassives());
         controller = new AnimatorOverrideController(animator.runtimeAnimatorController);
         animator.runtimeAnimatorController = controller;
@@ -139,6 +141,10 @@ public abstract class MinionEntity : Entity
     {
         switch (context.action.name.ToLower())
         {
+            case "test":
+                RemoteMenuToggle.ToggleThis("RebirthToggle");
+                Debug.Log("test");
+                break;
             case "jump":
                 Jump();
                 break;
@@ -241,6 +247,12 @@ public abstract class MinionEntity : Entity
         // add listeners
         //stats[EntityStatType.Gravity].statUpdated += () => { rigBod.gravityScale = stats[EntityStatType.Gravity].Value; };
         //stats[EntityStatType.Gravity].Recalculate();
+    }
+
+    public virtual void InitializePassives()
+    {
+        passives = new List<Passive>();
+        passives.Add(new HealthRegenPassive(this));
     }
 
     protected override void Die()

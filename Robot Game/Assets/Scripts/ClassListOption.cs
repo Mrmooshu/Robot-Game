@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class QuestListOption : Toggle
+public class ClassListOption : Toggle
 {
-    public Quest quest;
+    public UniversalPlayerData.minionunlock minion;
 
     protected override void Awake()
     {
@@ -19,15 +19,15 @@ public class QuestListOption : Toggle
     {
         if (t.group.AnyTogglesOn())
         {
-            QuestListDisplay.instance.infoObject.SetActive(true);
+            RebirthMenu.instance.infoObject.SetActive(true);
             if (isOn)
             {
-                QuestListDisplay.instance.CurrentSelected = quest;
+                RebirthMenu.instance.CurrentSelected = minion;
             }
         }
         else
         {
-            QuestListDisplay.instance.infoObject.SetActive(false);
+            RebirthMenu.instance.infoObject.SetActive(false);
         }
     }
 }

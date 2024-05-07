@@ -29,7 +29,7 @@ public class DayNight : MonoBehaviour
     public Color night;
     public Color inside;
     public bool outdoors = true;
-    private const int DAYLENGTH = 36;
+    private const int DAYLENGTH = 3600;
 
     // Start is called before the first frame update
     void Start()

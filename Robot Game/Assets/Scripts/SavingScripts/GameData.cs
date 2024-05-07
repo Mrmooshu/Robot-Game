@@ -7,7 +7,6 @@ public class GameData
 {
     public UniversalPlayerData universal;
     [SerializeReference] public List<MinionData> activeMinions;
-    [SerializeReference] public MinionInventory minionInventory;
     public ItemInventory bankInventory;
     public List<QuestData> quests;
 
@@ -20,7 +19,6 @@ public class GameData
     {
         universal = new UniversalPlayerData();
         activeMinions = new List<MinionData> { new ClayGolemData(), new ClayGolemData()};
-        minionInventory = new MinionInventory(10);
         bankInventory = new ItemInventory(48);
         quests = new List<QuestData>();
 
@@ -36,9 +34,6 @@ public class GameData
         time = new DayNight.TimeData();
 
         //testing pusposes stuff
-
-        minionInventory.inventory[0] = new ClayGolemData();
-        minionInventory.inventory[1] = new ClayGolemData();
 
         bankInventory.Add(new Item(Database.GetItemID("Slythril Warhammer"), 1));
         bankInventory.Add(new Item(Database.GetItemID("Myphrite Warhammer"), 1));
@@ -67,6 +62,11 @@ public class GameData
 
         universal.abilities["Tornado"] = true;
         universal.abilities["RoamingCancel"] = true;
+
+        activeMinions[0].functions[0] = new MiningFunction(activeMinions[0]);
+        activeMinions[0].functions[1] = new MeleeFunction(activeMinions[0]);
+        activeMinions[0].functions[2] = new WoodcuttingFunction(activeMinions[0]);
+        activeMinions[0].functions[3] = new FarmingFunction(activeMinions[0]);
     }
 
     [System.Serializable]

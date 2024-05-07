@@ -6,35 +6,33 @@ public class HealthRegenPassive : Passive
 {
     private IEnumerator coroutine;
 
-    public HealthRegenPassive(Entity host)
+    public HealthRegenPassive(MinionEntity host = null)
     {
-        type = passiveType.single;
-        entity = host;
-        entities = new List<Entity> { host };
         coroutine = HealTick();
-        AddEntity(host);
-    }
-
-    public override void Refresh()
-    {
+        if (host != null)
+        {
+            ChangeEntity(host);
+        }
     }
 
     private IEnumerator HealTick()
     {
-        while (entities[0] != null)
+        while (host != null)
         {
-            ((ResourceStat)(entities[0]).stats[EntityStatType.health]).CurrentValue += (entities[0]).stats[EntityStatType.healthregen].Value * 0.1f;
+            ((ResourceStat)host.stats[EntityStatType.health]).CurrentValue += host.stats[EntityStatType.healthregen].Value * 0.1f;
             yield return new WaitForSeconds(0.1f);
         }
     }
 
-    public override void AddEntity(Entity entity)
+    public override void ChangeEntity(MinionEntity entity)
     {
-        entities[0].StartCoroutine(coroutine);
+        base.ChangeEntity(entity);
+        entity.StartCoroutine(coroutine);
     }
 
-    public override void RemoveEntity(Entity entity)
+    public override void RemoveEntity()
     {
-        entities[0].StopCoroutine(coroutine);
+        host.StopCoroutine(coroutine);
+        base.RemoveEntity();
     }
 }

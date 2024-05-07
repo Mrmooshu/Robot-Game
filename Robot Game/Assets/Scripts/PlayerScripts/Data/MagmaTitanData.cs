@@ -5,11 +5,17 @@ using UnityEngine;
 
 public class MagmaTitanData : MinionData
 {
-    protected override void Create()
+    public override GameObject Blueprint { get { return GeneralManager.instance.entityPrefabs.LoadAsset<GameObject>("Magma Titan"); } }
+
+    public MagmaTitanData(MinionData data = null) : base(data)
     {
-        base.Create();
+
+    }
+
+    protected override void Create(MinionData data = null)
+    {
+        base.Create(data);
         functions[0] = new SmithingFunction(this);
-        variantName = "Magma Titan";
     }
 
     protected override void CreateSkills()
@@ -28,15 +34,6 @@ public class MagmaTitanData : MinionData
 
 
         };
-    }
-
-    public override void InitializePassives()
-    {
-        var host = GetEntity();
-        passives = new List<Passive>();
-        passives.Add(new HealthRegenPassive(host));
-        passives.Add(new PassiveStat("health passive", host, StatModType.Base, EntityStatType.health, 5));
-        passives.Add(new PassiveStat("mana passive", host, StatModType.Base, EntityStatType.mana, 5));
     }
 
     new public MagmaTitanEntity GetEntity()

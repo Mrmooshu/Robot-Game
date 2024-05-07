@@ -17,7 +17,7 @@ public class SmithingInteractable : Interactable
 
     private void SmeltAction()
     {
-        RemoteMenuToggle.ToggleThis(RemoteMenuToggle.instance.smithingToggle);
+        RemoteMenuToggle.ToggleThis("SmithingToggle");
         PlayerManager.instance.smithing.currentStation = PlayerManager.instance.smithing.stations[smithIndex];
     }
 }

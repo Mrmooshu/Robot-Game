@@ -1,13 +1,15 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class WoodcuttingFunction : ClassFunction
 {
+    public override Type itemType { get { return typeof(Hatchet); } }
+
+    protected override List<(EntityStatType, int)> uniquestats { get { return new List<(EntityStatType, int)> { (EntityStatType.woodcuttingpower, 1) }; } }
     public WoodcuttingFunction(MinionData host) : base(host,"Woodcutting")
     {
-        itemType = typeof(Hatchet);
-        uniquestats = new List<(EntityStatType, int)> { (EntityStatType.woodcuttingpower, 1) };
     }
 
     public void StartChopping()

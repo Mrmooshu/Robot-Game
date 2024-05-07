@@ -116,7 +116,7 @@ public class Stat
         for (int i = 0; i < statModifiers.Count; i++)
         {
             StatMod mod = statModifiers[i];
-            float modValue = mod.Value;
+            float modValue = mod.Value();
 
             if (mod.bonusType == StatModType.Base || mod.bonusType == StatModType.Flat)
             {

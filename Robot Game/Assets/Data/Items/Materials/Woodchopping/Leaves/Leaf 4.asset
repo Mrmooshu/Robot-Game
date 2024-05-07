@@ -19,4 +19,5 @@ MonoBehaviour:
   sprite: {fileID: 1674047977, guid: 0091ca98ad4e66442b6565ed38f6f7bc, type: 3}
   mass: 2
   gravity: 0.5
+  size: 1
   tags: 

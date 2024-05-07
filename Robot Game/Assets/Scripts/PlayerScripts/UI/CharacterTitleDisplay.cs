@@ -23,7 +23,7 @@ public class CharacterTitleDisplay : MonoBehaviour
 
     private void Refresh()
     {
-        title.text = PlayerManager.instance.activeMinion.variantName;
-        level.text = "Lvl:" + PlayerManager.instance.activeMinion.Level.level.ToString();
+        title.text = PlayerManager.instance.activeMinion.Blueprint.name;
+        level.text = "Lvl:" + PlayerManager.instance.activeMinion.Level.Level.ToString();
     }
 }

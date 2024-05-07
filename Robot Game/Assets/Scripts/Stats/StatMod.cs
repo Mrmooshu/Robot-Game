@@ -19,14 +19,16 @@ public struct ModData
 [Serializable]
 public class StatMod
 {
-    private float _value;
-    public float Value { get { return _value; } set { _value = value; if(stat != null)stat.Recalculate(); } } 
+    public delegate float StatFormula();
+
+    private StatFormula _value;
+    public StatFormula Value { get { return _value; } set { _value = value; if(stat != null)stat.Recalculate(); } } 
     public StatModType bonusType;
     public EntityStatType statType;
     public object source;
     public Stat stat;
 
-    public StatMod(float value, StatModType bonusType, EntityStatType statType, object source)
+    public StatMod(StatFormula value, StatModType bonusType, EntityStatType statType, object source)
     {
         Value = value;
         this.bonusType = bonusType;
@@ -34,5 +36,10 @@ public class StatMod
         this.source = source;
     }
 
-    public StatMod(float value, StatModType bonusType, EntityStatType statType) : this(value, bonusType, statType, null) { }
+    public StatMod(StatFormula value, StatModType bonusType, EntityStatType statType) : this(value, bonusType, statType, null) { }
+
+    public StatMod(float value, StatModType bonusType, EntityStatType statType, object source) : this(() => value, bonusType, statType, source) { }
+
+    public StatMod(float value, StatModType bonusType, EntityStatType statType) : this(() => value, bonusType, statType, null) { }
+
 }

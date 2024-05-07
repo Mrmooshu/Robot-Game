@@ -7,7 +7,7 @@ using UnityEngine;
 [System.Serializable]
 public abstract class MinionData : ISerializationCallbackReceiver
 {
-    private LevelData level;
+    [SerializeField]private LevelData level;
     public LevelData Level { get => level; private set { level = value; } }
 
     public enum Activity
@@ -17,7 +17,7 @@ public abstract class MinionData : ISerializationCallbackReceiver
 
     public enum CombatStyle
     {
-        None,Melee,Range,Magic
+        None, Melee, Range, Magic
     }
 
     [System.Serializable]
@@ -36,9 +36,8 @@ public abstract class MinionData : ISerializationCallbackReceiver
     }
 
     //Saved variables
-    public ClassFunction[] functions;
+    [SerializeReference] public ClassFunction[] functions;
     public string lastSafePoint;
-    public string variantName;
     [SerializeReference] public Item[] artifacts;
     public ItemInventory inventory;
     public active[] ActiveAbilities;
@@ -52,15 +51,15 @@ public abstract class MinionData : ISerializationCallbackReceiver
 
 
     //Unsaved variables
-    [NonSerialized]public List<Passive> passives;
     public Dictionary<string, int> skills;
+    public abstract GameObject Blueprint { get; }
 
 
     public static event Action skillPointsUpdated;
 
-    public MinionData()
+    public MinionData(MinionData data = null)
     {
-        Create();
+        Create(data);
         CreateSkills();
     }
 
@@ -77,6 +76,11 @@ public abstract class MinionData : ISerializationCallbackReceiver
         return null;
     }
 
+    public int GetIndex()
+    {
+        return PlayerManager.instance.activeMinions.IndexOf(this);
+    }
+
     public bool HasFunction<T>()
     {
         return functions.Any(x => x is T);
@@ -89,17 +93,34 @@ public abstract class MinionData : ISerializationCallbackReceiver
 
     public Passive GetPassiveByName(string skillName)
     {
-        return passives.FirstOrDefault(x => x.skillName == skillName);
+        return GetEntity().passives.FirstOrDefault(x => x.passiveName == skillName);
     }
 
-    protected virtual void Create()
+    protected virtual void Create(MinionData data = null)
     {
-        Level = new LevelData();
-        skills = new Dictionary<string, int>();
-        functions = new ClassFunction[5];
-        artifacts = new Item[6];
-        inventory = new ItemInventory(30, 10);
-        ActiveAbilities = new active[6] { new active("", 0), new active("", 0), new active("", 0), new active("", 0), new active("", 0), new active("", 0) };
+        if (data == null)
+        {
+            Level = new LevelData();
+            skills = new Dictionary<string, int>();
+            functions = new ClassFunction[4];
+            artifacts = new Item[6];
+            inventory = new ItemInventory(30, 10);
+            ActiveAbilities = new active[6] { new active("", 0), new active("", 0), new active("", 0), new active("", 0), new active("", 0), new active("", 0) };
+        }
+        else
+        {
+            Level = new LevelData();
+            skills = new Dictionary<string, int>();
+            functions = data.functions;
+            artifacts = data.artifacts;
+            inventory = data.inventory;
+            ActiveAbilities = data.ActiveAbilities;
+            savedPosition = data.savedPosition;
+            foreach (ClassFunction function in functions)
+            {
+                function.ChangeHost(this);
+            }
+        }
     }
 
     protected virtual void CreateSkills()
@@ -121,6 +142,8 @@ public abstract class MinionData : ISerializationCallbackReceiver
         }
         // reset active stages
         ActiveAbilities.ToList().ForEach(i => i.stage = 0);
+        // add host back to functions
+        functions.ToList().ForEach(i => { if (i != null) i.ChangeHost(this); });
     }
 
     public void OnBeforeSerialize()
