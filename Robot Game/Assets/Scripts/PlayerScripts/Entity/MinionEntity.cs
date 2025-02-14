@@ -23,8 +23,6 @@ public abstract class MinionEntity : Entity
 
     AnimatorOverrideController controller;
 
-    FollowContoller followController;
-
     //other
 
     public GameObject skillTree;
@@ -55,7 +53,6 @@ public abstract class MinionEntity : Entity
         facingDirection = (int)transform.localScale.x;
         rigBod = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
-        followController = GetComponent<FollowContoller>();
         groundCheck = transform.Find("GroundCheck");
         CreateStats();
         InitializePassives();

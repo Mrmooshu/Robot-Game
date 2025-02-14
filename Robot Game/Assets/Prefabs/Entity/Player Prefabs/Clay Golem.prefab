@@ -378,7 +378,6 @@ GameObject:
   - component: {fileID: 1817154297190067104}
   - component: {fileID: 3952835351004405523}
   - component: {fileID: 6648438845695125658}
-  - component: {fileID: 6073648261797213117}
   m_Layer: 7
   m_Name: Clay Golem
   m_TagString: Player
@@ -517,7 +516,6 @@ MonoBehaviour:
   currentInteractable: {fileID: 0}
   skillTree: {fileID: 52194782207523293, guid: d62f92d9bd3bfa54c991f51a6df19f47, type: 3}
   groundCheck: {fileID: 2653229882561976576}
-  followPositions: {fileID: 0}
   moveLocked: 0
   jumpLocked: 0
   whatIsGround:
@@ -568,18 +566,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 16da4cbedc408114d9f1df26ae5ac682, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &6073648261797213117
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2947402111217047421}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 28a29d790648a9a45adc07f2ec678111, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &5315328911284462296
@@ -936,7 +922,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2653229882561976576}
   m_Layer: 7
-  m_Name: Groundcheck
+  m_Name: GroundCheck
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
