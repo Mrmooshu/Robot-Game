@@ -3,7 +3,7 @@ guid: 0091ca98ad4e66442b6565ed38f6f7bc
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
-  serializedVersion: 11
+  serializedVersion: 12
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
@@ -20,11 +20,12 @@ TextureImporter:
     externalNormalMap: 0
     heightScale: 0.25
     normalMapFilter: 0
+    flipGreenChannel: 0
   isReadable: 0
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
-  ignoreMasterTextureLimit: 0
+  ignoreMipmapLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -63,6 +64,8 @@ TextureImporter:
   textureFormatSet: 0
   ignorePngGamma: 0
   applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 1
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
@@ -618,7 +621,6 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      WoodChopping_Items_20: -2134008647
       WoodChopping_Items_23: -1073027006
       WoodChopping_Items_2: 1934089219
       WoodChopping_Items_19: -85324151
@@ -639,12 +641,12 @@ TextureImporter:
       WoodChopping_Items_21: 1259010898
       WoodChopping_Items_18: -1966700698
       WoodChopping_Items_10: -1339828845
+      WoodChopping_Items_20: -2134008647
       WoodChopping_Items_11: -430767807
       WoodChopping_Items_6: -984318959
       WoodChopping_Items_16: -51564915
-  spritePackingTag: 
+  mipmapLimitGroupName: 
   pSDRemoveMatte: 0
-  pSDShowRemoveMatteOption: 0
   userData: 
   assetBundleName: 
   assetBundleVariant: 

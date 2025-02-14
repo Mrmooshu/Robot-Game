@@ -10,6 +10,11 @@ public abstract class MinionData : ISerializationCallbackReceiver
     [SerializeField]private LevelData level;
     public LevelData Level { get => level; private set { level = value; } }
 
+    public enum Form
+    {
+        normal, passive
+    }
+
     public enum Activity
     {
         Storage, Idle, Mining, Woodcutting, Fishing
@@ -47,6 +52,8 @@ public abstract class MinionData : ISerializationCallbackReceiver
     // used to save skills as a list in json
     [SerializeField] private List<SkillData> skillsList;
     [SerializeField] private int _skillPoints;
+    public Form currentForm;
+
     public int SkillPoints { get { return _skillPoints; } set { _skillPoints = value; skillPointsUpdated?.Invoke(); } }
 
 

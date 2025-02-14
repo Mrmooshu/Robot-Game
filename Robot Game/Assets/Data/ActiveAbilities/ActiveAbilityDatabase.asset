@@ -14,8 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ActivesList:
   - {fileID: 11400000, guid: b0b632923bc9f86468bc422a28e17df5, type: 2}
+  - {fileID: 11400000, guid: 1d8028f44bee0934d9f894d3f5a52b33, type: 2}
   - {fileID: 11400000, guid: 196c250b39d16fc4e96598fdd553008f, type: 2}
   GeneralActives:
   - {fileID: 11400000, guid: b0b632923bc9f86468bc422a28e17df5, type: 2}
+  - {fileID: 11400000, guid: 1d8028f44bee0934d9f894d3f5a52b33, type: 2}
   GolemActives:
   - {fileID: 11400000, guid: 196c250b39d16fc4e96598fdd553008f, type: 2}

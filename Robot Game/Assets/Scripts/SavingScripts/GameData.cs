@@ -62,6 +62,7 @@ public class GameData
 
         universal.abilities["Tornado"] = true;
         universal.abilities["RoamingCancel"] = true;
+        universal.abilities["Follow"] = true;
 
         activeMinions[0].functions[0] = new MiningFunction(activeMinions[0]);
         activeMinions[0].functions[1] = new MeleeFunction(activeMinions[0]);

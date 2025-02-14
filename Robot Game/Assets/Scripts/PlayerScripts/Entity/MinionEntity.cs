@@ -4,9 +4,11 @@ using UnityEngine;
 using System.Linq;
 using System;
 using UnityEngine.InputSystem;
+using UnityEngine.EventSystems;
 
 public abstract class MinionEntity : Entity
 {
+
     public MinionData data { get; protected set; }
 
     public Sprite icon;
@@ -21,6 +23,8 @@ public abstract class MinionEntity : Entity
 
     AnimatorOverrideController controller;
 
+    FollowContoller followController;
+
     //other
 
     public GameObject skillTree;
@@ -31,8 +35,8 @@ public abstract class MinionEntity : Entity
     public Transform groundCheck;
 
     //other
-    public bool MoveLocked = false;
-    public bool JumpLocked = false;
+    public bool moveLocked = false;
+    public bool jumpLocked = false;
     public Action bufferedAction = null;
     public LayerMask whatIsGround;
     protected float groundedRadius = .1f;
@@ -51,6 +55,8 @@ public abstract class MinionEntity : Entity
         facingDirection = (int)transform.localScale.x;
         rigBod = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
+        followController = GetComponent<FollowContoller>();
+        groundCheck = transform.Find("GroundCheck");
         CreateStats();
         InitializePassives();
         data.functions.Where(x => x != null).ToList().ForEach(x => x.InitializePassives());
@@ -100,7 +106,7 @@ public abstract class MinionEntity : Entity
         if (PlayerManager.instance.activeMinion == data)
         {
             // movement
-            if (!(MoveLocked || UIManager.instance.menuPreventingMovement))
+            if (!(animator.GetBool("Following") || moveLocked || UIManager.instance.menuPreventingMovement))
             {
                 movementInputDirection = (int)PlayerManager.instance.moveAction.ReadValue<Vector2>().x;
             }
@@ -196,25 +202,12 @@ public abstract class MinionEntity : Entity
 
     protected void Jump()
     {
-        if (canJump && !JumpLocked)
+        if (canJump && !jumpLocked && !animator.GetBool("Following"))
         {
             canJump = false;
             rigBod.AddForce(Vector2.up * stats[EntityStatType.jumpforce].Value, ForceMode2D.Impulse);
             animator.SetBool("Jumping", true);
         }
-    }
-
-    protected void RoamingCancel(ActiveAbilityIcon active)
-    {
-        for (int i = 0; i < data.ActiveAbilities.Length; i++)
-        {
-            data.ActiveAbilities[i].stage = 0;
-        }
-        bufferedAction = null;
-        animator.Play("Idle", 0);
-        AbilitySlot.instances.Where(x => x.iconGO != null).ToList().ForEach(x => x.iconGO.GetComponent<ActiveAbilityIcon>().RefreshOnBar());
-        StartActiveCooldown(active);
-        GetComponent<FlashEffect>().FlashStart(Color.white, .2f);
     }
 
     //used to buffer actions
@@ -322,6 +315,36 @@ public abstract class MinionEntity : Entity
     public abstract void RangeBasic();
 
     public abstract void MagicBasic();
+
+    // Active Abilities
+    protected void RoamingCancel(ActiveAbilityIcon active)
+    {
+        for (int i = 0; i < data.ActiveAbilities.Length; i++)
+        {
+            data.ActiveAbilities[i].stage = 0;
+        }
+        bufferedAction = null;
+        animator.Play("Idle", 0);
+        AbilitySlot.instances.Where(x => x.iconGO != null).ToList().ForEach(x => x.iconGO.GetComponent<ActiveAbilityIcon>().RefreshOnBar());
+        StartActiveCooldown(active);
+        GetComponent<FlashEffect>().FlashStart(Color.white, .2f);
+    }
+
+    protected void Follow(ActiveAbilityIcon active)
+    {
+        Vector2 ray = new Vector2(Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue()).x, Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue()).y);
+        RaycastHit2D hit = Physics2D.Raycast(ray, ray, gameObject.layer);
+        if (hit.collider != null)
+        {
+            if (hit.collider.gameObject.GetComponent<MinionEntity>() && hit.collider.gameObject != this)
+            {
+                data.currentForm = MinionData.Form.passive;
+                //data.followTarget = hit.collider.gameObject.GetComponent<MinionEntity>().data;
+                animator.SetBool("Following", true);
+                //followController.target = data.followTarget.GetEntity().transform;
+            }
+        }
+    }
 
     /*
     public void OnDrawGizmos()

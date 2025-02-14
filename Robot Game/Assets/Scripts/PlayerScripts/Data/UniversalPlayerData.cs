@@ -173,7 +173,7 @@ public class UniversalPlayerData : ISerializationCallbackReceiver
     private List<string> abilityNames = new List<string>()
     {
         //General Abilities
-        "RoamingCancel",
+        "RoamingCancel", "Follow",
         // Golem Abilites
         "Tornado"
         // more go here
