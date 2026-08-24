@@ -1,2 +1,2 @@
 # Robot-Game
-My take on an idle game
+Game prototype I made that implements ideas I had at the time.
