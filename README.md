@@ -25,5 +25,8 @@ It would be too much to detail everything here, but I will list most of the func
 - rpg damage calculations and systems.
 - passive effects, status effects, and on hit effects.
 - save/load system.
+- behavior node system for enemy ai. (slime enemy show this off with jump and slide attacks)
+- drop table system.
+- day/night time system with lerping background.
 
   I am responsible for creating all code and art assets in this project.
