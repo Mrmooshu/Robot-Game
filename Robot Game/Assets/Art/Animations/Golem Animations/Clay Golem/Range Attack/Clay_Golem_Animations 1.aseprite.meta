@@ -8,6 +8,7 @@ ScriptedImporter:
   assetBundleName: 
   assetBundleVariant: 
   script: {fileID: 11500000, guid: 62a9f0aa5b59740cfbadc7e5f9823bb0, type: 3}
+  importerVersion: 1
   textureImporterSettings:
     alphaSource: 1
     mipMapMode: 0
@@ -71,21 +72,27 @@ ScriptedImporter:
     textureFormatSet: 0
     applyGammaDecoding: 0
   previousAsepriteImporterSettings:
+    fileImportMode: 1
     importHiddenLayers: 0
     layerImportMode: 0
     defaultPivotSpace: 0
     defaultPivotAlignment: 7
     customPivotPosition: {x: 0.5, y: 0.5}
+    mosaicPadding: 4
+    spritePadding: 0
     generateModelPrefab: 0
     generateAnimationClips: 0
     addSortingGroup: 1
     addShadowCasters: 0
   asepriteImporterSettings:
+    fileImportMode: 1
     importHiddenLayers: 0
     layerImportMode: 0
     defaultPivotSpace: 0
     defaultPivotAlignment: 7
     customPivotPosition: {x: 0.5, y: 0.5}
+    mosaicPadding: 4
+    spritePadding: 0
     generateModelPrefab: 0
     generateAnimationClips: 0
     addSortingGroup: 1
@@ -99,6 +106,7 @@ ScriptedImporter:
     pivot: {x: 0, y: 0}
     alignment: 0
     border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
     rect:
       serializedVersion: 2
       x: 0
@@ -114,12 +122,13 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     uvTransform: {x: 0, y: 0}
-  multiSpriteImportData:
-  - name: back_Frame_0
+  animatedSpriteImportData:
+  - name: back_Frame_4
     originalName: 
     pivot: {x: 1.2799999, y: -3.5384614}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
     rect:
       serializedVersion: 2
       x: 92
@@ -135,11 +144,12 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     uvTransform: {x: 92, y: 74}
-  - name: back_Frame_1
+  - name: back_Frame_5
     originalName: 
     pivot: {x: 1.2692307, y: -3.5384614}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
     rect:
       serializedVersion: 2
       x: 92
@@ -155,11 +165,12 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     uvTransform: {x: 92, y: 32}
-  - name: back_Frame_2
+  - name: back_Frame_6
     originalName: 
     pivot: {x: 1.2692307, y: -3.5384614}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
     rect:
       serializedVersion: 2
       x: 92
@@ -180,6 +191,7 @@ ScriptedImporter:
     pivot: {x: 0.5, y: -2.105263}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
     rect:
       serializedVersion: 2
       x: 4
@@ -200,6 +212,7 @@ ScriptedImporter:
     pivot: {x: 0.5, y: -2.105263}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
     rect:
       serializedVersion: 2
       x: 4
@@ -220,6 +233,7 @@ ScriptedImporter:
     pivot: {x: 0.5, y: -2.105263}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
     rect:
       serializedVersion: 2
       x: 4
@@ -240,6 +254,7 @@ ScriptedImporter:
     pivot: {x: 0.5, y: -2.105263}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
     rect:
       serializedVersion: 2
       x: 39
@@ -260,6 +275,7 @@ ScriptedImporter:
     pivot: {x: 0.5, y: -2.105263}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
     rect:
       serializedVersion: 2
       x: 39
@@ -280,6 +296,7 @@ ScriptedImporter:
     pivot: {x: 0.5, y: -2.105263}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
     rect:
       serializedVersion: 2
       x: 39
@@ -300,6 +317,7 @@ ScriptedImporter:
     pivot: {x: 0.5, y: -2.105263}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
     rect:
       serializedVersion: 2
       x: 39
@@ -320,6 +338,7 @@ ScriptedImporter:
     pivot: {x: 0.5, y: -2.105263}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
     rect:
       serializedVersion: 2
       x: 66
@@ -340,6 +359,7 @@ ScriptedImporter:
     pivot: {x: 0.58928573, y: -1.95}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
     rect:
       serializedVersion: 2
       x: 66
@@ -360,6 +380,7 @@ ScriptedImporter:
     pivot: {x: 0.6296297, y: -1.8095239}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
     rect:
       serializedVersion: 2
       x: 4
@@ -380,6 +401,7 @@ ScriptedImporter:
     pivot: {x: 0.68, y: -1.95}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
     rect:
       serializedVersion: 2
       x: 4
@@ -400,6 +422,7 @@ ScriptedImporter:
     pivot: {x: 0.48387095, y: -2.7333333}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
     rect:
       serializedVersion: 2
       x: 4
@@ -420,6 +443,7 @@ ScriptedImporter:
     pivot: {x: 0.27272728, y: -2.5}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
     rect:
       serializedVersion: 2
       x: 4
@@ -440,6 +464,7 @@ ScriptedImporter:
     pivot: {x: 0.3, y: -3}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
     rect:
       serializedVersion: 2
       x: 4
@@ -460,6 +485,7 @@ ScriptedImporter:
     pivot: {x: 0.33333334, y: -3.3076923}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
     rect:
       serializedVersion: 2
       x: 4
@@ -480,6 +506,7 @@ ScriptedImporter:
     pivot: {x: 0.5, y: -3}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
     rect:
       serializedVersion: 2
       x: 4
@@ -495,15 +522,18 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     uvTransform: {x: 4, y: 130}
+  spriteSheetImportData: []
   asepriteLayers:
   - layerIndex: 0
-    guid: -719260029
+    guid: -1516409777
     name: back
     layerFlags: 3
     layerType: 0
+    blendMode: 0
     cells:
     - name: back_Frame_4
       frameIndex: 4
+      additiveSortOrder: 0
       cellRect:
         x: 16
         y: 46
@@ -512,6 +542,7 @@ ScriptedImporter:
       spriteId: 45b621b8dc4d121459cf40954d72e78f
     - name: back_Frame_5
       frameIndex: 5
+      additiveSortOrder: 0
       cellRect:
         x: 15
         y: 46
@@ -520,6 +551,7 @@ ScriptedImporter:
       spriteId: be90bff38c90227418104acc001fef16
     - name: back_Frame_6
       frameIndex: 6
+      additiveSortOrder: 0
       cellRect:
         x: 15
         y: 46
@@ -529,13 +561,15 @@ ScriptedImporter:
     linkedCells: []
     parentIndex: -1
   - layerIndex: 2
-    guid: -1029820648
+    guid: -911352830
     name: Body
     layerFlags: 3
     layerType: 0
+    blendMode: 0
     cells:
     - name: Body_Frame_0
       frameIndex: 0
+      additiveSortOrder: 0
       cellRect:
         x: 39
         y: 40
@@ -544,6 +578,7 @@ ScriptedImporter:
       spriteId: 22f01a624c3ae39439181bfe8760eabb
     - name: Body_Frame_1
       frameIndex: 1
+      additiveSortOrder: 0
       cellRect:
         x: 39
         y: 40
@@ -552,6 +587,7 @@ ScriptedImporter:
       spriteId: b35a7fc19a6a876478f18bcaef754706
     - name: Body_Frame_2
       frameIndex: 2
+      additiveSortOrder: 0
       cellRect:
         x: 39
         y: 40
@@ -560,6 +596,7 @@ ScriptedImporter:
       spriteId: 0dc7582ae9f02e542b7ed6d3e1622e43
     - name: Body_Frame_3
       frameIndex: 3
+      additiveSortOrder: 0
       cellRect:
         x: 39
         y: 40
@@ -568,6 +605,7 @@ ScriptedImporter:
       spriteId: 2ca356afbed5ea14191beb8fc36f9999
     - name: Body_Frame_4
       frameIndex: 4
+      additiveSortOrder: 0
       cellRect:
         x: 39
         y: 40
@@ -576,6 +614,7 @@ ScriptedImporter:
       spriteId: c0d808a575f99b942822efc45de71ac3
     - name: Body_Frame_5
       frameIndex: 5
+      additiveSortOrder: 0
       cellRect:
         x: 39
         y: 40
@@ -584,6 +623,7 @@ ScriptedImporter:
       spriteId: d414b569602342e4d936b4a4be32f52e
     - name: Body_Frame_6
       frameIndex: 6
+      additiveSortOrder: 0
       cellRect:
         x: 39
         y: 40
@@ -592,6 +632,7 @@ ScriptedImporter:
       spriteId: 373b7508cb866d7449e4d693315effd9
     - name: Body_Frame_7
       frameIndex: 7
+      additiveSortOrder: 0
       cellRect:
         x: 39
         y: 40
@@ -601,13 +642,15 @@ ScriptedImporter:
     linkedCells: []
     parentIndex: -1
   - layerIndex: 3
-    guid: -726281262
+    guid: 1588498517
     name: front
     layerFlags: 3
     layerType: 0
+    blendMode: 0
     cells:
     - name: front_Frame_0
       frameIndex: 0
+      additiveSortOrder: 0
       cellRect:
         x: 15
         y: 39
@@ -616,6 +659,7 @@ ScriptedImporter:
       spriteId: 5641d0db30c51524daa4f17fa06ca32b
     - name: front_Frame_1
       frameIndex: 1
+      additiveSortOrder: 0
       cellRect:
         x: 14
         y: 38
@@ -624,6 +668,7 @@ ScriptedImporter:
       spriteId: 3d332e09beba6284ca9504cb2c789beb
     - name: front_Frame_2
       frameIndex: 2
+      additiveSortOrder: 0
       cellRect:
         x: 14
         y: 39
@@ -632,6 +677,7 @@ ScriptedImporter:
       spriteId: 0f2cca8b47949d54c998a4121196a05e
     - name: front_Frame_3
       frameIndex: 3
+      additiveSortOrder: 0
       cellRect:
         x: 33
         y: 41
@@ -640,6 +686,7 @@ ScriptedImporter:
       spriteId: c1a712f2eeee1c247a3060f4bcdd5102
     - name: front_Frame_4
       frameIndex: 4
+      additiveSortOrder: 0
       cellRect:
         x: 39
         y: 40
@@ -648,6 +695,7 @@ ScriptedImporter:
       spriteId: cd0be6dd16124cf438e012a899f8cb59
     - name: front_Frame_5
       frameIndex: 5
+      additiveSortOrder: 0
       cellRect:
         x: 39
         y: 42
@@ -656,6 +704,7 @@ ScriptedImporter:
       spriteId: c7e2c6c555d16bd41af8cb860263d5db
     - name: front_Frame_6
       frameIndex: 6
+      additiveSortOrder: 0
       cellRect:
         x: 39
         y: 43
@@ -664,6 +713,7 @@ ScriptedImporter:
       spriteId: 5ca0b6a31ab74074cbad0e8559aa1f59
     - name: front_Frame_7
       frameIndex: 7
+      additiveSortOrder: 0
       cellRect:
         x: 33
         y: 42
@@ -673,5 +723,8 @@ ScriptedImporter:
     linkedCells: []
     parentIndex: -1
   platformSettings: []
+  generatePhysicsShape: 0
   secondarySpriteTextures: []
   spritePackingTag: 
+  canvasSize: {x: 96, y: 96}
+  previousTextureSize: {x: 128, y: 256}

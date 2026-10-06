@@ -18,7 +18,7 @@
                     "name": "Jump",
                     "type": "Button",
                     "id": "70f8734b-48ad-4146-b262-4435065fc5f4",
-                    "expectedControlType": "Button",
+                    "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
@@ -27,7 +27,7 @@
                     "name": "Basic Attack",
                     "type": "Button",
                     "id": "a5b0e82c-92da-4df7-801f-9350a37cea84",
-                    "expectedControlType": "Button",
+                    "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
@@ -36,7 +36,7 @@
                     "name": "Ability 1",
                     "type": "Button",
                     "id": "6b37a44a-c9b1-4eae-92db-b3e1865ee74b",
-                    "expectedControlType": "Button",
+                    "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
@@ -356,7 +356,7 @@
                     "name": "Cancel",
                     "type": "Button",
                     "id": "58493f7d-2b6c-4e50-a83b-2daa66e847c6",
-                    "expectedControlType": "Button",
+                    "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false

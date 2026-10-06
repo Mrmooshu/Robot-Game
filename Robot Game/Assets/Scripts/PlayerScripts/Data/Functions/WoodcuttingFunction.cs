@@ -20,7 +20,7 @@ public class WoodcuttingFunction : ClassFunction
         {
             if (Database.GetItem(equipItem.itemID) is Hatchet)
             {
-                entity.rigBod.velocity = Vector2.zero;
+                entity.rigBod.linearVelocity = Vector2.zero;
                 entity.animator.Play("Chop", 0);
                 entity.weapon.sprite = Database.GetItem(equipItem.itemID).sprite;
                 return;

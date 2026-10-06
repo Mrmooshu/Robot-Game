@@ -12,7 +12,7 @@ public class ItemPickupMagnet : MonoBehaviour
             {
                 int pullPower = PlayerManager.instance.activeMinion == GetComponentInParent<MinionEntity>().data ? 5 : 10;
                 
-                item.GetComponent<Rigidbody2D>().velocity = ((transform.position - item.transform.position).normalized * pullPower);
+                item.GetComponent<Rigidbody2D>().linearVelocity = ((transform.position - item.transform.position).normalized * pullPower);
             }
         }
     }

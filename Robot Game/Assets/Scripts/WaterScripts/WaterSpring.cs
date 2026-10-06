@@ -55,7 +55,7 @@ public class WaterSpring : MonoBehaviour
     {
         if (other.gameObject.GetComponent<Rigidbody2D>())
         {
-            var speed = other.gameObject.GetComponent<Rigidbody2D>().velocity;
+            var speed = other.gameObject.GetComponent<Rigidbody2D>().linearVelocity;
 
             velocity += speed.y / resistance;
         }

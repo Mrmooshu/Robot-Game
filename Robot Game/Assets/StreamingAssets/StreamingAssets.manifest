@@ -1,13 +1,15 @@
 ManifestFileVersion: 0
-CRC: 1742879356
+UnityVersion: 6000.0.38f1
+CRC: 909364853
+HashAppended: 0
 AssetBundleManifest:
   AssetBundleInfos:
     Info_0:
       Name: ui prefabs
       Dependencies: {}
     Info_1:
-      Name: general prefabs
+      Name: entity prefabs
       Dependencies: {}
     Info_2:
-      Name: entity prefabs
+      Name: general prefabs
       Dependencies: {}

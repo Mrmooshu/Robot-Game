@@ -108,9 +108,9 @@ public class GolemEntity : MinionEntity
             animator.ResetTrigger("EndTornado");
             var charge = data.ChargeLevel;
             data.ChargeLevel = 0;
-            var v = rigBod.velocity;
+            var v = rigBod.linearVelocity;
             v.y *= .1f;
-            rigBod.velocity = v;
+            rigBod.linearVelocity = v;
             ConstantForce2D force = gameObject.AddComponent<ConstantForce2D>();
             force.relativeForce = new Vector2(((2 * (charge + 1)) + (stats[EntityStatType.movespeed].Value + 1)) * facingDirection * 3, canJump? 0 : 15f);
             var counter = charge * .4f + .6f;
@@ -130,7 +130,7 @@ public class GolemEntity : MinionEntity
     public void TornadoHit()
     {
         bufferedAction = null;
-        Vector2 knockback = new Vector2(facingDirection * (rigBod.velocity.x + 20), 40); // replace this with a magnetic effect later that applies to the target and pulls them close for the following hits
+        Vector2 knockback = new Vector2(facingDirection * (rigBod.linearVelocity.x + 20), 40); // replace this with a magnetic effect later that applies to the target and pulls them close for the following hits
         hitboxes.EnableAttack(new AttackData(this, new damageData(stats[EntityStatType.damagepower].Value * .1f, damageType.melee), true, (knockback, knockback), .5f, whatIsEnemy));
         hitboxes.BeginAttack();
     }

@@ -116,7 +116,7 @@ public static class DamageScript
 
     public static void KnockBack(Entity target, AttackData attackData)
     {
-        target.GetComponent<Rigidbody2D>().velocity *= .1f;
+        target.GetComponent<Rigidbody2D>().linearVelocity *= .1f;
         target.GetComponent<Rigidbody2D>().AddForce(target.animator.GetBool("Grounded") ? attackData.groundKnockback : attackData.airKockback);
         target.animator.SetFloat("Hitstun", attackData.hitStun);
         target.animator.SetTrigger("Hit");

@@ -33,8 +33,6 @@ public abstract class MinionEntity : Entity
     public Transform groundCheck;
 
     //other
-    public bool moveLocked = false;
-    public bool jumpLocked = false;
     public Action bufferedAction = null;
     public LayerMask whatIsGround;
     protected float groundedRadius = .1f;
@@ -90,11 +88,11 @@ public abstract class MinionEntity : Entity
 
         if (dead)
         {
-            rigBod.velocity = Vector2.zero;
+            rigBod.linearVelocity = Vector2.zero;
             return;
         }
 
-        if (animator.GetBool("Grounded") && rigBod.velocity.y <= 0)
+        if (animator.GetBool("Grounded") && rigBod.linearVelocity.y <= 0)
         {
             canJump = true;
             animator.SetBool("Jumping", false);
@@ -128,16 +126,16 @@ public abstract class MinionEntity : Entity
         }
 
         // movement
-        float targetSpeed = movementInputDirection * stats[EntityStatType.movespeed].Value;
-        float speedDiff = targetSpeed - rigBod.velocity.x;
+        float targetSpeed = (moveLocked ? 0 : movementInputDirection) * stats[EntityStatType.movespeed].Value;
+        float speedDiff = targetSpeed - rigBod.linearVelocity.x;
         float accelRate = (Mathf.Abs(targetSpeed) > 0.01f) ? stats[EntityStatType.moveacceleration].Value : stats[EntityStatType.moveacceleration].Value * 3;
         float movement = Mathf.Pow(Mathf.Abs(speedDiff) * accelRate, 1) * Mathf.Sign(speedDiff);
         rigBod.AddForce(movement * Vector2.right);
 
         // running anim
         animator.SetFloat("Running", Mathf.Abs(movementInputDirection));
-        animator.SetFloat("Yvelocity", rigBod.velocity.y);
-        animator.SetFloat("Xvelocity", (Mathf.Abs(rigBod.velocity.x) * .2f + .2f));
+        animator.SetFloat("Yvelocity", rigBod.linearVelocity.y);
+        animator.SetFloat("Xvelocity", (Mathf.Abs(rigBod.linearVelocity.x) * .2f + .2f));
     }
 
     public virtual void PassInput(InputAction.CallbackContext context)

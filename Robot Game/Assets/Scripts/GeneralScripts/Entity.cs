@@ -14,6 +14,9 @@ public abstract class Entity : MonoBehaviour
     public HitboxScript hitboxes;
 
     public int facingDirection { get; protected set; }
+    public bool moveLocked = false;
+    public bool jumpLocked = false;
+    public bool turnLocked = false;
     public bool dead = false;
     public LayerMask whatIsEnemy;
 

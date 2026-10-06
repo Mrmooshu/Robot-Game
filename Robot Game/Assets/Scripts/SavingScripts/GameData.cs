@@ -57,6 +57,8 @@ public class GameData
         activeMinions[0].inventory.inventory[0] = new Item(Database.GetItemID("Novium Pickaxe"), 1);
         activeMinions[0].inventory.inventory[1] = new Item(Database.GetItemID("Test Hatchet"), 1);
         activeMinions[0].inventory.inventory[2] = new Item(Database.GetItemID("seed 1"), 1);
+        activeMinions[0].inventory.inventory[3] = new Item(Database.GetItemID("Test Dart"), 1);
+        activeMinions[0].inventory.inventory[4] = new Item(Database.GetItemID("Test Boomerang"), 1);
 
         activeMinions[1].inventory.inventory[0] = new Item(Database.GetItemID("Iromite Pickaxe"), 1);
 
@@ -65,7 +67,7 @@ public class GameData
         universal.abilities["Follow"] = true;
 
         activeMinions[0].functions[0] = new MiningFunction(activeMinions[0]);
-        activeMinions[0].functions[1] = new MeleeFunction(activeMinions[0]);
+        activeMinions[0].functions[1] = new RangeFunction(activeMinions[0]);
         activeMinions[0].functions[2] = new WoodcuttingFunction(activeMinions[0]);
         activeMinions[0].functions[3] = new FarmingFunction(activeMinions[0]);
     }

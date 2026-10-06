@@ -28,7 +28,7 @@ public class MiningFunction : ClassFunction
         {
             if (Database.GetItem(equipItem.itemID) is Pickaxe)
             {
-                entity.rigBod.velocity = Vector2.zero;
+                entity.rigBod.linearVelocity = Vector2.zero;
                 entity.animator.Play("Mine",0);
                 entity.weapon.sprite = Database.GetItem(equipItem.itemID).sprite;
                 return;

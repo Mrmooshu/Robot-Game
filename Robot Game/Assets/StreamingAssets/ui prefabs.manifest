@@ -1,12 +1,16 @@
 ManifestFileVersion: 0
-CRC: 2431521022
+UnityVersion: 6000.0.38f1
+CRC: 1143373737
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: e47eb0ec38d9f9212f0c94aa29183f43
+    Hash: f9ff811a1862908e72d808ca438ace8d
   TypeTreeHash:
     serializedVersion: 2
-    Hash: 08fa66a1ac6604aa0c5132f042c09272
+    Hash: c779e9af3f6d86c0688e1ecbadb22ee9
+  IncrementalBuildHash:
+    serializedVersion: 2
+    Hash: df9ce2fc5f6a36709cac8c87ec5da75b
 HashAppended: 0
 ClassTypes:
 - Class: 1
@@ -34,39 +38,97 @@ ClassTypes:
 - Class: 95
   Script: {instanceID: 0}
 - Class: 114
-  Script: {fileID: 11500000, guid: 59f8146938fff824cb5fd77236b75775, type: 3}
+  Script: {fileID: 11500000, guid: 852a1eb23b6e9ea4696c65c3b9a825d4, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 9c034c74d2f65ea469bd17a5e81667be, type: 3}
 - Class: 114
   Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
 - Class: 114
-  Script: {fileID: 11500000, guid: 9085046f02f69544eb97fd06b6048fe2, type: 3}
+  Script: {fileID: 11500000, guid: 30649d3a9faa99c48a7b1166b86bf2a0, type: 3}
 - Class: 114
-  Script: {fileID: 11500000, guid: 31a19414c41e5ae4aae2af33fee712f6, type: 3}
+  Script: {fileID: 11500000, guid: 72d7aed95b36b164f8cfc668b7c2e4c0, type: 3}
 - Class: 114
-  Script: {fileID: 11500000, guid: 1aa08ab6e0800fa44ae55d278d1423e3, type: 3}
+  Script: {fileID: 11500000, guid: 9d08dbd05b2e8174b8285a630c9540fa, type: 3}
 - Class: 114
-  Script: {fileID: 11500000, guid: dc42784cf147c0c48a680349fa168899, type: 3}
+  Script: {fileID: 11500000, guid: c91c854ae86352e4f8893a00aabe846a, type: 3}
 - Class: 114
-  Script: {fileID: 11500000, guid: 397962b06f2f5484594473b5253a6268, type: 3}
-- Class: 114
-  Script: {fileID: 11500000, guid: 0c1550c2cc64d30448c02db994c3113c, type: 3}
-- Class: 114
-  Script: {fileID: 11500000, guid: c8744f0a458b01240a9e1e7a0c64b2cb, type: 3}
-- Class: 114
-  Script: {fileID: 11500000, guid: b1a2973ad22f3d34e89dabcb3c35751f, type: 3}
-- Class: 114
-  Script: {fileID: 11500000, guid: 039a228d8d248284eb5793d8093aece8, type: 3}
-- Class: 114
-  Script: {fileID: 11500000, guid: d09ac760f27de62498627a91dacff5ad, type: 3}
-- Class: 114
-  Script: {fileID: 11500000, guid: 16f49da84a8ffdb4fa59053ca4ffd57d, type: 3}
+  Script: {fileID: 11500000, guid: 3768290912663824baa5c9fa59a5a8b0, type: 3}
 - Class: 114
   Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
 - Class: 114
   Script: {fileID: 11500000, guid: 0ad8d76e54792bf4e85e765dde7e0b81, type: 3}
 - Class: 114
-  Script: {fileID: 11500000, guid: 7123e51d9437b1e49b3d4acb1735647e, type: 3}
+  Script: {fileID: 11500000, guid: 3245ec927659c4140ac4f8d17403cc18, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: f3bb006b37382a54d8375fac98e54c07, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: d09ac760f27de62498627a91dacff5ad, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 397962b06f2f5484594473b5253a6268, type: 3}
 - Class: 114
   Script: {fileID: 11500000, guid: 3cb72aebb397f5e4580d4b9ee15f5799, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 8a8695521f0d02e499659fee002a26c2, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 59f8146938fff824cb5fd77236b75775, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 89fc4abac15c5714b91540fc0b57c02e, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 989e1bab204d9944b9c0560493d5a27f, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 0c1550c2cc64d30448c02db994c3113c, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 16f49da84a8ffdb4fa59053ca4ffd57d, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 7123e51d9437b1e49b3d4acb1735647e, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 535855f7b36d4694888a5650e5e9553a, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: bfb90d782c6b8e041bcb055ff230c31e, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 1344c3c82d62a2a41a3576d8abb8e3ea, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 710c50527db527246b1369ddb3fe6273, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 579cd1f0fc9d7b346a9a09cff771143f, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: f42148e198242cd4e81c1c50c7959e81, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 46dea495b500d304d82fff4cf2f327e4, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: cf71dcd4756e61a4b93edd80094e832a, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 27c5212794a0bca448efcd532a4128c0, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: dc42784cf147c0c48a680349fa168899, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: d2ac78b33d801d9448b1551c1438067b, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: b1a2973ad22f3d34e89dabcb3c35751f, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 733716decb9c8884eaa3bf0f127c0458, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: b196bea33713d754f90f0c8c6f254f65, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: d4a3bd8c7c6c2504bb29880c9bfca763, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 768c30809a4048645a895fe84ef9a559, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 1aa08ab6e0800fa44ae55d278d1423e3, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: c8744f0a458b01240a9e1e7a0c64b2cb, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 7b3e165666efcca41b141805a690b834, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 60424530e786a8e47bb11684d72e8525, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 039a228d8d248284eb5793d8093aece8, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 31a19414c41e5ae4aae2af33fee712f6, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 71c1514a6bd24e1e882cebbe1904ce04, type: 3}
 - Class: 114
   Script: {fileID: 11500000, guid: 099bd599b85a8c346a31a4cc820c63cf, type: 3}
 - Class: 114
@@ -74,67 +136,9 @@ ClassTypes:
 - Class: 114
   Script: {fileID: 11500000, guid: 89ff4bdac19dcdd418ec8f09f6910b6e, type: 3}
 - Class: 114
-  Script: {fileID: 11500000, guid: 8a8695521f0d02e499659fee002a26c2, type: 3}
-- Class: 114
-  Script: {fileID: 11500000, guid: 30649d3a9faa99c48a7b1166b86bf2a0, type: 3}
-- Class: 114
-  Script: {fileID: 11500000, guid: 535855f7b36d4694888a5650e5e9553a, type: 3}
-- Class: 114
-  Script: {fileID: 11500000, guid: 852a1eb23b6e9ea4696c65c3b9a825d4, type: 3}
-- Class: 114
-  Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-- Class: 114
-  Script: {fileID: 11500000, guid: 72d7aed95b36b164f8cfc668b7c2e4c0, type: 3}
-- Class: 114
-  Script: {fileID: 11500000, guid: 9d08dbd05b2e8174b8285a630c9540fa, type: 3}
-- Class: 114
-  Script: {fileID: 11500000, guid: 733716decb9c8884eaa3bf0f127c0458, type: 3}
-- Class: 114
-  Script: {fileID: 11500000, guid: c91c854ae86352e4f8893a00aabe846a, type: 3}
-- Class: 114
-  Script: {fileID: 11500000, guid: bfb90d782c6b8e041bcb055ff230c31e, type: 3}
-- Class: 114
-  Script: {fileID: 11500000, guid: 89fc4abac15c5714b91540fc0b57c02e, type: 3}
-- Class: 114
-  Script: {fileID: 11500000, guid: 710c50527db527246b1369ddb3fe6273, type: 3}
-- Class: 114
-  Script: {fileID: 11500000, guid: 1344c3c82d62a2a41a3576d8abb8e3ea, type: 3}
-- Class: 114
-  Script: {fileID: 11500000, guid: 579cd1f0fc9d7b346a9a09cff771143f, type: 3}
-- Class: 114
-  Script: {fileID: 11500000, guid: b196bea33713d754f90f0c8c6f254f65, type: 3}
-- Class: 114
-  Script: {fileID: 11500000, guid: d4a3bd8c7c6c2504bb29880c9bfca763, type: 3}
+  Script: {fileID: 11500000, guid: 9085046f02f69544eb97fd06b6048fe2, type: 3}
 - Class: 114
   Script: {fileID: 11500000, guid: 2fafe2cfe61f6974895a912c3755e8f1, type: 3}
-- Class: 114
-  Script: {fileID: 11500000, guid: 3245ec927659c4140ac4f8d17403cc18, type: 3}
-- Class: 114
-  Script: {fileID: 11500000, guid: f42148e198242cd4e81c1c50c7959e81, type: 3}
-- Class: 114
-  Script: {fileID: 11500000, guid: 7b3e165666efcca41b141805a690b834, type: 3}
-- Class: 114
-  Script: {fileID: 11500000, guid: 3768290912663824baa5c9fa59a5a8b0, type: 3}
-- Class: 114
-  Script: {fileID: 11500000, guid: 768c30809a4048645a895fe84ef9a559, type: 3}
-- Class: 114
-  Script: {fileID: 11500000, guid: f3bb006b37382a54d8375fac98e54c07, type: 3}
-- Class: 114
-  Script: {fileID: 11500000, guid: d2ac78b33d801d9448b1551c1438067b, type: 3}
-- Class: 114
-  Script: {fileID: 11500000, guid: 71c1514a6bd24e1e882cebbe1904ce04, type: 3}
-- Class: 114
-  Script: {fileID: 11500000, guid: 9c034c74d2f65ea469bd17a5e81667be, type: 3}
-- Class: 114
-  Script: {fileID: 11500000, guid: 46dea495b500d304d82fff4cf2f327e4, type: 3}
-- Class: 114
-  Script: {fileID: 11500000, guid: cf71dcd4756e61a4b93edd80094e832a, type: 3}
-- Class: 114
-  Script: {fileID: 11500000, guid: 989e1bab204d9944b9c0560493d5a27f, type: 3}
-- Class: 114
-  Script: {fileID: 11500000, guid: 60424530e786a8e47bb11684d72e8525, type: 3}
-- Class: 114
-  Script: {fileID: 11500000, guid: 27c5212794a0bca448efcd532a4128c0, type: 3}
 - Class: 115
   Script: {instanceID: 0}
 - Class: 128
@@ -175,12 +179,6 @@ SerializeReferenceClassIdentifiers:
 - AssemblyName: Unity.TextMeshPro
   ClassName: TMPro.TMP_FontWeightPair
 - AssemblyName: Unity.TextMeshPro
-  ClassName: TMPro.TMP_GlyphAdjustmentRecord
-- AssemblyName: Unity.TextMeshPro
-  ClassName: TMPro.TMP_GlyphPairAdjustmentRecord
-- AssemblyName: Unity.TextMeshPro
-  ClassName: TMPro.TMP_GlyphValueRecord
-- AssemblyName: Unity.TextMeshPro
   ClassName: TMPro.VertexGradient
 - AssemblyName: UnityEngine.CoreModule
   ClassName: UnityEngine.Events.ArgumentCache
@@ -198,6 +196,12 @@ SerializeReferenceClassIdentifiers:
   ClassName: UnityEngine.TextCore.GlyphMetrics
 - AssemblyName: UnityEngine.TextCoreFontEngineModule
   ClassName: UnityEngine.TextCore.GlyphRect
+- AssemblyName: UnityEngine.TextCoreFontEngineModule
+  ClassName: UnityEngine.TextCore.LowLevel.GlyphAdjustmentRecord
+- AssemblyName: UnityEngine.TextCoreFontEngineModule
+  ClassName: UnityEngine.TextCore.LowLevel.GlyphPairAdjustmentRecord
+- AssemblyName: UnityEngine.TextCoreFontEngineModule
+  ClassName: UnityEngine.TextCore.LowLevel.GlyphValueRecord
 - AssemblyName: UnityEngine.UI
   ClassName: UnityEngine.UI.AnimationTriggers
 - AssemblyName: UnityEngine.UI

@@ -40,7 +40,7 @@ public abstract class CharacterEntity : Entity
 
         if (dead)
         {
-            rigBod.velocity = Vector2.zero;
+            rigBod.linearVelocity = Vector2.zero;
             return;
         }
         if (animator.GetFloat("Hitstun") > 0)
@@ -48,7 +48,7 @@ public abstract class CharacterEntity : Entity
             return;
         }
 
-        if (animator.GetBool("Grounded") && rigBod.velocity.y <= 0)
+        if (animator.GetBool("Grounded") && rigBod.linearVelocity.y <= 0)
         {
             canJump = true;
         }
@@ -60,13 +60,13 @@ public abstract class CharacterEntity : Entity
 
         // running anim
         animator.SetFloat("Running", Mathf.Abs(movementDirection));
-        animator.SetFloat("Yvelocity", rigBod.velocity.y);
+        animator.SetFloat("Yvelocity", rigBod.linearVelocity.y);
     }
 
     protected virtual void Movement()
     {
         float targetSpeed = movementDirection * stats[EntityStatType.movespeed].Value;
-        float speedDiff = targetSpeed - rigBod.velocity.x;
+        float speedDiff = targetSpeed - rigBod.linearVelocity.x;
         float accelRate = (Mathf.Abs(targetSpeed) > 0.01f) ? stats[EntityStatType.movespeed].Value * 1f : stats[EntityStatType.movespeed].Value * 2;
         float movement = Mathf.Pow(Mathf.Abs(speedDiff) * accelRate, 1) * Mathf.Sign(speedDiff);
         rigBod.AddForce(movement * Vector2.right);
