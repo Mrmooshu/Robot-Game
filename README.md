@@ -3,7 +3,7 @@ Hello, this is an old game mechanic prototype I was working on years ago. I will
 
 Controls:
 - move with WASD
-- Jump with SPACE
+- jump with SPACE
 - basic attack with F
 - abilities assigned on the ability bar use number hotkeys from 1-6 (an ability can be dragged to the bar from the ability interface)
 
@@ -17,7 +17,7 @@ Features:
 It would be too much to detail everything here, but I will list most of the functional features in the prototype.
 - dynamic and complex stat system.
 - item and inventory systems.
-- ability system.
+- ability system. (tornado charges on first cast and is performed on second cast. roman cancel is based on a fighting game mechanic that allow actions to be canceled into  a neutral state)
 - input/action buffer system.
 - basic skill functions for mining, woodcutting, farming, and smithing.
 - exp and leveling systems. (I was exploring modular skills for each player character)
@@ -27,6 +27,6 @@ It would be too much to detail everything here, but I will list most of the func
 - save/load system.
 - behavior node system for enemy ai. (slime enemy show this off with jump and slide attacks)
 - drop table system.
-- day/night time system with lerping background.
+- day/night time system with lerping background and lighting.
 
   I am responsible for creating all code and art assets in this project.
